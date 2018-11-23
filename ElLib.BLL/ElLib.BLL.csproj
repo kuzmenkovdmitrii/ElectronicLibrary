@@ -48,5 +48,11 @@
     <Folder Include="Infrastructure\" />
     <Folder Include="Service\Interface\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mapper\Mapper.csproj">
+      <Project>{e974ae7d-b43e-4170-b83c-762b5dc490fc}</Project>
+      <Name>Mapper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
