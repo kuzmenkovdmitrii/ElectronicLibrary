@@ -48,13 +48,8 @@
     <Compile Include="Entity\Publishing.cs" />
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Mapper\Mapper.csproj">
-      <Project>{e974ae7d-b43e-4170-b83c-762b5dc490fc}</Project>
-      <Name>Mapper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

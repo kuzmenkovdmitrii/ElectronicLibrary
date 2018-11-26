@@ -6,13 +6,8 @@ using ElLib.DAL.Repository.Interface;
 
 namespace ElLib.DAL.Repository
 {
-    public class BookCategoryRepository : IBookCategoryRepository
+    public class BookCategoryRepository : CommonRepository, IBookCategoryRepository
     {
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Author> List()
         {
             throw new NotImplementedException();
@@ -34,11 +29,6 @@ namespace ElLib.DAL.Repository
         }
 
         public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save()
         {
             throw new NotImplementedException();
         }

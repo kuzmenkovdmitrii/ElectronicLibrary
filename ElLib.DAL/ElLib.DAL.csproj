@@ -49,11 +49,15 @@
     <Compile Include="Repository\AuthorRepository.cs" />
     <Compile Include="Repository\BookCategoryRepository.cs" />
     <Compile Include="Repository\BookRepository.cs" />
+    <Compile Include="Repository\CommonRepository.cs" />
     <Compile Include="Repository\Interface\IAuthorRepository.cs" />
     <Compile Include="Repository\Interface\IBookCategoryRepository.cs" />
     <Compile Include="Repository\Interface\IBookRepository.cs" />
+    <Compile Include="Repository\Interface\ILanguageRepository.cs" />
     <Compile Include="Repository\Interface\IPublishingRepository.cs" />
     <Compile Include="Repository\Interface\IRepository.cs" />
+    <Compile Include="Repository\LanguageRepository.cs" />
+    <Compile Include="Repository\PublishingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Identity\" />
@@ -62,10 +66,6 @@
     <ProjectReference Include="..\ElLib.Common\ElLib.Common.csproj">
       <Project>{9ad0eeca-a7b8-4e0d-8c54-6d77684eed13}</Project>
       <Name>ElLib.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mapper\Mapper.csproj">
-      <Project>{e974ae7d-b43e-4170-b83c-762b5dc490fc}</Project>
-      <Name>Mapper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

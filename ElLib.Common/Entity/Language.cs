@@ -1,11 +1,9 @@
 ﻿namespace ElLib.Common.Entity
 {
-    public enum Language
+    public class Language
     {
-        ENGLISH,
-        RUSSIAN,
-        BELARUSIAN,
-        UKRAINE,
-        //допаисать
+        public int Id { get; set; }
+        public string NameEn { get; set; }
+        public string NameRu { get; set; }
     }
 }

@@ -14,5 +14,8 @@ namespace ElLib.Web.Models
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Пароль не может быть длиной менее 6 символов")]
         public string Password { get; set; }
+
+        [Display(Name = "Запомнить")]
+        public bool Remember { get; set; }
     }
 }

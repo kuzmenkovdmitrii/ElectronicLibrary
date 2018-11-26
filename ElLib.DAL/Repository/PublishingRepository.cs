@@ -1,12 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using ElLib.Common.Entity;
+using ElLib.DAL.Repository.Interface;
 
 namespace ElLib.DAL.Repository
 {
-    class PublishingRepository
+    public class PublishingRepository : CommonRepository, IPublishingRepository
     {
+        public IEnumerable<Author> List()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Author> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Create(Author item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Author item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

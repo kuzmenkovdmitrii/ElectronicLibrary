@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Mapper
+namespace ElLib.Common.Mapper
 {
     public static class Mapper
     {

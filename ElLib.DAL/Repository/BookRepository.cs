@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ElLib.Common.Entity;
+using ElLib.DAL.Repository.Interface;
 
 namespace ElLib.DAL.Repository
 {
-    class BookRepository : IBookRepository
+    public class BookRepository : CommonRepository, IBookRepository
     {
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Author> List()
         {
             throw new NotImplementedException();
@@ -33,11 +29,6 @@ namespace ElLib.DAL.Repository
         }
 
         public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save()
         {
             throw new NotImplementedException();
         }

@@ -53,9 +53,9 @@
       <Project>{9ad0eeca-a7b8-4e0d-8c54-6d77684eed13}</Project>
       <Name>ElLib.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mapper\Mapper.csproj">
-      <Project>{e974ae7d-b43e-4170-b83c-762b5dc490fc}</Project>
-      <Name>Mapper</Name>
+    <ProjectReference Include="..\ElLib.DAL\ElLib.DAL.csproj">
+      <Project>{b229dea8-e6fb-407b-af2f-919ae16b72f9}</Project>
+      <Name>ElLib.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

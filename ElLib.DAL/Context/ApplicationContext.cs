@@ -2,7 +2,7 @@
 
 namespace ElLib.DAL.Context
 {
-    class ApplicationContext
+    public class ApplicationContext
     {
     }
 }
