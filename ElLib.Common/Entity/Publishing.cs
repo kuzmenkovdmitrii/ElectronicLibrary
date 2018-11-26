@@ -1,6 +1,6 @@
 ﻿namespace ElLib.Common.Entity
 {
-    class Publishing
+    public class Publishing
     {
         public int Id { get; set; }
         public string Name { get; set; }

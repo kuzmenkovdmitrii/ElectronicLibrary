@@ -96,6 +96,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthorModel.cs" />
+    <Compile Include="Models\BookCategoryModel.cs" />
+    <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\CreateAuthorModel.cs" />
+    <Compile Include="Models\CreateBookCategoryModel.cs" />
+    <Compile Include="Models\CreateBookModel.cs" />
+    <Compile Include="Models\CreatePublishingModel.cs" />
+    <Compile Include="Models\CreateRoleModel.cs" />
+    <Compile Include="Models\EditAuthorModel.cs" />
+    <Compile Include="Models\EditBookCategoryModel.cs" />
+    <Compile Include="Models\EditBookModel.cs" />
+    <Compile Include="Models\EditPublishingModel.cs" />
+    <Compile Include="Models\EditRoleModel.cs" />
+    <Compile Include="Models\LoginUserModel.cs" />
+    <Compile Include="Models\PublishingModel.cs" />
+    <Compile Include="Models\RegisterUserModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,13 +129,19 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ElLib.Common\ElLib.Common.csproj">
+      <Project>{9ad0eeca-a7b8-4e0d-8c54-6d77684eed13}</Project>
+      <Name>ElLib.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mapper\Mapper.csproj">
       <Project>{e974ae7d-b43e-4170-b83c-762b5dc490fc}</Project>
       <Name>Mapper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
