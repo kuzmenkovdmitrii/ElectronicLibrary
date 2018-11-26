@@ -49,6 +49,10 @@
     <Folder Include="Service\Interface\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ElLib.Common\ElLib.Common.csproj">
+      <Project>{9ad0eeca-a7b8-4e0d-8c54-6d77684eed13}</Project>
+      <Name>ElLib.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mapper\Mapper.csproj">
       <Project>{e974ae7d-b43e-4170-b83c-762b5dc490fc}</Project>
       <Name>Mapper</Name>

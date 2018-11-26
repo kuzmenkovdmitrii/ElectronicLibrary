@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,12 +44,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ApplicationContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AuthorRepository.cs" />
+    <Compile Include="Repository\BookCategoryRepository.cs" />
+    <Compile Include="Repository\BookRepository.cs" />
+    <Compile Include="Repository\Interface\IAuthorRepository.cs" />
+    <Compile Include="Repository\Interface\IBookCategoryRepository.cs" />
+    <Compile Include="Repository\Interface\IBookRepository.cs" />
+    <Compile Include="Repository\Interface\IPublishingRepository.cs" />
+    <Compile Include="Repository\Interface\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Context\" />
     <Folder Include="Identity\" />
-    <Folder Include="Repository\Interface\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElLib.Common\ElLib.Common.csproj">
+      <Project>{9ad0eeca-a7b8-4e0d-8c54-6d77684eed13}</Project>
+      <Name>ElLib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mapper\Mapper.csproj">
+      <Project>{e974ae7d-b43e-4170-b83c-762b5dc490fc}</Project>
+      <Name>Mapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
