@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ElLib.Common.Entity;
 
 namespace ElLib.Web.Models
 {
@@ -10,8 +11,6 @@ namespace ElLib.Web.Models
         public string Name { get; set; }
 
         [Display(Name = "Адрес")]
-        [Required(ErrorMessage = "Поле адрес не может быть пустым")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Не верная длина")]
-        public string Address { get; set; }
+        public Address Address { get; set; }
     }
 }

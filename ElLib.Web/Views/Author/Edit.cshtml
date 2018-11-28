@@ -1,0 +1,57 @@
+﻿@model ElLib.Web.Models.EditAuthorModel
+
+@{
+    ViewBag.Title = "Редактировать автора";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Редактировать автора</strong>
+                </h5>
+                <div class="card-body">
+                    @using (Html.BeginForm("Edit", "Author", new { @class = "text-center", @style = "color: #757575;" }))
+                    {
+                        <div class="md-form mt-3">
+                            @Html.TextBoxFor(x => x.Name, new
+                            {
+                                @class = "form-control",
+                                @placeholder = @Html.DisplayNameFor(x => x.Name)
+                            })
+                        </div>
+
+                        <div class="md-form mt-3">
+                            @Html.TextBoxFor(x=>x.LastName, new
+                            {
+                                @class = "form-control",
+                                @placeholder = @Html.DisplayNameFor(x => x.LastName)
+                            })
+                        </div>
+
+                        <div class="md-form mt-3">
+                            @Html.TextBoxFor(x=>x.MiddleName, new
+                            {
+                                @class = "form-control",
+                                @placeholder = @Html.DisplayNameFor(x => x.MiddleName)
+                            })
+                        </div>
+
+                        <div class="md-form mt-3">
+                            @Html.TextBoxFor(x=>x.Name, new
+                            {
+                                @class = "form-control",
+                                @type="email",
+                                @placeholder = @Html.DisplayNameFor(x => x.Email)
+                            })
+                        </div>
+
+                        <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Сохранить" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

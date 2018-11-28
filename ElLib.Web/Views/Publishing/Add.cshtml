@@ -1,0 +1,79 @@
+﻿@model ElLib.Web.Models.CreatePublishingModel
+
+@{
+    ViewBag.Title = "Добавить издательство";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<script>
+    $(document).ready(function() {
+        $("#Country").select2();
+        $("#City").select2();
+    });
+</script>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="c">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Добавить издательство</strong>
+                </h5>
+                <div class="card-body">
+                    @using (Html.BeginForm("Add", "Publishing", new { @class = "text-center", @style = "color: #757575;" }))
+                    {
+                        <div class="md-form mt-3">
+                            @Html.TextBoxFor(x => x.Name, new
+                            {
+                                @class = "form-control",
+                                @placeholder = @Html.DisplayNameFor(x => x.Name)
+                            })
+                        </div>
+
+                        <div class="md-form mt-3">
+                            <select class="browser-default form-control" style="width: 100%;height: 30px" id="Country" name="Country">
+                                <option selected disabled>Выберите страну</option>
+                                <option>Вейно</option>
+                                <option>Новоселки</option>
+                                <option>Вильчицы</option>
+                                <option>Лыково</option>
+                                <option>Вельница</option>
+                            </select>
+                        </div>
+
+                        <div class="md-form mt-3">
+                            <select class="browser-default form-control" style="width: 100%;height: 30px" id="City" name="City">
+                                <option selected disabled>Выберите город</option>
+                                <option>Вейно</option>
+                                <option>Новоселки</option>
+                                <option>Вильчицы</option>
+                                <option>Лыково</option>
+                                <option>Вельница</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-8">
+                                <div class="md-form mt-3">
+                                    @Html.TextBoxFor(x => x.Address.Street, new
+                                    {
+                                        @class = "form-control",
+                                        @placeholder = "Улица"
+                                    })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form mt-3">
+                                    @Html.TextBoxFor(x => x.Address.Home, new
+                                    {
+                                        @class = "form-control",
+                                        @placeholder = "Дом"
+                                    })
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Добавить" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

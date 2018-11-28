@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Policy;
+using System.Web.Mvc;
 using ElLib.Common.Entity;
 
 namespace ElLib.Web.Models
 {
     public class BookModel
     {
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<BookCategory> Categories { get; set; }
