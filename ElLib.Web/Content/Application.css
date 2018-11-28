@@ -1,0 +1,98 @@
+﻿.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+tr.changes:hover {
+}
+
+tr.changes a {
+    visibility: hidden;
+}
+
+tr.changes:hover a {
+    visibility: visible;
+}
+
+th.columnWidth-26per {
+    width: 26.6%;
+}
+
+th.columnWidth-10per {
+    width: 10%;
+}
+
+input[type="button"].stretch {
+    width: 60px !important;
+}
+
+.td-pad {
+    padding: 10px 0px 10px 0px !important;
+    margin: 10px 0px 10px 0px !important;
+}
+
+.btn-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 16px;
+    white-space: normal; /* восстанавливаем свойству значение по умолчанию */
+}
+
+.select-wrapper input.select-dropdown {
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    outline: 0;
+    height: 38px;
+    line-height: 2.9rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 .94rem 0;
+    padding: 0;
+    display: block;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=email], .md-form input[type=number], .md-form input[type=password], .md-form input[type=search-md], .md-form input[type=search], .md-form input[type=tel], .md-form input[type=text], .md-form input[type=time], .md-form input[type=url], .md-form textarea.md-textarea {
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    background-color: transparent;
+}
+
+.select-wrapper .select-dropdown {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+button, input {
+    overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
