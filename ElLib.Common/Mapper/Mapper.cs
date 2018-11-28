@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ElLib.Common.Mapper
@@ -14,10 +15,11 @@ namespace ElLib.Common.Mapper
             foreach (var outProperty in typeof(E).GetProperties())
             {
                 string outPropertyName = outProperty.Name;
-                var sourceProperty = typeof(T).GetProperties().FirstOrDefault(x => x.Name == outPropertyName);
-                if (sourceProperty != null)
+
+                var inProperty = typeof(T).GetProperties().FirstOrDefault(x => x.Name == outPropertyName);
+                if (CheckTypes(inProperty.PropertyType, outProperty.PropertyType) && inProperty != null)
                 {
-                    var value = sourceProperty.GetValue(item, null);
+                    var value = inProperty.GetValue(item, null);
                     outProperty.SetValue(mapped, value);
                 }
             }
@@ -25,7 +27,7 @@ namespace ElLib.Common.Mapper
             return mapped;
         }
 
-        public static ICollection<E> Map<T, E>(ICollection<T> items)
+        public static IEnumerable<E> Map<T, E>(IEnumerable<T> items)
             where T : class, new()
             where E : class, new()
         {
@@ -37,6 +39,16 @@ namespace ElLib.Common.Mapper
             }
 
             return mapped;
+        }
+
+        private static bool CheckTypes(Type firstType, Type secondType)
+        {
+            if (firstType.Equals(secondType))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

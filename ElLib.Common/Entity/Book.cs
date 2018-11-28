@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Policy;
 
 namespace ElLib.Common.Entity
 {
@@ -13,7 +12,7 @@ namespace ElLib.Common.Entity
         public DateTime PublishingDate { get; set; }
         public Language Language { get; set; }
         public Publishing Publishing { get; set; }
-        public Url Picture { get; set; }
-        public Url File { get; set; }
+        public Picture Picture { get; set; }
+        public File File { get; set; }
     }
 }
