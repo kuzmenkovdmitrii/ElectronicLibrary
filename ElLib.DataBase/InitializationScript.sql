@@ -1,5 +1,5 @@
 ﻿CREATE DATABASE ElLibDataBase
 GO
 
-USE [ElLibDataBase]
+USE ElLibDataBase
 GO
