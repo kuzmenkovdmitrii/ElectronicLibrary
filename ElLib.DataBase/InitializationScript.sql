@@ -1,0 +1,5 @@
+﻿CREATE DATABASE ElLibDataBase
+GO
+
+USE [ElLibDataBase]
+GO
