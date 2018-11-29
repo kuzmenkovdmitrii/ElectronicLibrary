@@ -58,6 +58,8 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="CreateTables" />
+    <Folder Include="Dependencies" />
+    <Folder Include="CreateTables\ManyToMany" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CreateTables\CreateUserTable.sql" />
@@ -73,5 +75,11 @@
     <None Include="CreateTables\CreateAuthorTable.sql" />
     <None Include="CreateTables\CreateBookTable.sql" />
     <None Include="InitializationScript.sql" />
+    <None Include="Dependencies\CreateAllDependencies.sql" />
+    <None Include="CreateTables\ManyToMany\BookAndBookCategory.sql" />
+    <None Include="CreateTables\ManyToMany\BookAndAuthor.sql" />
+    <None Include="CreateTables\ManyToMany\BookAndPublishing.sql" />
+    <None Include="CreateTables\ManyToMany\UserAndRole.sql" />
+    <None Include="CreateTables\ManyToMany\CountryAndCity.sql" />
   </ItemGroup>
 </Project>

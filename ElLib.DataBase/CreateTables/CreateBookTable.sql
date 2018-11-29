@@ -6,10 +6,10 @@ DROP TABLE Books
 GO
 
 CREATE TABLE Books(
-	Id int PRIMARY KEY IDENTITY NOT NULL,
+	Id int PRIMARY KEY IDENTITY,
 	[Name] nvarchar(50) NULL,
 	PublishingDate datetime NOT NULL,
-	LanguageId int NULL,
-	FileId int NOT NULL,
-	PictureId int NULL,
+	LanguageId int UNIQUE,
+	FileId int UNIQUE,
+	PictureId int UNIQUE,
 );

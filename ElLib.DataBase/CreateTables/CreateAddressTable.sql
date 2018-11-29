@@ -6,9 +6,9 @@ DROP TABLE Addresses
 GO
 
 CREATE TABLE Addresses(
-	Id int PRIMARY KEY IDENTITY NOT NULL,
+	Id int PRIMARY KEY IDENTITY,
 	CountryId int NOT NULL,
-	CityId int NOT NULL,
+	CityId int NULL,
 	Street nvarchar(25) NULL,
 	Home nvarchar(25) NULL,
 );

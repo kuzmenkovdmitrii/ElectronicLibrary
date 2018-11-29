@@ -6,6 +6,6 @@ DROP TABLE Cities
 GO
 
 CREATE TABLE Cities(
-	Id int PRIMARY KEY IDENTITY NOT NULL,
+	Id int PRIMARY KEY IDENTITY,
 	[Name] nvarchar(25) NOT NULL,
 );

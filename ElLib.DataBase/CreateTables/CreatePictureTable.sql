@@ -6,6 +6,6 @@ DROP TABLE Pictures
 GO
 
 CREATE TABLE Pictures(
-	Id int PRIMARY KEY IDENTITY NOT NULL,
+	Id int PRIMARY KEY IDENTITY,
 	Link nvarchar(max) NOT NULL,
 );

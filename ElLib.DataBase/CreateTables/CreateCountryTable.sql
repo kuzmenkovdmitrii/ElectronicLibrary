@@ -6,6 +6,6 @@ DROP TABLE Countries
 GO
 
 CREATE TABLE Countries(
-	Id int PRIMARY KEY IDENTITY NOT NULL,
+	Id int PRIMARY KEY IDENTITY,
 	[Name] nvarchar(25) NOT NULL,
 );

@@ -6,7 +6,6 @@ DROP TABLE Files
 GO
 
 CREATE TABLE Files(
-	Id int PRIMARY KEY IDENTITY NOT NULL,
+	Id int PRIMARY KEY IDENTITY,
 	Link nvarchar(max) NOT NULL,
 );
-GO
