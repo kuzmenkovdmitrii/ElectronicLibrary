@@ -1,17 +1,32 @@
-﻿using log4net;
+﻿using System;
+using log4net;
+using log4net.Config;
 
 namespace ElLib.Common.Logger
 {
-    public class Logger
+    public static class Logger
     {
-        //static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public static ILog Log
+        public static ILog For(object LoggedObject)
         {
-            get
+            if (LoggedObject != null)
             {
-                var logger = LogManager.GetLogger("CustomLogger");
-                return logger;
+                return For(LoggedObject.GetType());
+            }
+            else
+            {
+                return For(null);
+            }
+        }
+
+        public static ILog For(Type ObjectType)
+        {
+            if (ObjectType != null)
+            {
+                return LogManager.GetLogger(ObjectType.Name);
+            }
+            else
+            {
+                return LogManager.GetLogger(string.Empty);
             }
         }
     }
