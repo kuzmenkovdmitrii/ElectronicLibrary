@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ElLib.BLL.Service.Interface;
+using ElLib.Common.Logger;
 
 namespace ElLib.Web.Controllers
 {
@@ -20,6 +21,7 @@ namespace ElLib.Web.Controllers
         public ActionResult Index()
         {
             @ViewBag.Hello = service.GetBook();
+            Logger.Log.Info("Hello logging world!");
             return View();
         }
 
