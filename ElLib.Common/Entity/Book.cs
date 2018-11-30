@@ -11,7 +11,7 @@ namespace ElLib.Common.Entity
         public ICollection<Author> Authors { get; set; }
         public DateTime PublishingDate { get; set; }
         public Language Language { get; set; }
-        public Publishing Publishing { get; set; }
+        public ICollection<Publishing> Publishing { get; set; }
         public Picture Picture { get; set; }
         public File File { get; set; }
     }

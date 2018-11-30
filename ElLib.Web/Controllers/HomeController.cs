@@ -38,5 +38,10 @@ namespace ElLib.Web.Controllers
         {
             return RedirectToAction("Login", "Auth");
         }
+
+        public ActionResult AdminPage()
+        {
+            return RedirectToAction("Index", "AdminPage");
+        }
     }
 }
