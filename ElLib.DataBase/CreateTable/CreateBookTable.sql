@@ -7,8 +7,8 @@ GO
 
 CREATE TABLE Books(
 	Id int PRIMARY KEY IDENTITY,
-	[Name] nvarchar(50) NULL,
-	PublishingDate datetime NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	PublishingDate datetime NULL,
 	LanguageId int UNIQUE,
 	FileId int UNIQUE,
 	PictureId int UNIQUE,

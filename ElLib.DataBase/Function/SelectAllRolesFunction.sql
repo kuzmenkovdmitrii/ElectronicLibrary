@@ -1,0 +1,10 @@
+﻿USE ElLibDataBase
+GO
+
+CREATE FUNCTION SelectAllRoles()
+	RETURNS TABLE 
+AS
+	RETURN
+	(
+		SELECT * FROM Roles
+	)

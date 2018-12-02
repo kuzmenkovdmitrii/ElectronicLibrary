@@ -9,37 +9,94 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("active");
+            $("#wrapperIcon").toggleClass("fa-angle-left");
         });
     });
 </script>
 
 <div id="wrapper" class="active">
-    <div id="sidebar-wrapper" style="width: 300px">
-        <h5 class="card-header info-color white-text text-center py-2 container-fluid" id="menu-toggle">
-            <strong>Панель администратора</strong>
-        </h5>
-        <a class="btn btn-sm btn-block" id="sidebar_menu">
-            <span class="navbar-toggler-icon"></span>
-        </a>
-        <ul id="sidebar" style="width: 100%">     
-            <li class="mb-2">
-                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Book")">Книги</a>
-            </li>
-            <li class="mb-2">
-                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "BookCategory")">Жанры</a>
-            </li>
-            <li class="mb-2">
-                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Author")">Авторы</a>
-            </li>
-            <li class="mb-2">
-                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Language")">Языки</a>
-            </li>
-            <li class="mb-2">
-                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Publishing")">Издательства</a>
-            </li>
-        </ul>
+    <div id="sidebar-wrapper" style="width: 300px;background:rgb(51,181,229)">
+        <div>
+            <button type="button" class="btn btn-md btn-block btn-info" id="menu-toggle" style="height: 60px">
+                <div class="row">
+                    <div class="col-10">
+                        Панель администратора
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </button>
+
+                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Book")">
+            <div class="row">
+                    <div class="col-10">
+                        Книги
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                    </div>
+            </div>
+                </a>
+
+                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Author")">
+            <div class="row">
+                    <div class="col-10">
+                        Авторы
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+            </div>
+                </a>
+
+                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Language")">
+            <div class="row">
+                    <div class="col-10">
+                        Языки
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-language" aria-hidden="true"></i>
+                    </div>
+            </div>
+                </a>
+
+                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Publishing")">
+            <div class="row">
+                    <div class="col-10">
+                        Издательства
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-building" aria-hidden="true"></i>
+                    </div>
+            </div>
+                </a>
+            
+                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "User")">
+            <div class="row">
+                    <div class="col-10">
+                        Пользователи
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                    </div>
+            </div>
+                </a>
+            
+                <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "Role")">
+            <div class="row">
+                    <div class="col-10">
+                        Роли
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
+            </div>
+                </a>
+        </div>
     </div>
-          
+</div>
+
     <!-- Page content -->
     <div id="page-content-wrapper">
         <!-- Keep all page content within the page-content inset div! -->
@@ -47,7 +104,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <p class="well lead">An Experiment using the sidebar template from startbootstrap.com which I integrated in my website (<a href="http://animeshmanglik.name">animeshmanglik.name</a>)</p>
-                    <p class="well lead">Click on the Menu to Toggle Sidebar . Hope you enjoy it!</p> 
+                    <p class="well lead">Click on the Menu to Toggle Sidebar . Hope you enjoy it!</p>
                 </div>
             </div>
         </div>

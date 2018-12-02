@@ -1,6 +1,8 @@
 ﻿USE ElLibDataBase
 GO
 
+--one to many
+
 ALTER TABLE Books
 ADD CONSTRAINT FK_Book_Language FOREIGN KEY(LanguageId) 
     REFERENCES Languages(Id);
@@ -25,11 +27,11 @@ ALTER TABLE Addresses
 ADD CONSTRAINT FK_Addresse_City FOREIGN KEY(CityId) 
     REFERENCES Cities(Id);
 
-ALTER TABLE Countries
-ADD CONSTRAINT FK_Contry_City FOREIGN KEY(CountryId) 
+ALTER TABLE Cities
+ADD CONSTRAINT FK_City_Country FOREIGN KEY(CountryId) 
     REFERENCES Countries(Id);
 
-
+--many to many
 
 ALTER TABLE BookAndAuthor
 ADD CONSTRAINT FK_Book_AuthorId FOREIGN KEY(BookId)
@@ -54,9 +56,3 @@ ADD CONSTRAINT FK_User_RoleId FOREIGN KEY(UserId)
         REFERENCES Users(Id),
 	CONSTRAINT FK_Role_UserId FOREIGN KEY(RoleId)
 		REFERENCES Roles(Id);
-
-ALTER TABLE CountryAndCity
-ADD CONSTRAINT FK_Country_CityId FOREIGN KEY(CountryId)
-        REFERENCES Countries(Id),
-	CONSTRAINT FK_City_CountryId FOREIGN KEY(CityId)
-		REFERENCES Cities(Id);

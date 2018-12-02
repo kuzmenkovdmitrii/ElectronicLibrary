@@ -7,5 +7,5 @@ GO
 
 CREATE TABLE Files(
 	Id int PRIMARY KEY IDENTITY,
-	Link nvarchar(max) NOT NULL,
+	Link nvarchar(100) NOT NULL,
 );

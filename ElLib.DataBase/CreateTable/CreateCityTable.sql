@@ -8,4 +8,5 @@ GO
 CREATE TABLE Cities(
 	Id int PRIMARY KEY IDENTITY,
 	[Name] nvarchar(25) NOT NULL,
+	CountryId int
 );
