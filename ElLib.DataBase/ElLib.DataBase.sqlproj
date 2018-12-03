@@ -61,7 +61,6 @@
     <Folder Include="Relationship" />
     <Folder Include="CreateTable\ManyToMany" />
     <Folder Include="StoredProcedure" />
-    <Folder Include="Function" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CreateTable\CreateUserTable.sql" />
@@ -105,21 +104,68 @@
     <None Include="StoredProcedure\DeleteRoleStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdateUserStoredProcedure.sql" />
     <None Include="StoredProcedure\DeleteUserStoredProcedure.sql" />
-    <None Include="Function\SelectAllLanguagesFunction.sql" />
-    <None Include="Function\SelectAllAddressesProcedure.sql" />
-    <None Include="Function\SelectAllAuthorsProcedure.sql" />
-    <None Include="Function\SelectAllBookCategoriesFunction.sql" />
-    <None Include="Function\SelectAllBooksFunction.sql" />
-    <None Include="Function\SelectAllCountriesFunction.sql" />
-    <None Include="Function\SelectAllPublishingsFunction.sql" />
-    <None Include="Function\SelectAllRolesFunction.sql" />
-    <None Include="Function\SelectAllUsersFunction.sql" />
-    <None Include="Function\SelectBooksByBookCategoryIdFunction.sql" />
-    <None Include="Function\SelectAllCitiesFunction.sql" />
-    <None Include="Function\SelectBooksByLanguageIdFunction.sql" />
-    <None Include="Function\SelectBooksByAuthorIdFunction.sql" />
-    <None Include="Function\SelectBooksByPublishingIdFunction.sql" />
-    <None Include="Function\SelectUsersByRolesIdFunction.sql" />
-    <None Include="Function\SelectPublishingsByCountryIdFunction.sql" />
+    <None Include="StoredProcedure\CreateAddressStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateBookStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateBookCategoryStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateCityStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateCountryStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateFileStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreatePictureStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateLanguageStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreatePublishingStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateUserStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateRoleStoredProcedure.sql" />
+    <None Include="StoredProcedure\AddAuthorToBookStoredProcedure.sql" />
+    <None Include="StoredProcedure\AddBookCategoryToBookStoredProcedure.sql" />
+    <None Include="StoredProcedure\AddPublishingToBookStoredProcedure.sql" />
+    <None Include="StoredProcedure\AddRoleToUserStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllAddressesStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllAuthorsStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllBookCategoriesStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllBooksStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectCitiesByCountryIdStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllCountriesStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllLanguagesStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllPublishingsStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllRolesStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectAllUsersStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectBooksByAuthorIdStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectBooksByBookCategoryIdStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectBooksByLanguageIdStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectBooksByPublishingIdStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectPublishingsByCountryIdStoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StoredProcedure\SelectUsersByRolesIdStoredProcedure.sql" />
   </ItemGroup>
 </Project>
