@@ -7,12 +7,12 @@ namespace ElLib.DAL.Repository
 {
     class LanguageRepository : CommonRepository, ILanguageRepository
     {
-        public IEnumerable<Language> List()
+        public IEnumerable<Language> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<Language> Get(int id)
+        public Task<Language> GetById(int id)
         {
             throw new System.NotImplementedException();
         }

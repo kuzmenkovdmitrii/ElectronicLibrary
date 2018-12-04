@@ -62,10 +62,9 @@
     <Compile Include="Repository\Interface\IRepository.cs" />
     <Compile Include="Repository\LanguageRepository.cs" />
     <Compile Include="Repository\PublishingRepository.cs" />
+    <Compile Include="StoredProcedure.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Identity\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ElLib.Common\ElLib.Common.csproj">
       <Project>{9ad0eeca-a7b8-4e0d-8c54-6d77684eed13}</Project>

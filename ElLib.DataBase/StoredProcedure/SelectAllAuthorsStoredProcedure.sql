@@ -1,6 +1,6 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectAllAuthorsFunction
+CREATE PROC SelectAllAuthors
 AS
 	SELECT * FROM Authors

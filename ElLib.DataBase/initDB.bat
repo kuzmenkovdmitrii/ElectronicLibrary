@@ -55,6 +55,8 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/AddRoleToUserStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateAddressStoredProcedure.sql
 
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateAuthorStoredProcedure.sql
+
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateBookCategoryStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateBookStoredProcedure.sql
@@ -127,7 +129,7 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectCitiesByCountryIdStoredProced
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingsByCountryIdStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUsersByRolesIdStoredProcedure.sql
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUsersByRoleIdStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateAddressStoredProcedure.sql
 

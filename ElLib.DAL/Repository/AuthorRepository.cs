@@ -1,36 +1,124 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using ElLib.Common.Entity;
 using ElLib.DAL.Repository.Interface;
+using Microsoft.SqlServer.Server;
 
 namespace ElLib.DAL.Repository
 {
     public class AuthorRepository : CommonRepository, IAuthorRepository
     {
-        public IEnumerable<Author> List()
+        readonly string connectionString =
+            @"Data Source=ZENBOOK\SQLEXPRESS;Initial Catalog=ElLibDataBase;Integrated Security=True";
+
+        public IEnumerable<Author> GetAll()
         {
-            throw new NotImplementedException();
+            IList<Author> list = new List<Author>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedure.SELECT_ALL_AUTHORS, connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+                    var reader = cmd.ExecuteReader();
+                    //SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.SingleRow);
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Author author = new Author();
+                            author.Id = (int) reader["Id"];
+                            author.Name = (string) reader["Name"];
+                            author.LastName = (string) reader["LastName"];
+                            author.MiddleName = (string) reader["MiddleName"];
+                            author.Email = (string) reader["Email"];
+                            list.Add(author);
+                        }
+                    }
+                    reader.Close();
+                }
+            }
+
+            return list;
+
+
+
+
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    SqlCommand cmd = new SqlCommand(StoredProcedure.SELECT_ALL_AUTHORS, connection);
+
+            //    cmd.CommandType = CommandType.StoredProcedure;
+
+            //    connection.Open();
+            //    cmd.ExecuteNonQuery();
+            //}
         }
 
-        public Task<Author> Get(int id)
+        public Task<Author> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
         public void Create(Author item)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedure.CREATE_AUTHOR, connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(new SqlParameter("@Name", item.Name));
+                    cmd.Parameters.Add(new SqlParameter("@LastName", item.LastName));
+                    cmd.Parameters.Add(new SqlParameter("@MiddleName", item.MiddleName));
+                    cmd.Parameters.Add(new SqlParameter("@Email", item.Email));
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Update(Author item)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedure.CREATE_AUTHOR, connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(new SqlParameter("@Id", item.Id));
+                    cmd.Parameters.Add(new SqlParameter("@Name", item.Name));
+                    cmd.Parameters.Add(new SqlParameter("@LastName", item.LastName));
+                    cmd.Parameters.Add(new SqlParameter("@MiddleName", item.MiddleName));
+                    cmd.Parameters.Add(new SqlParameter("@Email", item.Email));
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedure.CREATE_AUTHOR, connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(new SqlParameter("@Id", id));
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

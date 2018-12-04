@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using ElLib.BLL.Service.Interface;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
 using ElLib.Web.Models;
@@ -8,44 +9,53 @@ namespace ElLib.Web.Controllers
 {
     public class AuthorController : Controller
     {
-        [HttpGet]
-        public ActionResult All()
+        IAuthorService authorService;
+
+        public AuthorController(IAuthorService authorService)
         {
-            Author a1 = new Author()
-            {
-                Email = "dsada@mail.ru",
-                Name = "Dida",
-                LastName = "Kuzmenkov",
-                MiddleName = "Aleksandrovich"
-            };
+            this.authorService = authorService;
+        }
 
-            Author a2 = new Author()
-            {
-                Email = "dsada@mail.ru",
-                Name = "Kirill",
-                LastName = "Kuzmenkov",
-                MiddleName = "Aleksandrovich"
-            };
+        [HttpGet]
+        public ViewResult All()
+        {
+            //Author a1 = new Author()
+            //{
+            //    Email = "dsada@mail.ru",
+            //    Name = "Dida",
+            //    LastName = "Kuzmenkov",
+            //    MiddleName = "Aleksandrovich"
+            //};
 
-            Author a3 = new Author()
-            {
-                Email = "dsada@mail.ru",
-                Name = "Sergei",
-                LastName = "Kuzmenkov",
-                MiddleName = "Aleksandrovich"
-            };
+            //Author a2 = new Author()
+            //{
+            //    Email = "dsada@mail.ru",
+            //    Name = "Kirill",
+            //    LastName = "Kuzmenkov",
+            //    MiddleName = "Aleksandrovich"
+            //};
 
-            Author a4 = new Author()
-            {
-                Email = "dsada@mail.ru",
-                Name = "Andrei",
-                LastName = "Kuzmenkov",
-                MiddleName = "Aleksandrovich"
-            };
+            //Author a3 = new Author()
+            //{
+            //    Email = "dsada@mail.ru",
+            //    Name = "Sergei",
+            //    LastName = "Kuzmenkov",
+            //    MiddleName = "Aleksandrovich"
+            //};
 
-            IEnumerable<Author> list = new List<Author>() {a1, a2, a3, a4};
+            //Author a4 = new Author()
+            //{
+            //    Email = "dsada@mail.ru",
+            //    Name = "Andrei",
+            //    LastName = "Kuzmenkov",
+            //    MiddleName = "Aleksandrovich"
+            //};
 
-            return View(Mapper.Map<Author,AuthorModel>(list));
+            //IEnumerable<Author> list = new List<Author>() {a1, a2, a3, a4};
+
+            //return View(Mapper.Map<Author,AuthorModel>(list));
+            //List<Author> list = new List<Author>(authorService.GetAll());
+            return View(authorService.GetAll());
         }
 
         [HttpGet]
@@ -57,6 +67,13 @@ namespace ElLib.Web.Controllers
         [HttpPost]
         public ActionResult Add(CreateAuthorModel model)
         {
+            Author author = new Author();
+            author.Name = model.Name;
+            author.LastName = model.LastName;
+            author.MiddleName = model.MiddleName;
+            author.Email = model.Email;
+
+            authorService.Create(author);
             return View();
         }
 

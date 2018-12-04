@@ -119,6 +119,7 @@
     <None Include="StoredProcedure\AddBookCategoryToBookStoredProcedure.sql" />
     <None Include="StoredProcedure\AddPublishingToBookStoredProcedure.sql" />
     <None Include="StoredProcedure\AddRoleToUserStoredProcedure.sql" />
+    <None Include="StoredProcedure\CreateAuthorStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllAddressesStoredProcedure.sql" />
@@ -166,6 +167,6 @@
     <None Include="StoredProcedure\SelectPublishingsByCountryIdStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="StoredProcedure\SelectUsersByRolesIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectUsersByRoleIdStoredProcedure.sql" />
   </ItemGroup>
 </Project>

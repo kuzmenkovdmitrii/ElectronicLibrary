@@ -7,8 +7,8 @@ namespace ElLib.DAL.Repository.Interface
     public interface IRepository<T> : IDisposable
         where T : class
     {
-        IEnumerable<T> List();
-        Task<T> Get(int id);
+        IEnumerable<T> GetAll();
+        Task<T> GetById(int id);
 
         void Create(T item);
         void Update(T item);

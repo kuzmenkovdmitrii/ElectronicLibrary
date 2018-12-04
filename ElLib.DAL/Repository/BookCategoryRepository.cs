@@ -8,12 +8,12 @@ namespace ElLib.DAL.Repository
 {
     public class BookCategoryRepository : CommonRepository, IBookCategoryRepository
     {
-        public IEnumerable<Author> List()
+        public IEnumerable<Author> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Author> Get(int id)
+        public Task<Author> GetById(int id)
         {
             throw new NotImplementedException();
         }

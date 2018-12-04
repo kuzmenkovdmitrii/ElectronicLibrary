@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC CreateAuthor
+CREATE PROC CreateAddress
 	@CountryId int, 
 	@CityId int,
 	@Street nvarchar(25),
