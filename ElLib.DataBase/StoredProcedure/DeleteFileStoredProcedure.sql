@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeleteFile 
+CREATE PROC usp_DeleteFile 
 	@Id int 
 AS
 	DELETE Files

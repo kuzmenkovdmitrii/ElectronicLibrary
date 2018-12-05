@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectBooksByAuthorId
+CREATE PROC usp_SelectBooksByAuthorId
 	@AuthorId int 
 AS
 	SELECT * FROM Books b

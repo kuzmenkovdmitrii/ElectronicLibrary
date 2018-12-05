@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdateAuthor 
+CREATE PROC usp_UpdateAuthor 
 	@Id int, 
 	@Name nvarchar(25), 
 	@LastName nvarchar(25), 

@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeleteBook 
+CREATE PROC usp_DeleteBook 
 	@Id int 
 AS
 	DELETE Books

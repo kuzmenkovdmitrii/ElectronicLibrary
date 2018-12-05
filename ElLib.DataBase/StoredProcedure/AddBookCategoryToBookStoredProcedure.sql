@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC AddBookCategoryToBook
+CREATE PROC usp_AddBookCategoryToBook
 	@BookCategoryId int,
 	@BookId int
 AS

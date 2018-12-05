@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC CreateRole
+CREATE PROC usp_CreateRole
 	@Name nvarchar(25),
 	@Description nvarchar(100)
 AS

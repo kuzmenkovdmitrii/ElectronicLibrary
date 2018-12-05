@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectAllBooks
+CREATE PROC usp_SelectAllBooks
 AS
 	SELECT 
 		b.Id, 
@@ -11,8 +11,8 @@ AS
 		b.PublishingDate, 
 		l.Id [LanguageId], 
 		p.Id[PublishingId],
-		pict.Id[PictureId],
-		f.Id[FileId]
+		pict.Link [Picture],
+		f.Link [File]
 	
 	FROM Books b
 		JOIN Languages l

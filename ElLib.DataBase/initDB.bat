@@ -9,10 +9,6 @@ sqlcmd -S.\SQLEXPRESS -E -i %CreateTable/CreateBookCategoryTable.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %CreateTable/CreateBookTable.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %CreateTable/CreateCityTable.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %CreateTable/CreateCountryTable.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %CreateTable/CreateFileTable.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %CreateTable/CreateLanguageTable.sql
@@ -61,10 +57,6 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateBookCategoryStoredProcedure.s
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateBookStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateCityStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateCountryStoredProcedure.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateFileStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateLanguageStoredProcedure.sql
@@ -82,10 +74,6 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteAuthorStoredProcedure.sql
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteBookCategoryStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteBookStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteCityStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteCountryStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteFileStoredProcedure.sql
 
@@ -107,8 +95,6 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAllBookCategoriesStoredProced
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAllBooksStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAllCountriesStoredProcedure.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAllLanguagesStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAllPublishingsStoredProcedure.sql
@@ -125,9 +111,7 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBooksByLanguageIdStoredProced
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBooksByPublishingIdStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectCitiesByCountryIdStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingsByCountryIdStoredProcedure.sql
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingsByCountryNameStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUsersByRoleIdStoredProcedure.sql
 
@@ -139,10 +123,6 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateBookCategoryStoredProcedure.s
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateBookStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateCityStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateCountryStoredProcedure.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateFIleStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateLanguageStoredProcedure.sql
@@ -153,6 +133,29 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdatePublishingStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateRoleStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateUserStoredProcedure.sql
+
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAuthorByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAddressByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoryByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectFileByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectLanguageByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPictureByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPoblishingByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectRoleByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUserByIdStoredProcedure.sql
+
+
+
 
 PAUSE

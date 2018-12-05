@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdateFile 
+CREATE PROC usp_UpdateFile 
 	@Id int, 
 	@Link nvarchar(100)
 AS

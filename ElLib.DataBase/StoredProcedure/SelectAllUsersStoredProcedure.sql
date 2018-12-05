@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectAllUsers
+CREATE PROC usp_SelectAllUsers
 AS
 	SELECT 
 		u.Id, 

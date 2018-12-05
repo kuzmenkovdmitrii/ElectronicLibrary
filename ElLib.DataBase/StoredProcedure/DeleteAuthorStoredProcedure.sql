@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeleteAuthor 
+CREATE PROC usp_DeleteAuthor 
 	@Id int
 AS
 	DELETE Authors

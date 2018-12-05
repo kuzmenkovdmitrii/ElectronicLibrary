@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeleteLanguage 
+CREATE PROC usp_DeleteLanguage 
 	@Id int 
 AS
 	DELETE Languages

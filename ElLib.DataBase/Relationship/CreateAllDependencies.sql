@@ -19,18 +19,6 @@ ALTER TABLE Publishings
 ADD CONSTRAINT FK_Publishing_Addresse FOREIGN KEY(AddressId) 
     REFERENCES Addresses(Id);
 
-ALTER TABLE Addresses
-ADD CONSTRAINT FK_Addresse_Country FOREIGN KEY(CountryId) 
-    REFERENCES Countries(Id);
-
-ALTER TABLE Addresses
-ADD CONSTRAINT FK_Addresse_City FOREIGN KEY(CityId) 
-    REFERENCES Cities(Id);
-
-ALTER TABLE Cities
-ADD CONSTRAINT FK_City_Country FOREIGN KEY(CountryId) 
-    REFERENCES Countries(Id);
-
 --many to many
 
 ALTER TABLE BookAndAuthor

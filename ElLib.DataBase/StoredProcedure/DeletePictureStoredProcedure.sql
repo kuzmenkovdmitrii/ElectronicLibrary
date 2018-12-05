@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeletePicture 
+CREATE PROC usp_DeletePicture 
 	@Id int
 AS
 	DELETE Pictures

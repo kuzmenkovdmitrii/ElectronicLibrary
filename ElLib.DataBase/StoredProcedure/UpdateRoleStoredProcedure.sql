@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdateRole 
+CREATE PROC usp_UpdateRole 
 	@Id int, 
 	@Name nvarchar(25), 
 	@Description nvarchar(100)

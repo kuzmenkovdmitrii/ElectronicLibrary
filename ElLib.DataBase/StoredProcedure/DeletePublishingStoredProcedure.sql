@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeletePublishing 
+CREATE PROC usp_DeletePublishing 
 	@Id int
 AS
 	DELETE Publishings

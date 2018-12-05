@@ -8,7 +8,7 @@ namespace ElLib.DAL.Repository.Interface
         where T : class
     {
         IEnumerable<T> GetAll();
-        Task<T> GetById(int id);
+        T GetById(int id);
 
         void Create(T item);
         void Update(T item);

@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdateBookCategory 
+CREATE PROC usp_UpdateBookCategory 
 	@Id int, 
 	@Name nvarchar(25), 
 	@Description nvarchar(100)

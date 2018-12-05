@@ -1,17 +1,17 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdateAddress 
+CREATE PROC usp_UpdateAddress 
 	@Id int,
-	@CountryId int, 
-	@CityId int, 
+	@Country nvarchar(25), 
+	@City nvarchar(25), 
 	@Street nvarchar(25), 
 	@Home nvarchar(25) 
 AS
 	UPDATE Addresses
 		SET
-		CountryId = @CountryId,
-		CityId = @CityId,
+		Country = @Country,
+		City = @City,
 		Street = @Street,
 		Home = @Home
 		WHERE Id = @id

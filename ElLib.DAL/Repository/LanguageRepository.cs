@@ -12,7 +12,7 @@ namespace ElLib.DAL.Repository
             throw new System.NotImplementedException();
         }
 
-        public Task<Language> GetById(int id)
+        public Language GetById(int id)
         {
             throw new System.NotImplementedException();
         }

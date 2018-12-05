@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeleteBookCategory
+CREATE PROC usp_DeleteBookCategory
 	@Id int
 AS
 	DELETE BookCategories

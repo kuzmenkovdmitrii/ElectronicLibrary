@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC CreatePublishing
+CREATE PROC usp_CreatePublishing
 	@Name nvarchar(25),
 	@AddressId int
 AS

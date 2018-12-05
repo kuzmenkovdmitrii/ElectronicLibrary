@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdateUser 
+CREATE PROC usp_UpdateUser 
 	@Id int, 
 	@UserName nvarchar(25),
 	@Password nvarchar(25), 

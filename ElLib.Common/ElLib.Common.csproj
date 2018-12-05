@@ -48,11 +48,7 @@
     <Compile Include="Entity\Author.cs" />
     <Compile Include="Entity\Book.cs" />
     <Compile Include="Entity\BookCategory.cs" />
-    <Compile Include="Entity\City.cs" />
-    <Compile Include="Entity\Country.cs" />
-    <Compile Include="Entity\File.cs" />
     <Compile Include="Entity\Language.cs" />
-    <Compile Include="Entity\Picture.cs" />
     <Compile Include="Entity\Publishing.cs" />
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\User.cs" />

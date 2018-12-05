@@ -65,8 +65,6 @@
   <ItemGroup>
     <None Include="CreateTable\CreateUserTable.sql" />
     <None Include="CreateTable\CreateRoleTable.sql" />
-    <None Include="CreateTable\CreateCityTable.sql" />
-    <None Include="CreateTable\CreateCountryTable.sql" />
     <None Include="CreateTable\CreateAddressTable.sql" />
     <None Include="CreateTable\CreatePublishingTable.sql" />
     <None Include="CreateTable\CreateFileTable.sql" />
@@ -81,10 +79,6 @@
     <None Include="CreateTable\ManyToMany\BookAndAuthor.sql" />
     <None Include="CreateTable\ManyToMany\BookAndPublishing.sql" />
     <None Include="CreateTable\ManyToMany\UserAndRole.sql" />
-    <None Include="StoredProcedure\UpdateCityStoredProcedure.sql" />
-    <None Include="StoredProcedure\DeleteCityStoredProcedure.sql" />
-    <None Include="StoredProcedure\UpdateCountryStoredProcedure.sql" />
-    <None Include="StoredProcedure\DeleteCountryStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdateBookCategoryStoredProcedure.sql" />
     <None Include="StoredProcedure\DeleteBookCategoryStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdateFIleStoredProcedure.sql" />
@@ -107,10 +101,6 @@
     <None Include="StoredProcedure\CreateAddressStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateBookStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateBookCategoryStoredProcedure.sql" />
-    <None Include="StoredProcedure\CreateCityStoredProcedure.sql" />
-    <None Include="StoredProcedure\CreateCountryStoredProcedure.sql" />
-    <None Include="StoredProcedure\CreateFileStoredProcedure.sql" />
-    <None Include="StoredProcedure\CreatePictureStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateLanguageStoredProcedure.sql" />
     <None Include="StoredProcedure\CreatePublishingStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateUserStoredProcedure.sql" />
@@ -120,6 +110,16 @@
     <None Include="StoredProcedure\AddPublishingToBookStoredProcedure.sql" />
     <None Include="StoredProcedure\AddRoleToUserStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateAuthorStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectAddressByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectAuthorByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectBookCategoryByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectBookByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectFileByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectPictureByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectLanguageByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectPoblishingByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectRoleByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectUserByIdStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllAddressesStoredProcedure.sql" />
@@ -132,12 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllBooksStoredProcedure.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StoredProcedure\SelectCitiesByCountryIdStoredProcedure.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StoredProcedure\SelectAllCountriesStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllLanguagesStoredProcedure.sql" />
@@ -164,7 +158,7 @@
     <None Include="StoredProcedure\SelectBooksByPublishingIdStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="StoredProcedure\SelectPublishingsByCountryIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectPublishingsByCountryNameStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectUsersByRoleIdStoredProcedure.sql" />

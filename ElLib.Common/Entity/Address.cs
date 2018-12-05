@@ -2,9 +2,9 @@
 {
     public class Address
     {
-        public int Id { get; set; }
-        public Country Country { get; set; }
-        public City City { get; set; }
+        public object Id { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
         public string Street { get; set; }
         public string Home { get; set; }
     }

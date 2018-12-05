@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using ElLib.Common.Entity;
 using ElLib.DAL.Repository.Interface;
 
@@ -8,22 +10,46 @@ namespace ElLib.DAL.Repository
 {
     public class BookCategoryRepository : CommonRepository, IBookCategoryRepository
     {
-        public IEnumerable<Author> GetAll()
+        readonly string connectionString = ConfigurationSettings.AppSettings["ConnectionString"];
+
+        public IEnumerable<BookCategory> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Author> GetById(int id)
+        public BookCategory GetById(int id)
+        {
+            BookCategory bookCategory;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedure.SELECT_BOOKCATEGORY_BY_ID, connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                reader.Read();
+
+                bookCategory = new BookCategory
+                {
+                    Id = (int)reader["Id"],
+                    Name = (string)reader["Name"],
+                    Description = (string)reader["Description"],
+                };
+            }
+
+            return bookCategory;
+        }
+
+        public void Create(BookCategory item)
         {
             throw new NotImplementedException();
         }
 
-        public void Create(Author item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Author item)
+        public void Update(BookCategory item)
         {
             throw new NotImplementedException();
         }

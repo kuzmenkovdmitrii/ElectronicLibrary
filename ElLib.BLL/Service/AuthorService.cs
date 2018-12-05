@@ -9,7 +9,7 @@ namespace ElLib.BLL.Service
 {
     public class AuthorService : IAuthorService
     {
-        IAuthorRepository authorRepository;
+        readonly IAuthorRepository authorRepository;
 
         public AuthorService(IAuthorRepository authorRepository)
         {

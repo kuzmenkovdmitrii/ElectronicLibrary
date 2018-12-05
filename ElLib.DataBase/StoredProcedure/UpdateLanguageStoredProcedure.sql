@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdateLanguage 
+CREATE PROC usp_UpdateLanguage 
 	@Id int, 
 	@Name nvarchar(25) 
 AS

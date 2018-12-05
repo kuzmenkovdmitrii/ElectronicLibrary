@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC AddPublishingToBook
+CREATE PROC usp_AddPublishingToBook
 	@PublishingId int,
 	@BookId int
 AS

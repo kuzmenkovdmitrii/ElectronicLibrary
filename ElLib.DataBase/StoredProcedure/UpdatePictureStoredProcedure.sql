@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC UpdatePicture 
+CREATE PROC usp_UpdatePicture 
 	@Id int, 
 	@Link nvarchar(100) 
 AS

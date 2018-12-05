@@ -1,10 +1,10 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectPublishingsByCountryId
-	@CountryId int
+CREATE PROC usp_SelectPublishingsByCountryName
+	@Country nvarchar(25)
 AS
 	SELECT * FROM Publishing p
 	JOIN Addresses a 
 		ON a.Id = p.AddressId 
-	WHERE a.CountryId = @CountryId
+	WHERE a.Country = @Country

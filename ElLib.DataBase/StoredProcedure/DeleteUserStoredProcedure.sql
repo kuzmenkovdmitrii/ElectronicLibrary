@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeleteUser 
+CREATE PROC usp_DeleteUser 
 	@Id int
 AS
 	DELETE Users

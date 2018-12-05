@@ -2,7 +2,7 @@
 
 namespace ElLib.DAL.Repository.Interface
 {
-    public interface IBookRepository : IRepository<Author>
+    public interface IBookRepository : IRepository<Book>
     {
     }
 }

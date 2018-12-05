@@ -13,6 +13,7 @@ namespace ElLib.DAL.Dependency
             For<IBookRepository>().Singleton().Use<BookRepository>();
             For<ILanguageRepository>().Singleton().Use<LanguageRepository>();
             For<IPublishingRepository>().Singleton().Use<PublishingRepository>();
+            For<IAddressRepository>().Singleton().Use<AddressRepository>();
         }
     }
 }

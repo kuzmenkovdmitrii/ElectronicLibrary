@@ -7,8 +7,8 @@ GO
 
 CREATE TABLE Addresses(
 	Id int PRIMARY KEY IDENTITY,
-	CountryId int NOT NULL,
-	CityId int NULL,
+	Country nvarchar(25) NOT NULL,
+	City nvarchar(25) NULL,
 	Street nvarchar(25) NULL,
 	Home nvarchar(25) NULL,
 );

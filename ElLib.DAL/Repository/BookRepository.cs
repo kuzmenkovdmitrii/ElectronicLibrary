@@ -8,22 +8,22 @@ namespace ElLib.DAL.Repository
 {
     public class BookRepository : CommonRepository, IBookRepository
     {
-        public IEnumerable<Author> GetAll()
+        public IEnumerable<Book> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Author> GetById(int id)
+        public Book GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Create(Author item)
+        public void Create(Book item)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Author item)
+        public void Update(Book item)
         {
             throw new NotImplementedException();
         }

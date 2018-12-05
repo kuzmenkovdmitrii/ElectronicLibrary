@@ -1,6 +1,6 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectAllPublishings 
+CREATE PROC usp_SelectAllPublishings 
 AS
 	SELECT * FROM Publishings

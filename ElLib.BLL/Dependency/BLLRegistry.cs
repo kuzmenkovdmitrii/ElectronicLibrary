@@ -13,6 +13,7 @@ namespace ElLib.BLL.Dependency
             For<IBookService>().Singleton().Use<BookService>();
             For<ILanguageService>().Singleton().Use<LanguageService>();
             For<IPublishingService>().Singleton().Use<PublishingService>();
+            For<IAddressService>().Singleton().Use<AddressService>();
         }
     }
 }

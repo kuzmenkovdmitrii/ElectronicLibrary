@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC DeleteRole 
+CREATE PROC usp_DeleteRole 
 	@Id int
 AS
 	DELETE Roles

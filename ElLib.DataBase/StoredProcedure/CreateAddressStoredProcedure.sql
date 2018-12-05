@@ -1,11 +1,11 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC CreateAddress
-	@CountryId int, 
-	@CityId int,
+CREATE PROC usp_CreateAddress
+	@Country nvarchar(25), 
+	@City nvarchar(25),
 	@Street nvarchar(25),
 	@Home nvarchar(25)
 AS
 	INSERT Authors VALUES
-	(@CountryId, @CityId, @Street, @Home)
+	(@Country, @City, @Street, @Home)

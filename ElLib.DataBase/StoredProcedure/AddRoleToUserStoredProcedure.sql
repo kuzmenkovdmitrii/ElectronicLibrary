@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC AddRoleToUser
+CREATE PROC usp_AddRoleToUser
 	@RoleId int,
 	@UserId int
 AS

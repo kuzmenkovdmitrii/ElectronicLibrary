@@ -1,12 +1,9 @@
 ﻿using System;
-using ElLib.DAL.Context;
 
 namespace ElLib.DAL.Repository
 {
     public abstract class CommonRepository
     {
-        public ApplicationContext DB { get; set; }
-
         public void Save()
         {
         }
@@ -15,11 +12,6 @@ namespace ElLib.DAL.Repository
         {
             if (disposing)
             {
-                if (DB != null)
-                {
-                    //DB.Dispose();
-                    DB = null;
-                }
             }
         }
 

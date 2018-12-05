@@ -1,13 +1,30 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC CreateBook
+CREATE PROC usp_CreateBook
 	@Name nvarchar(25), 
 	@LanguageId nvarchar(25),
 	@PublishingDate datetime,
-	@PictureId nvarchar(100),
-	@FileId nvarchar(100)
+	@Picture nvarchar(100),
+	@File nvarchar(100)
 AS
+	
+	DECLARE @FileId int
+	INSERT Files(Link)
+	VALUES
+	(@File)
+	SELECT @FileId = IDENT_CURRENT('Files')
+
+	DECLARE @PictureId int
+	INSERT Pictures(Link)
+	VALUES
+	(@Picture)
+	SELECT @FileId = IDENT_CURRENT('Files')
+
 	INSERT Books([Name], [LanguageId], PublishingDate, PictureId, FileId)
 	VALUES
-	(@Name, @LanguageId, @PublishingDate, @PictureId,	@FileId)
+	(@Name, @LanguageId, @PublishingDate)
+
+	
+
+	

@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectUsersByRoleId
+CREATE PROC usp_SelectUsersByRoleId
 	@RoleId int
 AS
 	SELECT * FROM Users u

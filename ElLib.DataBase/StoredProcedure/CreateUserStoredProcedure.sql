@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC CreateUser
+CREATE PROC usp_CreateUser
 	@UserName nvarchar(25),
 	@Password nvarchar(25),
 	@Email nvarchar(50)

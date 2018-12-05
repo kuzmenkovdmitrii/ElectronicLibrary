@@ -24,44 +24,33 @@ namespace ElLib.DAL.Repository
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    //await connection.OpenAsync();
                     connection.Open();
+                    //var reader = await cmd.ExecuteReaderAsync();
                     var reader = cmd.ExecuteReader();
-                    //SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.SingleRow);
 
                     if (reader.HasRows)
                     {
+                        //while (reader.ReadAsync() != null)
                         while (reader.Read())
                         {
-                            Author author = new Author();
-                            author.Id = (int) reader["Id"];
-                            author.Name = (string) reader["Name"];
-                            author.LastName = (string) reader["LastName"];
-                            author.MiddleName = (string) reader["MiddleName"];
-                            author.Email = (string) reader["Email"];
-                            list.Add(author);
+                            list.Add(new Author()
+                            {
+                                Id = (int) reader["Id"],
+                                Name = (string) reader["Name"],
+                                LastName = (string) reader["LastName"],
+                                MiddleName = (string) reader["MiddleName"],
+                                Email = (string)reader["Email"]
+                            });
                         }
                     }
                     reader.Close();
                 }
             }
-
             return list;
-
-
-
-
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    SqlCommand cmd = new SqlCommand(StoredProcedure.SELECT_ALL_AUTHORS, connection);
-
-            //    cmd.CommandType = CommandType.StoredProcedure;
-
-            //    connection.Open();
-            //    cmd.ExecuteNonQuery();
-            //}
         }
 
-        public Task<Author> GetById(int id)
+        public Author GetById(int id)
         {
             throw new NotImplementedException();
         }

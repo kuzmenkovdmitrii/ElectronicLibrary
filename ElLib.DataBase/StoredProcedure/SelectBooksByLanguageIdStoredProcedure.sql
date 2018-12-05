@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectBooksByLanguageId
+CREATE PROC usp_SelectBooksByLanguageId
 	@LanguageId int
 AS
 	SELECT * FROM Books

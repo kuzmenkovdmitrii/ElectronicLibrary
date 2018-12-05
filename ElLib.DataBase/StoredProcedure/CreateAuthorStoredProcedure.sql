@@ -1,7 +1,7 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC CreateAuthor
+CREATE PROC usp_CreateAuthor
 	@Name nvarchar(25),
 	@LastName nvarchar(25),
 	@MiddleName nvarchar(25),

@@ -1,6 +1,6 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC SelectAllRoles
+CREATE PROC usp_SelectAllRoles
 AS
 	SELECT * FROM Roles

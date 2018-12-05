@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using ElLib.BLL.Service.Interface;
 using ElLib.Common.Entity;
@@ -17,7 +18,7 @@ namespace ElLib.Web.Controllers
         }
 
         [HttpGet]
-        public ViewResult All()
+        public ActionResult All()
         {
             //Author a1 = new Author()
             //{
