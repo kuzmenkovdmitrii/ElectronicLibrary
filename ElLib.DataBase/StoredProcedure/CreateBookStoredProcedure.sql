@@ -7,8 +7,7 @@ CREATE PROC usp_CreateBook
 	@PublishingDate datetime,
 	@Picture nvarchar(100),
 	@File nvarchar(100)
-AS
-	
+AS	
 	DECLARE @FileId int
 	INSERT Files(Link)
 	VALUES
@@ -19,11 +18,11 @@ AS
 	INSERT Pictures(Link)
 	VALUES
 	(@Picture)
-	SELECT @FileId = IDENT_CURRENT('Files')
+	SELECT @PictureId = IDENT_CURRENT('Pictures')
 
 	INSERT Books([Name], [LanguageId], PublishingDate, PictureId, FileId)
 	VALUES
-	(@Name, @LanguageId, @PublishingDate)
+	(@Name, @LanguageId, @PublishingDate, @PictureId, @FileId)
 
 	
 

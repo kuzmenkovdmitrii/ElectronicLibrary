@@ -57,11 +57,7 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateBookCategoryStoredProcedure.s
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateBookStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateFileStoredProcedure.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreateLanguageStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreatePictureStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/CreatePublishingStoredProcedure.sql
 
@@ -75,11 +71,7 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteBookCategoryStoredProcedure.s
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteBookStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteFileStoredProcedure.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeleteLanguageStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeletePictureStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/DeletePublishingStoredProcedure.sql
 
@@ -143,13 +135,9 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoryByIdStoredProcedu
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookByIdStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectFileByIdStoredProcedure.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectLanguageByIdStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPictureByIdStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPoblishingByIdStoredProcedure.sql
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingByIdStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectRoleByIdStoredProcedure.sql
 

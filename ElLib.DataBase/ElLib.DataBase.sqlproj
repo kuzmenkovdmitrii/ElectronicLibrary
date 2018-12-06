@@ -114,10 +114,8 @@
     <None Include="StoredProcedure\SelectAuthorByIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectBookCategoryByIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectBookByIdStoredProcedure.sql" />
-    <None Include="StoredProcedure\SelectFileByIdStoredProcedure.sql" />
-    <None Include="StoredProcedure\SelectPictureByIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectLanguageByIdStoredProcedure.sql" />
-    <None Include="StoredProcedure\SelectPoblishingByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectPublishingByIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectRoleByIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectUserByIdStoredProcedure.sql" />
   </ItemGroup>
