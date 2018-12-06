@@ -19,6 +19,11 @@ namespace ElLib.DAL.Repository
 
         public IEnumerable<T> GetAll()
         {
+            if (PluralTableName == null)
+            {
+                throw new NullReferenceException("PluralTableName not filled in.");
+            }
+
             string storedProcedure = "usp_SelectAll" + PluralTableName;
 
             IEnumerable<T> list;
@@ -47,6 +52,11 @@ namespace ElLib.DAL.Repository
 
         public virtual T GetById(int id)
         {
+            if (TableName == null)
+            {
+                throw new NullReferenceException("TableName not filled in.");
+            }
+
             string storedProcedure = "usp_Select" + TableName + "ById";
 
             T item;
