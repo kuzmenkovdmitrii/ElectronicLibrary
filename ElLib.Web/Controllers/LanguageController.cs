@@ -18,29 +18,25 @@ namespace ElLib.Web.Controllers
             Language l1 = new Language()
             {
                 Id = 1,
-                NameEn = "English",
-                NameRu = "Английский"
+                Name = "English",
             };
 
             Language l2 = new Language()
             {
                 Id = 2,
-                NameEn = "Russin",
-                NameRu = "Русский"
+                Name = "Russin",
             };
 
             Language l3 = new Language()
             {
                 Id = 3,
-                NameEn = "Ukraine",
-                NameRu = "Свинючи"
+                Name = "Ukraine",
             };
 
             Language l4 = new Language()
             {
                 Id = 4,
-                NameEn = "Poland",
-                NameRu = "Польский"
+                Name = "Poland",
             };
 
             list = new List<Language>() { l1, l2, l3, l4 };

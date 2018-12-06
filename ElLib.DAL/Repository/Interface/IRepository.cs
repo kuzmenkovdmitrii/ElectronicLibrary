@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ElLib.DAL.Repository.Interface
 {
-    public interface IRepository<T> : IDisposable
+    public interface IRepository<T>
         where T : class
     {
         IEnumerable<T> GetAll();

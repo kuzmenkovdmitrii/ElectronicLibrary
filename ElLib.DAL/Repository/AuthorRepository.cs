@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Server;
 
 namespace ElLib.DAL.Repository
 {
-    public class AuthorRepository : CommonRepository, IAuthorRepository
+    public class AuthorRepository : CommonRepository<Author>, IAuthorRepository
     {
         readonly string connectionString =
             @"Data Source=ZENBOOK\SQLEXPRESS;Initial Catalog=ElLibDataBase;Integrated Security=True";

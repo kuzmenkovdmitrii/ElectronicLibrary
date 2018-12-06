@@ -6,29 +6,24 @@ using ElLib.DAL.Repository.Interface;
 
 namespace ElLib.DAL.Repository
 {
-    public class BookRepository : CommonRepository, IBookRepository
+    public class BookRepository : CommonRepository<Book>, IBookRepository
     {
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<Book> GetByAuthorId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Book GetById(int id)
+        public IEnumerable<Book> GetByBookCategoryId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Create(Book item)
+        public IEnumerable<Book> GetByLanguageId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Book item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
+        public IEnumerable<Book> GetByPublishingId(int id)
         {
             throw new NotImplementedException();
         }

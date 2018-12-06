@@ -55,6 +55,7 @@
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logger\logger.config">

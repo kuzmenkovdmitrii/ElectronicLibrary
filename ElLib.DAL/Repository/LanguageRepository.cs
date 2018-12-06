@@ -5,31 +5,7 @@ using ElLib.DAL.Repository.Interface;
 
 namespace ElLib.DAL.Repository
 {
-    class LanguageRepository : CommonRepository, ILanguageRepository
+    class LanguageRepository : CommonRepository<Language>, ILanguageRepository
     {
-        public IEnumerable<Language> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Language GetById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Create(Language item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update(Language item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
