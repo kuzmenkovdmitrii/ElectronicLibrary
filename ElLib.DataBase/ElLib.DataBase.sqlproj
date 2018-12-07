@@ -118,6 +118,9 @@
     <None Include="StoredProcedure\SelectPublishingByIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectRoleByIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectUserByIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectBookCategoriesByBookIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectPublishingsByBookIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectAuthorsByBookIdStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllAddressesStoredProcedure.sql" />

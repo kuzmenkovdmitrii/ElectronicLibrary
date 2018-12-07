@@ -7,5 +7,5 @@ CREATE PROC usp_CreateAddress
 	@Street nvarchar(25),
 	@Home nvarchar(25)
 AS
-	INSERT Authors VALUES
+	INSERT Addresses VALUES
 	(@Country, @City, @Street, @Home)

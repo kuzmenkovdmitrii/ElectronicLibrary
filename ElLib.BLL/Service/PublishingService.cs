@@ -19,6 +19,11 @@ namespace ElLib.BLL.Service
             throw new System.NotImplementedException();
         }
 
+        public IEnumerable<Publishing> GetByBookId(int id)
+        {
+            return publishingRepository.GetPublishingsByBookId(id);
+        }
+
         public Publishing GetById(int id)
         {
             return publishingRepository.GetById(id);

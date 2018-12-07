@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ElLib.DAL.Repository.Interface
 {
@@ -13,6 +11,5 @@ namespace ElLib.DAL.Repository.Interface
         void Create(T item);
         void Update(T item);
         void Delete(int id);
-        void Save();
     }
 }

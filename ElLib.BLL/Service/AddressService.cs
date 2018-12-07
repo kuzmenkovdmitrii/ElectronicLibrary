@@ -23,5 +23,20 @@ namespace ElLib.BLL.Service
         {
             return addressRepository.GetById(id);
         }
+
+        public void Create(Address item)
+        {
+            addressRepository.Create(item);
+        }
+
+        public void Update(Address item)
+        {
+            addressRepository.Update(item);
+        }
+
+        public void Delete(int id)
+        {
+            addressRepository.Delete(id);
+        }
     }
 }

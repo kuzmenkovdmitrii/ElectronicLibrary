@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
+﻿using System.Configuration;
 using ElLib.Common.Entity;
-using ElLib.DAL.Mapper;
-using ElLib.DAL.Mapper.Interface;
+using ElLib.DAL.Converter.Interface;
 using ElLib.DAL.Repository.Interface;
 
 namespace ElLib.DAL.Repository
@@ -14,11 +9,12 @@ namespace ElLib.DAL.Repository
     {
         readonly string connectionString = ConfigurationSettings.AppSettings["ConnectionString"];
 
-        public AddressRepository(IMapper<Address> mapper)
+        public AddressRepository(IConverter<Address> converter)
         {
             ConnectionString = connectionString;
+            EntityName = "Address";
             TableName = "Addresses";
-            Mapper = mapper;
+            Converter = converter;
         }
     }
 }

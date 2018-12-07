@@ -144,6 +144,12 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectRoleByIdStoredProcedure.sql
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUserByIdStoredProcedure.sql
 
 
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingsByBookIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectAuthorsByBookIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoriesByBookIdStoredProcedure.sql
+
 
 
 PAUSE

@@ -7,5 +7,8 @@ namespace ElLib.BLL.Service.Interface
     {
         IEnumerable<Address> GetAll();
         Address GetById(int id);
+        void Create(Address item);
+        void Update(Address item);
+        void Delete(int id);
     }
 }

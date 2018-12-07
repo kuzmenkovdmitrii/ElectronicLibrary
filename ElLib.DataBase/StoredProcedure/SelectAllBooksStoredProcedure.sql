@@ -19,10 +19,10 @@ AS
 		p.Id PublishingId,
 		p.[Name] PublishingName,
 		addr.Id AddressId,
-		addr.Id AddressCountry,
-		addr.Id AddressCity,
-		addr.Id AddressStreet,
-		addr.Id AddressHome,
+		addr.Country AddressCountry,
+		addr.City AddressCity,
+		addr.Street AddressStreet,
+		addr.Home AddressHome,
 		pict.Link Picture,
 		f.Link [File]
 	
@@ -33,7 +33,7 @@ AS
 	JOIN Pictures pict
 		ON pict.Id = PictureId
 
-	JOIN [File] f
+	JOIN Files f
 		ON f.Id = FileId
 
 	JOIN BookAndAuthor ba 
@@ -42,14 +42,14 @@ AS
 	JOIN Authors a 
 		ON a.Id = ba.AuthorId
 
-	JOIN BookAndBookCategory bc 
-		ON b.Id = bc.BookId
+	JOIN BookAndBookCategory bb 
+		ON b.Id = bb.BookId
 	JOIN BookCategories bc
-		ON bc.Id = bc.BookCategoryId
+		ON bc.Id = bb.BookCategoryId
 
 	JOIN BookAndPublishing bp 
 		ON b.Id = bp.BookId
-	JOIN Publishing p 
+	JOIN Publishings p 
 		ON p.Id = bp.PublishingId
 
 	JOIN Addresses addr
