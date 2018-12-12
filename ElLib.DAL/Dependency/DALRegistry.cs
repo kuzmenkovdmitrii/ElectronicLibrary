@@ -3,6 +3,7 @@ using ElLib.DAL.Converter;
 using ElLib.DAL.Converter.Interface;
 using ElLib.DAL.Repository;
 using ElLib.DAL.Repository.Interface;
+using ElLib.DAL.StoredProcedure;
 using StructureMap;
 
 namespace ElLib.DAL.Dependency
@@ -17,6 +18,7 @@ namespace ElLib.DAL.Dependency
             For<IBookRepository>().Singleton().Use<BookRepository>();
             For<ILanguageRepository>().Singleton().Use<LanguageRepository>();
             For<IPublishingRepository>().Singleton().Use<PublishingRepository>();
+            For<IProcedureExecuter>().Singleton().Use<ProcedureExecuter>();
             For<IConverter<Address>>().Singleton().Use<AddressConverter>();
             For<IConverter<Author>>().Singleton().Use<AuthorConverter>();
             For<IConverter<BookCategory>>().Singleton().Use<BookCategoryConverter>();

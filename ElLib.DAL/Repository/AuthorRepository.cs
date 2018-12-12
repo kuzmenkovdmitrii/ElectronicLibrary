@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using ElLib.Common.Entity;
 using ElLib.DAL.Converter.Interface;
 using ElLib.DAL.Repository.Interface;
+using ElLib.DAL.StoredProcedure;
 
 namespace ElLib.DAL.Repository
 {
@@ -11,7 +12,8 @@ namespace ElLib.DAL.Repository
     {
         readonly string connectionString = ConfigurationSettings.AppSettings["ConnectionString"];
 
-        public AuthorRepository(IConverter<Author> converter)
+        public AuthorRepository(IConverter<Author> converter, IProcedureExecuter executer)
+            : base(executer)
         {
             ConnectionString = connectionString;
             EntityName = "Author";
@@ -23,12 +25,9 @@ namespace ElLib.DAL.Repository
         {
             string storedProcedure = "usp_SelectAuthorsByBookId";
 
-            IEnumerable<SqlParameter> parameters = new List<SqlParameter>()
-            {
-                new SqlParameter("@Id", id)
-            };
+            Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            return Converter.FromTable(Execute(storedProcedure,parameters));
+            return Converter.FromTable(Executer.Execute(storedProcedure));
         }
     }
 }

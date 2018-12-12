@@ -2,6 +2,7 @@
 using ElLib.Common.Entity;
 using ElLib.DAL.Converter.Interface;
 using ElLib.DAL.Repository.Interface;
+using ElLib.DAL.StoredProcedure;
 
 namespace ElLib.DAL.Repository
 {
@@ -9,7 +10,8 @@ namespace ElLib.DAL.Repository
     {
         readonly string connectionString = ConfigurationSettings.AppSettings["ConnectionString"];
 
-        public AddressRepository(IConverter<Address> converter)
+        public AddressRepository(IConverter<Address> converter, IProcedureExecuter executer)
+            :base(executer)
         {
             ConnectionString = connectionString;
             EntityName = "Address";

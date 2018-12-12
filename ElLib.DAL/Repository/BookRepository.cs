@@ -5,6 +5,7 @@ using System.Linq;
 using ElLib.Common.Entity;
 using ElLib.DAL.Converter.Interface;
 using ElLib.DAL.Repository.Interface;
+using ElLib.DAL.StoredProcedure;
 
 namespace ElLib.DAL.Repository
 {
@@ -20,7 +21,9 @@ namespace ElLib.DAL.Repository
             IConverter<Book> converter, 
             IBookCategoryRepository bookCategoryRepository,
             IAuthorRepository authorRepository,
-            IPublishingRepository publishingRepository)
+            IPublishingRepository publishingRepository, 
+            IProcedureExecuter executer)
+            : base(executer)
         {
             ConnectionString = connectionString;
             EntityName = "Book";
