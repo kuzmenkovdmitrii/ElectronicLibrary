@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using ElLib.Common.Entity;
 using ElLib.DAL.Converter.Interface;
+using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repository.Interface;
 using ElLib.DAL.StoredProcedure;
 
@@ -11,13 +12,12 @@ namespace ElLib.DAL.Repository
 {
     public class BookRepository : CommonRepository<Book>, IBookRepository
     {
-        readonly string connectionString = ConfigurationSettings.AppSettings["ConnectionString"];
-
         readonly IBookCategoryRepository bookCategoryRepository;
         readonly IAuthorRepository authorRepository;
         readonly IPublishingRepository publishingRepository;
 
         public BookRepository(
+            IParameters<Book> parameters,
             IConverter<Book> converter, 
             IBookCategoryRepository bookCategoryRepository,
             IAuthorRepository authorRepository,
@@ -25,18 +25,13 @@ namespace ElLib.DAL.Repository
             IProcedureExecuter executer)
             : base(executer)
         {
-            ConnectionString = connectionString;
             EntityName = "Book";
             TableName = "Books";
+            Parameters = parameters;
             Converter = converter;
             this.authorRepository = authorRepository;
             this.bookCategoryRepository = bookCategoryRepository;
             this.publishingRepository = publishingRepository;
-        }
-
-        public override IEnumerable<Book> GetAll()
-        {
-            return base.GetAll();
         }
 
         public override Book GetById(int id)

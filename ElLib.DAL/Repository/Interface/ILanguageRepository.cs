@@ -2,7 +2,7 @@
 
 namespace ElLib.DAL.Repository.Interface
 {
-    interface ILanguageRepository : IRepository<Language>
+    public interface ILanguageRepository : IRepository<Language>
     {
     }
 }

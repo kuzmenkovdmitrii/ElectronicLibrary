@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ElLib.BLL.Service.Interface;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -19,14 +15,18 @@ namespace ElLib.Web.Controllers
             this.publishingService = publishingService;
         }
 
-        [HttpGet]
         public ActionResult All()
         {
-
-            return View();
+            return View(publishingService.GetAll());
         }
 
-        [HttpGet]
+        public ActionResult GetById(int id)
+        {
+            Publishing publishing = publishingService.GetById(id);
+
+            return View(publishing);
+        }
+
         public ActionResult Add()
         {
             return View();
@@ -35,35 +35,45 @@ namespace ElLib.Web.Controllers
         [HttpPost]
         public ActionResult Add(CreatePublishingModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Publishing publishing = Mapper.Map<CreatePublishingModel, Publishing>(model);
+                publishingService.Create(publishing);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
-        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            Publishing publishing = publishingService.GetById(id);
+
+            return View(Mapper.Map<Publishing, EditPublishingModel>(publishing));
         }
 
         [HttpPost]
         public ActionResult Edit(EditPublishingModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Publishing publishing = Mapper.Map<EditPublishingModel, Publishing>(model);
+                publishingService.Update(publishing);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
         [HttpPost]
         public void Delete(int id)
         {
+            publishingService.Delete(id);
             RedirectToAction("All");
-        }
-
-        public ActionResult GetById()
-        {
-            return View();
-        }
-
-        public void Get(int id)
-        {
-            publishingService.GetById(id);
         }
     }
 }

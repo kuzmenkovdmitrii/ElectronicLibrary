@@ -6,6 +6,7 @@ namespace ElLib.DAL.StoredProcedure
 {
     public interface IProcedureExecuter
     {
+        string ConnectionString { get; set; }
         ICollection<SqlParameter> Parameters { get; set; }
 
         void ExecuteVoid(string storedProcedure);

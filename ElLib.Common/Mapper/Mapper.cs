@@ -16,7 +16,8 @@ namespace ElLib.Common.Mapper
             {
                 string outPropertyName = outProperty.Name;
 
-                var inProperty = typeof(T).GetProperties().FirstOrDefault(x => x.Name == outPropertyName);
+                var inProperties = typeof(T).GetProperties();
+                var inProperty = inProperties.FirstOrDefault(x => x.Name == outPropertyName);
                 if (CheckTypes(inProperty.PropertyType, outProperty.PropertyType) && inProperty != null)
                 {
                     var value = inProperty.GetValue(item, null);

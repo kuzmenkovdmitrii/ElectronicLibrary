@@ -3,11 +3,8 @@ using ElLib.Common.Entity;
 
 namespace ElLib.BLL.Service.Interface
 {
-    public interface IPublishingService
+    public interface IPublishingService : IService<Publishing>
     {
-        IEnumerable<Publishing> GetAll();
         IEnumerable<Publishing> GetByBookId(int id);
-        Publishing GetById(int id);
-
     }
 }

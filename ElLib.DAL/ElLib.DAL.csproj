@@ -55,6 +55,13 @@
     <Compile Include="Converter\Interface\IConverter.cs" />
     <Compile Include="Converter\LanguageConverter.cs" />
     <Compile Include="Converter\PublishingConverter.cs" />
+    <Compile Include="Parameters\AddressParameters.cs" />
+    <Compile Include="Parameters\AuthorParameters.cs" />
+    <Compile Include="Parameters\BookCategoryParameters.cs" />
+    <Compile Include="Parameters\BookParameters.cs" />
+    <Compile Include="Parameters\Interface\IParameters.cs" />
+    <Compile Include="Parameters\LanguageParameters.cs" />
+    <Compile Include="Parameters\PublishingParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\AuthorRepository.cs" />

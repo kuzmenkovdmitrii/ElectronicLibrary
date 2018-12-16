@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ElLib.BLL.Service.Interface;
 using ElLib.Common.Logger;
 using log4net;
@@ -13,19 +9,16 @@ namespace ElLib.Web.Controllers
     {
         IBookCategoryService service;
 
-        ILog log;
+        //ILog log;
 
         public HomeController(IBookCategoryService service)
         {
-            log = Logger.For(this);
+            //log = Logger.For(this);
             this.service = service;
         }
 
-        // GET: Home
         public ActionResult Index()
         {
-            @ViewBag.Hello = service.GetBook();
-            log.Info("Hello logging world!");
             return View();
         }
 

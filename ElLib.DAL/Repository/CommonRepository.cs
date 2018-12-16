@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using ElLib.DAL.Converter.Interface;
+using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repository.Interface;
 using ElLib.DAL.StoredProcedure;
 
@@ -12,15 +13,16 @@ namespace ElLib.DAL.Repository
     public abstract class CommonRepository<T> : IRepository<T>
         where T : class
     {
-        protected string ConnectionString { get; set; }
         protected string EntityName { get; set; }
         protected string TableName { get; set; }
         protected IConverter<T> Converter { get; set; }
+        protected IParameters<T> Parameters { get; set; }
         protected IProcedureExecuter Executer { get; }
 
         public CommonRepository(IProcedureExecuter executer)
         {
             Executer = executer;
+            Executer.ConnectionString = ConfigurationSettings.AppSettings["ConnectionString"];
         }
 
         public virtual IEnumerable<T> GetAll()
@@ -31,7 +33,6 @@ namespace ElLib.DAL.Repository
             }
 
             string storedProcedure = "usp_SelectAll" + TableName;
-
             return Converter.FromTable(Executer.Execute(storedProcedure));
         }
 
@@ -53,7 +54,7 @@ namespace ElLib.DAL.Repository
         {
             string storedProcedure = "usp_Create" + EntityName;
 
-            Executer.Parameters = Converter.AddParameters(item).Where(x => x.ParameterName != "@Id").ToList();
+            Executer.Parameters = Parameters.GetParameters(item).Where(x => x.ParameterName != "@Id").ToList();
 
             Executer.ExecuteVoid(storedProcedure);
         }
@@ -62,7 +63,7 @@ namespace ElLib.DAL.Repository
         {
             string storedProcedure = "usp_Update" + EntityName;
 
-            Executer.Parameters = Converter.AddParameters(item).ToList();
+            Executer.Parameters = Parameters.GetParameters(item).ToList();
 
             Executer.ExecuteVoid(storedProcedure);
         }
@@ -72,6 +73,7 @@ namespace ElLib.DAL.Repository
             string storedProcedure = "usp_Delete" + EntityName;
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
+
             Executer.ExecuteVoid(storedProcedure);
         }
     }

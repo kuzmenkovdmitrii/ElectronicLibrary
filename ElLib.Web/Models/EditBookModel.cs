@@ -35,6 +35,6 @@ namespace ElLib.Web.Models
 
         [Display(Name = "Издательсво")]
         [Required(ErrorMessage = "Поле издательство не может быть пустым")]
-        public Publishing Publishing { get; set; }
+        public ICollection<Publishing> Publishing { get; set; }
     }
 }

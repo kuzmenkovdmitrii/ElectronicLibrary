@@ -1,7 +1,8 @@
-﻿namespace ElLib.BLL.Service.Interface
+﻿using ElLib.Common.Entity;
+
+namespace ElLib.BLL.Service.Interface
 {
-    public interface IBookCategoryService
+    public interface IBookCategoryService : IService<BookCategory>
     {
-        string GetBook();
     }
 }

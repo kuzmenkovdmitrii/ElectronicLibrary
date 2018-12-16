@@ -1,6 +1,8 @@
-﻿namespace ElLib.BLL.Service.Interface
+﻿using ElLib.Common.Entity;
+
+namespace ElLib.BLL.Service.Interface
 {
-    public interface ILanguageService
+    public interface ILanguageService : IService<Language>
     {
     }
 }

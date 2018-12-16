@@ -159,7 +159,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
-    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminPageController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
@@ -175,9 +174,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AuthorModel.cs" />
-    <Compile Include="Models\BookCategoryModel.cs" />
-    <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\CreateAuthorModel.cs" />
     <Compile Include="Models\CreateBookCategoryModel.cs" />
     <Compile Include="Models\CreateBookModel.cs" />
@@ -188,11 +184,8 @@
     <Compile Include="Models\EditBookModel.cs" />
     <Compile Include="Models\EditLanguageModel.cs" />
     <Compile Include="Models\EditPublishingModel.cs" />
-    <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginUserModel.cs" />
-    <Compile Include="Models\PublishingModel.cs" />
     <Compile Include="Models\RegisterUserModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -226,8 +219,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\AdminPage\Index.cshtml" />
-    <Content Include="Views\Address\Tester.cshtml" />
-    <Content Include="Views\Publishing\GetById.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

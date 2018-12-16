@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Entity;
 using ElLib.DAL.Converter.Interface;
+using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repository.Interface;
 using ElLib.DAL.StoredProcedure;
 
@@ -12,20 +13,18 @@ namespace ElLib.DAL.Repository
 {
     public class BookCategoryRepository : CommonRepository<BookCategory>, IBookCategoryRepository
     {
-        readonly string connectionString = ConfigurationSettings.AppSettings["ConnectionString"];
-
-        public BookCategoryRepository(IConverter<BookCategory> converter, IProcedureExecuter executer)
+        public BookCategoryRepository(IParameters<BookCategory> parameters, IConverter<BookCategory> converter, IProcedureExecuter executer)
             : base(executer)
         {
-            ConnectionString = connectionString;
             EntityName = "BookCategory";
             TableName = "BookCategories";
+            Parameters = parameters;
             Converter = converter;
         }
 
         public IEnumerable<BookCategory> GetBookCategoriesByBookId(int id)
         {
-            string storedProcedure = "usp_SelectBookCategoriesByBookId";
+            string storedProcedure = "usp_Select" + TableName + "ByBookId";
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 

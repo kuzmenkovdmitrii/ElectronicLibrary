@@ -26,7 +26,9 @@ namespace ElLib.DAL.StoredProcedure
 
                 connection.Open();
                 cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
             }
+            Parameters.Clear();
         }
 
         public DataTable Execute(string storedProcedure)
@@ -42,6 +44,7 @@ namespace ElLib.DAL.StoredProcedure
                 connection.Open();
 
                 cmd.CommandType = CommandType.StoredProcedure;
+
                 cmd.Parameters.AddRange(Parameters.ToArray());
 
                 da.SelectCommand = cmd;
@@ -51,8 +54,10 @@ namespace ElLib.DAL.StoredProcedure
                 da.Fill(ds);
 
                 table = ds.Tables[0];
+                cmd.Parameters.Clear();
             }
 
+            Parameters.Clear();
             return table;
         }
     }

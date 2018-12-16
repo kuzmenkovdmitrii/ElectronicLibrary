@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using ElLib.BLL.Service.Interface;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
 using ElLib.Web.Models;
@@ -11,45 +8,18 @@ namespace ElLib.Web.Controllers
 {
     public class BookCategoryController : Controller
     {
-        [HttpGet]
-        public ActionResult All()
+        readonly IBookCategoryService bookCategoryService;
+
+        public BookCategoryController(IBookCategoryService bookCategoryService)
         {
-            BookCategory b1 = new BookCategory()
-            {
-                Name = "Комедия",
-                Description = "Какая-то комедия вот так вот так как есть"
-            };
-
-            BookCategory b2 = new BookCategory()
-            {
-                Name = "Ужасы",
-                Description = "Какая-то комедия вот так вот так как есть"
-            };
-
-            BookCategory b3 = new BookCategory()
-            {
-                Name = "Детектив",
-                Description = "Какая-то комедия вот так вот так как есть"
-            };
-
-            BookCategory b4 = new BookCategory()
-            {
-                Name = "Преключение",
-                Description = "Какая-то комедия вот так вот так как есть"
-            };
-
-            BookCategory b5 = new BookCategory()
-            {
-                Name = "Фантастика",
-                Description = "Какая-то комедия вот так вот так как есть"
-            };
-
-            IEnumerable<BookCategory> list = new List<BookCategory>() { b1,b2,b3,b4,b5 };
-
-            return View(Mapper.Map<BookCategory, BookCategoryModel>(list));
+            this.bookCategoryService = bookCategoryService;
         }
 
-        [HttpGet]
+        public ActionResult All()
+        {
+            return View(bookCategoryService.GetAll());
+        }
+
         public ActionResult Add()
         {
             return View();
@@ -58,25 +28,43 @@ namespace ElLib.Web.Controllers
         [HttpPost]
         public ActionResult Add(CreateBookCategoryModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                BookCategory bookCategory = Mapper.Map<CreateBookCategoryModel, BookCategory>(model);
+                bookCategoryService.Create(bookCategory);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
-        [HttpPost]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = id;
-            return View();
+            EditBookCategoryModel model = Mapper.Map<BookCategory, EditBookCategoryModel>(bookCategoryService.GetById(id));
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Edit(EditBookCategoryModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                BookCategory bookCategory = Mapper.Map<EditBookCategoryModel, BookCategory>(model);
+                bookCategoryService.Update(bookCategory);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
         [HttpPost]
         public void Delete(int id)
         {
+            bookCategoryService.Delete(id);
             RedirectToAction("All");
         }
     }

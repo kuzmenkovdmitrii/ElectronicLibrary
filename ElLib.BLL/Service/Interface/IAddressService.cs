@@ -3,12 +3,7 @@ using ElLib.Common.Entity;
 
 namespace ElLib.BLL.Service.Interface
 {
-    public interface IAddressService
+    public interface IAddressService : IService<Address>
     {
-        IEnumerable<Address> GetAll();
-        Address GetById(int id);
-        void Create(Address item);
-        void Update(Address item);
-        void Delete(int id);
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using ElLib.BLL.Service.Interface;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
 using ElLib.Web.Models;
@@ -11,46 +8,18 @@ namespace ElLib.Web.Controllers
 {
     public class LanguageController : Controller
     {
-        IEnumerable<Language> list;
+        readonly ILanguageService languageService;
 
-        private void Init()
+        public LanguageController(ILanguageService languageService)
         {
-            Language l1 = new Language()
-            {
-                Id = 1,
-                Name = "English",
-            };
-
-            Language l2 = new Language()
-            {
-                Id = 2,
-                Name = "Russin",
-            };
-
-            Language l3 = new Language()
-            {
-                Id = 3,
-                Name = "Ukraine",
-            };
-
-            Language l4 = new Language()
-            {
-                Id = 4,
-                Name = "Poland",
-            };
-
-            list = new List<Language>() { l1, l2, l3, l4 };
+            this.languageService = languageService;
         }
 
-        [HttpGet]
         public ActionResult All()
         {
-           
-            Init();
-            return View(Mapper.Map<Language, LanguageModel>(list));
+            return View(languageService.GetAll());
         }
 
-        [HttpGet]
         public ActionResult Add()
         {
             return View();
@@ -59,25 +28,42 @@ namespace ElLib.Web.Controllers
         [HttpPost]
         public ActionResult Add(CreateLanguageModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Language language = Mapper.Map<CreateLanguageModel, Language>(model);
+                languageService.Create(language);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
-        [HttpGet]
         public ActionResult Edit(int id)
         {
-            Init();
-            return View(Mapper.Map<Language,EditLanguageModel>(list.FirstOrDefault(x=>x.Id == id)));
+            return View(Mapper.Map<Language, EditLanguageModel>(languageService.GetById(id)));
         }
 
         [HttpPost]
         public ActionResult Edit(EditLanguageModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Language language = Mapper.Map<EditLanguageModel, Language>(model);
+                languageService.Update(language);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
         [HttpPost]
         public void Delete(int id)
         {
+            languageService.Delete(id);
             RedirectToAction("All");
         }
     }

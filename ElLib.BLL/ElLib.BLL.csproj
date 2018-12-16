@@ -57,6 +57,7 @@
     <Compile Include="Service\Interface\IBookService.cs" />
     <Compile Include="Service\Interface\ILanguageService.cs" />
     <Compile Include="Service\Interface\IPublishingService.cs" />
+    <Compile Include="Service\Interface\IService.cs" />
     <Compile Include="Service\LanguageService.cs" />
     <Compile Include="Service\PublishingService.cs" />
   </ItemGroup>

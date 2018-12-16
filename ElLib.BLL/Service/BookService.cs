@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Service.Interface;
 using ElLib.Common.Entity;
 using ElLib.DAL.Repository.Interface;
@@ -24,19 +26,43 @@ namespace ElLib.BLL.Service
             return bookRepository.GetById(id);
         }
 
-        public void Create(Book item)
+        public OperationDetails Create(Book item)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                bookRepository.Create(item);
+                return new OperationDetails(true, "Книга успешно создана");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, "Произошла ошибка при создании книги");
+            }
         }
 
-        public void Update(Book item)
+        public OperationDetails Update(Book item)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                bookRepository.Update(item);
+                return new OperationDetails(true, "Книга успешно обновлена");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, "Произошла ошибка при обновлении книги");
+            }
         }
 
-        public void Delete(int id)
+        public OperationDetails Delete(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                bookRepository.Delete(id);
+                return new OperationDetails(true, "Книга успешно удалена");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, "Произошла ошибка при удалении книги");
+            }
         }
     }
 }

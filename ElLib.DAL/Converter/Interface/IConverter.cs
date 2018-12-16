@@ -8,6 +8,6 @@ namespace ElLib.DAL.Converter.Interface
         where T: class
     {
         IEnumerable<T> FromTable(DataTable table);
-        IEnumerable<SqlParameter> AddParameters(T item);
+        IEnumerable<T> ToTable(T item);
     }
 }

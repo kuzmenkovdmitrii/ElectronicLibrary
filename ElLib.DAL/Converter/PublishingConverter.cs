@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Entity;
 using ElLib.DAL.Converter.Interface;
@@ -26,14 +25,9 @@ namespace ElLib.DAL.Converter
             }).ToList();
         }
 
-        public IEnumerable<SqlParameter> AddParameters(Publishing item)
+        public IEnumerable<Publishing> ToTable(Publishing item)
         {
-            return new List<SqlParameter>()
-            {
-                new SqlParameter("@Id", item.Id),
-                new SqlParameter("@Name", item.Name),
-                new SqlParameter("@AddressId", item.Address.Id)
-            };
+            throw new System.NotImplementedException();
         }
     }
 }

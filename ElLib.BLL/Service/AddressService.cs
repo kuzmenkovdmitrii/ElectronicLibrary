@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Service.Interface;
 using ElLib.Common.Entity;
 using ElLib.DAL.Repository.Interface;
@@ -24,19 +26,43 @@ namespace ElLib.BLL.Service
             return addressRepository.GetById(id);
         }
 
-        public void Create(Address item)
+        public OperationDetails Create(Address item)
         {
-            addressRepository.Create(item);
+            try
+            {
+                addressRepository.Create(item);
+                return new OperationDetails(true, "Адрес успешно создан");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, "Произошла ошибка при создании адреса");
+            }
         }
 
-        public void Update(Address item)
+        public OperationDetails Update(Address item)
         {
-            addressRepository.Update(item);
+            try
+            {
+                addressRepository.Update(item);
+                return new OperationDetails(true, "Адрес успешно обновлён");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, "Произошла ошибка при обновлении адреса");
+            }
         }
 
-        public void Delete(int id)
+        public OperationDetails Delete(int id)
         {
-            addressRepository.Delete(id);
+            try
+            {
+                addressRepository.Delete(id);
+                return new OperationDetails(true, "Адрес успешно удалён");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, "Произошла ошибка при удалении адреса");
+            }
         }
     }
 }

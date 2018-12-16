@@ -29,12 +29,12 @@ namespace ElLib.Web.Models
         [Required(ErrorMessage = "Поле язык публикации не может быть пустым")]
         public Language Language { get; set; }
 
-        [Display(Name = "Издательсво")]
-        [Required(ErrorMessage = "Поле издательство не может быть пустым")]
-        public Publishing Publishing { get; set; }
+        [Display(Name = "Издательсва")]
+        [Required(ErrorMessage = "Поле издательства не может быть пустым")]
+        public ICollection<Publishing> Publishings { get; set; }
 
-        [Display(Name = "Название")]
-        [Required(ErrorMessage = "Поле название не может быть пустым")]
         public Url File { get; set; }
+
+        public Url Picture { get; set; }
     }
 }
