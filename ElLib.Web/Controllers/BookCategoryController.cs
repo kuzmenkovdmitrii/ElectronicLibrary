@@ -61,11 +61,10 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        [HttpPost]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
             bookCategoryService.Delete(id);
-            RedirectToAction("All");
+            return RedirectToAction("All");
         }
     }
 }

@@ -18,10 +18,10 @@
                         {
                             <tr class="changes">
                                 <td style="width: 65%;">
-                                    @author.Name @author.LastName @author.MiddleName
+                                    @author.LastName @author.Name @author.MiddleName
                                 </td>
                                 <td class="td-pad" style="width: 50px">
-                                    <a class="btn-floating btn-sm info-color" href="@Url.Action("Edit", "Author", new {id = author.Id})"><i class="fa fa-info"></i></a>
+                                    <a class="btn-floating btn-sm info-color" href="@Url.Action("Info", "Author", new {id = author.Id})"><i class="fa fa-info"></i></a>
                                 </td>
                                 <td class="td-pad" style="width: 50px">
                                     <a class="btn-floating btn-sm primary-color" href="@Url.Action("Edit", "Author", new {id = author.Id})"><i class="fa fa-edit"></i></a>
@@ -34,6 +34,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div>
+            <a class="btn btn-info" href="@Url.Action("Add", "Author")">Создать</a>
         </div>
     </div>
 </div>

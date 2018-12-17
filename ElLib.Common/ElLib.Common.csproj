@@ -54,6 +54,8 @@
     <Compile Include="Entity\User.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Mapper\Mapper.cs" />
+    <Compile Include="ProcedureExecuter\IProcedureExecuter.cs" />
+    <Compile Include="ProcedureExecuter\ProcedureExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WordConverter.cs" />
   </ItemGroup>

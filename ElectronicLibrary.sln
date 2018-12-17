@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElLib.Dependency", "ElLib.D
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ElLib.DataBase", "ElLib.DataBase\ElLib.DataBase.sqlproj", "{EE96067F-349D-4977-8F86-415D7509C7EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElLib.WCF", "ElLib.WCF\ElLib.WCF.csproj", "{909F31DA-858C-45F5-B23D-0C914B28D904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{EE96067F-349D-4977-8F86-415D7509C7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE96067F-349D-4977-8F86-415D7509C7EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE96067F-349D-4977-8F86-415D7509C7EF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{909F31DA-858C-45F5-B23D-0C914B28D904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{909F31DA-858C-45F5-B23D-0C914B28D904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{909F31DA-858C-45F5-B23D-0C914B28D904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{909F31DA-858C-45F5-B23D-0C914B28D904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

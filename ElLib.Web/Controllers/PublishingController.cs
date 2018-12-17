@@ -20,13 +20,6 @@ namespace ElLib.Web.Controllers
             return View(publishingService.GetAll());
         }
 
-        public ActionResult GetById(int id)
-        {
-            Publishing publishing = publishingService.GetById(id);
-
-            return View(publishing);
-        }
-
         public ActionResult Add()
         {
             return View();
@@ -69,11 +62,10 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        [HttpPost]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
             publishingService.Delete(id);
-            RedirectToAction("All");
+            return RedirectToAction("All");
         }
     }
 }

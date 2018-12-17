@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace ElLib.DAL.StoredProcedure
+namespace ElLib.Common.ProcedureExecuter
 {
     public class ProcedureExecuter : IProcedureExecuter
     {
@@ -25,15 +25,22 @@ namespace ElLib.DAL.StoredProcedure
                 cmd.Parameters.AddRange(Parameters.ToArray());
 
                 connection.Open();
-                cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    Parameters.Clear();
+                }
             }
-            Parameters.Clear();
         }
 
         public DataTable Execute(string storedProcedure)
         {
             DataTable table;
+
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
@@ -48,17 +55,20 @@ namespace ElLib.DAL.StoredProcedure
                 cmd.Parameters.AddRange(Parameters.ToArray());
 
                 da.SelectCommand = cmd;
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    da.Fill(ds);
+                    table = ds.Tables[0];
 
-                cmd.ExecuteNonQuery();
-
-                da.Fill(ds);
-
-                table = ds.Tables[0];
-                cmd.Parameters.Clear();
+                    return table;
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    Parameters.Clear();
+                }
             }
-
-            Parameters.Clear();
-            return table;
         }
     }
 }

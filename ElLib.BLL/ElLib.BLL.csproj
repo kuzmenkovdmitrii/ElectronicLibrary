@@ -56,9 +56,11 @@
     <Compile Include="Service\Interface\IAuthorService.cs" />
     <Compile Include="Service\Interface\IBookService.cs" />
     <Compile Include="Service\Interface\ILanguageService.cs" />
+    <Compile Include="Service\Interface\IMarketingService.cs" />
     <Compile Include="Service\Interface\IPublishingService.cs" />
     <Compile Include="Service\Interface\IService.cs" />
     <Compile Include="Service\LanguageService.cs" />
+    <Compile Include="Service\MarketingService.cs" />
     <Compile Include="Service\PublishingService.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -70,6 +72,10 @@
     <ProjectReference Include="..\ElLib.DAL\ElLib.DAL.csproj">
       <Project>{b229dea8-e6fb-407b-af2f-919ae16b72f9}</Project>
       <Name>ElLib.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElLib.WCF\ElLib.WCF.csproj">
+      <Project>{909f31da-858c-45f5-b23d-0c914b28d904}</Project>
+      <Name>ElLib.WCF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

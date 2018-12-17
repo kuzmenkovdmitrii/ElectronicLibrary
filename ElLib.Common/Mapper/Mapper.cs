@@ -16,12 +16,14 @@ namespace ElLib.Common.Mapper
             {
                 string outPropertyName = outProperty.Name;
 
-                var inProperties = typeof(T).GetProperties();
-                var inProperty = inProperties.FirstOrDefault(x => x.Name == outPropertyName);
-                if (CheckTypes(inProperty.PropertyType, outProperty.PropertyType) && inProperty != null)
+                var inProperty = typeof(T).GetProperties().FirstOrDefault(x => x.Name == outPropertyName);
+                if (inProperty != null)
                 {
-                    var value = inProperty.GetValue(item, null);
-                    outProperty.SetValue(mapped, value);
+                    if (CheckTypes(inProperty.PropertyType, outProperty.PropertyType) && inProperty != null)
+                    {
+                        var value = inProperty.GetValue(item, null);
+                        outProperty.SetValue(mapped, value);
+                    }
                 }
             }
 

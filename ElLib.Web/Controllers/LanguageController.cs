@@ -60,11 +60,10 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        [HttpPost]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
             languageService.Delete(id);
-            RedirectToAction("All");
+            return RedirectToAction("All");
         }
     }
 }

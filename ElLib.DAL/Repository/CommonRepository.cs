@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Converter.Interface;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repository.Interface;
-using ElLib.DAL.StoredProcedure;
 
 namespace ElLib.DAL.Repository
 {

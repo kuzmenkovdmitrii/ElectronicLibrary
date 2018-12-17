@@ -22,7 +22,10 @@
                             </td>
                             <td style="width: 50%;">
                                 @publishing.Address.Country @publishing.Address.City @publishing.Address.Street @publishing.Address.Home
-                                    shing.Address.Home
+                                shing.Address.Home
+                            </td>
+                            <td class="td-pad" style="width: 50px">
+                                <a class="btn-floating btn-sm primary-color" href="@Url.Action("Info", "Publishing", new {id = publishing.Id})"><i class="fa fa-edit"></i></a>
                             </td>
                             <td class="td-pad" style="width: 50px">
                                 <a class="btn-floating btn-sm primary-color" href="@Url.Action("Edit", "Publishing", new {id = publishing.Id})"><i class="fa fa-edit"></i></a>
@@ -35,6 +38,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div>
+            <a class="btn btn-info" href="@Url.Action("Add", "Publishing")">Создать</a>
         </div>
     </div>
 </div>

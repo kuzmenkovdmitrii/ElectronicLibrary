@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ElLib.DAL.StoredProcedure
+namespace ElLib.Common.ProcedureExecuter
 {
     public interface IProcedureExecuter
     {
