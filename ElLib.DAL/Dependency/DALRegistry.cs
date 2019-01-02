@@ -1,11 +1,11 @@
 ﻿using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
-using ElLib.DAL.Converter;
-using ElLib.DAL.Converter.Interface;
-using ElLib.DAL.Parameters;
+using ElLib.DAL.Converters.Implementations;
+using ElLib.DAL.Converters.Interface;
+using ElLib.DAL.Parameters.Implementations;
 using ElLib.DAL.Parameters.Interface;
-using ElLib.DAL.Repository;
-using ElLib.DAL.Repository.Interface;
+using ElLib.DAL.Repositories.Implementations;
+using ElLib.DAL.Repositories.Interfaces;
 using StructureMap;
 
 namespace ElLib.DAL.Dependency
@@ -20,6 +20,7 @@ namespace ElLib.DAL.Dependency
             For<IBookRepository>().Use<BookRepository>();
             For<ILanguageRepository>().Use<LanguageRepository>();
             For<IPublishingRepository>().Use<PublishingRepository>();
+            For<IUserRepository>().Use<UserRepository>();
 
             For<IProcedureExecuter>().Use<ProcedureExecuter>();
 
@@ -29,6 +30,7 @@ namespace ElLib.DAL.Dependency
             For<IConverter<Book>>().Use<BookConverter>();
             For<IConverter<Language>>().Use<LanguageConverter>();
             For<IConverter<Publishing>>().Use<PublishingConverter>();
+            For<IConverter<User>>().Use<UserConverter>();
 
             For<IParameters<Address>>().Use<AddressParameters>();
             For<IParameters<Author>>().Use<AuthorParameters>();
@@ -36,6 +38,7 @@ namespace ElLib.DAL.Dependency
             For<IParameters<Book>>().Use<BookParameters>();
             For<IParameters<Language>>().Use<LanguageParameters>();
             For<IParameters<Publishing>>().Use<PublishingParameters>();
+            For<IParameters<User>>().Use<UserParameters>();
         }
     }
 }

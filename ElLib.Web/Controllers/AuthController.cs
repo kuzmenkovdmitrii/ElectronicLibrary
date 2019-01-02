@@ -1,24 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using ElLib.BLL.Authentication;
+using ElLib.BLL.Services.Interfaces;
+using ElLib.Common.Entity;
+using ElLib.Common.Mapper;
+using ElLib.Web.Models;
 
 namespace ElLib.Web.Controllers
 {
     public class AuthController : Controller
     {
-        //IUserService UserService { get; }
+        readonly IAuthService authService;
 
-        //private IAuthenticationManager AuthenticationManager
-        //{
-        //    get { return HttpContext.GetOwinContext().Authentication; }
-        //}
+        protected virtual new UserPrincipal User
+        {
+            get
+            {
+                return HttpContext.User as UserPrincipal;
+            }
+        }
 
-        //public AccountController(IUserService userService)
-        //{
-        //    UserService = userService;
-        //}
+        public AuthController(IAuthService authService)
+        {
+            this.authService = authService;
+        }
 
         public ActionResult Login()
         {
@@ -30,58 +35,54 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Registration(RegisterModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = Mapper.Map<RegisterModel, User>(model);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Registration(RegisterUserModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = Mapper.Map<RegisterUserModel, User>(model);
 
-        //        var result = await UserService.Create(user);
+                var result = await authService.Register(user, model.Password);
 
-        //        if (result.Successed)
-        //        {
-        //            return View("Login");
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError(result.Property, result.Message);
-        //        }
-        //    }
-        //    return View(model);
-        //}
+                if (result.Successed)
+                {
+                    return View("Login");
+                }
+                else
+                {
+                    ModelState.AddModelError(result.Property, result.Message);
+                }
+            }
+            return View(model);
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Login(LoginModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new User
-        //        {
-        //            UserName = model.UserName,
-        //            Password = model.Password
-        //        };
-        //        ClaimsIdentity claim = await UserService.Authenticate(user);
-        //        if (claim == null)
-        //        {
-        //            ModelState.AddModelError("", "Неверный логин или пароль.");
-        //        }
-        //        else
-        //        {
-        //            AuthenticationManager.SignOut();
-        //            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //    }
-        //    return View(model);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginUserModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await authService.Authenticate(model.UserName, model.Password);
 
-        //public ActionResult Logout()
-        //{
-        //    AuthenticationManager.SignOut();
-        //    return RedirectToAction("Index", "Home");
-        //}
+                if (result.Successed)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(result.Property, result.Message);
+                }
+            }
+
+            return View(model);
+        }
+
+        public async Task<ActionResult> Logout()
+        {
+            var result = await authService.Logout();
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -4,5 +4,5 @@ GO
 CREATE PROC usp_SelectUserById
 	@Id int
 AS
-	SELECT * FROM Users
+	SELECT Id, UserName, Email FROM Users
 	WHERE Id = @Id

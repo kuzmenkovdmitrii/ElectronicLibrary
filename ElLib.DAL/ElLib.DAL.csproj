@@ -47,36 +47,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\Implementations\UserConverter.cs" />
     <Compile Include="Dependency\DALRegistry.cs" />
-    <Compile Include="Converter\AddressConverter.cs" />
-    <Compile Include="Converter\AuthorConverter.cs" />
-    <Compile Include="Converter\BookCategoryConverter.cs" />
-    <Compile Include="Converter\BookConverter.cs" />
-    <Compile Include="Converter\Interface\IConverter.cs" />
-    <Compile Include="Converter\LanguageConverter.cs" />
-    <Compile Include="Converter\PublishingConverter.cs" />
-    <Compile Include="Parameters\AddressParameters.cs" />
-    <Compile Include="Parameters\AuthorParameters.cs" />
-    <Compile Include="Parameters\BookCategoryParameters.cs" />
-    <Compile Include="Parameters\BookParameters.cs" />
+    <Compile Include="Converters\Implementations\AddressConverter.cs" />
+    <Compile Include="Converters\Implementations\AuthorConverter.cs" />
+    <Compile Include="Converters\Implementations\BookCategoryConverter.cs" />
+    <Compile Include="Converters\Implementations\BookConverter.cs" />
+    <Compile Include="Converters\Interface\IConverter.cs" />
+    <Compile Include="Converters\Implementations\LanguageConverter.cs" />
+    <Compile Include="Converters\Implementations\PublishingConverter.cs" />
+    <Compile Include="Parameters\Implementations\AddressParameters.cs" />
+    <Compile Include="Parameters\Implementations\AuthorParameters.cs" />
+    <Compile Include="Parameters\Implementations\BookCategoryParameters.cs" />
+    <Compile Include="Parameters\Implementations\BookParameters.cs" />
+    <Compile Include="Parameters\Implementations\UserParameters.cs" />
     <Compile Include="Parameters\Interface\IParameters.cs" />
-    <Compile Include="Parameters\LanguageParameters.cs" />
-    <Compile Include="Parameters\PublishingParameters.cs" />
+    <Compile Include="Parameters\Implementations\LanguageParameters.cs" />
+    <Compile Include="Parameters\Implementations\PublishingParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AddressRepository.cs" />
-    <Compile Include="Repository\AuthorRepository.cs" />
-    <Compile Include="Repository\BookCategoryRepository.cs" />
-    <Compile Include="Repository\BookRepository.cs" />
-    <Compile Include="Repository\CommonRepository.cs" />
-    <Compile Include="Repository\Interface\IAddressRepository.cs" />
-    <Compile Include="Repository\Interface\IAuthorRepository.cs" />
-    <Compile Include="Repository\Interface\IBookCategoryRepository.cs" />
-    <Compile Include="Repository\Interface\IBookRepository.cs" />
-    <Compile Include="Repository\Interface\ILanguageRepository.cs" />
-    <Compile Include="Repository\Interface\IPublishingRepository.cs" />
-    <Compile Include="Repository\Interface\IRepository.cs" />
-    <Compile Include="Repository\LanguageRepository.cs" />
-    <Compile Include="Repository\PublishingRepository.cs" />
+    <Compile Include="Repositories\Implementations\AddressRepository.cs" />
+    <Compile Include="Repositories\Implementations\AuthorRepository.cs" />
+    <Compile Include="Repositories\Implementations\BookCategoryRepository.cs" />
+    <Compile Include="Repositories\Implementations\BookRepository.cs" />
+    <Compile Include="Repositories\Implementations\CommonRepository.cs" />
+    <Compile Include="Repositories\Implementations\UserRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IAddressRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IAuthorRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IBookCategoryRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IBookRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ILanguageRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IPublishingRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\Implementations\LanguageRepository.cs" />
+    <Compile Include="Repositories\Implementations\PublishingRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

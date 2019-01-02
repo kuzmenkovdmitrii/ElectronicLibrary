@@ -2,6 +2,10 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Script.Serialization;
+using System.Web.Security;
+using ElLib.BLL.Authentication;
+using ElLib.Common.Entity;
 using ElLib.Web.DependencyResolution;
 using log4net;
 using StructureMap;
@@ -14,6 +18,24 @@ namespace ElLib.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            HttpCookie authCookie = HttpContext.Current.Request.Cookies.Get(FormsAuthentication.FormsCookieName);
+
+            if (authCookie != null)
+            {
+                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+                User user = serializer.Deserialize<User>(authTicket.UserData);
+
+                UserPrincipal userPrincipal = new UserPrincipal(user);
+
+                HttpContext.Current.User = userPrincipal;
+            }
         }
 
         protected void Application_Error(object sender, EventArgs e)

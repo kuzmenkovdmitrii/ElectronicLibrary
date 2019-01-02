@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using ElLib.BLL.Service.Interface;
+using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
 using ElLib.Web.Models;

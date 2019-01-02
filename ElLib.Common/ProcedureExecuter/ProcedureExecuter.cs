@@ -18,21 +18,23 @@ namespace ElLib.Common.ProcedureExecuter
         public void ExecuteVoid(string storedProcedure)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
-            using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddRange(Parameters.ToArray());
-
-                connection.Open();
-                try
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
                 {
-                    cmd.ExecuteNonQuery();
-                }
-                finally
-                {
-                    cmd.Parameters.Clear();
-                    Parameters.Clear();
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddRange(Parameters.ToArray());
+
+                    connection.Open();
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    finally
+                    {
+                        cmd.Parameters.Clear();
+                        Parameters.Clear();
+                    }
                 }
             }
         }
@@ -41,32 +43,33 @@ namespace ElLib.Common.ProcedureExecuter
         {
             DataTable table;
 
-
             using (SqlConnection connection = new SqlConnection(ConnectionString))
-            using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
             {
-                SqlDataAdapter da = new SqlDataAdapter();
-                DataSet ds = new DataSet();
-
-                connection.Open();
-
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddRange(Parameters.ToArray());
-
-                da.SelectCommand = cmd;
-                try
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
                 {
-                    cmd.ExecuteNonQuery();
-                    da.Fill(ds);
-                    table = ds.Tables[0];
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    DataSet ds = new DataSet();
 
-                    return table;
-                }
-                finally
-                {
-                    cmd.Parameters.Clear();
-                    Parameters.Clear();
+                    connection.Open();
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddRange(Parameters.ToArray());
+
+                    da.SelectCommand = cmd;
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        da.Fill(ds);
+                        table = ds.Tables[0];
+
+                        return table;
+                    }
+                    finally
+                    {
+                        cmd.Parameters.Clear();
+                        Parameters.Clear();
+                    }
                 }
             }
         }

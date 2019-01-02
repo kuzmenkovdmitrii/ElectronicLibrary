@@ -59,8 +59,11 @@
                         <i class="fa fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownAccount">
-                        <a class="dropdown-item" href="@Url.Action("Login", "Home")">Вход</a>
-                        <a class="dropdown-item" href="@Url.Action("Registration", "Home")">Регистрация</a>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a class="dropdown-item" href="@Url.Action("Login", "Home")">Вход</a>
+                            <a class="dropdown-item" href="@Url.Action("Registration", "Home")">Регистрация</a>
+                        }
                         <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель администратора</a>
                     </div>
                 </li>

@@ -1,22 +1,10 @@
 ﻿using System.Web.Mvc;
-using ElLib.BLL.Service.Interface;
-using ElLib.Common.Logger;
-using log4net;
+using ElLib.BLL.Services.Interfaces;
 
 namespace ElLib.Web.Controllers
 {
     public class HomeController : Controller
     {
-        IBookCategoryService service;
-
-        //ILog log;
-
-        public HomeController(IBookCategoryService service)
-        {
-            //log = Logger.For(this);
-            this.service = service;
-        }
-
         public ActionResult Index()
         {
             return View();
