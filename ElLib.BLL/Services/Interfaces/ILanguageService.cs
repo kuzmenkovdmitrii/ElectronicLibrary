@@ -1,6 +1,6 @@
 ﻿using ElLib.Common.Entity;
 
-namespace ElLib.BLL.Service.Interface
+namespace ElLib.BLL.Services.Interfaces
 {
     public interface ILanguageService : IService<Language>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ElLib.BLL.Infrastructure;
 
-namespace ElLib.BLL.Service.Interface
+namespace ElLib.BLL.Services.Interfaces
 {
     public interface IService<T>
         where T: class

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using ElLib.BLL.Infrastructure;
-using ElLib.BLL.Service.Interface;
+using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
-using ElLib.DAL.Repository.Interface;
+using ElLib.DAL.Repositories.Interfaces;
 
-namespace ElLib.BLL.Service
+namespace ElLib.BLL.Services.Implementations
 {
     public class LanguageService : ILanguageService
     {
