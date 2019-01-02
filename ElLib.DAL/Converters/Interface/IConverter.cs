@@ -1,0 +1,13 @@
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace ElLib.DAL.Converters.Interface
+{
+    public interface IConverter<T>
+        where T: class
+    {
+        IEnumerable<T> FromTable(DataTable table);
+        IEnumerable<T> ToTable(T item);
+    }
+}
