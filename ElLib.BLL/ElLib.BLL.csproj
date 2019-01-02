@@ -36,6 +36,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,24 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\UserPrincipal.cs" />
     <Compile Include="Dependency\BLLRegistry.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\AddressService.cs" />
-    <Compile Include="Service\AuthorService.cs" />
-    <Compile Include="Service\BookCategoryService.cs" />
-    <Compile Include="Service\BookService.cs" />
-    <Compile Include="Service\Interface\IAddressService.cs" />
-    <Compile Include="Service\Interface\IBookCategoryService.cs" />
-    <Compile Include="Service\Interface\IAuthorService.cs" />
-    <Compile Include="Service\Interface\IBookService.cs" />
-    <Compile Include="Service\Interface\ILanguageService.cs" />
-    <Compile Include="Service\Interface\IMarketingService.cs" />
-    <Compile Include="Service\Interface\IPublishingService.cs" />
-    <Compile Include="Service\Interface\IService.cs" />
-    <Compile Include="Service\LanguageService.cs" />
-    <Compile Include="Service\MarketingService.cs" />
-    <Compile Include="Service\PublishingService.cs" />
+    <Compile Include="Services\Implementations\AddressService.cs" />
+    <Compile Include="Services\Implementations\AuthorService.cs" />
+    <Compile Include="Services\Implementations\AuthService.cs" />
+    <Compile Include="Services\Implementations\BookCategoryService.cs" />
+    <Compile Include="Services\Implementations\BookService.cs" />
+    <Compile Include="Services\Interfaces\IAddressService.cs" />
+    <Compile Include="Services\Interfaces\IAuthService.cs" />
+    <Compile Include="Services\Interfaces\IBookCategoryService.cs" />
+    <Compile Include="Services\Interfaces\IAuthorService.cs" />
+    <Compile Include="Services\Interfaces\IBookService.cs" />
+    <Compile Include="Services\Interfaces\ILanguageService.cs" />
+    <Compile Include="Services\Interfaces\IMarketingService.cs" />
+    <Compile Include="Services\Interfaces\IPublishingService.cs" />
+    <Compile Include="Services\Interfaces\IService.cs" />
+    <Compile Include="Services\Implementations\LanguageService.cs" />
+    <Compile Include="Services\Implementations\MarketingService.cs" />
+    <Compile Include="Services\Implementations\PublishingService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

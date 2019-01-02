@@ -1,5 +1,5 @@
-﻿using ElLib.BLL.Service;
-using ElLib.BLL.Service.Interface;
+﻿using ElLib.BLL.Services.Implementations;
+using ElLib.BLL.Services.Interfaces;
 using StructureMap;
 
 namespace ElLib.BLL.Dependency
@@ -8,12 +8,14 @@ namespace ElLib.BLL.Dependency
     {
         public BLLRegistry()
         {
+            For<IAddressService>().Singleton().Use<AddressService>();
             For<IAuthorService>().Singleton().Use<AuthorService>();
+            For<IAuthService>().Singleton().Use<AuthService>();
             For<IBookCategoryService>().Singleton().Use<BookCategoryService>();
             For<IBookService>().Singleton().Use<BookService>();
             For<ILanguageService>().Singleton().Use<LanguageService>();
+            For<IMarketingService>().Singleton().Use<MarketingService>();
             For<IPublishingService>().Singleton().Use<PublishingService>();
-            For<IAddressService>().Singleton().Use<AddressService>();
         }
     }
 }
