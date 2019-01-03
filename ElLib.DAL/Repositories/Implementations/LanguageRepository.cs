@@ -8,7 +8,10 @@ namespace ElLib.DAL.Repositories.Implementations
 {
     class LanguageRepository : CommonRepository<Language>, ILanguageRepository
     {
-        public LanguageRepository(IParameters<Language> parameters, IConverter<Language> converter, IProcedureExecuter executer)
+        public LanguageRepository(
+            IProcedureExecuter executer, 
+            IParameters<Language> parameters, 
+            IConverter<Language> converter)
             : base(executer)
         {
             EntityName = "Language";

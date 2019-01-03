@@ -8,7 +8,10 @@ namespace ElLib.DAL.Repositories.Implementations
 {
     public class AddressRepository : CommonRepository<Address>, IAddressRepository
     {
-        public AddressRepository(IParameters<Address> parameters, IConverter<Address> converter, IProcedureExecuter executer)
+        public AddressRepository(
+            IProcedureExecuter executer, 
+            IParameters<Address> parameters, 
+            IConverter<Address> converter)
             :base(executer)
         {
             EntityName = "Address";

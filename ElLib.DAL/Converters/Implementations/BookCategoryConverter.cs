@@ -14,6 +14,7 @@ namespace ElLib.DAL.Converters.Implementations
                 {
                     Id = (int) a["Id"],
                     Name = (string) a["Name"],
+                    Description = (string) a["Description"]
                 }).ToList();
         }
 

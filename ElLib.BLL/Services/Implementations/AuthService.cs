@@ -15,10 +15,12 @@ namespace ElLib.BLL.Services.Implementations
     public class AuthService : IAuthService
     {
         readonly IUserRepository userRepository;
+        readonly IRoleRepository roleRepository;
 
-        public AuthService(IUserRepository userRepository)
+        public AuthService(IUserRepository userRepository, IRoleRepository roleRepository)
         {
             this.userRepository = userRepository;
+            this.roleRepository = roleRepository;
         }
 
         public async Task<OperationDetails> Register(User user, string password)
@@ -36,6 +38,17 @@ namespace ElLib.BLL.Services.Implementations
             }
 
             userRepository.Create(user, password);
+
+            User createdUser = userRepository.GetByUserName(user.UserName);
+
+            if (createdUser == null)
+            {
+                return new OperationDetails(false, "Не удалось создать пользователя");
+            }
+
+            Role defaultRole = roleRepository.GetByName("User");
+
+            userRepository.AddRoleToUser(createdUser, defaultRole);
 
             return new OperationDetails(true, "Пользователь успешно зарегистрирован");
         }
@@ -63,6 +76,8 @@ namespace ElLib.BLL.Services.Implementations
             {
                 return new OperationDetails(false, "Неверный пароль");
             }
+
+            user.Roles = roleRepository.GetByUserId(user.Id).ToList();
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
@@ -94,7 +109,6 @@ namespace ElLib.BLL.Services.Implementations
 
         private bool CheckPassword(User user, string password)
         {
-            string pass = userRepository.GetPassword(user.Id);
             if (userRepository.GetPassword(user.Id) != password)
             {
                 return false;

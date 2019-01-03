@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
@@ -10,7 +11,10 @@ namespace ElLib.DAL.Repositories.Implementations
 {
     public class PublishingRepository : CommonRepository<Publishing>, IPublishingRepository
     {
-        public PublishingRepository(IParameters<Publishing> parameters, IConverter<Publishing> converter, IProcedureExecuter executer)
+        public PublishingRepository(
+            IProcedureExecuter executer, 
+            IParameters<Publishing> parameters, 
+            IConverter<Publishing> converter)
             : base(executer)
         {
             EntityName = "Publishing";
@@ -19,8 +23,13 @@ namespace ElLib.DAL.Repositories.Implementations
             Converter = converter;
         }
 
-        public IEnumerable<Publishing> GetPublishingsByBookId(int id)
+        public IEnumerable<Publishing> GetPublishingsByBookId(int? id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             string storedProcedure = "usp_Select" + TableName + "ByBookId";
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));

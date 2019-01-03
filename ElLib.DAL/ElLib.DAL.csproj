@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\Implementations\RoleConverter.cs" />
     <Compile Include="Converters\Implementations\UserConverter.cs" />
     <Compile Include="Dependency\DALRegistry.cs" />
     <Compile Include="Converters\Implementations\AddressConverter.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Parameters\Implementations\AuthorParameters.cs" />
     <Compile Include="Parameters\Implementations\BookCategoryParameters.cs" />
     <Compile Include="Parameters\Implementations\BookParameters.cs" />
+    <Compile Include="Parameters\Implementations\RoleParameters.cs" />
     <Compile Include="Parameters\Implementations\UserParameters.cs" />
     <Compile Include="Parameters\Interface\IParameters.cs" />
     <Compile Include="Parameters\Implementations\LanguageParameters.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Repositories\Implementations\BookCategoryRepository.cs" />
     <Compile Include="Repositories\Implementations\BookRepository.cs" />
     <Compile Include="Repositories\Implementations\CommonRepository.cs" />
+    <Compile Include="Repositories\Implementations\RoleRepository.cs" />
     <Compile Include="Repositories\Implementations\UserRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAddressRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAuthorRepository.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\Implementations\LanguageRepository.cs" />
     <Compile Include="Repositories\Implementations\PublishingRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRoleRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup />

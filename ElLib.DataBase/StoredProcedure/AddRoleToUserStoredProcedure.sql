@@ -2,8 +2,8 @@
 GO
 
 CREATE PROC usp_AddRoleToUser
-	@RoleId int,
-	@UserId int
+	@UserId int,
+	@RoleId int
 AS
-	INSERT BookAndAuthor VALUES
-	(@RoleId, @UserId)
+	INSERT UserAndRole VALUES
+	(@UserId, @RoleId)

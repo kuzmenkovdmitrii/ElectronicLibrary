@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
@@ -10,7 +11,10 @@ namespace ElLib.DAL.Repositories.Implementations
 {
     public class AuthorRepository : CommonRepository<Author>, IAuthorRepository
     {
-        public AuthorRepository(IParameters<Author> parameters, IConverter<Author> converter, IProcedureExecuter executer)
+        public AuthorRepository(
+            IProcedureExecuter executer,
+            IParameters<Author> parameters, 
+            IConverter<Author> converter)
             : base(executer)
         {
             EntityName = "Author";
@@ -19,8 +23,13 @@ namespace ElLib.DAL.Repositories.Implementations
             Converter = converter;
         }
 
-        public IEnumerable<Author> GetAuthorsByBookId(int id)
+        public IEnumerable<Author> GetAuthorsByBookId(int? id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             string storedProcedure = "usp_Select" + TableName + "ByBookId";
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));

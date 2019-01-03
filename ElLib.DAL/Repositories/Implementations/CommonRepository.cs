@@ -37,11 +37,16 @@ namespace ElLib.DAL.Repositories.Implementations
             return Converter.FromTable(Executer.Execute(storedProcedure));
         }
 
-        public virtual T GetById(int id)
+        public virtual T GetById(int? id)
         {
             if (EntityName == null)
             {
                 throw new NullReferenceException("EntityName not filled in.");
+            }
+
+            if (id == null)
+            {
+                throw new ArgumentNullException();
             }
 
             string storedProcedure = "usp_Select" + EntityName + "ById";
@@ -69,8 +74,13 @@ namespace ElLib.DAL.Repositories.Implementations
             Executer.ExecuteVoid(storedProcedure);
         }
 
-        public virtual void Delete(int id)
+        public virtual void Delete(int? id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             string storedProcedure = "usp_Delete" + EntityName;
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));

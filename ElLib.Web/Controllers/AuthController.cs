@@ -8,17 +8,9 @@ using ElLib.Web.Models;
 
 namespace ElLib.Web.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController : BaseController
     {
         readonly IAuthService authService;
-
-        protected virtual new UserPrincipal User
-        {
-            get
-            {
-                return HttpContext.User as UserPrincipal;
-            }
-        }
 
         public AuthController(IAuthService authService)
         {

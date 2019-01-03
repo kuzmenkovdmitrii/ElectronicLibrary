@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
@@ -9,11 +10,21 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class BookService : IBookService
     {
-        IBookRepository bookRepository;
+        readonly IBookRepository bookRepository;
+        readonly IBookCategoryRepository bookCategoryRepository;
+        readonly IAuthorRepository authorRepository;
+        readonly IPublishingRepository publishingRepository;
 
-        public BookService(IBookRepository bookRepository)
+        public BookService(
+            IBookRepository bookRepository,
+            IBookCategoryRepository bookCategoryRepository,
+            IAuthorRepository authorRepository,
+            IPublishingRepository publishingRepository)
         {
             this.bookRepository = bookRepository;
+            this.bookCategoryRepository = bookCategoryRepository;
+            this.authorRepository = authorRepository;
+            this.publishingRepository = publishingRepository;
         }
 
         public IEnumerable<Book> GetAll()
@@ -23,7 +34,11 @@ namespace ElLib.BLL.Services.Implementations
 
         public Book GetById(int id)
         {
-            return bookRepository.GetById(id);
+            Book book = bookRepository.GetById(id);
+            book.Publishing = publishingRepository.GetPublishingsByBookId(id).ToList();
+            book.Authors = authorRepository.GetAuthorsByBookId(id).ToList();
+            book.Categories = bookCategoryRepository.GetBookCategoriesByBookId(id).ToList();
+            return book;
         }
 
         public OperationDetails Create(Book item)

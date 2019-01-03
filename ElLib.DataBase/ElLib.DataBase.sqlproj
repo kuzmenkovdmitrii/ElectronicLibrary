@@ -124,6 +124,8 @@
     <None Include="StoredProcedure\SelectPasswordByUserIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectUserByUserNameStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectUserByEmailStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectRolesByUserIdStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectRoleByNameStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllAddressesStoredProcedure.sql" />

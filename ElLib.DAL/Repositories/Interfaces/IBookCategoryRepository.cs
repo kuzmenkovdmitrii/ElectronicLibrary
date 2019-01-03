@@ -5,6 +5,6 @@ namespace ElLib.DAL.Repositories.Interfaces
 {
     public interface IBookCategoryRepository : IRepository<BookCategory>
     {
-        IEnumerable<BookCategory> GetBookCategoriesByBookId(int id);
+        IEnumerable<BookCategory> GetBookCategoriesByBookId(int? id);
     }
 }

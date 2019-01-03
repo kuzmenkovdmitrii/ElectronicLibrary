@@ -21,6 +21,7 @@ namespace ElLib.DAL.Dependency
             For<ILanguageRepository>().Use<LanguageRepository>();
             For<IPublishingRepository>().Use<PublishingRepository>();
             For<IUserRepository>().Use<UserRepository>();
+            For<IRoleRepository>().Use<RoleRepository>();
 
             For<IProcedureExecuter>().Use<ProcedureExecuter>();
 
@@ -31,6 +32,7 @@ namespace ElLib.DAL.Dependency
             For<IConverter<Language>>().Use<LanguageConverter>();
             For<IConverter<Publishing>>().Use<PublishingConverter>();
             For<IConverter<User>>().Use<UserConverter>();
+            For<IConverter<Role>>().Use<RoleConverter>();
 
             For<IParameters<Address>>().Use<AddressParameters>();
             For<IParameters<Author>>().Use<AuthorParameters>();
@@ -39,6 +41,7 @@ namespace ElLib.DAL.Dependency
             For<IParameters<Language>>().Use<LanguageParameters>();
             For<IParameters<Publishing>>().Use<PublishingParameters>();
             For<IParameters<User>>().Use<UserParameters>();
+            For<IParameters<Role>>().Use<RoleParameters>();
         }
     }
 }
