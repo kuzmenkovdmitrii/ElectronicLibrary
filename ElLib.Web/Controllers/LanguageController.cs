@@ -65,5 +65,10 @@ namespace ElLib.Web.Controllers
             languageService.Delete(id);
             return RedirectToAction("All");
         }
+
+        public ActionResult AllLanguagesForSelect()
+        {
+            return PartialView(languageService.GetAll());
+        }
     }
 }

@@ -67,5 +67,10 @@ namespace ElLib.Web.Controllers
             publishingService.Delete(id);
             return RedirectToAction("All");
         }
+
+        public ActionResult AllPublishingsForSelect()
+        {
+            return PartialView(publishingService.GetAll());
+        }
     }
 }

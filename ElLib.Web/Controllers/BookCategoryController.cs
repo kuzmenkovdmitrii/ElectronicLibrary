@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -65,6 +66,11 @@ namespace ElLib.Web.Controllers
         {
             bookCategoryService.Delete(id);
             return RedirectToAction("All");
+        }
+
+        public ActionResult AllCategoriesForSelect()
+        {
+            return PartialView(bookCategoryService.GetAll());
         }
     }
 }

@@ -8,7 +8,7 @@ using ElLib.Web.Models;
 
 namespace ElLib.Web.Controllers
 {
-    public class AuthController : BaseController
+    public class AuthController : Controller
     {
         readonly IAuthService authService;
 

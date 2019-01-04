@@ -65,5 +65,10 @@ namespace ElLib.Web.Controllers
             authorService.Delete(id);
             return RedirectToAction("All");
         }
+
+        public ActionResult AllAuthorsForSelect()
+        {
+            return PartialView(authorService.GetAll());
+        }
     }
 }

@@ -25,10 +25,6 @@ namespace ElLib.Web.Models
         [Required(ErrorMessage = "Поле авторы не может быть пустым")]
         public ICollection<Author> Authors { get; set; }
 
-        [Display(Name = "Дата публикации")]
-        [Required(ErrorMessage = "Поле дата публикации не может быть пустым")]
-        public DateTime PublishingDate { get; set; }
-
         [Display(Name = "Язык")]
         [Required(ErrorMessage = "Поле язык не может быть пустым")]
         public Language Language { get; set; }
