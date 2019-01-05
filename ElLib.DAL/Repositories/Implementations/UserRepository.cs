@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Linq;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
-using ElLib.DAL.Converters.Interface;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -34,7 +34,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@UserName", userName));
 
-            return Converter.FromTable(Executer.Execute(storedProcedure)).FirstOrDefault(); ;
+            return Executer.Execute<User>(storedProcedure,Converter).FirstOrDefault();
         }
 
         public User GetByEmail(string email)
@@ -48,7 +48,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@UserName", email));
 
-            return Converter.FromTable(Executer.Execute(storedProcedure)).FirstOrDefault();
+            return Executer.Execute<User>(storedProcedure,Converter).FirstOrDefault();
         }
 
         
@@ -74,7 +74,9 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            return Executer.Execute(storedProcedure).Rows[0][0].ToString();
+            //TODO
+            //return Executer.Execute(storedProcedure).Rows[0][0].ToString();
+            return null;
         }
 
         public void AddRoleToUser(User user, Role role)

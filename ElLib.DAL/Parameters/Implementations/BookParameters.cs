@@ -15,8 +15,8 @@ namespace ElLib.DAL.Parameters.Implementations
                 new SqlParameter("@Name", item.Name),
                 new SqlParameter("@PublishingDate", item.PublishingDate),
                 new SqlParameter("@LanguageId", item.Language.Id),
-                new SqlParameter("@Picture", item.Picture),
-                new SqlParameter("@File", item.File)
+                new SqlParameter("@Picture", item.Picture.Value),
+                new SqlParameter("@File", item.File.Value)
             };
         }
     }

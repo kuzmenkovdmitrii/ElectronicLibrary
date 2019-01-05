@@ -1,25 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Data.SqlClient;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
-using ElLib.DAL.Converters.Interface;
 
 namespace ElLib.DAL.Converters.Implementations
 {
     class LanguageConverter : IConverter<Language>
     {
-        public IEnumerable<Language> FromTable(DataTable table)
+        public Language FromReader(SqlDataReader reader)
         {
-            return table.AsEnumerable().Select(a => new Language()
+            return new Language()
             {
-                Id = (int) a["Id"],
-                Name = (string) a["Name"],
-            }).ToList();
-        }
-
-        public IEnumerable<Language> ToTable(Language item)
-        {
-            throw new System.NotImplementedException();
+                Id = (int) reader["Id"],
+                Name = (string) reader["Name"],
+            };
         }
     }
 }

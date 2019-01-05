@@ -1,28 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Data.SqlClient;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
-using ElLib.DAL.Converters.Interface;
 
 namespace ElLib.DAL.Converters.Implementations
 {
     public class AuthorConverter : IConverter<Author>
     {
-        public IEnumerable<Author> FromTable(DataTable table)
+        public Author FromReader(SqlDataReader reader)
         {
-            return table.AsEnumerable().Select(a => new Author()
-                {
-                    Id = (int) a["Id"],
-                    Name = (string) a["Name"],
-                    LastName = (string) a["LastName"],
-                    MiddleName = (string) a["MiddleName"],
-                    Email = (string) a["Email"]
-                }).ToList();
-        }
-
-        public IEnumerable<Author> ToTable(Author item)
-        {
-            throw new System.NotImplementedException();
+            return new Author()
+            {
+                Id = (int)reader["Id"],
+                Name = (string)reader["Name"],
+                LastName = (string)reader["LastName"],
+                MiddleName = (string)reader["MiddleName"],
+                Email = (string)reader["Email"]
+            };
         }
     }
 }

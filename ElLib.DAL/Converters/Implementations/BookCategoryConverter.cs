@@ -1,26 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Data.SqlClient;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
-using ElLib.DAL.Converters.Interface;
 
 namespace ElLib.DAL.Converters.Implementations
 {
     class BookCategoryConverter : IConverter<BookCategory>
     {
-        public IEnumerable<BookCategory> FromTable(DataTable table)
+        public BookCategory FromReader(SqlDataReader reader)
         {
-            return table.AsEnumerable().Select(a => new BookCategory()
-                {
-                    Id = (int) a["Id"],
-                    Name = (string) a["Name"],
-                    Description = (string) a["Description"]
-                }).ToList();
-        }
-
-        public IEnumerable<BookCategory> ToTable(BookCategory item)
-        {
-            throw new System.NotImplementedException();
+            return new BookCategory()
+            {
+                Id = (int)reader["Id"],
+                Name = (string)reader["Name"],
+                Description = (string)reader["Description"]
+            };
         }
     }
 }

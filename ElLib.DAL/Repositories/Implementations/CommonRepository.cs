@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
+using ElLib.Common.Converter;
 using ElLib.Common.ProcedureExecuter;
-using ElLib.DAL.Converters.Interface;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -34,7 +33,7 @@ namespace ElLib.DAL.Repositories.Implementations
             }
 
             string storedProcedure = "usp_SelectAll" + TableName;
-            return Converter.FromTable(Executer.Execute(storedProcedure));
+            return Executer.Execute<T>(storedProcedure,Converter);
         }
 
         public virtual T GetById(int? id)
@@ -53,7 +52,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            return Converter.FromTable(Executer.Execute(storedProcedure)).FirstOrDefault();
+            return Executer.Execute<T>(storedProcedure,Converter).FirstOrDefault();
         }
 
         public virtual void Create(T item)

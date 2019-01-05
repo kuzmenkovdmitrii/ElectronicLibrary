@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+using System.Data.SqlClient;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
-using ElLib.DAL.Converters.Interface;
 
 namespace ElLib.DAL.Converters.Implementations
 {
     public class UserConverter : IConverter<User>
     {
-        public IEnumerable<User> FromTable(DataTable table)
+        public User FromReader(SqlDataReader reader)
         {
-            return table.AsEnumerable().Select(a => new User()
+            return new User()
             {
-                Id = (int)a["Id"],
-                Email = (string)a["Email"],
-                UserName = (string)a["UserName"]
-            }).ToList();
-        }
-
-        public IEnumerable<User> ToTable(User item)
-        {
-            throw new NotImplementedException();
+                Id = (int)reader["Id"],
+                Email = (string)reader["Email"],
+                UserName = (string)reader["UserName"]
+            };
         }
     }
 }

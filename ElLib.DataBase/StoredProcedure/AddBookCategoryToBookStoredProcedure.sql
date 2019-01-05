@@ -2,8 +2,8 @@
 GO
 
 CREATE PROC usp_AddBookCategoryToBook
-	@BookCategoryId int,
-	@BookId int
+	@BookId int,
+	@PublishingId int
 AS
-	INSERT BookAndBookCategory VALUES
-	(@BookCategoryId, @BookId)
+	INSERT BookAndPublishing VALUES
+	(@BookId, @PublishingId)

@@ -1,33 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Data.SqlClient;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
-using ElLib.DAL.Converters.Interface;
 
 namespace ElLib.DAL.Converters.Implementations
 {
     class PublishingConverter : IConverter<Publishing>
     {
-        public IEnumerable<Publishing> FromTable(DataTable table)
+        public Publishing FromReader(SqlDataReader reader)
         {
-            return table.AsEnumerable().Select(a => new Publishing()
+            return new Publishing()
             {
-                Id = (int) a["Id"],
-                Name = (string) a["Name"],
+                Id = (int)reader["Id"],
+                Name = (string)reader["Name"],
                 Address = new Address()
                 {
-                    Id = (int) a["AddressId"],
-                    Country = (string) a["AddressCountry"],
-                    City = (string) a["AddressCity"],
-                    Street = (string) a["AddressStreet"],
-                    Home = (string) a["AddressHome"],
+                    Id = (int)reader["AddressId"],
+                    Country = (string)reader["AddressCountry"],
+                    City = (string)reader["AddressCity"],
+                    Street = (string)reader["AddressStreet"],
+                    Home = (string)reader["AddressHome"],
                 }
-            }).ToList();
-        }
-
-        public IEnumerable<Publishing> ToTable(Publishing item)
-        {
-            throw new System.NotImplementedException();
+            };
         }
     }
 }

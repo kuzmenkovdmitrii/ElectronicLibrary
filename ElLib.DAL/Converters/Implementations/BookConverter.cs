@@ -1,35 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Security.Policy;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
-using ElLib.DAL.Converters.Interface;
 
 namespace ElLib.DAL.Converters.Implementations
 {
     public class BookConverter : IConverter<Book>
     {
-        public IEnumerable<Book> FromTable(DataTable table)
+        public Book FromReader(SqlDataReader reader)
         {
-            return table.AsEnumerable().Select(a => new Book()
+            return new Book()
             {
-                Id = (int) a["Id"],
-                Name = (string) a["Name"],
-                PublishingDate = (DateTime) a["PublishingDate"],
+                Id = (int) reader["Id"],
+                Name = (string) reader["Name"],
+                PublishingDate = (DateTime) reader["PublishingDate"],
                 Language = new Language()
                 {
-                    Id = (int) a["LanguageId"],
-                    Name = (string) a["LanguageName"]
+                    Id = (int) reader["LanguageId"],
+                    Name = (string) reader["LanguageName"]
                 },
-                Picture = new Url((string) a["Picture"]),
-                File = new Url((string) a["File"])
-            }).ToList();
-        }
-
-        public IEnumerable<Book> ToTable(Book item)
-        {
-            throw new NotImplementedException();
+                Picture = new Url((string) reader["Picture"]),
+                File = new Url((string) reader["File"])
+            };
         }
     }
 }

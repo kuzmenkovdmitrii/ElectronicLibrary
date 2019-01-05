@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using ElLib.Common.Converter;
 using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
-using ElLib.DAL.Converters.Interface;
+using ElLib.DAL.Converters.Implementations;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -29,7 +30,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            return Converter.FromTable(Executer.Execute(storedProcedure));
+            return Executer.Execute<Role>(storedProcedure,Converter);
         }
 
         public Role GetByName(string name)
@@ -38,7 +39,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Name", name));
 
-            return Converter.FromTable(Executer.Execute(storedProcedure)).FirstOrDefault();
+            return Executer.Execute<Role>(storedProcedure,Converter).FirstOrDefault();
         }
     }
 }

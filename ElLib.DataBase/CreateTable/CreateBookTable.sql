@@ -9,7 +9,7 @@ CREATE TABLE Books(
 	Id int PRIMARY KEY IDENTITY,
 	[Name] nvarchar(50) NOT NULL,
 	PublishingDate datetime NULL,
-	LanguageId int UNIQUE,
-	FileId int UNIQUE,
-	PictureId int UNIQUE,
+	LanguageId int,
+	FileId int,
+	PictureId int,
 );

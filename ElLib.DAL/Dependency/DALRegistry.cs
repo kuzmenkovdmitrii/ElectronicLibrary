@@ -1,7 +1,7 @@
-﻿using ElLib.Common.Entity;
+﻿using ElLib.Common.Converter;
+using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Converters.Implementations;
-using ElLib.DAL.Converters.Interface;
 using ElLib.DAL.Parameters.Implementations;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Implementations;
