@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using ElLib.Common.Converter;
 
 namespace ElLib.Common.ProcedureExecuter
 {
@@ -10,6 +10,8 @@ namespace ElLib.Common.ProcedureExecuter
         ICollection<SqlParameter> Parameters { get; set; }
 
         void ExecuteVoid(string storedProcedure);
-        DataTable Execute(string storedProcedure);
+
+        IEnumerable<T> Execute<T>(string storedProcedure, IConverter<T> converter)
+            where T : class;
     }
 }

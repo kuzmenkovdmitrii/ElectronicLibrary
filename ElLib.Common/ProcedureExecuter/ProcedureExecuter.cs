@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using ElLib.Common.Converter;
 
 namespace ElLib.Common.ProcedureExecuter
 {
@@ -39,31 +40,38 @@ namespace ElLib.Common.ProcedureExecuter
             }
         }
 
-        public DataTable Execute(string storedProcedure)
+        public IEnumerable<T> Execute<T>(string storedProcedure, IConverter<T> converter)
+            where T: class
         {
-            DataTable table;
-
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
                 {
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    DataSet ds = new DataSet();
-
                     connection.Open();
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddRange(Parameters.ToArray());
 
-                    da.SelectCommand = cmd;
                     try
                     {
-                        cmd.ExecuteNonQuery();
-                        da.Fill(ds);
-                        table = ds.Tables[0];
+                        //cmd.ExecuteNonQuery();
 
-                        return table;
+                        ICollection<T> list = new List<T>();
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                list.Add(converter.FromReader(reader));
+                            }
+                        }
+
+                        reader.Close();
+
+                        return list;
                     }
                     finally
                     {
