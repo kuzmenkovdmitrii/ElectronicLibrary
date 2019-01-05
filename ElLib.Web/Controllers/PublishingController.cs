@@ -20,13 +20,18 @@ namespace ElLib.Web.Controllers
             return View(publishingService.GetAll());
         }
 
-        public ActionResult Add()
+        public ActionResult Info(int id)
+        {
+            return View(publishingService.GetById(id));
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(CreatePublishingModel model)
+        public ActionResult Create(CreatePublishingModel model)
         {
             if (ModelState.IsValid)
             {

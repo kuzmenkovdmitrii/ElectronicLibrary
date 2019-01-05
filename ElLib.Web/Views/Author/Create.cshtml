@@ -13,7 +13,7 @@
                     <strong>Добавить автора</strong>
                 </h5>
                 <div class="card-body">
-                    @using (Html.BeginForm("Add", "Author", new { @class = "text-center", @style = "color: #757575;" }))
+                    @using (Html.BeginForm("Create", "Author", new { @class = "text-center", @style = "color: #757575;" }))
                     {
                         <div class="md-form mt-3">
                             @Html.TextBoxFor(x => x.Name, new

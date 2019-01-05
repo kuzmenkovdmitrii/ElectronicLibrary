@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ElLib.Common.Entity.Author>
+
+@foreach (var author in Model)
+{
+    <option value="@author.Id">@author.LastName @author.Name @author.MiddleName</option>
+}

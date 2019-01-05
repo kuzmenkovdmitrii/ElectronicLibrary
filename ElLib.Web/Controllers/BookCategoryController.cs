@@ -21,13 +21,18 @@ namespace ElLib.Web.Controllers
             return View(bookCategoryService.GetAll());
         }
 
-        public ActionResult Add()
+        public ActionResult Info(int id)
+        {
+            return View(bookCategoryService.GetById(id));
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(CreateBookCategoryModel model)
+        public ActionResult Create(CreateBookCategoryModel model)
         {
             if (ModelState.IsValid)
             {

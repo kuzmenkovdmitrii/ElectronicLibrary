@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ElLib.Common.Entity.Publishing>
+
+@foreach (var publishing in Model)
+{
+    <option value="@publishing.Id">@publishing.Name</option>
+}

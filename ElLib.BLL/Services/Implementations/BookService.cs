@@ -35,7 +35,7 @@ namespace ElLib.BLL.Services.Implementations
         public Book GetById(int id)
         {
             Book book = bookRepository.GetById(id);
-            book.Publishing = publishingRepository.GetPublishingsByBookId(id).ToList();
+            book.Publishings = publishingRepository.GetPublishingsByBookId(id).ToList();
             book.Authors = authorRepository.GetAuthorsByBookId(id).ToList();
             book.Categories = bookCategoryRepository.GetBookCategoriesByBookId(id).ToList();
             return book;
@@ -45,6 +45,7 @@ namespace ElLib.BLL.Services.Implementations
         {
             try
             {
+                item.PublishingDate = DateTime.Now;
                 bookRepository.Create(item);
                 return new OperationDetails(true, "Книга успешно создана");
             }

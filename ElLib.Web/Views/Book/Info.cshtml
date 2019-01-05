@@ -1,0 +1,79 @@
+﻿@model ElLib.Common.Entity.Book
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header info-color">
+                    <a class="btn-floating blue darken-3 float-right" style="height: 40px; width: 40px;margin: 0"><i class="fas fa-star"></i></a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6" style="width: 100%">
+                            <input type="hidden" value="" id="Picture" name="Picture" />
+                            <a href="@Model.Picture.Value">
+                                <img src="@Model.Picture.Value" alt="placeholder" class="img-fluid img-thumbnail">
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="grey-text float-right">Дата публикации:</div>
+                            <div class="grey-text float-right">@Model.PublishingDate.ToString("MM.dd.yyyy")</div>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-black-50">Название</th>
+                                    <td>@Model.Name</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-black-50">Язык</th>
+                                    <td>@Model.Language.Name</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-black-50">Категории</th>
+                                    <td>
+                                        @foreach (var category in Model.Categories)
+                                        {
+                                            <a class="btn-link" href="@Url.Action("Info", "BookCategory", new {id = category.Id})">@category.Name</a>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-black-50">Авторы</th>
+                                    <td>
+                                        @foreach (var author in Model.Authors)
+                                        {
+                                            <a class="btn-link" href="@Url.Action("Info", "Author", new {id = author.Id})">@author.LastName @author.Name @author.MiddleName</a>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-black-50">Издательства</th>
+                                    <td>
+                                        @foreach (var publishing in Model.Publishings)
+                                        {
+                                            <a class="btn-link" href="@Url.Action("Info", "Publishing", new {id = publishing.Id})">@publishing.Name</a>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-black-50">Документ</th>
+                                    <td>
+                                        <a type="button" href="@Model.File.Value" class="btn text-white info-color btn-sm btn-rounded">Скачать</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

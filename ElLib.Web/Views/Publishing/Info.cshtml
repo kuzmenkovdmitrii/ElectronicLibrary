@@ -1,0 +1,50 @@
+﻿@model ElLib.Common.Entity.Publishing
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header info-color">
+                    <a class="btn-floating blue darken-3 float-right" style="height: 40px; width: 40px;margin: 0"><i class="fas fa-star"></i></a>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-black-50">Название</th>
+                                <td>@Model.Name</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-black-50">Страна</th>
+                                <td>@Model.Address.Country</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-black-50">Город</th>
+                                <td>@Model.Address.City</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-black-50">Улица</th>
+                                <td>@Model.Address.Street</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-black-50">Дом</th>
+                                <td>@Model.Address.Home</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-black-50">Книги</th>
+                                <td>
+                                    <a type="button" href="@Url.Action("GetByPublishingId","Book")" class="btn text-white info-color btn-sm btn-rounded">Все книги издательства</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

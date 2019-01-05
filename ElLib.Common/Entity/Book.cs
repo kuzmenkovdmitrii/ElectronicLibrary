@@ -12,7 +12,7 @@ namespace ElLib.Common.Entity
         public ICollection<Author> Authors { get; set; }
         public DateTime PublishingDate { get; set; }
         public Language Language { get; set; }
-        public ICollection<Publishing> Publishing { get; set; }
+        public ICollection<Publishing> Publishings { get; set; }
         public Url Picture { get; set; }
         public Url File { get; set; }
     }

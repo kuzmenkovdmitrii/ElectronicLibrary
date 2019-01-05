@@ -20,13 +20,18 @@ namespace ElLib.Web.Controllers
             return View(authorService.GetAll());
         }
 
-        public ActionResult Add()
+        public ActionResult Info(int id)
+        {
+            return View(authorService.GetById(id));
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(CreateAuthorModel model)
+        public ActionResult Create(CreateAuthorModel model)
         {
             if (ModelState.IsValid)
             {

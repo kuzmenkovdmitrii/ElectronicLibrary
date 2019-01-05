@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Policy;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using ElLib.Common.Entity;
 
 namespace ElLib.Web.Models
 {
@@ -19,18 +15,22 @@ namespace ElLib.Web.Models
 
         [Display(Name = "Категории")]
         [Required(ErrorMessage = "Поле категории не может быть пустым")]
-        public ICollection<BookCategory> Categories { get; set; }
+        public int[] Categories { get; set; }
 
         [Display(Name = "Авторы")]
         [Required(ErrorMessage = "Поле авторы не может быть пустым")]
-        public ICollection<Author> Authors { get; set; }
+        public int[] Authors { get; set; }
 
         [Display(Name = "Язык")]
-        [Required(ErrorMessage = "Поле язык не может быть пустым")]
-        public Language Language { get; set; }
+        [Required(ErrorMessage = "Поле язык публикации не может быть пустым")]
+        public int Language { get; set; }
 
-        [Display(Name = "Издательсво")]
-        [Required(ErrorMessage = "Поле издательство не может быть пустым")]
-        public ICollection<Publishing> Publishing { get; set; }
+        [Display(Name = "Издательсва")]
+        [Required(ErrorMessage = "Поле издательства не может быть пустым")]
+        public int[] Publishings { get; set; }
+
+        public string File { get; set; }
+
+        public string Picture { get; set; }
     }
 }

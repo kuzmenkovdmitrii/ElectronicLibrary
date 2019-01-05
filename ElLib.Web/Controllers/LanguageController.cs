@@ -20,13 +20,13 @@ namespace ElLib.Web.Controllers
             return View(languageService.GetAll());
         }
 
-        public ActionResult Add()
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(CreateLanguageModel model)
+        public ActionResult Create(CreateLanguageModel model)
         {
             if (ModelState.IsValid)
             {

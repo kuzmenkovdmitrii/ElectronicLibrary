@@ -256,17 +256,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-    <Content Include="Views\Author\Add.cshtml" />
+    <Content Include="Views\Author\Create.cshtml" />
     <Content Include="Views\Author\Edit.cshtml" />
     <Content Include="Views\Author\All.cshtml" />
-    <Content Include="Views\BookCategory\Add.cshtml" />
+    <Content Include="Views\BookCategory\Create.cshtml" />
     <Content Include="Views\BookCategory\Edit.cshtml" />
     <Content Include="Views\BookCategory\All.cshtml" />
     <Content Include="Views\Language\All.cshtml" />
-    <Content Include="Views\Language\Add.cshtml" />
+    <Content Include="Views\Language\Create.cshtml" />
     <Content Include="Views\Language\Edit.cshtml" />
     <Content Include="Views\Publishing\All.cshtml" />
-    <Content Include="Views\Publishing\Add.cshtml" />
+    <Content Include="Views\Publishing\Create.cshtml" />
     <Content Include="Views\Publishing\Edit.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -278,13 +278,17 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\AdminPage\Index.cshtml" />
-    <Content Include="Views\Book\Add.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
     <Content Include="Views\Book\All.cshtml" />
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\BookCategory\AllCategoriesForSelect.cshtml" />
     <Content Include="Views\Author\AllAuthorsForSelect.cshtml" />
     <Content Include="Views\Publishing\AllPublishingsForSelect.cshtml" />
     <Content Include="Views\Language\AllLanguagesForSelect.cshtml" />
+    <Content Include="Views\Book\Info.cshtml" />
+    <Content Include="Views\Author\Info.cshtml" />
+    <Content Include="Views\BookCategory\Info.cshtml" />
+    <Content Include="Views\Publishing\Info.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
