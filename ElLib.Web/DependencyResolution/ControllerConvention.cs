@@ -36,7 +36,14 @@ namespace ElLib.Web.DependencyResolution {
 
         public void ScanTypes(TypeSet types, Registry registry)
         {
-            throw new NotImplementedException();
+            var typeList = types.AllTypes();
+            foreach (var type in typeList)
+            {
+                if (type.CanBeCastTo<Controller>() && !type.IsAbstract)
+                {
+                    registry.For(type).LifecycleIs(new UniquePerRequestLifecycle());
+                }
+            }
         }
 
         #endregion

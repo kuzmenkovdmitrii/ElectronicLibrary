@@ -20,8 +20,13 @@ namespace ElLib.Web.DependencyResolution {
     using StructureMap;
 	
     public static class IoC {
-        public static IContainer Initialize() {
-            return new Container(c => c.AddRegistry<ElLib.Dependency.DefaultRegistry>());
+        public static IContainer Initialize()
+        {
+            return new Container(c =>
+            {
+                c.AddRegistry<ElLib.Dependency.DefaultRegistry>();
+                c.AddRegistry<ElLib.Web.DependencyResolution.DefaultRegistry>();
+            });
         }
     }
 }

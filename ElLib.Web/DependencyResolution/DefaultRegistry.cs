@@ -15,6 +15,9 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Security.Cryptography.X509Certificates;
+using ElLib.Web.Controllers;
+
 namespace ElLib.Web.DependencyResolution {
     using StructureMap;
     using StructureMap.Configuration.DSL;
