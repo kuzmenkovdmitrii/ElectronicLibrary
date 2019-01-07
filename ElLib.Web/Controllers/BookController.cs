@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Policy;
-using System.Web;
 using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
+using ElLib.Common.Mapper;
 using ElLib.Web.Models;
 
 namespace ElLib.Web.Controllers
@@ -74,7 +72,26 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id = 15)
+        {
+            Book book = bookService.GetById(id);
+            EditBookModel model = new EditBookModel()
+            {
+                Id = id,
+                Name = book.Name,
+                Language = book.Language.Id,
+                Authors = book.Authors.Select(x => x.Id).ToArray(),
+                Categories = book.Categories.Select(x => x.Id).ToArray(),
+                Publishings = book.Publishings.Select(x => x.Id).ToArray(),
+                File = book.File.Value,
+                Picture = book.Picture.Value
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditAuthorModel model)
         {
             return View();
         }

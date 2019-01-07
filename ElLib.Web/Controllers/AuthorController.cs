@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -18,6 +19,11 @@ namespace ElLib.Web.Controllers
         public ActionResult All()
         {
             return View(authorService.GetAll());
+        }
+
+        public IEnumerable<Author> GetAll()
+        {
+            return authorService.GetAll();
         }
 
         public ActionResult Info(int id)
@@ -71,7 +77,7 @@ namespace ElLib.Web.Controllers
             return RedirectToAction("All");
         }
 
-        public ActionResult AllAuthorsForSelect()
+        public ActionResult AllAuthorsForSelect(int[] changed)
         {
             return PartialView(authorService.GetAll());
         }

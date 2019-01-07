@@ -5,5 +5,182 @@
     Layout = "~/Views/Shared/_Main.cshtml";
 }
 
-<h2>Edit</h2>
+<script>
+    $(document).ready(function () {
+        $(".js-example-basic-multiple").select2();
+    });
 
+    $(document).ready(function () {
+        $("#Authors").select2({
+            placeholder: 'Авторы',
+            multiple: true
+        });
+        $("#Categories").select2({
+            placeholder: 'Жанры',
+            multiple: true
+        });
+        $("#Language").select2();
+        $("#Publishings").select2({
+            placeholder: 'Издательства',
+            multiple: true
+        });
+    });
+
+    $(document).ready(function () {
+        var changedAuthors = @Html.Raw(Json.Encode(Model.Authors));
+        $("#Authors").val(changedAuthors).trigger("change");
+
+        var changedPublishings = @Html.Raw(Json.Encode(Model.Publishings));
+        $("#Publishings").val(changedPublishings).trigger("change");
+
+        var changedCategories = @Html.Raw(Json.Encode(Model.Categories));
+        $("#Categories").val(changedCategories).trigger("change");
+
+        var changedLanguage = @Html.Raw(Json.Encode(Model.Language));
+        $("#Language").val(changedLanguage).trigger("change");
+    });
+
+    function changeDoc(file) {
+        var filename = getFileName(file);
+        $('#docLabel').val(filename);
+
+        $.ajax({
+            url: '@Url.Action("UploadDocument", "Book")',
+            data: 'path=' + file.value,
+            type: 'post',
+            beforeSend: function () {
+                $('#docLoader').addClass('active');
+            },
+            success: function (result) {
+                $('#File').attr('value', result);
+                $('#docLoader').removeClass('active');
+            },
+            fail: function () {
+                alert("error");
+            }
+        });
+    };
+
+</script>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-7">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Создать книгу</strong>
+                </h5>
+                <div class="card-body">
+                    @using (Html.BeginForm("Create", "Book"))
+                    {
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="md-form mt-1" style="width: 100%">
+                                    @if (Model.Picture == null)
+                                    {
+                                        <img src="https://pp.userapi.com/c847122/v847122515/167f5e/hyllwQKEV4g.jpg" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%"/>
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.Picture" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%"/>
+
+                                    }
+                                    <input type="hidden" value="" id="Picture" name="Picture"/>
+                                </div>
+
+                                <div class="md-form" style="width: 100%">
+                                    <div class="file-field">
+                                        <div class="btn info-color btn-sm" style="width: 100%">
+                                            <span>Выберите новую обложку</span>
+                                            <input type="file" onchange="changePicture(this)">
+                                        </div>
+                                        <div class="float-right preloader-wrapper small float-left" id="pictureLoader">
+                                            <div class="spinner-layer spinner-blue-only">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" id="pictureLabel" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="md-form">
+                                @Html.TextBoxFor(x => x.Name, new
+                                {
+                                   @class = "form-control",
+                                   @placeholder = @Html.DisplayNameFor(x => x.Name),
+                                   @style = "width: 100%;"
+                                })
+                                </div>
+
+                                <div class="md-form authors">
+                                    <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Authors" name="Authors">
+                                        @Html.Action("AllAuthorsForSelect", "Author")
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="md-form mt-1">
+                                    <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Categories" name="Categories">
+                                        @Html.Action("AllCategoriesForSelect", "BookCategory")
+                                    </select>
+                                </div>
+
+                                <div class="md-form">
+                                    <select class="browser-default form-control" style="width: 100%; height: 35px!important" id="Language" name="Language">
+                                        <option selected disabled>Язык</option>
+                                        @Html.Action("AllLanguagesForSelect", "Language")
+                                    </select>
+                                </div>
+
+                                <div class="md-form">
+                                    <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Publishings" name="Publishings">
+                                        @Html.Action("AllPublishingsForSelect", "Publishing")
+                                    </select>
+                                </div>
+
+                                <div class="md-form">
+                                    <div class="file-field">
+                                        <a class="btn-floating btn-md info-color lighten-1 mt-0 float-left">
+                                            <i class="far fa-file-alt"></i>
+                                            <input type="file" onchange="changeDoc(this)">
+                                        </a>
+                                        <div class="float-right preloader-wrapper small float-left" id="docLoader">
+                                            <div class="spinner-layer spinner-blue-only">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate disabled" id="docLabel" type="text" placeholder="Выберите новый файл книги">
+                                            <input type="hidden" value="" id="File" name="File" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="justify-content-md-center">
+                            <input type="submit" class="btn btn-outline-info btn-rounded" value="Добавить" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
