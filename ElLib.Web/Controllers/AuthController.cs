@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using ElLib.BLL.Authentication;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -19,12 +18,12 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult Registration()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -46,7 +45,7 @@ namespace ElLib.Web.Controllers
                     ModelState.AddModelError(result.Property, result.Message);
                 }
             }
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]
@@ -67,7 +66,7 @@ namespace ElLib.Web.Controllers
                 }
             }
 
-            return View(model);
+            return PartialView(model);
         }
 
         public async Task<ActionResult> Logout()

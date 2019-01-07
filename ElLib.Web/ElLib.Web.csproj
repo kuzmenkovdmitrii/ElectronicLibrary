@@ -246,6 +246,7 @@
     <Compile Include="Models\EditPublishingModel.cs" />
     <Compile Include="Models\LoginUserModel.cs" />
     <Compile Include="Models\RegisterUserModel.cs" />
+    <Compile Include="Models\SearchBooksParametersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

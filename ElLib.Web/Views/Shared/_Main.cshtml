@@ -15,6 +15,8 @@
 }
 <!DOCTYPE html>
 
+
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -27,12 +29,41 @@
     <script src="~/Scripts/popper.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/mdb.js"></script>
-    
+
     <link href="~/Content/css/select2.css" rel="stylesheet" />
     <script src="~/Scripts/select2.js"></script>
 </head>
 <body>
+    <script>
+        function loginClick() {
+            var url = $('#modalLoginForm').data('url');
+
+            $.get(url, function (data) {
+                    $('#loginContainer').html(data);
+                    $('#modalLoginForm').modal('show');
+            });
+        };
+
+        function registrationClick() {
+            var url = $('#modalRegistrationForm').data('url');
+            $.get(url, function (data) {
+                    $('#registrationContainer').html(data);
+                    $('#modalRegistrationForm').modal('show');
+            });
+        };
+    </script>
     <nav class="mb-1 navbar navbar-expand-sm navbar-dark info-color">
+
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true" data-url="@Url.Action("Login","Auth")">
+            <div id="loginContainer">
+            </div>
+        </div>
+        
+        <div class="modal fade" id="modalRegistrationForm" tabindex="-1" role="dialog" aria-labelledby="registrationModal" aria-hidden="true" data-url="@Url.Action("Registration","Auth")">
+            <div id="registrationContainer">
+            </div>
+        </div>
+
         <div class="container-fluid">
             @*<div class="float-left">
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
@@ -81,12 +112,12 @@
                                         <strong>@user.UserName (@user.Role)</strong>
                                     </h5>
                                 </div>
-                                <a class="dropdown-item" href="@Url.Action("Profile", "Account")">Профиль</a>
+                                <a class="dropdown-item" href="@Url.Action("Profile", "Account")" data-toggle="modal" data-target="#loginModal">Профиль</a>
                             }
                             else
                             {
-                                <a class="dropdown-item" href="@Url.Action("Login", "Home")">Вход</a>
-                                <a class="dropdown-item" href="@Url.Action("Registration", "Home")">Регистрация</a>
+                                <a class="dropdown-item" onclick="loginClick();">Вход</a>
+                                <a class="dropdown-item" onclick="registrationClick();">Регистрация</a>
                             }
 
                             @if (user.IsInRole("Admin"))
@@ -99,6 +130,9 @@
             </div>
         </div>
     </nav>
+
+    <div id="loginModal">
+    </div>
     <div>
         @RenderBody()
     </div>
