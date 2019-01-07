@@ -291,6 +291,7 @@
     <Content Include="Views\Author\Info.cshtml" />
     <Content Include="Views\BookCategory\Info.cshtml" />
     <Content Include="Views\Publishing\Info.cshtml" />
+    <Content Include="Views\Author\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

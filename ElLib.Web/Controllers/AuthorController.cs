@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -53,7 +56,7 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View(Mapper.Map<Author,EditAuthorModel>(authorService.GetById(id)));
+            return View(Mapper.Map<Author, EditAuthorModel>(authorService.GetById(id)));
         }
 
         [HttpPost]
@@ -80,6 +83,21 @@ namespace ElLib.Web.Controllers
         public ActionResult AllAuthorsForSelect(int[] changed)
         {
             return PartialView(authorService.GetAll());
+        }
+
+        public ActionResult Search(string query)
+        {
+            if (query.IsEmpty())
+            {
+                query = "";
+            }
+            //var words = query.Split(' ');
+
+            return PartialView(authorService.GetAll().Where(
+                x => x.Name.Contains(query) ||
+                     x.LastName.Contains(query) ||
+                     x.MiddleName.Contains(query) ||
+                     x.Email.Contains(query)).ToList());
         }
     }
 }
