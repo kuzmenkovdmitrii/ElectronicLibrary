@@ -301,6 +301,7 @@
     <Content Include="Views\Role\AddRoleToUser.cshtml" />
     <Content Include="Views\Role\AllRolesForSelect.cshtml" />
     <Content Include="Views\User\AllUsersForSelect.cshtml" />
+    <Content Include="Views\Book\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
