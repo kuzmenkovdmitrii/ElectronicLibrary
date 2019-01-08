@@ -9,9 +9,17 @@
     <div class="row justify-content-md-center">
         <div class="col-lg-5">
             <div class="card">
-                <div class="card-header info-color">
-                    <a class="btn-floating blue darken-3 float-right" style="height: 40px; width: 40px;margin: 0"><i class="fas fa-star"></i></a>
-                </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="card-header info-color">
+                        <a class="btn-floating blue darken-3 float-right" style="height: 40px; width: 40px; margin: 0"><i class="fas fa-star"></i></a>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-header info-color py-4">
+                    </div>
+                }
                 <div class="card-body">
                         <table class="table">
                             <tbody>

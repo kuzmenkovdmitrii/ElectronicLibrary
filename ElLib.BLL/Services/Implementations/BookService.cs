@@ -32,7 +32,7 @@ namespace ElLib.BLL.Services.Implementations
             return bookRepository.GetAll();
         }
 
-        public Book GetById(int id)
+        public Book GetById(int? id)
         {
             Book book = bookRepository.GetById(id);
             book.Publishings = publishingRepository.GetPublishingsByBookId(id).ToList();

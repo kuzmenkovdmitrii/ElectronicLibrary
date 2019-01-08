@@ -21,7 +21,7 @@ namespace ElLib.BLL.Services.Implementations
             return addressRepository.GetAll();
         }
 
-        public Address GetById(int id)
+        public Address GetById(int? id)
         {
             return addressRepository.GetById(id);
         }

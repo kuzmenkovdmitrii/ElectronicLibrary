@@ -7,5 +7,6 @@ namespace ElLib.DAL.Repositories.Interfaces
     {
         IEnumerable<Role> GetByUserId(int? id);
         Role GetByName(string name);
+        void AddRoleToUser(User user, Role role);
     }
 }

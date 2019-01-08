@@ -21,7 +21,7 @@ namespace ElLib.BLL.Services.Implementations
             return bookCategoryRepository.GetAll();
         }
 
-        public BookCategory GetById(int id)
+        public BookCategory GetById(int? id)
         {
             return bookCategoryRepository.GetById(id);
         }

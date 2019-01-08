@@ -20,7 +20,7 @@ namespace ElLib.BLL.Services.Implementations
             return languageRepository.GetAll();
         }
 
-        public Language GetById(int id)
+        public Language GetById(int? id)
         {
             return languageRepository.GetById(id);
         }

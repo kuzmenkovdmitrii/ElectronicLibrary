@@ -48,7 +48,7 @@ namespace ElLib.BLL.Services.Implementations
 
             Role defaultRole = roleRepository.GetByName("User");
 
-            userRepository.AddRoleToUser(createdUser, defaultRole);
+            roleRepository.AddRoleToUser(createdUser, defaultRole);
 
             return new OperationDetails(true, "Пользователь успешно зарегистрирован");
         }

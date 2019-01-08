@@ -26,7 +26,7 @@ namespace ElLib.BLL.Services.Implementations
             return publishingRepository.GetPublishingsByBookId(id);
         }
 
-        public Publishing GetById(int id)
+        public Publishing GetById(int? id)
         {
             return publishingRepository.GetById(id);
         }

@@ -17,7 +17,8 @@ namespace ElLib.BLL.Dependency
             For<IMarketingService>().Singleton().Use<MarketingService>();
             For<IPublishingService>().Singleton().Use<PublishingService>();
             For<IUploadService>().Singleton().Use<UploadService>();
-
+            For<IUserService>().Singleton().Use<UserService>();
+            For<IRoleService>().Singleton().Use<RoleService>();
         }
     }
 }

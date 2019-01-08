@@ -7,7 +7,7 @@ namespace ElLib.BLL.Services.Interfaces
         where T: class
     {
         IEnumerable<T> GetAll();
-        T GetById(int id);
+        T GetById(int? id);
         OperationDetails Create(T item);
         OperationDetails Update(T item);
         OperationDetails Delete(int id);

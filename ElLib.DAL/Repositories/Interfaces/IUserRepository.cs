@@ -9,6 +9,5 @@ namespace ElLib.DAL.Repositories.Interfaces
         string GetPassword(int? id);
         User GetByUserName(string userName);
         User GetByEmail(string email);
-        void AddRoleToUser(User user, Role role);
     }
 }

@@ -41,5 +41,15 @@ namespace ElLib.DAL.Repositories.Implementations
 
             return Executer.Execute<Role>(storedProcedure,Converter).FirstOrDefault();
         }
+
+        public void AddRoleToUser(User user, Role role)
+        {
+            string storedProcedure = "usp_AddRoleToUser";
+
+            Executer.Parameters.Add(new SqlParameter("@UserId", user.Id));
+            Executer.Parameters.Add(new SqlParameter("@RoleId", role.Id));
+
+            Executer.ExecuteVoid(storedProcedure);
+        }
     }
 }
