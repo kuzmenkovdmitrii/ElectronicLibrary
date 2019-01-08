@@ -32,7 +32,6 @@ input[type="button"].stretch {
     margin: 10px 0px 10px 0px !important;
 }
 
-/* CSS used here will be applied after bootstrap.css */
 .row {
     margin-left: 0px;
     margin-right: 0px;
@@ -55,13 +54,10 @@ input[type="button"].stretch {
     transition: all .4s ease 0s;
 }
 
-#wrapper.active {
-    padding-left: 300px;
-}
 
-    #wrapper.active #sidebar-wrapper {
-        left: 300px;
-    }
+#wrapper.active #sidebar-wrapper {
+    left: 300px;
+}
 
 #sidebar_menu li a, .sidebar-nav li a {
     color: #999;
@@ -77,25 +73,4 @@ input[type="button"].stretch {
     -o-transition: background .5s;
     -ms-transition: background .5s;
     transition: background .5s;
-}
-
-@media (max-width:767px) {
-    #wrapper {
-        padding-left: 70px;
-        transition: all .4s ease 0s;
-    }
-
-    #sidebar-wrapper {
-        left: 70px;
-    }
-
-    #wrapper.active {
-        padding-left: 150px;
-    }
-
-        #wrapper.active #sidebar-wrapper {
-            left: 150px;
-            width: 300px;
-            transition: all .4s ease 0s;
-        }
 }
