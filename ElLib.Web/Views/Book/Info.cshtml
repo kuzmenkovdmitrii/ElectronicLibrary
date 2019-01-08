@@ -11,14 +11,16 @@
             <div class="card">
                 @if (User.IsInRole("Admin"))
                 {
-                    <div class="card-header info-color">
-                        <a class="btn-floating blue darken-3 float-right" style="height: 40px; width: 40px; margin: 0"><i class="fas fa-star"></i></a>
-                    </div>
+                    <h5 class="card-header info-color white-text text-center py-3">
+                        <strong>Подробная информация</strong>
+                        <a class="btn-floating blue darken-3 float-right" style="height: 30px; width: 30px; margin: 0" href="@Url.Action("Edit","Book", new {id = @Model.Id})"><i class="fas fa-star"></i></a>
+                    </h5>
                 }
                 else
                 {
-                    <div class="card-header info-color py-4">
-                    </div>
+                    <h5 class="card-header info-color white-text text-center py-3">
+                        <strong>Подробная информация</strong>
+                    </h5>
                 }
                 <div class="card-body">
                     <div class="row">
@@ -49,7 +51,7 @@
                                     <td>
                                         @foreach (var category in Model.Categories)
                                         {
-                                            <a class="btn-link" href="@Url.Action("Info", "BookCategory", new {id = category.Id})">@category.Name</a>
+                                            <a class="btn-link black-text" href="@Url.Action("Info", "BookCategory", new {id = category.Id})">@category.Name</a>
                                         }
                                     </td>
                                 </tr>
@@ -58,7 +60,7 @@
                                     <td>
                                         @foreach (var author in Model.Authors)
                                         {
-                                            <a class="btn-link" href="@Url.Action("Info", "Author", new {id = author.Id})">@author.LastName @author.Name @author.MiddleName</a>
+                                            <a class="btn-link black-text" href="@Url.Action("Info", "Author", new {id = author.Id})">@author.LastName @author.Name @author.MiddleName</a>
                                         }
                                     </td>
                                 </tr>
@@ -67,7 +69,7 @@
                                     <td>
                                         @foreach (var publishing in Model.Publishings)
                                         {
-                                            <a class="btn-link" href="@Url.Action("Info", "Publishing", new {id = publishing.Id})">@publishing.Name</a>
+                                            <a class="btn-link black-text" href="@Url.Action("Info", "Publishing", new {id = publishing.Id})">@publishing.Name</a>
                                         }
                                     </td>
                                 </tr>

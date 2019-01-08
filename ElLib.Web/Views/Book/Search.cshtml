@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ElLib.Common.Entity.Book>
+
+@foreach (var book in Model)
+{
+    <div class="card" style="margin: 15px 0px 15px 0">
+        <div class="card-body">
+            <div class="float-left" style="width: 200px">
+                <img class="img-fluid img-thumbnail" style="max-height: 150px" src="@book.Picture.Value" alt="Card image cap">
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <a class="alert-link" href="@Url.Action("Info", "Book", new {id = book.Id})">
+                            <h4 class="h4-responsive black-text">@book.Name</h4>
+                        </a>
+                        Писатели:
+                        @foreach (var author in book.Authors)
+                        {
+                            <a class="btn-link black-text" href="@Url.Action("Info", "Author", new {id = author.Id})">@author.LastName @author.Name @author.MiddleName</a>
+                        }
+                    </div>
+                    <div>
+                        Жанры:
+                        @foreach (var category in book.Categories)
+                        {
+                            <a class="btn-link black-text" href="@Url.Action("Info", "BookCategory", new {id = category.Id})">@category.Name</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

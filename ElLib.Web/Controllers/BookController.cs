@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Policy;
 using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
@@ -18,7 +19,7 @@ namespace ElLib.Web.Controllers
         readonly IUploadService uploadService;
 
         public BookController(
-            IBookService bookService, 
+            IBookService bookService,
             ILanguageService languageService,
             IPublishingService publishingService,
             IAuthorService authorService,
@@ -38,7 +39,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
-        public ActionResult Info(int id = 15)
+        public ActionResult Info(int id)
         {
             return View(bookService.GetById(id));
         }
@@ -72,7 +73,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
-        public ActionResult Edit(int id = 15)
+        public ActionResult Edit(int id)
         {
             Book book = bookService.GetById(id);
             EditBookModel model = new EditBookModel()
@@ -110,6 +111,97 @@ namespace ElLib.Web.Controllers
             //byte[] infoInBytes = new byte[picture.ContentLength];
             //picture.InputStream.Read(infoInBytes, 0, picture.ContentLength);
             return uploadService.UploadDocument(path);
+        }
+
+        public ActionResult Search(SearchBooksParametersModel model)
+        {
+            if (string.IsNullOrEmpty(model.Query))
+            {
+                model.Query = "";
+            }
+
+            IEnumerable<Book> list = bookService.GetAll().Where(x => x.Name.Contains(model.Query)).ToList();
+
+
+            if (list == null)
+            {
+                return PartialView(list);
+            }
+
+            if (model.Publishings != null)
+            {
+                ICollection<Book> bufferList = new List<Book>();
+
+                foreach (var book in list)
+                {
+                    foreach (var publishing in book.Publishings)
+                    {
+                        if (model.Publishings.Contains(publishing.Id))
+                        {
+                            bufferList.Add(book);
+                        }
+                    }
+                }
+
+                bufferList = bufferList.Distinct().ToList();
+                list = bufferList.Intersect(bufferList);
+            }
+
+            if (model.Languages != null)
+            {
+                ICollection<Book> bufferList = new List<Book>();
+
+                foreach (var book in list)
+                {
+                    if (model.Languages.Contains(book.Language.Id))
+                    {
+                        bufferList.Add(book);
+                    }
+                }
+
+                bufferList = bufferList.Distinct().ToList();
+                list = bufferList.Intersect(bufferList);
+            }
+
+            if (model.Authors != null)
+            {
+                ICollection<Book> bufferList = new List<Book>();
+
+                foreach (var book in list)
+                {
+                    foreach (var author in book.Authors)
+                    {
+                        if (model.Authors.Contains(author.Id))
+                        {
+                            bufferList.Add(book);
+                        }
+                    }
+                }
+
+                bufferList = bufferList.Distinct().ToList();
+                list = bufferList.Intersect(bufferList);
+            }
+
+            if (model.Categories != null)
+            {
+                ICollection<Book> bufferList = new List<Book>();
+
+                foreach (var book in list)
+                {
+                    foreach (var category in book.Categories)
+                    {
+                        if (model.Categories.Contains(category.Id))
+                        {
+                            bufferList.Add(book);
+                        }
+                    }
+                }
+
+                bufferList = bufferList.Distinct().ToList();
+                list = bufferList.Intersect(bufferList);
+            }
+
+            return PartialView(list);
         }
     }
 }

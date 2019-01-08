@@ -5,5 +5,104 @@
     Layout = "~/Views/Shared/_Main.cshtml";
 }
 
-<h2>All</h2>
+<script>
+    $(document).ready(function () {
+        $("#Categories").select2({
+            placeholder: 'Жанры'
+        });
+        $("#Authors").select2({
+            placeholder: 'Авторы'
+        });
+        $("#Languages").select2({
+            placeholder: 'Языки'
+        });
+        $("#Publishings").select2({
+            placeholder: 'Издательства'
+        });
+    });
 
+    $(document).ready(function () {
+        $("#Query").on("input", function (e) {
+            var model = getModel();
+            searchAjax(model);
+        });
+
+        $('.js-example-basic-multiple').on("change", function(e) { 
+            var model = getModel();
+            searchAjax(model);
+            console.log(model);
+        });
+    });
+
+    function getModel() {
+        return {
+            Query: $("#Query").val(),
+            Languages: $('#Languages').val(),
+            Publishings: $('#Publishings').val(),
+            Categories: $('#Categories').val(),
+            Authors: $('#Authors').val()
+        };
+    }
+
+    function searchAjax(model) {
+        $.ajax({
+            url: '@Url.Action("Search", "Book")',
+            data: model,
+            type: 'post',
+            success: function (result) {
+                $('#results').html(result);
+            }
+        });
+    }
+</script>
+
+<div class="container" style="margin-bottom: 15px;margin-top:15px">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Книги</strong>
+                </h5>
+                <div class="card-body">
+                    <div class="form-inline md-form">
+                        <input class="form-control" id="Query" name="Query" style="margin: 0px 15px -20px 15px; width: 100%" type="text" placeholder="Поиск" aria-label="Поиск">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </div>
+                    <div id="results">
+                        @Html.Action("Search", "Book")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Фильтр</strong>
+                </h5>
+                <div class="card-body">
+
+                    <div class="md-form">
+                        <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Authors" name="Authors">
+                            @Html.Action("AllAuthorsForSelect", "Author")
+                        </select>
+                    </div>
+                    <div class="md-form mt-1">
+                        <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Categories" name="Categories">
+                            @Html.Action("AllCategoriesForSelect", "BookCategory")
+                        </select>
+                    </div>
+                    <div class="md-form">
+                        <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Languages" name="Languages">
+                            @Html.Action("AllLanguagesForSelect", "Language")
+                        </select>
+                    </div>
+                    <div class="md-form">
+                        <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Publishings" name="Publishings">
+                            @Html.Action("AllPublishingsForSelect", "Publishing")
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

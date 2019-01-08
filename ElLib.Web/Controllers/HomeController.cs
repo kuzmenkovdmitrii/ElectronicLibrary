@@ -22,7 +22,7 @@ namespace ElLib.Web.Controllers
 
         public ActionResult AdminPage()
         {
-            return RedirectToAction("Index", "AdminPage");
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

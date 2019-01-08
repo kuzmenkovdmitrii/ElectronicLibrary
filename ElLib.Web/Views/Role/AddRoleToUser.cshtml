@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<script>
+
+    $(document).ready(function () {
+        $("#role").select2();
+        $("#user").select2();
+    });
+</script>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Добавление роли для пользователя</strong>
+                </h5>
+                <div class="card-body">
+                    @using (Html.BeginForm("AddRoleToUser", "Role"))
+                    {
+                        <div class="md-form mt-1">
+                            <select class="browser-default form-control" id="user" name="user" style="width: 100%">
+                                <option selected disabled>Пользователи</option>
+                                @Html.Action("AllUsersForSelect", "User")
+                            </select>
+                        </div>
+                        <div class="md-form">
+                            <select class="browser-default js-example-basic form-control" id="role" name="role" style="width: 100%">
+                                <option selected disabled>Роли</option>
+                                @Html.Action("AllRolesForSelect", "Role")
+                            </select>
+                        </div>
+                        <div class="justify-content-md-center">
+                            <input type="submit" class="btn btn-outline-info btn-rounded" value="Добавить" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -29,7 +29,16 @@ namespace ElLib.BLL.Services.Implementations
 
         public IEnumerable<Book> GetAll()
         {
-            return bookRepository.GetAll();
+            IEnumerable<Book> books = bookRepository.GetAll();
+
+            foreach (var book in books)
+            {
+                book.Publishings = publishingRepository.GetPublishingsByBookId(book.Id).ToList();
+                book.Authors = authorRepository.GetAuthorsByBookId(book.Id).ToList();
+                book.Categories = bookCategoryRepository.GetBookCategoriesByBookId(book.Id).ToList();
+            }
+
+            return books;
         }
 
         public Book GetById(int? id)

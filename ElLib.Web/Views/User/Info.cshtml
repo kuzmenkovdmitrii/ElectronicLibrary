@@ -1,0 +1,32 @@
+﻿@model ElLib.Common.Entity.User
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-5">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Подробная информация</strong>
+                </h5>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th scope="row" class="text-black-50">Пользователь</th>
+                            <td>@Model.UserName</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Email</th>
+                            <td>@Model.Email</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
