@@ -6,7 +6,7 @@ namespace ElLib.Web.Models
     {
         [Display(Name = "Логин")]
         [Required(ErrorMessage = "Поле логин не может быть пустым")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "Не верная длина")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "Не верная длина логина")]
         public string UserName { get; set; }
 
         [Display(Name = "Пароль")]

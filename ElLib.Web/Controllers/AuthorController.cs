@@ -50,7 +50,7 @@ namespace ElLib.Web.Controllers
             }
             else
             {
-                return View(model);
+                return View();
             }
         }
 

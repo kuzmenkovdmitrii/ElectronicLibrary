@@ -12,7 +12,7 @@ namespace ElLib.Web.Models
         [Display(Name = "Пароль")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Поле пароль не может быть пустым")]
         [DataType(DataType.Password)]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "Пароль не может быть длиной менее 6 символов")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Пароль не может быть менее 6 символов")]
         public string Password { get; set; }
 
         [Display(Name = "Повторите пароль")]

@@ -116,6 +116,7 @@
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\mdb.css" />
     <Content Include="Content\mdb.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -227,6 +228,7 @@
     <Compile Include="Controllers\PublishingController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="CustomValidationAttributes\ArrayCountAttribute.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -235,7 +237,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChangedAuthorModel.cs" />
     <Compile Include="Models\CreateAuthorModel.cs" />
     <Compile Include="Models\CreateBookCategoryModel.cs" />
     <Compile Include="Models\CreateBookModel.cs" />
