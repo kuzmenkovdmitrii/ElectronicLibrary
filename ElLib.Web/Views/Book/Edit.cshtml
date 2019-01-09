@@ -71,7 +71,7 @@
                     <strong>Создать книгу</strong>
                 </h5>
                 <div class="card-body">
-                    @using (Html.BeginForm("Create", "Book"))
+                    @using (Html.BeginForm("Edit", "Book"))
                     {
                         <div class="row">
                             <div class="col-md-5">
@@ -85,7 +85,7 @@
                                         <img src="@Model.Picture" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%" />
 
                                     }
-                                    <input type="hidden" value="" id="Picture" name="Picture" />
+                                    @Html.HiddenFor(x=>x.Picture)
                                 </div>
 
                                 <div class="md-form" style="width: 100%">
@@ -174,15 +174,16 @@
                                         </div>
                                         <div class="file-path-wrapper">
                                             <input class="file-path validate disabled" id="docLabel" type="text" placeholder="Выберите новый файл книги">
-                                            <input type="hidden" value="" id="File" name="File" />
                                         </div>
                                     </div>
+                                    @Html.HiddenFor(x => x.File)
+                                    @Html.ValidationMessageFor(x => x.File)
                                 </div>
                             </div>
                         </div>
                         @Html.ValidationSummary(true)
                         <div class="justify-content-md-center">
-                            <input type="submit" class="btn btn-outline-info btn-rounded" value="Добавить" />
+                            <input type="submit" class="btn btn-outline-info btn-rounded" value="Сохранить" />
                         </div>
                     }
                 </div>

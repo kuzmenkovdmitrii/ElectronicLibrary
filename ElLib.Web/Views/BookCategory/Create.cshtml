@@ -25,15 +25,12 @@
                         </div>
 
                         <div class="md-form">
-                            <textarea type="text" placeholder="@Html.DisplayNameFor(x=>x.Description)" id="Description" Name="Description" class="form-control md-textarea" rows="3"></textarea>
-                        </div>
-
-                        <div class="md-form mt-3">
-                            @Html.TextBoxFor(x=>x.Description, new
+                            @Html.TextAreaFor(x=>x.Description, new
                             {
-                                @class = "form-control",
+                                @class = "form-control md-textarea",
                                 @type = "textarea",
-                                @placeholder = @Html.DisplayNameFor(x => x.Description)
+                                @placeholder = @Html.DisplayNameFor(x => x.Description),
+                                @rows = "3"
                             })
                             @Html.ValidationMessageFor(x => x.Description)
                         </div>

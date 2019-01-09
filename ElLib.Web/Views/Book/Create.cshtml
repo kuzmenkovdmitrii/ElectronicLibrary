@@ -92,7 +92,7 @@
                             <div class="col-md-5">
                                 <div class="md-form mt-1" style="width: 100%">
                                     <img src="https://pp.userapi.com/c847122/v847122515/167f5e/hyllwQKEV4g.jpg" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%" />
-                                    <input type="hidden" value="" id="Picture" name="Picture" />
+                                    @Html.HiddenFor(x=>x.Picture)
                                 </div>
 
                                 <div class="md-form" style="width: 100%">
@@ -181,9 +181,9 @@
                                         </div>
                                         <div class="file-path-wrapper">
                                             <input class="file-path validate disabled" id="docLabel" type="text" placeholder="Выберите файл книги">
-                                            <input type="hidden" value="" id="File" name="File" />
                                         </div>
                                     </div>
+                                    @Html.HiddenFor(x => x.File)
                                     @Html.ValidationMessageFor(x => x.File)
                                 </div>
                             </div>
