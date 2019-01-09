@@ -30,6 +30,7 @@
                                 @placeholder = @Html.DisplayNameFor(x => x.Description)
                             })
                         </div>
+                        @Html.ValidationSummary(true)
                         <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Сохранить" />
                     }
                 </div>

@@ -13,7 +13,7 @@
                     <strong>Добавить категорию</strong>
                 </h5>
                 <div class="card-body">
-                    @using (Html.BeginForm("Create", "BookCategory", new { @class = "text-center", @style = "color: #757575;" }))
+                    @using (Html.BeginForm("Create", "BookCategory"))
                     {
                         <div class="md-form mt-3">
                             @Html.TextBoxFor(x => x.Name, new
@@ -21,6 +21,7 @@
                                 @class = "form-control",
                                 @placeholder = @Html.DisplayNameFor(x => x.Name)
                             })
+                            @Html.ValidationMessageFor(x => x.Name)
                         </div>
 
                         <div class="md-form">
@@ -34,7 +35,9 @@
                                 @type = "textarea",
                                 @placeholder = @Html.DisplayNameFor(x => x.Description)
                             })
+                            @Html.ValidationMessageFor(x => x.Description)
                         </div>
+                        @Html.ValidationSummary(true)
                         <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Добавить" />
                     }
                 </div>

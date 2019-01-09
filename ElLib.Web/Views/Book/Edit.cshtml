@@ -78,14 +78,14 @@
                                 <div class="md-form mt-1" style="width: 100%">
                                     @if (Model.Picture == null)
                                     {
-                                        <img src="https://pp.userapi.com/c847122/v847122515/167f5e/hyllwQKEV4g.jpg" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%"/>
+                                        <img src="https://pp.userapi.com/c847122/v847122515/167f5e/hyllwQKEV4g.jpg" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%" />
                                     }
                                     else
                                     {
-                                        <img src="@Model.Picture" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%"/>
+                                        <img src="@Model.Picture" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%" />
 
                                     }
-                                    <input type="hidden" value="" id="Picture" name="Picture"/>
+                                    <input type="hidden" value="" id="Picture" name="Picture" />
                                 </div>
 
                                 <div class="md-form" style="width: 100%">
@@ -114,18 +114,20 @@
                                 </div>
 
                                 <div class="md-form">
-                                @Html.TextBoxFor(x => x.Name, new
-                                {
-                                   @class = "form-control",
-                                   @placeholder = @Html.DisplayNameFor(x => x.Name),
-                                   @style = "width: 100%;"
-                                })
+                                    @Html.TextBoxFor(x => x.Name, new
+                                    {
+                                        @class = "form-control",
+                                        @placeholder = @Html.DisplayNameFor(x => x.Name),
+                                        @style = "width: 100%;"
+                                    })
+                                    @Html.ValidationMessageFor(x => x.Name)
                                 </div>
 
                                 <div class="md-form authors">
                                     <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Authors" name="Authors">
                                         @Html.Action("AllAuthorsForSelect", "Author")
                                     </select>
+                                    @Html.ValidationMessageFor(x => x.Authors)
                                 </div>
                             </div>
                             <div class="col-md-7">
@@ -133,6 +135,7 @@
                                     <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Categories" name="Categories">
                                         @Html.Action("AllCategoriesForSelect", "BookCategory")
                                     </select>
+                                    @Html.ValidationMessageFor(x => x.Categories)
                                 </div>
 
                                 <div class="md-form">
@@ -140,12 +143,14 @@
                                         <option selected disabled>Язык</option>
                                         @Html.Action("AllLanguagesForSelect", "Language")
                                     </select>
+                                    @Html.ValidationMessageFor(x => x.Language)
                                 </div>
 
                                 <div class="md-form">
                                     <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Publishings" name="Publishings">
                                         @Html.Action("AllPublishingsForSelect", "Publishing")
                                     </select>
+                                    @Html.ValidationMessageFor(x => x.Publishings)
                                 </div>
 
                                 <div class="md-form">
@@ -175,6 +180,7 @@
                                 </div>
                             </div>
                         </div>
+                        @Html.ValidationSummary(true)
                         <div class="justify-content-md-center">
                             <input type="submit" class="btn btn-outline-info btn-rounded" value="Добавить" />
                         </div>

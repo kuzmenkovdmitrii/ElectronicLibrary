@@ -11,6 +11,7 @@
         $("#City").select2();
     });
 </script>
+
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="card">
@@ -26,28 +27,25 @@
                             @class = "form-control",
                             @placeholder = @Html.DisplayNameFor(x => x.Name)
                         })
+                        @Html.ValidationMessageFor(x => x.Name)
                     </div>
 
-                    <div class="md-form mt-3">
-                        <select class="browser-default form-control" style="width: 100%;height: 30px" id="Country" name="Country">
-                            <option selected disabled>Выберите страну</option>
-                            <option>Вейно</option>
-                            <option>Новоселки</option>
-                            <option>Вильчицы</option>
-                            <option>Лыково</option>
-                            <option>Вельница</option>
-                        </select>
+                    <div class="md-form">
+                        @Html.TextBoxFor(x => x.Address.Country, new
+                        {
+                            @class = "form-control",
+                            @placeholder = @Html.DisplayNameFor(x => x.Address.Country)
+                        })
+                        @Html.ValidationMessageFor(x => x.Address.Country)
                     </div>
 
-                    <div class="md-form mt-3">
-                        <select class="browser-default form-control" style="width: 100%;height: 30px" id="City" name="City">
-                            <option selected disabled>Выберите город</option>
-                            <option>Вейно</option>
-                            <option>Новоселки</option>
-                            <option>Вильчицы</option>
-                            <option>Лыково</option>
-                            <option>Вельница</option>
-                        </select>
+                    <div class="md-form">
+                        @Html.TextBoxFor(x => x.Address.City, new
+                        {
+                            @class = "form-control",
+                            @placeholder = @Html.DisplayNameFor(x => x.Address.City)
+                        })
+                        @Html.ValidationMessageFor(x => x.Address.City)
                     </div>
                     <div class="form-row">
                         <div class="col-md-8">
@@ -55,8 +53,9 @@
                                 @Html.TextBoxFor(x => x.Address.Street, new
                                 {
                                     @class = "form-control",
-                                    @placeholder = "Улица"
+                                    @placeholder = @Html.DisplayNameFor(x => x.Address.Street)
                                 })
+                                @Html.ValidationMessageFor(x => x.Address.Street)
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -64,12 +63,14 @@
                                 @Html.TextBoxFor(x => x.Address.Home, new
                                 {
                                     @class = "form-control",
-                                    @placeholder = "Дом"
+                                    @placeholder = @Html.DisplayNameFor(x => x.Address.Home)
                                 })
+                                @Html.ValidationMessageFor(x => x.Address.Home)
                             </div>
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Добавить" />
+                    @Html.ValidationSummary(true)
+                    <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Сохранить" />
                 }
             </div>
         </div>
