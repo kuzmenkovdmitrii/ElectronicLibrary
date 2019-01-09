@@ -6,6 +6,7 @@ using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
+using ElLib.Common.Exception;
 
 namespace ElLib.DAL.Repositories.Implementations
 {
@@ -25,10 +26,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public IEnumerable<Author> GetAuthorsByBookId(int? id)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(id);
 
             string storedProcedure = "usp_Select" + TableName + "ByBookId";
 

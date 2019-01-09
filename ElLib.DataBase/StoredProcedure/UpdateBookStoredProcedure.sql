@@ -1,19 +1,17 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC usp_UpdateBooks
+CREATE PROC usp_UpdateBook
 	@Id int, 
 	@Name nvarchar(25), 
 	@LanguageId nvarchar(25),
-	@PublishingDate datetime,
 	@Picture nvarchar(100), 
 	@File nvarchar(100)
 AS
 	UPDATE Books
 		SET 
 		[Name] = @Name,
-		LanguageId = @LanguageId,
-		PublishingDate = @PublishingDate
+		LanguageId = @LanguageId
 	WHERE Id = @id
 
 	DECLARE @FileId int
@@ -27,7 +25,7 @@ AS
 	DECLARE @PictureId int
 	SET @FileId = (SELECT PictureId FROM Books WHERE Id = @Id)
 
-	UPDATE Picture
+	UPDATE Pictures
 		SET
 		Link = @Picture
 	WHERE Id = @PictureId

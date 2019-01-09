@@ -53,6 +53,7 @@
     <Compile Include="Entity\Publishing.cs" />
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Exception\ThrowException.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="ProcedureExecuter\IProcedureExecuter.cs" />

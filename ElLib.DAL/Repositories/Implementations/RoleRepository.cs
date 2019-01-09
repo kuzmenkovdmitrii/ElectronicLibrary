@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
 using ElLib.Common.Entity;
+using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
@@ -25,6 +26,8 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public IEnumerable<Role> GetByUserId(int? id)
         {
+            ThrowException.CheckNull(id);
+
             string storedProcedure = "usp_Select" + TableName + "ByUserId";
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
@@ -34,6 +37,8 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public Role GetByName(string name)
         {
+            ThrowException.CheckNull(name);
+
             string storedProcedure = "usp_Select" + EntityName + "ByName";
 
             Executer.Parameters.Add(new SqlParameter("@Name", name));
@@ -43,6 +48,9 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public void AddRoleToUser(User user, Role role)
         {
+            ThrowException.CheckNull(user);
+            ThrowException.CheckNull(role);
+
             string storedProcedure = "usp_AddRoleToUser";
 
             Executer.Parameters.Add(new SqlParameter("@UserId", user.Id));

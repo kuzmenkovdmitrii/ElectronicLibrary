@@ -126,9 +126,7 @@
     <None Include="StoredProcedure\SelectUserByEmailStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectRolesByUserIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectRoleByNameStoredProcedure.sql" />
-    <None Include="StoredProcedure\RemoveAuthorFromBookStoredProcedure.sql" />
-    <None Include="StoredProcedure\RemovePublishingFromBookStoredProcedure.sql" />
-    <None Include="StoredProcedure\RemoveBookCategoryFromBookStoredProcedure.sql" />
+    <None Include="StoredProcedure\DeleteBookReferencesStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllAddressesStoredProcedure.sql" />

@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
 using ElLib.Common.Entity;
+using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
@@ -25,10 +26,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public User GetByUserName(string userName)
         {
-            if (string.IsNullOrEmpty(userName))
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(userName);
 
             string storedProcedure = "usp_Select" + EntityName + "ByUserName";
 
@@ -39,6 +37,9 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public void Create(User item, string password)
         {
+            ThrowException.CheckNull(item);
+            ThrowException.CheckNull(password);
+
             string storedProcedure = "usp_Create" + EntityName;
 
             Executer.Parameters = Parameters.GetParameters(item).Where(x => x.ParameterName != "@Id").ToList();
@@ -49,10 +50,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public string GetPassword(int? id)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(id);
 
             string storedProcedure = "usp_SelectPasswordByUserId";
 

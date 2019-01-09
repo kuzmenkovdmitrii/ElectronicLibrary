@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
 using ElLib.Common.Entity;
+using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
@@ -29,10 +30,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public override Book GetById(int? id)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(id);
 
             Book book = base.GetById(id);
 
@@ -41,6 +39,8 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public override void Create(Book item)
         {
+            ThrowException.CheckNull(item);
+
             string storedProcedure = "usp_Create" + EntityName;
 
             Executer.Parameters = Parameters.GetParameters(item).Where(x => x.ParameterName != "@Id").ToList();
@@ -63,12 +63,47 @@ namespace ElLib.DAL.Repositories.Implementations
             }
         }
 
+        public override void Update(Book item)
+        {
+            ThrowException.CheckNull(item);
+
+            {
+                string storedProcedure = "usp_Update" + EntityName;
+
+                Executer.Parameters = Parameters.GetParameters(item).Where(x => x.ParameterName != "@PublishingDate").ToList();
+
+                Executer.ExecuteVoid(storedProcedure);
+
+            }
+
+            {
+                string storedProcedure = "usp_DeleteBookReferences";
+
+                Executer.Parameters.Add(new SqlParameter("@Id", item.Id));
+
+                Executer.ExecuteVoid(storedProcedure);
+            }
+
+            foreach (var author in item.Authors)
+            {
+                AddAuthor(item, author);
+            }
+
+            foreach (var publishing in item.Publishings)
+            {
+                AddPublishing(item, publishing);
+            }
+
+            foreach (var category in item.Categories)
+            {
+                AddCategory(item, category);
+            }
+        }
+
         public void AddAuthor(Book book, Author author)
         {
-            if (book == null || author == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(book);
+            ThrowException.CheckNull(author);
 
             string storedProcedure = "usp_AddAuthorToBook";
 
@@ -80,10 +115,8 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public void AddPublishing(Book book, Publishing publishing)
         {
-            if (book == null || publishing == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(book);
+            ThrowException.CheckNull(publishing);
 
             string storedProcedure = "usp_AddPublishingToBook";
 
@@ -95,10 +128,8 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public void AddCategory(Book book, BookCategory category)
         {
-            if (book == null || category == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(book);
+            ThrowException.CheckNull(category);
 
             string storedProcedure = "usp_AddBookCategoryToBook";
 
@@ -108,14 +139,12 @@ namespace ElLib.DAL.Repositories.Implementations
             Executer.ExecuteVoid(storedProcedure);
         }
 
-        public void RemoveAuthor(Book book, Author author)
+        public void DeleteAuthor(Book book, Author author)
         {
-            if (book == null || author == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(book);
+            ThrowException.CheckNull(author);
 
-            string storedProcedure = "usp_RemoveAuthorFromBook";
+            string storedProcedure = "usp_DeleteAuthorFromBook";
 
             Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
             Executer.Parameters.Add(new SqlParameter("@AuthorId", author.Id));
@@ -123,14 +152,12 @@ namespace ElLib.DAL.Repositories.Implementations
             Executer.ExecuteVoid(storedProcedure);
         }
 
-        public void RemovePublishing(Book book, Publishing publishing)
+        public void DeletePublishing(Book book, Publishing publishing)
         {
-            if (book == null || publishing == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(book);
+            ThrowException.CheckNull(publishing);
 
-            string storedProcedure = "usp_RemovePublishingFromBook";
+            string storedProcedure = "usp_DeletePublishingFromBook";
 
             Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
             Executer.Parameters.Add(new SqlParameter("@PublishingId", publishing.Id));
@@ -138,14 +165,12 @@ namespace ElLib.DAL.Repositories.Implementations
             Executer.ExecuteVoid(storedProcedure);
         }
 
-        public void RemoveCategory(Book book, BookCategory category)
+        public void DeleteCategory(Book book, BookCategory category)
         {
-            if (book == null || category == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(book);
+            ThrowException.CheckNull(category);
 
-            string storedProcedure = "usp_RemoveBookCategoryFromBook";
+            string storedProcedure = "usp_DeleteBookCategoryFromBook";
 
             Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
             Executer.Parameters.Add(new SqlParameter("@BookCategoryId", category.Id));

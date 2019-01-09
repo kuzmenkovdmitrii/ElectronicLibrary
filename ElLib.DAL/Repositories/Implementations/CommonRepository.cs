@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
+using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
@@ -27,26 +28,13 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public virtual IEnumerable<T> GetAll()
         {
-            if (TableName == null)
-            {
-                throw new NullReferenceException("TableName not filled in.");
-            }
-
             string storedProcedure = "usp_SelectAll" + TableName;
             return Executer.Execute<T>(storedProcedure,Converter);
         }
 
         public virtual T GetById(int? id)
         {
-            if (EntityName == null)
-            {
-                throw new NullReferenceException("EntityName not filled in.");
-            }
-
-            if (id == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(id);
 
             string storedProcedure = "usp_Select" + EntityName + "ById";
 
@@ -57,6 +45,8 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public virtual void Create(T item)
         {
+            ThrowException.CheckNull(item);
+
             string storedProcedure = "usp_Create" + EntityName;
 
             Executer.Parameters = Parameters.GetParameters(item).Where(x => x.ParameterName != "@Id").ToList();
@@ -66,6 +56,8 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public virtual void Update(T item)
         {
+            ThrowException.CheckNull(item);
+
             string storedProcedure = "usp_Update" + EntityName;
 
             Executer.Parameters = Parameters.GetParameters(item).ToList();
@@ -75,10 +67,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public virtual void Delete(int? id)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException();
-            }
+            ThrowException.CheckNull(id);
 
             string storedProcedure = "usp_Delete" + EntityName;
 
