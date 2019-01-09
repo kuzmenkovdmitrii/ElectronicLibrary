@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
 using ElLib.Common.Entity;
 using ElLib.Common.ProcedureExecuter;
-using ElLib.DAL.Converters.Implementations;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -110,44 +108,49 @@ namespace ElLib.DAL.Repositories.Implementations
             Executer.ExecuteVoid(storedProcedure);
         }
 
-        public IEnumerable<Book> GetByAuthorId(int? id)
+        public void RemoveAuthor(Book book, Author author)
         {
-            if (id == null)
+            if (book == null || author == null)
             {
                 throw new ArgumentNullException();
             }
 
-            throw new NotImplementedException();
+            string storedProcedure = "usp_RemoveAuthorFromBook";
+
+            Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
+            Executer.Parameters.Add(new SqlParameter("@AuthorId", author.Id));
+
+            Executer.ExecuteVoid(storedProcedure);
         }
 
-        public IEnumerable<Book> GetByBookCategoryId(int? id)
+        public void RemovePublishing(Book book, Publishing publishing)
         {
-            if (id == null)
+            if (book == null || publishing == null)
             {
                 throw new ArgumentNullException();
             }
 
-            throw new NotImplementedException();
+            string storedProcedure = "usp_RemovePublishingFromBook";
+
+            Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
+            Executer.Parameters.Add(new SqlParameter("@PublishingId", publishing.Id));
+
+            Executer.ExecuteVoid(storedProcedure);
         }
 
-        public IEnumerable<Book> GetByLanguageId(int? id)
+        public void RemoveCategory(Book book, BookCategory category)
         {
-            if (id == null)
+            if (book == null || category == null)
             {
                 throw new ArgumentNullException();
             }
 
-            throw new NotImplementedException();
-        }
+            string storedProcedure = "usp_RemoveBookCategoryFromBook";
 
-        public IEnumerable<Book> GetByPublishingId(int? id)
-        {
-            if (id == null)
-            {
-                throw new ArgumentNullException();
-            }
+            Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
+            Executer.Parameters.Add(new SqlParameter("@BookCategoryId", category.Id));
 
-            throw new NotImplementedException();
+            Executer.ExecuteVoid(storedProcedure);
         }
     }
 }
