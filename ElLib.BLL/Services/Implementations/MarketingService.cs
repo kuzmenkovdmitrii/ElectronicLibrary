@@ -7,12 +7,12 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class MarketingService : IMarketingService
     {
-        public Marketing GetById(int id)
+        public Marketing GetById(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Marketing> GetAll(int id)
+        public IEnumerable<Marketing> GetAll(int? id)
         {
             throw new NotImplementedException();
         }

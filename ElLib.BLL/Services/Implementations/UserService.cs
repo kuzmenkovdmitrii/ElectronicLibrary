@@ -58,7 +58,7 @@ namespace ElLib.BLL.Services.Implementations
             }
         }
 
-        public OperationDetails Delete(int id)
+        public OperationDetails Delete(int? id)
         {
             try
             {

@@ -21,11 +21,6 @@ namespace ElLib.BLL.Services.Implementations
             return publishingRepository.GetAll();
         }
 
-        public IEnumerable<Publishing> GetByBookId(int id)
-        {
-            return publishingRepository.GetPublishingsByBookId(id);
-        }
-
         public Publishing GetById(int? id)
         {
             return publishingRepository.GetById(id);
@@ -57,7 +52,7 @@ namespace ElLib.BLL.Services.Implementations
             }
         }
 
-        public OperationDetails Delete(int id)
+        public OperationDetails Delete(int? id)
         {
             try
             {

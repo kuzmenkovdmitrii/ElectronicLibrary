@@ -5,7 +5,7 @@ namespace ElLib.BLL.Services.Interfaces
 {
     public interface IMarketingService
     {
-        Marketing GetById(int id);
-        IEnumerable<Marketing> GetAll(int id);
+        Marketing GetById(int? id);
+        IEnumerable<Marketing> GetAll(int? id);
     }
 }

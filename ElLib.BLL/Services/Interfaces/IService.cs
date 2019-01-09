@@ -10,6 +10,6 @@ namespace ElLib.BLL.Services.Interfaces
         T GetById(int? id);
         OperationDetails Create(T item);
         OperationDetails Update(T item);
-        OperationDetails Delete(int id);
+        OperationDetails Delete(int? id);
     }
 }

@@ -37,22 +37,6 @@ namespace ElLib.DAL.Repositories.Implementations
             return Executer.Execute<User>(storedProcedure,Converter).FirstOrDefault();
         }
 
-        public User GetByEmail(string email)
-        {
-            if (string.IsNullOrEmpty(email))
-            {
-                throw new ArgumentNullException();
-            }
-
-            string storedProcedure = "usp_Select" + EntityName + "ByEmail";
-
-            Executer.Parameters.Add(new SqlParameter("@UserName", email));
-
-            return Executer.Execute<User>(storedProcedure,Converter).FirstOrDefault();
-        }
-
-        
-
         public void Create(User item, string password)
         {
             string storedProcedure = "usp_Create" + EntityName;
