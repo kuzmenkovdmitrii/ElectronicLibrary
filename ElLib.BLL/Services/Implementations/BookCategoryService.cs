@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
+using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
 namespace ElLib.BLL.Services.Implementations
@@ -23,46 +24,33 @@ namespace ElLib.BLL.Services.Implementations
 
         public BookCategory GetById(int? id)
         {
+            ThrowException.CheckNull(id);
+
             return bookCategoryRepository.GetById(id);
         }
 
         public OperationDetails Create(BookCategory item)
         {
-            try
-            {
-                bookCategoryRepository.Create(item);
-                return new OperationDetails(true, "Категория книги успешно создана");
-            }
-            catch (Exception e)
-            {
-                return new OperationDetails(false, "Произошла ошибка при создании категории книги");
-            }
+            ThrowException.CheckNull(item);
+
+            bookCategoryRepository.Create(item);
+            return new OperationDetails(true, "Категория книги успешно создана");
         }
 
         public OperationDetails Update(BookCategory item)
         {
-            try
-            {
-                bookCategoryRepository.Update(item);
-                return new OperationDetails(true, "Категория книги успешно обновлена");
-            }
-            catch (Exception e)
-            {
-                return new OperationDetails(false, "Произошла ошибка при обновлении категории книги");
-            }
+            ThrowException.CheckNull(item);
+
+            bookCategoryRepository.Update(item);
+            return new OperationDetails(true, "Категория книги успешно обновлена");
         }
 
         public OperationDetails Delete(int? id)
         {
-            try
-            {
-                bookCategoryRepository.Delete(id);
-                return new OperationDetails(true, "Категория книги успешно удалена");
-            }
-            catch (Exception e)
-            {
-                return new OperationDetails(false, "Произошла ошибка при удалении категории книги");
-            }
+            ThrowException.CheckNull(id);
+
+            bookCategoryRepository.Delete(id);
+            return new OperationDetails(true, "Категория книги успешно удалена");
         }
     }
 }

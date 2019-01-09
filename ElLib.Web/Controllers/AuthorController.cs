@@ -31,12 +31,7 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Info(int? id)
         {
-            if (id != null)
-            {
-                return View(authorService.GetById(id));
-            }
-
-            return null; //TODO redirect to 401
+            return View(authorService.GetById(id));
         }
 
         public ActionResult Create()
@@ -50,22 +45,23 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 Author author = Mapper.Map<CreateAuthorModel, Author>(model);
-                authorService.Create(author);
-                return RedirectToAction("All");
+
+                var result = authorService.Create(author);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View();
-            }
+
+            return View();
         }
 
         public ActionResult Edit(int? id)
         {
-            if (id != null)
-            {
-                return View(Mapper.Map<Author, EditAuthorModel>(authorService.GetById(id)));
-            }
-            return null; //TODO redirect to 401
+            return View(Mapper.Map<Author, EditAuthorModel>(authorService.GetById(id)));
         }
 
         [HttpPost]
@@ -74,24 +70,24 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 Author author = Mapper.Map<EditAuthorModel, Author>(model);
-                authorService.Update(author);
-                return RedirectToAction("All");
+
+                var result = authorService.Update(author);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View(model);
-            }
+
+            return View();
         }
 
         public ActionResult Delete(int? id)
         {
-            if (id != null)
-            {
-                authorService.Delete(id);
-                return RedirectToAction("All");
-            }
-
-            return null; //TODO redirect to 401
+            authorService.Delete(id);
+            return RedirectToAction("All");
         }
 
         public ActionResult AllAuthorsForSelect(int[] changed)

@@ -14,7 +14,5 @@ namespace ElLib.Web.Controllers
         {
             return View();
         }
-
-        
     }
 }

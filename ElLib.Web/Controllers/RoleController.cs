@@ -24,21 +24,23 @@ namespace ElLib.Web.Controllers
         [HttpPost]
         public ActionResult AddRoleToUser(int? user, int? role)
         {
-            if (user != null && role != null)
-            {
-                User foundUser = userService.GetById(user);
-                Role foundRole = roleService.GetById(role);
+            User foundUser = userService.GetById(user);
+            Role foundRole = roleService.GetById(role);
 
-                roleService.AddRoleToUser(foundUser, foundRole);
+            roleService.AddRoleToUser(foundUser, foundRole);
+            //TODO
+            //if (result.Successed)
+            //{
+            //    return RedirectToAction("All");
+            //}
 
-            }
-
-            return null; //TODO redirect to 401
+            //ModelState.AddModelError(result.Property, result.Message);
+            return null;
         }
 
         public ActionResult AllRolesForSelect()
         {
-            return PartialView(roleService.GetAll().Where(x=>x.Name != "User"));
+            return PartialView(roleService.GetAll().Where(x => x.Name != "User"));
         }
     }
 }

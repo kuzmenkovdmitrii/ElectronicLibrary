@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Web.Configuration;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
+using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
 namespace ElLib.BLL.Services.Implementations
@@ -22,11 +22,16 @@ namespace ElLib.BLL.Services.Implementations
 
         public Role GetById(int? id)
         {
+            ThrowException.CheckNull(id);
+
             return roleRepository.GetById(id);
         }
 
         public void AddRoleToUser(User user, Role role)
         {
+            ThrowException.CheckNull(user);
+            ThrowException.CheckNull(role);
+
             roleRepository.AddRoleToUser(user,role);
         }
     }

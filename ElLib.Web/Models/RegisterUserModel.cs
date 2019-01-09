@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace ElLib.Web.Models
 {
@@ -7,6 +8,7 @@ namespace ElLib.Web.Models
         [Display(Name = "Логин")]
         [Required(ErrorMessage = "Поле логин не может быть пустым")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Не верная длина")]
+        [Remote("CheckUserName", "Auth", ErrorMessage = "Пользователь с таким названием уже существует")]
         public string UserName { get; set; }
 
         [Display(Name = "Пароль")]
@@ -18,13 +20,14 @@ namespace ElLib.Web.Models
         [Display(Name = "Повторите пароль")]
         [Required(ErrorMessage = "Повторите пароль")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Email")]
         [Required(ErrorMessage = "Поле Email не может быть пустым")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Неверно введен Email")]
+        [Remote("CheckEmail", "Auth", ErrorMessage = "Пользователь с таким email уже существует")]
         public string Email { get; set; }
     }
 }

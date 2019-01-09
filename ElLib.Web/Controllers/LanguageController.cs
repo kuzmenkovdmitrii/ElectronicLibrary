@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -31,23 +32,22 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 Language language = Mapper.Map<CreateLanguageModel, Language>(model);
-                languageService.Create(language);
-                return RedirectToAction("All");
+                var result = languageService.Create(language);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View(model);
-            }
+
+            return View(model);
         }
 
         public ActionResult Edit(int? id)
         {
-            if (id != null)
-            {
-                return View(Mapper.Map<Language, EditLanguageModel>(languageService.GetById(id)));
-            }
-
-            return null; //TODO redirect to 401
+            return View(Mapper.Map<Language, EditLanguageModel>(languageService.GetById(id)));
         }
 
         [HttpPost]
@@ -56,29 +56,41 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 Language language = Mapper.Map<EditLanguageModel, Language>(model);
-                languageService.Update(language);
-                return RedirectToAction("All");
+                var result = languageService.Update(language);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View(model);
-            }
+
+            return View(model);
         }
 
         public ActionResult Delete(int? id)
         {
-            if (id != null)
-            {
-                languageService.Delete(id);
-                return RedirectToAction("All");
-            }
+            languageService.Delete(id);
 
-            return null; //TODO redirect to 401
+            return RedirectToAction("All");
         }
 
         public ActionResult AllLanguagesForSelect()
         {
             return PartialView(languageService.GetAll());
+        }
+
+        public JsonResult CheckName(string name)
+        {
+            var languages = languageService.GetAll();
+            var language = languages.FirstOrDefault(x => x.Name == name);
+            if (language == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }

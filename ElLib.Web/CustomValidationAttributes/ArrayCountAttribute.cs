@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace ElLib.Web.CustomValidationAttributes
 {
@@ -22,9 +24,10 @@ namespace ElLib.Web.CustomValidationAttributes
             {
                 return false;
             }
-            object[] array = value as object[];
 
-            return array.Length >= MinCount ? true : false;
+            var array = value as int[];
+
+            return array.Count() >= MinCount;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
@@ -10,10 +11,12 @@ namespace ElLib.Web.Controllers
     public class AuthController : Controller
     {
         readonly IAuthService authService;
+        readonly IUserService userService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, IUserService userService)
         {
             this.authService = authService;
+            this.userService = userService;
         }
 
         public ActionResult Login()
@@ -40,12 +43,11 @@ namespace ElLib.Web.Controllers
                 {
                     return View("Login");
                 }
-                else
-                {
-                    ModelState.AddModelError(result.Property, result.Message);
-                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            return PartialView(model);
+
+            return PartialView();
         }
 
         [HttpPost]
@@ -60,20 +62,42 @@ namespace ElLib.Web.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ModelState.AddModelError(result.Property, result.Message);
-                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
 
-            return PartialView(model);
+            return PartialView();
         }
 
         public async Task<ActionResult> Logout()
         {
-            var result = await authService.Logout();
+            authService.Logout();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public JsonResult CheckUserName(string username)
+        {
+            var users = userService.GetAll();
+            var user = users.FirstOrDefault(x => x.UserName == username);
+            if (user == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CheckEmail(string email)
+        {
+            var users = userService.GetAll();
+            var user = users.FirstOrDefault(x => x.Email == email);
+            if (user == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -23,12 +23,7 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Info(int? id)
         {
-            if (id != null)
-            {
-                return View(bookCategoryService.GetById(id));
-            }
-
-            return null; //TODO redirect to 401
+            return View(bookCategoryService.GetById(id));
         }
 
         public ActionResult Create()
@@ -42,24 +37,24 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 BookCategory bookCategory = Mapper.Map<CreateBookCategoryModel, BookCategory>(model);
-                bookCategoryService.Create(bookCategory);
-                return RedirectToAction("All");
+
+                var result = bookCategoryService.Create(bookCategory);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View(model);
-            }
+
+            return View();
         }
 
         public ActionResult Edit(int? id)
         {
-            if (id != null)
-            {
-                EditBookCategoryModel model = Mapper.Map<BookCategory, EditBookCategoryModel>(bookCategoryService.GetById(id));
-                return View(model);
-            }
-
-            return null; //TODO redirect to 401
+            EditBookCategoryModel model = Mapper.Map<BookCategory, EditBookCategoryModel>(bookCategoryService.GetById(id));
+            return View(model);
         }
 
         [HttpPost]
@@ -68,29 +63,40 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 BookCategory bookCategory = Mapper.Map<EditBookCategoryModel, BookCategory>(model);
-                bookCategoryService.Update(bookCategory);
-                return RedirectToAction("All");
+                var result = bookCategoryService.Update(bookCategory);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View(model);
-            }
+
+            return View(model);
         }
 
         public ActionResult Delete(int? id)
         {
-            if (id != null)
-            {
-                bookCategoryService.Delete(id);
-                return RedirectToAction("All");
-            }
-
-            return null; //TODO redirect to 401
+            bookCategoryService.Delete(id);
+            return RedirectToAction("All");
         }
 
         public ActionResult AllCategoriesForSelect()
         {
             return PartialView(bookCategoryService.GetAll());
+        }
+
+        public JsonResult CheckName(string name)
+        {
+            var categories = bookCategoryService.GetAll();
+            var category = categories.FirstOrDefault(x => x.Name == name);
+            if (category == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }

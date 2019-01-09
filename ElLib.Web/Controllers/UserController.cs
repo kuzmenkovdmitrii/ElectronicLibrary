@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using ElLib.BLL.Services.Interfaces;
@@ -24,12 +21,7 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Info(int? id)
         {
-            if (id != null)
-            {
-                return View(userService.GetById(id));
-            }
-
-            return null; //TODO redirect to 401
+            return View(userService.GetById(id));
         }
 
         public ActionResult Search(string query)

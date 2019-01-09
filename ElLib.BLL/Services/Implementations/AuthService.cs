@@ -57,12 +57,12 @@ namespace ElLib.BLL.Services.Implementations
         {
             if (string.IsNullOrEmpty(login))
             {
-                return new OperationDetails(false, "Неверный логин");
+                return new OperationDetails(false, "Логин не может быть пустым");
             }
 
             if (string.IsNullOrEmpty(password))
             {
-                return new OperationDetails(false, "Неверный пароль");
+                return new OperationDetails(false, "Пароль не может быть пустым");
             }
 
             User user = userRepository.GetByUserName(login);
@@ -88,7 +88,7 @@ namespace ElLib.BLL.Services.Implementations
                 user.UserName,
                 DateTime.Now,
                 DateTime.Now.AddMinutes(15),
-                false,
+                true,
                 userData);
 
             string encTicket = FormsAuthentication.Encrypt(authTicket);

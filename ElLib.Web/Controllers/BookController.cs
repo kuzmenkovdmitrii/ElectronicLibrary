@@ -41,12 +41,7 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Info(int? id)
         {
-            if (id != null)
-            {
-                return View(bookService.GetById(id));
-            }
-
-            return null; //TODO redirect to 401
+            return View(bookService.GetById(id));
         }
 
         public ActionResult Create()
@@ -74,8 +69,10 @@ namespace ElLib.Web.Controllers
 
                 if (result.Successed)
                 {
-                    RedirectToAction("All", "Book");
+                    return RedirectToAction("All", "Book");
                 }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
 
             return View();
@@ -83,29 +80,48 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (id != null)
+            Book book = bookService.GetById(id);
+            EditBookModel model = new EditBookModel()
             {
-                Book book = bookService.GetById(id);
-                EditBookModel model = new EditBookModel()
-                {
-                    Id = book.Id,
-                    Name = book.Name,
-                    Language = book.Language.Id,
-                    Authors = book.Authors.Select(x => x.Id).ToArray(),
-                    Categories = book.Categories.Select(x => x.Id).ToArray(),
-                    Publishings = book.Publishings.Select(x => x.Id).ToArray(),
-                    File = book.File.Value,
-                    Picture = book.Picture.Value
-                };
-                return View(model);
-            }
-
-            return null; //TODO redirect to 401
+                Id = book.Id,
+                Name = book.Name,
+                Language = book.Language.Id,
+                Authors = book.Authors.Select(x => x.Id).ToArray(),
+                Categories = book.Categories.Select(x => x.Id).ToArray(),
+                Publishings = book.Publishings.Select(x => x.Id).ToArray(),
+                File = book.File.Value,
+                Picture = book.Picture.Value
+            };
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(EditAuthorModel model)
+        public ActionResult Edit(EditBookModel model)
         {
+            if (ModelState.IsValid)
+            {
+                Book book = new Book()
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                    Language = languageService.GetById(model.Language),
+                    Publishings = publishingService.GetAll().Where(x => model.Publishings.Contains(x.Id)).ToList(),
+                    Authors = authorService.GetAll().Where(x => model.Authors.Contains(x.Id)).ToList(),
+                    Categories = bookCategoryService.GetAll().Where(x => model.Categories.Contains(x.Id)).ToList(),
+                    File = new Url(model.File),
+                    Picture = new Url(model.Picture),
+                };
+
+                var result = bookService.Update(book);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All", "Book");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
+            }
+
             return View();
         }
 

@@ -2,6 +2,7 @@
 using System.Text;
 using System.Web;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.Common.Exception;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

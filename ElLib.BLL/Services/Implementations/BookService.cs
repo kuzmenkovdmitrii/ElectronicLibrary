@@ -4,6 +4,7 @@ using System.Linq;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
+using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
 namespace ElLib.BLL.Services.Implementations
@@ -43,51 +44,43 @@ namespace ElLib.BLL.Services.Implementations
 
         public Book GetById(int? id)
         {
+            ThrowException.CheckNull(id);
+
             Book book = bookRepository.GetById(id);
             book.Publishings = publishingRepository.GetPublishingsByBookId(id).ToList();
             book.Authors = authorRepository.GetAuthorsByBookId(id).ToList();
             book.Categories = bookCategoryRepository.GetBookCategoriesByBookId(id).ToList();
+
             return book;
         }
 
         public OperationDetails Create(Book item)
         {
-            try
-            {
-                item.PublishingDate = DateTime.Now;
-                bookRepository.Create(item);
-                return new OperationDetails(true, "Книга успешно создана");
-            }
-            catch (Exception e)
-            {
-                return new OperationDetails(false, "Произошла ошибка при создании книги");
-            }
+            ThrowException.CheckNull(item);
+
+            item.PublishingDate = DateTime.Now;
+
+            bookRepository.Create(item);
+
+            return new OperationDetails(true, "Книга успешно создана");
         }
 
         public OperationDetails Update(Book item)
         {
-            try
-            {
-                bookRepository.Update(item);
-                return new OperationDetails(true, "Книга успешно обновлена");
-            }
-            catch (Exception e)
-            {
-                return new OperationDetails(false, "Произошла ошибка при обновлении книги");
-            }
+            ThrowException.CheckNull(item);
+
+            bookRepository.Update(item);
+
+            return new OperationDetails(true, "Книга успешно обновлена");
         }
 
         public OperationDetails Delete(int? id)
         {
-            try
-            {
-                bookRepository.Delete(id);
-                return new OperationDetails(true, "Книга успешно удалена");
-            }
-            catch (Exception e)
-            {
-                return new OperationDetails(false, "Произошла ошибка при удалении книги");
-            }
+            ThrowException.CheckNull(id);
+
+            bookRepository.Delete(id);
+
+            return new OperationDetails(true, "Книга успешно удалена");
         }
     }
 }

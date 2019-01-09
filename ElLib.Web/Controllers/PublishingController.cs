@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -22,12 +23,7 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Info(int? id)
         {
-            if (id != null)
-            {
-                return View(publishingService.GetById(id));
-            }
-
-            return null; //TODO redirect to 401
+            return View(publishingService.GetById(id));
         }
 
         public ActionResult Create()
@@ -41,25 +37,24 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 Publishing publishing = Mapper.Map<CreatePublishingModel, Publishing>(model);
-                publishingService.Create(publishing);
-                return RedirectToAction("All");
+                var result = publishingService.Create(publishing);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View(model);
-            }
+
+            return View(model);
         }
 
         public ActionResult Edit(int? id)
         {
-            if (id != null)
-            {
-                Publishing publishing = publishingService.GetById(id);
+            Publishing publishing = publishingService.GetById(id);
 
-                return View(Mapper.Map<Publishing, EditPublishingModel>(publishing));
-            }
-
-            return null; //TODO redirect to 401
+            return View(Mapper.Map<Publishing, EditPublishingModel>(publishing));
         }
 
         [HttpPost]
@@ -68,29 +63,41 @@ namespace ElLib.Web.Controllers
             if (ModelState.IsValid)
             {
                 Publishing publishing = Mapper.Map<EditPublishingModel, Publishing>(model);
-                publishingService.Update(publishing);
-                return RedirectToAction("All");
+                var result = publishingService.Update(publishing);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("All");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
             }
-            else
-            {
-                return View(model);
-            }
+
+            return View(model);
         }
 
         public ActionResult Delete(int? id)
         {
-            if (id != null)
-            {
-                publishingService.Delete(id);
-                return RedirectToAction("All");
-            }
+            publishingService.Delete(id);
 
-            return null; //TODO redirect to 401
+            return RedirectToAction("All");
         }
 
         public ActionResult AllPublishingsForSelect()
         {
             return PartialView(publishingService.GetAll());
+        }
+
+        public JsonResult CheckName(string name)
+        {
+            var publishings = publishingService.GetAll();
+            var publishing = publishings.FirstOrDefault(x => x.Name == name);
+            if (publishing == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }
