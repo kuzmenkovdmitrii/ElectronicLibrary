@@ -20,9 +20,14 @@ namespace ElLib.Web.Controllers
             return View(publishingService.GetAll());
         }
 
-        public ActionResult Info(int id)
+        public ActionResult Info(int? id)
         {
-            return View(publishingService.GetById(id));
+            if (id != null)
+            {
+                return View(publishingService.GetById(id));
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult Create()
@@ -45,11 +50,16 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            Publishing publishing = publishingService.GetById(id);
+            if (id != null)
+            {
+                Publishing publishing = publishingService.GetById(id);
 
-            return View(Mapper.Map<Publishing, EditPublishingModel>(publishing));
+                return View(Mapper.Map<Publishing, EditPublishingModel>(publishing));
+            }
+
+            return null; //TODO redirect to 401
         }
 
         [HttpPost]
@@ -67,10 +77,15 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            publishingService.Delete(id);
-            return RedirectToAction("All");
+            if (id != null)
+            {
+                publishingService.Delete(id);
+                return RedirectToAction("All");
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult AllPublishingsForSelect()

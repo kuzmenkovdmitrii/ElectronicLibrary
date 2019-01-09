@@ -40,9 +40,14 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View(Mapper.Map<Language, EditLanguageModel>(languageService.GetById(id)));
+            if (id != null)
+            {
+                return View(Mapper.Map<Language, EditLanguageModel>(languageService.GetById(id)));
+            }
+
+            return null; //TODO redirect to 401
         }
 
         [HttpPost]
@@ -60,10 +65,15 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            languageService.Delete(id);
-            return RedirectToAction("All");
+            if (id != null)
+            {
+                languageService.Delete(id);
+                return RedirectToAction("All");
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult AllLanguagesForSelect()

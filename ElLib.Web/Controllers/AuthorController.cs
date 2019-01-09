@@ -29,9 +29,14 @@ namespace ElLib.Web.Controllers
             return authorService.GetAll();
         }
 
-        public ActionResult Info(int id)
+        public ActionResult Info(int? id)
         {
-            return View(authorService.GetById(id));
+            if (id != null)
+            {
+                return View(authorService.GetById(id));
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult Create()
@@ -54,9 +59,13 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View(Mapper.Map<Author, EditAuthorModel>(authorService.GetById(id)));
+            if (id != null)
+            {
+                return View(Mapper.Map<Author, EditAuthorModel>(authorService.GetById(id)));
+            }
+            return null; //TODO redirect to 401
         }
 
         [HttpPost]
@@ -74,10 +83,15 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            authorService.Delete(id);
-            return RedirectToAction("All");
+            if (id != null)
+            {
+                authorService.Delete(id);
+                return RedirectToAction("All");
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult AllAuthorsForSelect(int[] changed)

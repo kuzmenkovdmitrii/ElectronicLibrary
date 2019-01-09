@@ -22,9 +22,14 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
-        public ActionResult Info(int id = 1)
+        public ActionResult Info(int? id)
         {
-            return View(userService.GetById(id));
+            if (id != null)
+            {
+                return View(userService.GetById(id));
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult Search(string query)

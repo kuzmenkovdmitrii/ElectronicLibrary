@@ -20,7 +20,6 @@ namespace ElLib.Web.Models
         public string MiddleName { get; set; }
 
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "Поле Email не может быть пустым")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Неверно введен Email")]
         public string Email { get; set; }

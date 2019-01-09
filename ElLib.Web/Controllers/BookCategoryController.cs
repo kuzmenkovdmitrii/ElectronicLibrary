@@ -21,9 +21,14 @@ namespace ElLib.Web.Controllers
             return View(bookCategoryService.GetAll());
         }
 
-        public ActionResult Info(int id)
+        public ActionResult Info(int? id)
         {
-            return View(bookCategoryService.GetById(id));
+            if (id != null)
+            {
+                return View(bookCategoryService.GetById(id));
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult Create()
@@ -46,10 +51,15 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            EditBookCategoryModel model = Mapper.Map<BookCategory, EditBookCategoryModel>(bookCategoryService.GetById(id));
-            return View(model);
+            if (id != null)
+            {
+                EditBookCategoryModel model = Mapper.Map<BookCategory, EditBookCategoryModel>(bookCategoryService.GetById(id));
+                return View(model);
+            }
+
+            return null; //TODO redirect to 401
         }
 
         [HttpPost]
@@ -67,10 +77,15 @@ namespace ElLib.Web.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            bookCategoryService.Delete(id);
-            return RedirectToAction("All");
+            if (id != null)
+            {
+                bookCategoryService.Delete(id);
+                return RedirectToAction("All");
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult AllCategoriesForSelect()

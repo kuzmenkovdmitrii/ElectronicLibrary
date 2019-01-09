@@ -33,7 +33,7 @@ namespace ElLib.Web.Controllers
 
             }
 
-            return View();
+            return null; //TODO redirect to 401
         }
 
         public ActionResult AllRolesForSelect()

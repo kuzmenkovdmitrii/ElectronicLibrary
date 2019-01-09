@@ -39,9 +39,14 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
-        public ActionResult Info(int id)
+        public ActionResult Info(int? id)
         {
-            return View(bookService.GetById(id));
+            if (id != null)
+            {
+                return View(bookService.GetById(id));
+            }
+
+            return null; //TODO redirect to 401
         }
 
         public ActionResult Create()
