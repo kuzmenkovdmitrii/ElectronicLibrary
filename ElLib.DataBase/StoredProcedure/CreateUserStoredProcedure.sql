@@ -2,8 +2,8 @@
 GO
 
 CREATE PROC usp_CreateUser
-	@UserName nvarchar(25),
-	@Password nvarchar(25),
+	@UserName nvarchar(50),
+	@Password nvarchar(50),
 	@Email nvarchar(50)
 AS
 	INSERT Users(UserName, [Password], Email)

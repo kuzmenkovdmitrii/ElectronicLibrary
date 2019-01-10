@@ -2,9 +2,9 @@
 GO
 
 CREATE PROC usp_CreateAuthor
-	@Name nvarchar(25),
-	@LastName nvarchar(25),
-	@MiddleName nvarchar(25),
+	@Name nvarchar(50),
+	@LastName nvarchar(50),
+	@MiddleName nvarchar(50),
 	@Email nvarchar(50)
 AS
 	INSERT Authors([Name], LastName, MiddleName, Email)

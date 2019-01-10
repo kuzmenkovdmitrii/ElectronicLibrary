@@ -1,7 +1,8 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC usp_SelectAllPublishings 
+CREATE PROC usp_SelectPublishingsByQuery
+	@Query nvarchar(50)
 AS
 	SELECT 
 		p.Id, 
@@ -12,5 +13,10 @@ AS
 		a.Home AddressHome
 	FROM Publishings p
 		JOIN Addresses a
-			ON a.Id = p.AddressId
+			ON AddressId = a.Id
+		JOIN BookAndPublishing bp
+			ON bp.PublishingId = p.Id
+
+		WHERE [Name]
+			LIKE '%' + @Query + '%'
 	ORDER BY p.Id DESC

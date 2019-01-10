@@ -5,4 +5,5 @@ CREATE PROC usp_SelectAddressById
 	@Id int
 AS
 	SELECT * FROM Addresses
-	WHERE Id = @Id
+		WHERE Id = @Id
+	ORDER BY Id DESC

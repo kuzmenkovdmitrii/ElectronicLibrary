@@ -1,8 +1,8 @@
 ﻿USE ElLibDataBase
 GO
 
-CREATE PROC usp_SelectBookById
-	@Id int
+CREATE PROC usp_SelectBooksByQuery
+	@Query nvarchar(50)
 AS
 	SELECT 
 		b.Id, 
@@ -19,4 +19,7 @@ AS
 			ON pict.Id = PictureId
 		JOIN Files f
 			ON f.Id = FileId
-		WHERE b.Id = @Id
+
+		WHERE b.[Name]
+			LIKE '%' + @Query + '%'
+	ORDER BY b.Id DESC

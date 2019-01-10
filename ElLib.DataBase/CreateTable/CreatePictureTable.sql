@@ -7,5 +7,5 @@ GO
 
 CREATE TABLE Pictures(
 	Id int PRIMARY KEY IDENTITY,
-	Link nvarchar(100) NOT NULL,
+	Link nvarchar(200) NOT NULL,
 );

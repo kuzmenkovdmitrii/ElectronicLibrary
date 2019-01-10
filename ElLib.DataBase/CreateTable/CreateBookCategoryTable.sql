@@ -8,5 +8,5 @@ GO
 CREATE TABLE BookCategories(
 	Id int PRIMARY KEY IDENTITY,
 	[Name] nvarchar(25) NOT NULL,
-	[Description] nvarchar(100) NULL,
+	[Description] nvarchar(300) NULL,
 );

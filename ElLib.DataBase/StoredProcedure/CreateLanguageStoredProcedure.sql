@@ -2,7 +2,7 @@
 GO
 
 CREATE PROC usp_CreateLanguage
-	@Name nvarchar(25)
+	@Name nvarchar(50)
 AS
 	INSERT Languages([Name])
 	VALUES

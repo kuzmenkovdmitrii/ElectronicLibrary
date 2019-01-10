@@ -73,18 +73,14 @@
     <None Include="CreateTable\CreateBookCategoryTable.sql" />
     <None Include="CreateTable\CreateAuthorTable.sql" />
     <None Include="CreateTable\CreateBookTable.sql" />
-    <None Include="InitializationScript.sql" />
-    <None Include="Relationship\CreateAllDependencies.sql" />
+    <None Include="CreateDBScript.sql" />
+    <None Include="Relationship\CreateRelationships.sql" />
     <None Include="CreateTable\ManyToMany\BookAndBookCategory.sql" />
     <None Include="CreateTable\ManyToMany\BookAndAuthor.sql" />
     <None Include="CreateTable\ManyToMany\BookAndPublishing.sql" />
     <None Include="CreateTable\ManyToMany\UserAndRole.sql" />
     <None Include="StoredProcedure\UpdateBookCategoryStoredProcedure.sql" />
     <None Include="StoredProcedure\DeleteBookCategoryStoredProcedure.sql" />
-    <None Include="StoredProcedure\UpdateFIleStoredProcedure.sql" />
-    <None Include="StoredProcedure\DeleteFileStoredProcedure.sql" />
-    <None Include="StoredProcedure\UpdatePictureStoredProcedure.sql" />
-    <None Include="StoredProcedure\DeletePictureStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdateAddressStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdateAuthorStoredProcedure.sql" />
     <None Include="StoredProcedure\DeleteAuthorStoredProcedure.sql" />
@@ -94,17 +90,13 @@
     <None Include="StoredProcedure\DeleteLanguageStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdatePublishingStoredProcedure.sql" />
     <None Include="StoredProcedure\DeletePublishingStoredProcedure.sql" />
-    <None Include="StoredProcedure\UpdateRoleStoredProcedure.sql" />
-    <None Include="StoredProcedure\DeleteRoleStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdateUserStoredProcedure.sql" />
     <None Include="StoredProcedure\DeleteUserStoredProcedure.sql" />
-    <None Include="StoredProcedure\CreateAddressStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateBookStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateBookCategoryStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateLanguageStoredProcedure.sql" />
     <None Include="StoredProcedure\CreatePublishingStoredProcedure.sql" />
     <None Include="StoredProcedure\CreateUserStoredProcedure.sql" />
-    <None Include="StoredProcedure\CreateRoleStoredProcedure.sql" />
     <None Include="StoredProcedure\AddAuthorToBookStoredProcedure.sql" />
     <None Include="StoredProcedure\AddBookCategoryToBookStoredProcedure.sql" />
     <None Include="StoredProcedure\AddPublishingToBookStoredProcedure.sql" />
@@ -123,10 +115,16 @@
     <None Include="StoredProcedure\SelectAuthorsByBookIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectPasswordByUserIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectUserByUserNameStoredProcedure.sql" />
-    <None Include="StoredProcedure\SelectUserByEmailStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectRolesByUserIdStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectRoleByNameStoredProcedure.sql" />
     <None Include="StoredProcedure\DeleteBookReferencesStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectUsersByQueryStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectAuthorsByQueryStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectBooksByQueryStoredProcedure.sql" />
+    <None Include="StoredProcedure\SelectPublishingsByQueryStoredProcedure.sql" />
+    <None Include="FillTablesScript.sql" />
+    <None Include="InitializeScript.sql" />
+    <None Include="StoredProcedure\SelectBookCategoriesByQueryStoredProcedure_1.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllAddressesStoredProcedure.sql" />
@@ -151,21 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectAllUsersStoredProcedure.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StoredProcedure\SelectBooksByAuthorIdStoredProcedure.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StoredProcedure\SelectBooksByBookCategoryIdStoredProcedure.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StoredProcedure\SelectBooksByLanguageIdStoredProcedure.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StoredProcedure\SelectBooksByPublishingIdStoredProcedure.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StoredProcedure\SelectPublishingsByCountryNameStoredProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StoredProcedure\SelectUsersByRoleIdStoredProcedure.sql" />

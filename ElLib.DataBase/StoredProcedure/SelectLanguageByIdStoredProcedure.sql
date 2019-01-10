@@ -5,4 +5,4 @@ CREATE PROC usp_SelectLanguageById
 	@Id int
 AS
 	SELECT * FROM Languages
-	WHERE Id = @Id
+		WHERE Id = @Id

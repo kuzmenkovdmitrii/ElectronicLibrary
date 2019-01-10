@@ -2,11 +2,11 @@
 GO
 
 CREATE PROC usp_CreateBook
-	@Name nvarchar(25), 
+	@Name nvarchar(50), 
 	@LanguageId int,
 	@PublishingDate datetime,
-	@Picture nvarchar(100),
-	@File nvarchar(100)
+	@Picture nvarchar(200),
+	@File nvarchar(200)
 AS	
 	DECLARE @FileId int,
 			@PictureId int

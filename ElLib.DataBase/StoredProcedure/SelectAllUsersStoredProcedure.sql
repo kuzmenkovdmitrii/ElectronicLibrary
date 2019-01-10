@@ -3,4 +3,9 @@ GO
 
 CREATE PROC usp_SelectAllUsers
 AS
-	SELECT Id, UserName, Email FROM Users
+	SELECT 
+		Id, 
+		UserName, 
+		Email 
+	FROM Users
+	ORDER BY Id DESC
