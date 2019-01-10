@@ -90,7 +90,7 @@ namespace ElLib.Web.Controllers
             return RedirectToAction("All");
         }
 
-        public ActionResult AllAuthorsForSelect(int[] changed)
+        public ActionResult AllAuthorsForSelect()
         {
             return PartialView(authorService.GetAll());
         }

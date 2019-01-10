@@ -85,7 +85,16 @@ namespace ElLib.BLL.Services.Implementations
 
         public IEnumerable<Book> Search(string query)
         {
-            return bookRepository.GetByQuery(query);
+            IEnumerable<Book> books = bookRepository.GetByQuery(query);
+
+            foreach (var book in books)
+            {
+                book.Publishings = publishingRepository.GetByBookId(book.Id).ToList();
+                book.Authors = authorRepository.GetByBookId(book.Id).ToList();
+                book.Categories = bookCategoryRepository.GetByBookId(book.Id).ToList();
+            }
+
+            return books;
         }
     }
 }
