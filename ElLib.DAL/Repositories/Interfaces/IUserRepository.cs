@@ -8,5 +8,6 @@ namespace ElLib.DAL.Repositories.Interfaces
         void Create(User item, string password);
         string GetPassword(int? id);
         User GetByUserName(string userName);
+        IEnumerable<User> GetByQuery(string query);
     }
 }

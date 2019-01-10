@@ -50,13 +50,11 @@
     <Compile Include="Converters\Implementations\RoleConverter.cs" />
     <Compile Include="Converters\Implementations\UserConverter.cs" />
     <Compile Include="Dependency\DALRegistry.cs" />
-    <Compile Include="Converters\Implementations\AddressConverter.cs" />
     <Compile Include="Converters\Implementations\AuthorConverter.cs" />
     <Compile Include="Converters\Implementations\BookCategoryConverter.cs" />
     <Compile Include="Converters\Implementations\BookConverter.cs" />
     <Compile Include="Converters\Implementations\LanguageConverter.cs" />
     <Compile Include="Converters\Implementations\PublishingConverter.cs" />
-    <Compile Include="Parameters\Implementations\AddressParameters.cs" />
     <Compile Include="Parameters\Implementations\AuthorParameters.cs" />
     <Compile Include="Parameters\Implementations\BookCategoryParameters.cs" />
     <Compile Include="Parameters\Implementations\BookParameters.cs" />
@@ -66,7 +64,6 @@
     <Compile Include="Parameters\Implementations\LanguageParameters.cs" />
     <Compile Include="Parameters\Implementations\PublishingParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Implementations\AddressRepository.cs" />
     <Compile Include="Repositories\Implementations\AuthorRepository.cs" />
     <Compile Include="Repositories\Implementations\BookCategoryRepository.cs" />
     <Compile Include="Repositories\Implementations\BookRepository.cs" />

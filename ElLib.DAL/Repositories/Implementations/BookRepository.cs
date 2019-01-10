@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
@@ -100,6 +101,17 @@ namespace ElLib.DAL.Repositories.Implementations
             }
         }
 
+        public IEnumerable<Book> GetByQuery(string query)
+        {
+            ThrowException.CheckNull(query);
+
+            string storedProcedure = "usp_Select" + TableName + "ByQuery";
+
+            Executer.Parameters.Add(new SqlParameter("@Query", query));
+
+            return Executer.Execute<Book>(storedProcedure, Converter);
+        }
+
         public void AddAuthor(Book book, Author author)
         {
             ThrowException.CheckNull(book);
@@ -132,45 +144,6 @@ namespace ElLib.DAL.Repositories.Implementations
             ThrowException.CheckNull(category);
 
             string storedProcedure = "usp_AddBookCategoryToBook";
-
-            Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
-            Executer.Parameters.Add(new SqlParameter("@BookCategoryId", category.Id));
-
-            Executer.ExecuteVoid(storedProcedure);
-        }
-
-        public void DeleteAuthor(Book book, Author author)
-        {
-            ThrowException.CheckNull(book);
-            ThrowException.CheckNull(author);
-
-            string storedProcedure = "usp_DeleteAuthorFromBook";
-
-            Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
-            Executer.Parameters.Add(new SqlParameter("@AuthorId", author.Id));
-
-            Executer.ExecuteVoid(storedProcedure);
-        }
-
-        public void DeletePublishing(Book book, Publishing publishing)
-        {
-            ThrowException.CheckNull(book);
-            ThrowException.CheckNull(publishing);
-
-            string storedProcedure = "usp_DeletePublishingFromBook";
-
-            Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
-            Executer.Parameters.Add(new SqlParameter("@PublishingId", publishing.Id));
-
-            Executer.ExecuteVoid(storedProcedure);
-        }
-
-        public void DeleteCategory(Book book, BookCategory category)
-        {
-            ThrowException.CheckNull(book);
-            ThrowException.CheckNull(category);
-
-            string storedProcedure = "usp_DeleteBookCategoryFromBook";
 
             Executer.Parameters.Add(new SqlParameter("@BookId", book.Id));
             Executer.Parameters.Add(new SqlParameter("@BookCategoryId", category.Id));

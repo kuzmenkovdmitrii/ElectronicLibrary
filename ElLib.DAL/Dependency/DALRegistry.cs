@@ -14,7 +14,6 @@ namespace ElLib.DAL.Dependency
     {
         public DALRegistry()
         {
-            For<IAddressRepository>().Use<AddressRepository>();
             For<IAuthorRepository>().Use<AuthorRepository>();
             For<IBookCategoryRepository>().Use<BookCategoryRepository>();
             For<IBookRepository>().Use<BookRepository>();
@@ -25,7 +24,6 @@ namespace ElLib.DAL.Dependency
 
             For<IProcedureExecuter>().Use<ProcedureExecuter>();
 
-            For<IConverter<Address>>().Use<AddressConverter>();
             For<IConverter<Author>>().Use<AuthorConverter>();
             For<IConverter<BookCategory>>().Use<BookCategoryConverter>();
             For<IConverter<Book>>().Use<BookConverter>();
@@ -34,7 +32,6 @@ namespace ElLib.DAL.Dependency
             For<IConverter<User>>().Use<UserConverter>();
             For<IConverter<Role>>().Use<RoleConverter>();
 
-            For<IParameters<Address>>().Use<AddressParameters>();
             For<IParameters<Author>>().Use<AuthorParameters>();
             For<IParameters<BookCategory>>().Use<BookCategoryParameters>();
             For<IParameters<Book>>().Use<BookParameters>();

@@ -5,6 +5,7 @@ namespace ElLib.DAL.Repositories.Interfaces
 {
     public interface IAuthorRepository : IRepository<Author>
     {
-        IEnumerable<Author> GetAuthorsByBookId(int? id);
+        IEnumerable<Author> GetByBookId(int? id);
+        IEnumerable<Author> GetByQuery(string query);
     }
 }

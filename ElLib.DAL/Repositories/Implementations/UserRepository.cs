@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
@@ -33,6 +34,17 @@ namespace ElLib.DAL.Repositories.Implementations
             Executer.Parameters.Add(new SqlParameter("@UserName", userName));
 
             return Executer.Execute<User>(storedProcedure,Converter).FirstOrDefault();
+        }
+
+        public IEnumerable<User> GetByQuery(string query)
+        {
+            ThrowException.CheckNull(query);
+
+            string storedProcedure = "usp_Select" + TableName + "ByQuery";
+
+            Executer.Parameters.Add(new SqlParameter("@Query", query));
+
+            return Executer.Execute<User>(storedProcedure, Converter);
         }
 
         public void Create(User item, string password)

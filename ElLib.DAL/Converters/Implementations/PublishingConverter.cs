@@ -14,7 +14,6 @@ namespace ElLib.DAL.Converters.Implementations
                 Name = (string)reader["Name"],
                 Address = new Address()
                 {
-                    Id = (int)reader["AddressId"],
                     Country = (string)reader["AddressCountry"],
                     City = (string)reader["AddressCity"],
                     Street = (string)reader["AddressStreet"],

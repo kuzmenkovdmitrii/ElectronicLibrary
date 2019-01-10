@@ -34,9 +34,9 @@ namespace ElLib.BLL.Services.Implementations
 
             foreach (var book in books)
             {
-                book.Publishings = publishingRepository.GetPublishingsByBookId(book.Id).ToList();
-                book.Authors = authorRepository.GetAuthorsByBookId(book.Id).ToList();
-                book.Categories = bookCategoryRepository.GetBookCategoriesByBookId(book.Id).ToList();
+                book.Publishings = publishingRepository.GetByBookId(book.Id).ToList();
+                book.Authors = authorRepository.GetByBookId(book.Id).ToList();
+                book.Categories = bookCategoryRepository.GetByBookId(book.Id).ToList();
             }
 
             return books;
@@ -47,9 +47,9 @@ namespace ElLib.BLL.Services.Implementations
             ThrowException.CheckNull(id);
 
             Book book = bookRepository.GetById(id);
-            book.Publishings = publishingRepository.GetPublishingsByBookId(id).ToList();
-            book.Authors = authorRepository.GetAuthorsByBookId(id).ToList();
-            book.Categories = bookCategoryRepository.GetBookCategoriesByBookId(id).ToList();
+            book.Publishings = publishingRepository.GetByBookId(id).ToList();
+            book.Authors = authorRepository.GetByBookId(id).ToList();
+            book.Categories = bookCategoryRepository.GetByBookId(id).ToList();
 
             return book;
         }

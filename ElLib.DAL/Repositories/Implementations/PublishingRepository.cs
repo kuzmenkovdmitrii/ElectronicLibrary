@@ -24,13 +24,24 @@ namespace ElLib.DAL.Repositories.Implementations
             Converter = converter;
         }
 
-        public IEnumerable<Publishing> GetPublishingsByBookId(int? id)
+        public IEnumerable<Publishing> GetByBookId(int? id)
         {
             ThrowException.CheckNull(id);
 
             string storedProcedure = "usp_Select" + TableName + "ByBookId";
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
+
+            return Executer.Execute<Publishing>(storedProcedure, Converter);
+        }
+
+        public IEnumerable<Publishing> GetByQuery(string query)
+        {
+            ThrowException.CheckNull(query);
+
+            string storedProcedure = "usp_Select" + TableName + "ByQuery";
+
+            Executer.Parameters.Add(new SqlParameter("@Query", query));
 
             return Executer.Execute<Publishing>(storedProcedure, Converter);
         }

@@ -14,7 +14,7 @@ namespace ElLib.DAL.Converters.Implementations
                 Name = (string)reader["Name"],
                 LastName = (string)reader["LastName"],
                 MiddleName = (string)reader["MiddleName"],
-                Email = (string)reader["Email"]
+                Email = reader["Email"].ToString()
             };
         }
     }

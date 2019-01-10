@@ -13,7 +13,10 @@ namespace ElLib.DAL.Parameters.Implementations
             {
                 new SqlParameter("@Id", item.Id),
                 new SqlParameter("@Name", item.Name),
-                new SqlParameter("@AddressId", item.Address.Id)
+                new SqlParameter("@Country", item.Address.Country),
+                new SqlParameter("@City", item.Address.City),
+                new SqlParameter("@Street", item.Address.Street),
+                new SqlParameter("@Home", item.Address.Home)
             };
         }
     }

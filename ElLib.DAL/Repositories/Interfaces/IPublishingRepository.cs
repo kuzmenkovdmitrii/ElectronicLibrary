@@ -5,6 +5,7 @@ namespace ElLib.DAL.Repositories.Interfaces
 {
     public interface IPublishingRepository : IRepository<Publishing>
     {
-        IEnumerable<Publishing> GetPublishingsByBookId(int? id);
+        IEnumerable<Publishing> GetByBookId(int? id);
+        IEnumerable<Publishing> GetByQuery(string query);
     }
 }
