@@ -26,14 +26,12 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Search(string query)
         {
-            if (query.IsEmpty())
+            if (query == null)
             {
                 query = "";
             }
 
-            return PartialView(userService.GetAll().Where(
-                x => x.UserName.Contains(query) ||
-                     x.Email.Contains(query)).ToList());
+            return PartialView(userService.Search(query));
         }
 
         public ActionResult AllUsersForSelect()

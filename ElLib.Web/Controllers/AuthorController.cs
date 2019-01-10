@@ -97,17 +97,12 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Search(string query)
         {
-            if (query.IsEmpty())
+            if (query == null)
             {
                 query = "";
             }
-            //var words = query.Split(' ');
 
-            return PartialView(authorService.GetAll().Where(
-                x => x.Name.Contains(query) ||
-                     x.LastName.Contains(query) ||
-                     x.MiddleName.Contains(query) ||
-                     x.Email.Contains(query)).ToList());
+            return PartialView(authorService.Search(query));
         }
     }
 }

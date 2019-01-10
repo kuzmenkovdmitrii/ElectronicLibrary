@@ -8,7 +8,6 @@ namespace ElLib.BLL.Dependency
     {
         public BLLRegistry()
         {
-            For<IAddressService>().Singleton().Use<AddressService>();
             For<IAuthorService>().Singleton().Use<AuthorService>();
             For<IAuthService>().Singleton().Use<AuthService>();
             For<IBookCategoryService>().Singleton().Use<BookCategoryService>();

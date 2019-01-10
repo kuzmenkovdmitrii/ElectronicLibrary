@@ -70,7 +70,6 @@
     <Compile Include="Repositories\Implementations\CommonRepository.cs" />
     <Compile Include="Repositories\Implementations\RoleRepository.cs" />
     <Compile Include="Repositories\Implementations\UserRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IAddressRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAuthorRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBookCategoryRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBookRepository.cs" />

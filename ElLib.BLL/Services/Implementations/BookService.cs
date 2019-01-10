@@ -82,5 +82,10 @@ namespace ElLib.BLL.Services.Implementations
 
             return new OperationDetails(true, "Книга успешно удалена");
         }
+
+        public IEnumerable<Book> Search(string query)
+        {
+            return bookRepository.GetByQuery(query);
+        }
     }
 }

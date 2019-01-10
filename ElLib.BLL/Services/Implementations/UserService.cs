@@ -60,5 +60,10 @@ namespace ElLib.BLL.Services.Implementations
 
             return new OperationDetails(true, "Автор успешно удалён");
         }
+
+        public IEnumerable<User> Search(string query)
+        {
+            return userRepository.GetByQuery(query);
+        }
     }
 }

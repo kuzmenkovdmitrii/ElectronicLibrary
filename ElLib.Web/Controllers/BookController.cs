@@ -148,7 +148,7 @@ namespace ElLib.Web.Controllers
                 model.Query = "";
             }
 
-            IEnumerable<Book> list = bookService.GetAll().Where(x => x.Name.Contains(model.Query)).ToList();
+            IEnumerable<Book> list = bookService.Search(model.Query);
 
 
             if (list == null)

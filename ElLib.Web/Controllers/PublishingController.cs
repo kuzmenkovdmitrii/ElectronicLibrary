@@ -99,5 +99,15 @@ namespace ElLib.Web.Controllers
 
             return Json(false, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Search(string query)
+        {
+            if (query == null)
+            {
+                query = "";
+            }
+
+            return PartialView(publishingService.Search(query));
+        }
     }
 }

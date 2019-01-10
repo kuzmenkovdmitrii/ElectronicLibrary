@@ -52,5 +52,10 @@ namespace ElLib.BLL.Services.Implementations
             bookCategoryRepository.Delete(id);
             return new OperationDetails(true, "Категория книги успешно удалена");
         }
+
+        public IEnumerable<BookCategory> Search(string query)
+        {
+            return bookCategoryRepository.GetByQuery(query);
+        }
     }
 }

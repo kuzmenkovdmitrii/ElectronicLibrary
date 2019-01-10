@@ -5,6 +5,24 @@
     Layout = "~/Views/Shared/_Main.cshtml";
 }
 
+<script>
+    $(document).ready(function () {
+        $("#search").on("input", function (e) {
+            var query = $("#search").val();
+            console.log(query);
+
+            $.ajax({
+                url: '@Url.Action("Search", "Publishing")',
+                data: 'query=' + query,
+                type: 'get',
+                success: function (result) {
+                    $('#results').html(result);
+                }
+            });
+        });
+    });
+</script>
+
 <div class="container" style="margin-bottom: 15px;margin-top:15px">
     <div class="row justify-content-center">
         <div class="col-lg-6">
@@ -12,35 +30,18 @@
                 <h5 class="card-header info-color white-text text-center py-3">
                     <strong>Издательства</strong>
                 </h5>
-                <table class="table table-hover">
-                    <tbody id="results">
-                    @foreach (var publishing in Model)
-                    {
-                        <tr class="changes">
-                            <td style="width: 30%;">
-                                @publishing.Name
-                            </td>
-                            <td style="width: 50%;">
-                                @publishing.Address.Country @publishing.Address.City @publishing.Address.Street @publishing.Address.Home
-                                shing.Address.Home
-                            </td>
-                            <td class="td-pad" style="width: 50px">
-                                <a class="btn-floating btn-sm primary-color" href="@Url.Action("Info", "Publishing", new {id = publishing.Id})"><i class="fa fa-edit"></i></a>
-                            </td>
-                            <td class="td-pad" style="width: 50px">
-                                <a class="btn-floating btn-sm primary-color" href="@Url.Action("Edit", "Publishing", new {id = publishing.Id})"><i class="fa fa-edit"></i></a>
-                            </td>
-                            <td class="td-pad" style="width: 50px">
-                                <a class="btn-floating btn-sm danger-color" href="@Url.Action("Delete", "Publishing", new {id = publishing.Id})"><i class="fa fa-close"></i></a>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
+                <div class="card-body">
+                    <div class="form-inline md-form">
+                        <input class="form-control" id="search" style="margin: 0px 15px -20px 15px; width: 100%" type="text" placeholder="Поиск" aria-label="Поиск">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </div>
+                    <table class="table table-hover">
+                        <tbody id="results">
+                        @Html.Action("Search","Publishing")
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div>
-            <a class="btn btn-info" href="@Url.Action("Add", "Publishing")">Создать</a>
         </div>
     </div>
 </div>

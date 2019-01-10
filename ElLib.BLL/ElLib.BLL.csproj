@@ -72,7 +72,6 @@
     <Compile Include="Dependency\BLLRegistry.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Implementations\AddressService.cs" />
     <Compile Include="Services\Implementations\AuthorService.cs" />
     <Compile Include="Services\Implementations\AuthService.cs" />
     <Compile Include="Services\Implementations\BookCategoryService.cs" />
@@ -80,7 +79,6 @@
     <Compile Include="Services\Implementations\RoleService.cs" />
     <Compile Include="Services\Implementations\UploadService.cs" />
     <Compile Include="Services\Implementations\UserService.cs" />
-    <Compile Include="Services\Interfaces\IAddressService.cs" />
     <Compile Include="Services\Interfaces\IAuthService.cs" />
     <Compile Include="Services\Interfaces\IBookCategoryService.cs" />
     <Compile Include="Services\Interfaces\IAuthorService.cs" />

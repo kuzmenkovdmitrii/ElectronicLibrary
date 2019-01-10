@@ -8,7 +8,7 @@ namespace ElLib.Web.Models
     {
         [Display(Name = "Название")]
         [Required(ErrorMessage = "Поле название не может быть пустым")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Не верная длина названия")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Не верная длина названия")]
         [Remote("CheckName", "Publishing", ErrorMessage = "Издательство с таким названием уже существует")]
         public string Name { get; set; }
 

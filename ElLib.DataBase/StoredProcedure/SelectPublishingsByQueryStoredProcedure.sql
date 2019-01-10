@@ -14,8 +14,6 @@ AS
 	FROM Publishings p
 		JOIN Addresses a
 			ON AddressId = a.Id
-		JOIN BookAndPublishing bp
-			ON bp.PublishingId = p.Id
 
 		WHERE [Name]
 			LIKE '%' + @Query + '%'

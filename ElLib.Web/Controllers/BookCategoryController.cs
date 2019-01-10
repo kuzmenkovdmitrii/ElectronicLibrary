@@ -87,6 +87,16 @@ namespace ElLib.Web.Controllers
             return PartialView(bookCategoryService.GetAll());
         }
 
+        public ActionResult Search(string query)
+        {
+            if (query == null)
+            {
+                query = "";
+            }
+
+            return PartialView(bookCategoryService.Search(query));
+        }
+
         public JsonResult CheckName(string name)
         {
             var categories = bookCategoryService.GetAll();

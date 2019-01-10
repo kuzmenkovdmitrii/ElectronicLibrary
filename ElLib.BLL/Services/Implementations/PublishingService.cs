@@ -55,5 +55,10 @@ namespace ElLib.BLL.Services.Implementations
 
             return new OperationDetails(true, "Издательство успешно удалено");
         }
+
+        public IEnumerable<Publishing> Search(string query)
+        {
+            return publishingRepository.GetByQuery(query);
+        }
     }
 }
