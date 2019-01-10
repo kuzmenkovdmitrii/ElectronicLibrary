@@ -134,6 +134,18 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUsersByRoleIdStoredProcedure.
 
 
 
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectLanguageByNameStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingByNameStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUserByUserNameStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUserByEmailStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoryByNameStoredProcedure.sql
+
+
+
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateAddressStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateAuthorStoredProcedure.sql

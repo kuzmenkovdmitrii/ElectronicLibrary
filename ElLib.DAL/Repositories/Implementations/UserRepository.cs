@@ -6,6 +6,7 @@ using ElLib.Common.Converter;
 using ElLib.Common.Entity;
 using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
+using ElLib.DAL.Converters.Implementations;
 using ElLib.DAL.Parameters.Interface;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -25,6 +26,19 @@ namespace ElLib.DAL.Repositories.Implementations
             Converter = converter;
         }
 
+        public void UpdatePassword(User user, string password)
+        {
+            ThrowException.CheckNull(user);
+            ThrowException.CheckNull(password);
+
+            string storedProcedure = "usp_Update" + EntityName + "Password";
+
+            Executer.Parameters.Add(new SqlParameter("@Id", user.Id));
+            Executer.Parameters.Add(new SqlParameter("@Password", password));
+
+            Executer.ExecuteVoid(storedProcedure);
+        }
+
         public User GetByUserName(string userName)
         {
             ThrowException.CheckNull(userName);
@@ -33,7 +47,18 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@UserName", userName));
 
-            return Executer.Execute<User>(storedProcedure,Converter).FirstOrDefault();
+            return Executer.Execute(storedProcedure, Converter).FirstOrDefault();
+        }
+
+        public User GetByEmail(string email)
+        {
+            ThrowException.CheckNull(email);
+
+            string storedProcedure = "usp_Select" + EntityName + "ByEmail";
+
+            Executer.Parameters.Add(new SqlParameter("@Email", email));
+
+            return Executer.Execute(storedProcedure, Converter).FirstOrDefault();
         }
 
         public IEnumerable<User> GetByQuery(string query)
@@ -44,7 +69,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Query", query));
 
-            return Executer.Execute<User>(storedProcedure, Converter);
+            return Executer.Execute(storedProcedure, Converter);
         }
 
         public void Create(User item, string password)
@@ -68,9 +93,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            //TODO
-            //return Executer.Execute(storedProcedure).Rows[0][0].ToString();
-            return null;
+            return Executer.Execute(storedProcedure, new PasswordConverter()).FirstOrDefault();
         }
     }
 }

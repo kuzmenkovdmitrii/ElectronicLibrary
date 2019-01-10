@@ -32,7 +32,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            return Executer.Execute<Role>(storedProcedure,Converter);
+            return Executer.Execute(storedProcedure,Converter);
         }
 
         public Role GetByName(string name)
@@ -43,7 +43,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Name", name));
 
-            return Executer.Execute<Role>(storedProcedure,Converter).FirstOrDefault();
+            return Executer.Execute(storedProcedure,Converter).FirstOrDefault();
         }
 
         public void AddRoleToUser(User user, Role role)

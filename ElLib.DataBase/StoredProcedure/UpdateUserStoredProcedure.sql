@@ -3,13 +3,11 @@ GO
 
 CREATE PROC usp_UpdateUser 
 	@Id int, 
-	@UserName nvarchar(25),
-	@Password nvarchar(25), 
+	@UserName nvarchar(50),
 	@Email nvarchar(50)
 AS
 	UPDATE Users
 		SET 
 		UserName = @UserName,
-		[Password] = @Password,
 		Email = @Email
-		WHERE Id = @id
+	WHERE Id = @id

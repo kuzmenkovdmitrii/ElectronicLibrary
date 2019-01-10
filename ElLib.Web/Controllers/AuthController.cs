@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using ElLib.BLL.Authentication;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entity;
 using ElLib.Common.Mapper;
@@ -12,6 +12,14 @@ namespace ElLib.Web.Controllers
     {
         readonly IAuthService authService;
         readonly IUserService userService;
+
+        private UserPrincipal CurrentUser
+        {
+            get
+            {
+                return HttpContext.User as UserPrincipal;
+            }
+        }
 
         public AuthController(IAuthService authService, IUserService userService)
         {
@@ -27,6 +35,11 @@ namespace ElLib.Web.Controllers
         public ActionResult Registration()
         {
             return PartialView();
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -71,33 +84,130 @@ namespace ElLib.Web.Controllers
 
         public async Task<ActionResult> Logout()
         {
-            authService.Logout();
+            await authService.Logout();
 
             return RedirectToAction("Index", "Home");
         }
 
-        public JsonResult CheckUserName(string username)
+        [Authorize]
+        public ActionResult EditUserName()
         {
-            var users = userService.GetAll();
-            var user = users.FirstOrDefault(x => x.UserName == username);
-            if (user == null)
+            EditUserNameModel model = new EditUserNameModel()
             {
-                return Json(true, JsonRequestBehavior.AllowGet);
+                Id = CurrentUser.Id,
+                UserName = CurrentUser.UserName
+            };
+
+            return PartialView(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditUserName(EditUserNameModel model)
+        {
+            if (CurrentUser.UserName == model.UserName)
+            {
+                ModelState.AddModelError("UserName", "Это ваш текущий логин");
             }
 
-            return Json(false, JsonRequestBehavior.AllowGet);
+            if (ModelState.IsValid)
+            {
+                User user = userService.GetById(CurrentUser.Id);
+
+                user.UserName = model.UserName;
+
+                var result = userService.Update(user);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("Profile");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
+            }
+
+            return RedirectToAction("Profile");
+        }
+
+        [Authorize]
+        public ActionResult EditEmail()
+        {
+            EditUserEmailModel model = new EditUserEmailModel()
+            {
+                Id = CurrentUser.Id,
+                Email = CurrentUser.Email
+            };
+
+            return PartialView(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditEmail(EditUserEmailModel model)
+        {
+            if (CurrentUser.Email == model.Email)
+            {
+                ModelState.AddModelError("Email", "Это ваш текущий Email");
+            }
+
+            if (ModelState.IsValid)
+            {
+                User user = userService.GetById(CurrentUser.Id);
+
+                user.Email = model.Email;
+
+                var result = userService.Update(user);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("Profile");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
+            }
+
+            return RedirectToAction("Profile");
+        }
+
+        [Authorize]
+        public ActionResult EditPassword()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditPassword(EditUserPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = userService.GetById(CurrentUser.Id);
+
+                var result = userService.UpdatePassword(user, model.OldPassword, model.NewPassword);
+
+                if (result.Successed)
+                {
+                    return RedirectToAction("Profile");
+                }
+
+                ModelState.AddModelError(result.Property, result.Message);
+            }
+
+            return RedirectToAction("Profile");
+        }
+
+        public JsonResult CheckUserName(string username)
+        {
+            var result = userService.CheckUserName(username);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult CheckEmail(string email)
         {
-            var users = userService.GetAll();
-            var user = users.FirstOrDefault(x => x.Email == email);
-            if (user == null)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
+            var result = userService.CheckEmail(email);
 
-            return Json(false, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

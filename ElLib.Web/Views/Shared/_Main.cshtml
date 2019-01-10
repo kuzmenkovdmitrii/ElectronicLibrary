@@ -13,9 +13,6 @@
     }
 }
 <!DOCTYPE html>
-
-
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -44,16 +41,16 @@
             var url = $('#modalLoginForm').data('url');
 
             $.get(url, function (data) {
-                    $('#loginContainer').html(data);
-                    $('#modalLoginForm').modal('show');
+                $('#loginContainer').html(data);
+                $('#modalLoginForm').modal('show');
             });
         };
 
         function registrationClick() {
             var url = $('#modalRegistrationForm').data('url');
             $.get(url, function (data) {
-                    $('#registrationContainer').html(data);
-                    $('#modalRegistrationForm').modal('show');
+                $('#registrationContainer').html(data);
+                $('#modalRegistrationForm').modal('show');
             });
         };
     </script>
@@ -63,7 +60,7 @@
             <div id="loginContainer">
             </div>
         </div>
-        
+
         <div class="modal fade" id="modalRegistrationForm" tabindex="-1" role="dialog" aria-labelledby="registrationModal" aria-hidden="true" data-url="@Url.Action("Registration","Auth")">
             <div id="registrationContainer">
             </div>
@@ -117,17 +114,19 @@
                                         <strong>@user.UserName (@user.Role)</strong>
                                     </h5>
                                 </div>
-                                <a class="dropdown-item" href="@Url.Action("Profile", "Account")" data-toggle="modal" data-target="#loginModal">Профиль</a>
+                                <a class="dropdown-item" href="@Url.Action("Profile", "Auth")">Профиль</a>
+
+                                if (user.IsInRole("Admin"))
+                                 {
+                                     <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель администратора</a>
+                                 }
+
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">Выход</a>
                             }
                             else
                             {
                                 <a class="dropdown-item" onclick="loginClick();">Вход</a>
                                 <a class="dropdown-item" onclick="registrationClick();">Регистрация</a>
-                            }
-
-                            @if (user.IsInRole("Admin"))
-                            {
-                                <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель администратора</a>
                             }
                         </div>
                     </li>
@@ -136,8 +135,10 @@
         </div>
     </nav>
 
-    <div id="loginModal">
-    </div>
+    <div id="loginModal"></div>
+    <div id="registrationModal"></div>
+
+    
     <div>
         @RenderBody()
     </div>

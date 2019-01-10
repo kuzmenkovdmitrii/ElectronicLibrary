@@ -90,14 +90,9 @@ namespace ElLib.Web.Controllers
 
         public JsonResult CheckName(string name)
         {
-            var publishings = publishingService.GetAll();
-            var publishing = publishings.FirstOrDefault(x => x.Name == name);
-            if (publishing == null)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
+            var result = publishingService.CheckName(name);
 
-            return Json(false, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Search(string query)

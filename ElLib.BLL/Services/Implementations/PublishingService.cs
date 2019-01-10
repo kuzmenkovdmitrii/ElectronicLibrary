@@ -60,5 +60,12 @@ namespace ElLib.BLL.Services.Implementations
         {
             return publishingRepository.GetByQuery(query);
         }
+
+        public bool CheckName(string name)
+        {
+            Publishing publishing = publishingRepository.GetByName(name);
+
+            return publishing == null;
+        }
     }
 }

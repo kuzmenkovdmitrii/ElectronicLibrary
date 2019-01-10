@@ -83,14 +83,9 @@ namespace ElLib.Web.Controllers
 
         public JsonResult CheckName(string name)
         {
-            var languages = languageService.GetAll();
-            var language = languages.FirstOrDefault(x => x.Name == name);
-            if (language == null)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
+            var result = languageService.CheckName(name);
 
-            return Json(false, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -54,5 +54,12 @@ namespace ElLib.BLL.Services.Implementations
 
             return new OperationDetails(true, "Язык успешно удалён");
         }
+
+        public bool CheckName(string name)
+        {
+            Language language = languageRepository.GetByName(name);
+
+            return language == null;
+        }
     }
 }

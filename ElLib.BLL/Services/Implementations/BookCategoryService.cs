@@ -57,5 +57,12 @@ namespace ElLib.BLL.Services.Implementations
         {
             return bookCategoryRepository.GetByQuery(query);
         }
+
+        public bool CheckName(string name)
+        {
+            BookCategory category = bookCategoryRepository.GetByName(name);
+
+            return category == null;
+        }
     }
 }

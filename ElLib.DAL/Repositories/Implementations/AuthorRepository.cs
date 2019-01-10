@@ -32,7 +32,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            return Executer.Execute<Author>(storedProcedure, Converter);
+            return Executer.Execute(storedProcedure, Converter);
         }
 
         public IEnumerable<Author> GetByQuery(string query)
@@ -43,7 +43,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Query", query));
 
-            return Executer.Execute<Author>(storedProcedure, Converter);
+            return Executer.Execute(storedProcedure, Converter);
         }
     }
 }

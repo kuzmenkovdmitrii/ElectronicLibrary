@@ -46,7 +46,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters = Parameters.GetParameters(item).Where(x => x.ParameterName != "@Id").ToList();
 
-            Book createdBook = Executer.Execute<Book>(storedProcedure, Converter).FirstOrDefault();
+            Book createdBook = Executer.Execute(storedProcedure, Converter).FirstOrDefault();
 
             foreach (var author in item.Authors)
             {
@@ -109,7 +109,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Query", query));
 
-            return Executer.Execute<Book>(storedProcedure, Converter);
+            return Executer.Execute(storedProcedure, Converter);
         }
 
         public void AddAuthor(Book book, Author author)

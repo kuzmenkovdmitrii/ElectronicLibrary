@@ -99,14 +99,9 @@ namespace ElLib.Web.Controllers
 
         public JsonResult CheckName(string name)
         {
-            var categories = bookCategoryService.GetAll();
-            var category = categories.FirstOrDefault(x => x.Name == name);
-            if (category == null)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
+            var result = bookCategoryService.CheckName(name);
 
-            return Json(false, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

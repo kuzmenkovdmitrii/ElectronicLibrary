@@ -252,6 +252,9 @@
     <Compile Include="Models\EditBookModel.cs" />
     <Compile Include="Models\EditLanguageModel.cs" />
     <Compile Include="Models\EditPublishingModel.cs" />
+    <Compile Include="Models\EditUserEmailModel.cs" />
+    <Compile Include="Models\EditUserNameModel.cs" />
+    <Compile Include="Models\EditUserPasswordModel.cs" />
     <Compile Include="Models\LoginUserModel.cs" />
     <Compile Include="Models\RegisterUserModel.cs" />
     <Compile Include="Models\SearchBooksParametersModel.cs" />
@@ -303,13 +306,16 @@
     <Content Include="Views\User\Search.cshtml" />
     <Content Include="Views\User\All.cshtml" />
     <Content Include="Views\User\Info.cshtml" />
-    <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\Auth\Profile.cshtml" />
     <Content Include="Views\Role\AddRoleToUser.cshtml" />
     <Content Include="Views\Role\AllRolesForSelect.cshtml" />
     <Content Include="Views\User\AllUsersForSelect.cshtml" />
     <Content Include="Views\Book\Search.cshtml" />
     <Content Include="Views\BookCategory\Search.cshtml" />
     <Content Include="Views\Publishing\Search.cshtml" />
+    <Content Include="Views\Auth\EditPassword.cshtml" />
+    <Content Include="Views\Auth\EditUserName.cshtml" />
+    <Content Include="Views\Auth\EditEmail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

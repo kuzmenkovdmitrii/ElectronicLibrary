@@ -7,5 +7,6 @@ namespace ElLib.DAL.Repositories.Interfaces
     {
         IEnumerable<Publishing> GetByBookId(int? id);
         IEnumerable<Publishing> GetByQuery(string query);
+        Publishing GetByName(string name);
     }
 }

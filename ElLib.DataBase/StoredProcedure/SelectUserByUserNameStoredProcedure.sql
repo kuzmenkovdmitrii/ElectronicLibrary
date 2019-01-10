@@ -6,4 +6,3 @@ CREATE PROC usp_SelectUserByUserName
 AS
 	SELECT Id, UserName, Email FROM Users
 		WHERE UserName = @UserName
-	ORDER BY Id DESC

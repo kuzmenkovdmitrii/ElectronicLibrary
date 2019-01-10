@@ -40,7 +40,7 @@ namespace ElLib.BLL.Services.Implementations
 
             userRepository.Create(item);
 
-            return new OperationDetails(true, "Автор успешно создан");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Update(User item)
@@ -49,7 +49,19 @@ namespace ElLib.BLL.Services.Implementations
 
             userRepository.Update(item);
 
-            return new OperationDetails(true, "Автор успешно обновлён");
+            return new OperationDetails(true);
+        }
+
+        public OperationDetails UpdatePassword(User user, string oldPassword, string newPassword)
+        {
+            if (oldPassword != userRepository.GetPassword(user.Id))
+            {
+                return new OperationDetails(false, "Пароли не совпадают", "OldPassword");
+            }
+
+            userRepository.UpdatePassword(user, newPassword);
+
+            return new OperationDetails(true);
         }
 
         public OperationDetails Delete(int? id)
@@ -58,12 +70,26 @@ namespace ElLib.BLL.Services.Implementations
 
             userRepository.Delete(id);
 
-            return new OperationDetails(true, "Автор успешно удалён");
+            return new OperationDetails(true);
         }
 
         public IEnumerable<User> Search(string query)
         {
             return userRepository.GetByQuery(query);
+        }
+
+        public bool CheckUserName(string username)
+        {
+            User user = userRepository.GetByUserName(username);
+
+            return user == null;
+        }
+
+        public bool CheckEmail(string email)
+        {
+            User user = userRepository.GetByEmail(email);
+
+            return user == null;
         }
     }
 }
