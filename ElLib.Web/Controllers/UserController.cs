@@ -17,11 +17,13 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Info(int? id)
         {
             return View(userService.GetById(id));
         }
 
+        [Authorize]
         public ActionResult Search(string query)
         {
             if (query == null)

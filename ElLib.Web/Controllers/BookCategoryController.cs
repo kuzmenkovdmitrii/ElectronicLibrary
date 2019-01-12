@@ -25,12 +25,14 @@ namespace ElLib.Web.Controllers
             return View(bookCategoryService.GetById(id));
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create(CreateBookCategoryModel model)
         {
             if (ModelState.IsValid)
@@ -50,6 +52,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             EditBookCategoryModel model = Mapper.Map<BookCategory, EditBookCategoryModel>(bookCategoryService.GetById(id));
@@ -57,6 +60,7 @@ namespace ElLib.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(EditBookCategoryModel model)
         {
             if (ModelState.IsValid)
@@ -75,6 +79,7 @@ namespace ElLib.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
             bookCategoryService.Delete(id);

@@ -37,6 +37,7 @@ namespace ElLib.Web.Controllers
             return PartialView();
         }
 
+        [Authorize]
         public ActionResult Profile()
         {
             return View();
@@ -82,6 +83,7 @@ namespace ElLib.Web.Controllers
             return PartialView();
         }
 
+        [Authorize]
         public async Task<ActionResult> Logout()
         {
             await authService.Logout();
@@ -101,8 +103,8 @@ namespace ElLib.Web.Controllers
             return PartialView(model);
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public ActionResult EditUserName(EditUserNameModel model)
         {
             if (CurrentUser.UserName == model.UserName)
@@ -141,8 +143,8 @@ namespace ElLib.Web.Controllers
             return PartialView(model);
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public ActionResult EditEmail(EditUserEmailModel model)
         {
             if (CurrentUser.Email == model.Email)
@@ -175,8 +177,8 @@ namespace ElLib.Web.Controllers
             return PartialView();
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public ActionResult EditPassword(EditUserPasswordModel model)
         {
             if (ModelState.IsValid)

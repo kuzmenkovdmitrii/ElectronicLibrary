@@ -31,12 +31,14 @@ namespace ElLib.Web.Controllers
             return View(authorService.GetById(id));
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create(CreateAuthorModel model)
         {
             if (ModelState.IsValid)
@@ -56,12 +58,14 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             return View(Mapper.Map<Author, EditAuthorModel>(authorService.GetById(id)));
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(EditAuthorModel model)
         {
             if (ModelState.IsValid)
@@ -81,6 +85,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
             authorService.Delete(id);

@@ -16,12 +16,14 @@ namespace ElLib.Web.Controllers
             this.userService = userService;
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddRoleToUser()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddRoleToUser(int? user, int? role)
         {
             User foundUser = userService.GetById(user);

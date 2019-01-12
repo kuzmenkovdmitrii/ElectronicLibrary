@@ -43,12 +43,14 @@ namespace ElLib.Web.Controllers
             return View(bookService.GetById(id));
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create(CreateBookModel model)
         {
             if (ModelState.IsValid)
@@ -77,6 +79,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             Book book = bookService.GetById(id);
@@ -95,6 +98,7 @@ namespace ElLib.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(EditBookModel model)
         {
             if (ModelState.IsValid)
@@ -124,6 +128,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public string UploadPicture(string path)
         {
             //HttpPostedFileBase picture = null;
@@ -132,6 +137,7 @@ namespace ElLib.Web.Controllers
             return uploadService.UploadPicture(path);
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public string UploadDocument(string path)
         {
             //HttpPostedFileBase picture = null;

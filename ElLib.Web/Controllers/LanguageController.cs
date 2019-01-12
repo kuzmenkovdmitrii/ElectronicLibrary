@@ -20,12 +20,14 @@ namespace ElLib.Web.Controllers
             return View(languageService.GetAll());
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create(CreateLanguageModel model)
         {
             if (ModelState.IsValid)
@@ -44,12 +46,14 @@ namespace ElLib.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             return View(Mapper.Map<Language, EditLanguageModel>(languageService.GetById(id)));
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(EditLanguageModel model)
         {
             if (ModelState.IsValid)
@@ -68,6 +72,7 @@ namespace ElLib.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
             languageService.Delete(id);

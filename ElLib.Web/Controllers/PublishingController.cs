@@ -25,12 +25,14 @@ namespace ElLib.Web.Controllers
             return View(publishingService.GetById(id));
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create(CreatePublishingModel model)
         {
             if (ModelState.IsValid)
@@ -49,6 +51,7 @@ namespace ElLib.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             Publishing publishing = publishingService.GetById(id);
@@ -57,6 +60,7 @@ namespace ElLib.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(EditPublishingModel model)
         {
             if (ModelState.IsValid)
@@ -75,6 +79,7 @@ namespace ElLib.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
             publishingService.Delete(id);

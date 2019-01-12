@@ -6,7 +6,7 @@
 
 <script>
     $(document).ready(function () {
-        $("#menu-toggle").click(function(e) {
+        $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("active");
             $("#wrapperIcon").toggleClass("fa-angle-left");
@@ -20,7 +20,18 @@
             <button type="button" class="btn btn-md btn-block btn-info" id="menu-toggle" style="height: 60px">
                 <div class="row">
                     <div class="col-10">
-                        Панель администратора
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="col-10">
+                                Панель администратора
+                            </div>
+                        }
+                        @if (User.IsInRole("Editor"))
+                        {
+                            <div class="col-10">
+                                Панель редактора
+                            </div>
+                        }
                     </div>
                     <div class="col-2">
                         <i class="fa fa-th-list" aria-hidden="true"></i>
@@ -96,7 +107,7 @@
                 </div>
             </div>
 
-            @if (!User.IsInRole("Admin"))
+            @if (User.IsInRole("Admin"))
             {
                 <div>
                     <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "User")">
