@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Security.Cryptography.X509Certificates;
+using ElLib.Common.Logger;
 using ElLib.Web.Controllers;
 
 namespace ElLib.Web.DependencyResolution {
@@ -27,13 +28,13 @@ namespace ElLib.Web.DependencyResolution {
         #region Constructors and Destructors
 
         public DefaultRegistry() {
+            
             Scan(
                 scan => {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
         }
 
         #endregion

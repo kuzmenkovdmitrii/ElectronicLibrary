@@ -1,4 +1,5 @@
 ﻿using ElLib.BLL.Dependency;
+using ElLib.Common.Dependency;
 using ElLib.DAL.Dependency;
 using StructureMap;
 
@@ -12,6 +13,7 @@ namespace ElLib.Dependency
             {
                 scan.AssemblyContainingType<DALRegistry>();
                 scan.AssemblyContainingType<BLLRegistry>();
+                scan.AssemblyContainingType<CommonRegistry>();
 
                 scan.LookForRegistries();
             });

@@ -22,8 +22,6 @@ namespace ElLib.DAL.Dependency
             For<IUserRepository>().Use<UserRepository>();
             For<IRoleRepository>().Use<RoleRepository>();
 
-            For<IProcedureExecuter>().Use<ProcedureExecuter>();
-
             For<IConverter<Author>>().Use<AuthorConverter>();
             For<IConverter<BookCategory>>().Use<BookCategoryConverter>();
             For<IConverter<Book>>().Use<BookConverter>();

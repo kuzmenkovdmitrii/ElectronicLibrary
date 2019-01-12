@@ -34,6 +34,9 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.7.0\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
@@ -46,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converter\IConverter.cs" />
+    <Compile Include="Dependency\CommonRegistry.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Author.cs" />
     <Compile Include="Entities\Book.cs" />
@@ -56,6 +60,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\WCF\Advertising.cs" />
     <Compile Include="Exception\ThrowException.cs" />
+    <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="ProcedureExecuter\IProcedureExecuter.cs" />

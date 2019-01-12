@@ -51,12 +51,12 @@
     <Compile Include="Converters\Implementations\PasswordConverter.cs" />
     <Compile Include="Converters\Implementations\RoleConverter.cs" />
     <Compile Include="Converters\Implementations\UserConverter.cs" />
-    <Compile Include="Dependency\DALRegistry.cs" />
     <Compile Include="Converters\Implementations\AuthorConverter.cs" />
     <Compile Include="Converters\Implementations\BookCategoryConverter.cs" />
     <Compile Include="Converters\Implementations\BookConverter.cs" />
     <Compile Include="Converters\Implementations\LanguageConverter.cs" />
     <Compile Include="Converters\Implementations\PublishingConverter.cs" />
+    <Compile Include="Dependency\DALRegistry.cs" />
     <Compile Include="Parameters\Implementations\AuthorParameters.cs" />
     <Compile Include="Parameters\Implementations\BookCategoryParameters.cs" />
     <Compile Include="Parameters\Implementations\BookParameters.cs" />

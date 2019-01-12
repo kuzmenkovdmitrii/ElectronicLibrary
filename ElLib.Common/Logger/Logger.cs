@@ -3,30 +3,38 @@ using log4net;
 
 namespace ElLib.Common.Logger
 {
-    public static class Logger
+    public class Logger : ILogger
     {
-        public static ILog For(object LoggedObject)
+        private readonly ILog logger;
+
+        public Logger()
+        {
+            logger = LogManager.GetLogger("ElLibLogger");
+        }
+
+        public void Error(string message)
+        {
+            logger.Error(message);
+        }
+
+        public ILog For(object LoggedObject)
         {
             if (LoggedObject != null)
             {
                 return For(LoggedObject.GetType());
             }
-            else
-            {
-                return For(null);
-            }
+
+            return For(null);
         }
 
-        public static ILog For(Type ObjectType)
+        public ILog For(Type ObjectType)
         {
             if (ObjectType != null)
             {
                 return LogManager.GetLogger(ObjectType.Name);
             }
-            else
-            {
-                return LogManager.GetLogger(string.Empty);
-            }
+
+            return LogManager.GetLogger(string.Empty);
         }
     }
 }

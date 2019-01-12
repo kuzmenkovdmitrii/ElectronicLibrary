@@ -5,7 +5,9 @@ using System.Web.Routing;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using ElLib.BLL.Authentication;
+using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
+using ElLib.Common.Logger;
 using ElLib.Web.DependencyResolution;
 using log4net;
 using StructureMap;
@@ -43,19 +45,10 @@ namespace ElLib.Web
             Exception exception = Server.GetLastError();
 
             IContainer container = IoC.Initialize();
-            ILog logger = container.GetInstance<ILog>();
+
+            ILogger logger = container.GetInstance<ILogger>();
+
             logger.Error(exception.Message);
-
-            HttpException httpException = exception as HttpException;
-
-            if (httpException != null)
-            {
-                int code = httpException.GetHttpCode();
-                if (code == 404)
-                {
-                    //TODO
-                }
-            }
         }
     }
 }
