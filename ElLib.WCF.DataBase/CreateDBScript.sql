@@ -1,0 +1,5 @@
+﻿CREATE DATABASE ElLibWCFDataBase
+GO
+
+USE ElLibWCFDataBase
+GO

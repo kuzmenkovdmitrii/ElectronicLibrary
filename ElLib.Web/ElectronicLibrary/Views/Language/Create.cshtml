@@ -1,0 +1,33 @@
+﻿@model ElLib.Web.Models.CreateLanguageModel
+
+@{
+    ViewBag.Title = "Добавить язык";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Добавить язык</strong>
+                </h5>
+                <div class="card-body">
+                    @using (Html.BeginForm("Create", "Language", new { @class = "text-center", @style = "color: #757575;" }))
+                    {
+                        <div class="md-form mt-3">
+                            @Html.TextBoxFor(x => x.Name, new
+                            {
+                                @class = "form-control",
+                                @placeholder = @Html.DisplayNameFor(x => x.Name)
+                            })
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+                        @Html.ValidationSummary(true)
+                        <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Добавить" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

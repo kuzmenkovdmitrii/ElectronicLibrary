@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ElLib.Common.Entities.Language>
+
+@foreach (var language in Model)
+{
+    <option value="@language.Id">@language.Name</option>
+}

@@ -1,0 +1,16 @@
+﻿@using ElLib.BLL.Authentication
+@model ElLib.Web.Models.EditUserNameModel
+
+@using (Html.BeginForm("EditUserName", "Auth"))
+{
+    <div class="md-form mt-3">
+        @Html.TextBoxFor(x => x.UserName, new
+        {
+            @class = "form-control",
+            @placeholder = @Html.DisplayNameFor(x => x.UserName)
+        })
+        @Html.ValidationMessageFor(x => x.UserName)
+    </div>
+    @Html.ValidationSummary(true)
+    <input type="submit" class="btn btn-outline-info btn-rounded btn-block btn-sm" value="Сохранить логин" />
+}

@@ -1,0 +1,78 @@
+﻿@model ElLib.Web.Models.EditPublishingModel
+
+@{
+    ViewBag.Title = "Редактировать издательство";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<script>
+    $(document).ready(function() {
+        $("#Country").select2();
+        $("#City").select2();
+    });
+</script>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="card">
+            <h5 class="card-header info-color white-text text-center py-3">
+                <strong>Редактировать издательство</strong>
+            </h5>
+            <div class="card-body">
+                @using (Html.BeginForm("Edit", "Publishing", new { @class = "text-center", @style = "color: #757575;" }))
+                {
+                    <div class="md-form mt-3">
+                        @Html.TextBoxFor(x => x.Name, new
+                        {
+                            @class = "form-control",
+                            @placeholder = @Html.DisplayNameFor(x => x.Name)
+                        })
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+
+                    <div class="md-form">
+                        @Html.TextBoxFor(x => x.Address.Country, new
+                        {
+                            @class = "form-control",
+                            @placeholder = @Html.DisplayNameFor(x => x.Address.Country)
+                        })
+                        @Html.ValidationMessageFor(x => x.Address.Country)
+                    </div>
+
+                    <div class="md-form">
+                        @Html.TextBoxFor(x => x.Address.City, new
+                        {
+                            @class = "form-control",
+                            @placeholder = @Html.DisplayNameFor(x => x.Address.City)
+                        })
+                        @Html.ValidationMessageFor(x => x.Address.City)
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-8">
+                            <div class="md-form mt-3">
+                                @Html.TextBoxFor(x => x.Address.Street, new
+                                {
+                                    @class = "form-control",
+                                    @placeholder = @Html.DisplayNameFor(x => x.Address.Street)
+                                })
+                                @Html.ValidationMessageFor(x => x.Address.Street)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form mt-3">
+                                @Html.TextBoxFor(x => x.Address.Home, new
+                                {
+                                    @class = "form-control",
+                                    @placeholder = @Html.DisplayNameFor(x => x.Address.Home)
+                                })
+                                @Html.ValidationMessageFor(x => x.Address.Home)
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationSummary(true)
+                    <input type="submit" class="btn btn-outline-info btn-rounded btn-block" value="Сохранить" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

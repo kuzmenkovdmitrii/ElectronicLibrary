@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ElLib.Common.Entities.WCF.Advertising>
+
+@foreach (var advertising in Model)
+{
+<div class="row">
+    <div class="card">
+        <div style="">
+            <img class="card-img-top" src="@advertising.Picture.Value" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <a class="card-title btn-link black-text" href="@advertising.Url.Value">@advertising.Title</a>
+        </div>
+    </div>
+</div>
+}

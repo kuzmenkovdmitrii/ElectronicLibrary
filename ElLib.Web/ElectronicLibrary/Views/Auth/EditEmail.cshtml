@@ -1,0 +1,15 @@
+﻿@model ElLib.Web.Models.EditUserEmailModel
+
+@using (Html.BeginForm("EditEmail", "Auth"))
+{
+    <div class="md-form mt-3">
+        @Html.TextBoxFor(x => x.Email, new
+        {
+            @class = "form-control",
+            @placeholder = @Html.DisplayNameFor(x => x.Email)
+        })
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    @Html.ValidationSummary(true)
+    <input type="submit" class="btn btn-outline-info btn-rounded btn-block btn-sm" value="Сохранить Email" />
+}

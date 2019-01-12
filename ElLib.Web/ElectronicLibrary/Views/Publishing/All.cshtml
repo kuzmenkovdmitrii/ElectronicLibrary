@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ElLib.Common.Entities.Publishing>
+
+@{
+    ViewBag.Title = "Издательства";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $("#search").on("input", function (e) {
+            var query = $("#search").val();
+            console.log(query);
+
+            $.ajax({
+                url: '@Url.Action("Search", "Publishing")',
+                data: 'query=' + query,
+                type: 'get',
+                success: function (result) {
+                    $('#results').html(result);
+                }
+            });
+        });
+    });
+</script>
+
+<div class="container" style="margin-bottom: 15px;margin-top:15px">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Издательства</strong>
+                </h5>
+                <div class="card-body">
+                    <div class="form-inline md-form">
+                        <input class="form-control" id="search" style="margin: 0px 15px -20px 15px; width: 100%" type="text" placeholder="Поиск" aria-label="Поиск">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </div>
+                    <table class="table table-hover">
+                        <tbody id="results">
+                        @Html.Action("Search","Publishing")
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

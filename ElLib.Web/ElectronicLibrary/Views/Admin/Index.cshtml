@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
+            $("#wrapperIcon").toggleClass("fa-angle-left");
+        });
+    });
+</script>
+
+<div id="wrapper" class="active">
+    <div id="sidebar-wrapper" style="width: 300px;background:rgb(51,181,229)">
+        <div>
+            <button type="button" class="btn btn-md btn-block btn-info" id="menu-toggle" style="height: 60px">
+                <div class="row">
+                    <div class="col-10">
+                        Панель администратора
+                    </div>
+                    <div class="col-2">
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </button>
+
+            <div>
+                <button class="btn btn-white btn-md btn-block text-info" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="row">
+                        <div class="col-10">
+                            Книги
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("All", "Book")">Все книги</a>
+                    <a class="dropdown-item" href="@Url.Action("Create", "Book")">Создать книгу</a>
+                </div>
+            </div>
+
+            <div>
+                <button class="btn btn-white btn-md btn-block text-info" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="row">
+                        <div class="col-10">
+                            Авторы
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("All", "Author")">Все авторы</a>
+                    <a class="dropdown-item" href="@Url.Action("Create", "Author")">Создать автора</a>
+                </div>
+            </div>
+
+            <div>
+                <button class="btn btn-white btn-md btn-block text-info" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="row">
+                        <div class="col-10">
+                            Языки
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-language" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("All", "Language")">Все языки</a>
+                    <a class="dropdown-item" href="@Url.Action("Create", "Language")">Создать язык</a>
+                </div>
+            </div>
+
+            <div>
+                <button class="btn btn-white btn-md btn-block text-info" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="row">
+                        <div class="col-10">
+                            Издательства
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-building" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("All", "Publishing")">Все издательства</a>
+                    <a class="dropdown-item" href="@Url.Action("Create", "Publishing")">Создать издательство</a>
+                </div>
+            </div>
+
+            @if (!User.IsInRole("Admin"))
+            {
+                <div>
+                    <a class="btn btn-white btn-md btn-block text-info" href="@Url.Action("All", "User")">
+                        <div class="row">
+                            <div class="col-10">
+                                Пользователи
+                            </div>
+                            <div class="col-2">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <button class="btn btn-white btn-md btn-block text-info" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="row">
+                            <div class="col-10">
+                                Роли
+                            </div>
+                            <div class="col-2">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("AddRoleToUser", "Role")">Добавить роль для пользователя</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

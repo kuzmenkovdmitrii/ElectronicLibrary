@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ElLib.Common.Entities.Role>
+
+@foreach (var role in Model)
+{
+    <option value="@role.Id">@role.Name</option>
+}

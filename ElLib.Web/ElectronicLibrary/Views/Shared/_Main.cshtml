@@ -1,0 +1,153 @@
+﻿@using ElLib.BLL.Authentication
+
+@{
+    Layout = null;
+    UserPrincipal user;
+    if (User as UserPrincipal == null)
+    {
+        user = new UserPrincipal();
+    }
+    else
+    {
+        user = HttpContext.Current.User as UserPrincipal;
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/Application.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/mdb.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/mdb.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <link href="~/Content/css/select2.css" rel="stylesheet" />
+    <script src="~/Scripts/select2.js"></script>
+</head>
+<body>
+    <script>
+        function loginClick() {
+            var url = $('#modalLoginForm').data('url');
+
+            $.get(url, function (data) {
+                $('#loginContainer').html(data);
+                $('#modalLoginForm').modal('show');
+            });
+        };
+
+        function registrationClick() {
+            var url = $('#modalRegistrationForm').data('url');
+            $.get(url, function (data) {
+                $('#registrationContainer').html(data);
+                $('#modalRegistrationForm').modal('show');
+            });
+        };
+    </script>
+    <nav class="mb-1 navbar navbar-expand-sm navbar-dark info-color">
+
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true" data-url="@Url.Action("Login","Auth")">
+            <div id="loginContainer">
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalRegistrationForm" tabindex="-1" role="dialog" aria-labelledby="registrationModal" aria-hidden="true" data-url="@Url.Action("Registration","Auth")">
+            <div id="registrationContainer">
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            @*<div class="float-left">
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+                </div>*@
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Главная</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hiddenNav" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="hiddenNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    @*<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>*@
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    @*<li class="nav-item">
+                            <a class="nav-link">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>*@
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownAccount">
+                            @if (user.Identity.IsAuthenticated)
+                            {
+                                <div class="card">
+                                    <h5 class="card-header info-color white-text text-center py-1">
+                                        <strong>@user.UserName (@user.Role)</strong>
+                                    </h5>
+                                </div>
+                                <a class="dropdown-item" href="@Url.Action("Profile", "Auth")">Профиль</a>
+
+                                if (user.IsInRole("Admin"))
+                                 {
+                                     <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель администратора</a>
+                                 }
+
+                                <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">Выход</a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item" onclick="loginClick();">Вход</a>
+                                <a class="dropdown-item" onclick="registrationClick();">Регистрация</a>
+                            }
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="loginModal"></div>
+    <div id="registrationModal"></div>
+
+    
+    <div>
+        @RenderBody()
+    </div>
+
+    @*<footer class="page-footer font-small info-color footer fixed-bottom">
+        <div class="footer-copyright text-center py-3 info-color">
+            © 2018 Copyright:
+            <a href="#"> ElectronicLibrary.ru</a>
+        </div>
+    </footer>*@
+</body>
+</html>

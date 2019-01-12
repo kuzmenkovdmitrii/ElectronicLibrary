@@ -1,0 +1,56 @@
+﻿@model ElLib.Common.Entities.Author
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-5">
+            <div class="card">
+                @if (!User.IsInRole("Admin"))
+                {
+                        <h5 class="card-header info-color white-text text-center py-3">
+                            <strong>Подробная информация</strong>
+                            <a class="btn-floating blue darken-3 float-right" style="height: 30px; width: 30px; margin: 0" href="@Url.Action("Edit","Author", new {id = @Model.Id})"><i class="fas fa-star"></i></a>
+                        </h5>
+                }
+                else
+                {
+                    <h5 class="card-header info-color white-text text-center py-3">
+                        <strong>Подробная информация</strong>
+                    </h5>
+                }
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th scope="row" class="text-black-50">Фамилия</th>
+                            <td>@Model.LastName</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Имя</th>
+                            <td>@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Отчество</th>
+                            <td>@Model.MiddleName</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Email</th>
+                            <td>@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Книги</th>
+                            <td>
+                                <a type="button" href="@Url.Action("GetByAuthorId","Book")" class="btn text-white info-color btn-sm btn-rounded">Все книги автора</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

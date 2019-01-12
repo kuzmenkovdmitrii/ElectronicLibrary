@@ -1,0 +1,41 @@
+﻿@model ElLib.Web.Models.RegisterUserModel
+
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header info-color">
+            <strong class="white-text">Регистрация</strong>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @using (Html.BeginForm("Registration", "Auth"))
+        {
+            <div class="modal-body">
+                @Html.AntiForgeryToken()
+                <div class="md-form">
+                    <input type="text" id="UserName" name="UserName" class="form-control validate" style="color:black">
+                    <label for="UserName">Логин</label>
+                </div>
+                <div class="md-form">
+                    <input type="password" id="Password" name="Password" class="form-control validate" style="color:black">
+                    <label for="Password">Пароль</label>
+                </div>
+                <div class="md-form">
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control validate" style="color:black">
+                    <label for="Password">Повторите пароль</label>
+                </div>
+                <div class="md-form">
+                    <input type="email" id="Email" name="Email" class="form-control validate" style="color:black">
+                    <label for="UserName">Email</label>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <input type="submit" class="btn btn-rounded btn-outline-info btn-block" value="Зарегистрироваться" style="margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<div class="container" style="margin-bottom: 15px;margin-top:15px">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <h5 class="card-header info-color white-text text-center py-3">
+                    <strong>Личный кабинет</strong>
+                </h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div>
+                                @Html.Action("EditUserName","Auth")
+                            </div>
+                            <div>
+                                @Html.Action("EditEmail", "Auth")
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                @Html.Action("EditPassword", "Auth")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
