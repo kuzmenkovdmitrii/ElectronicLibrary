@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Security.Policy" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Security.Policy" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50817/AdvertisingService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Security.Util" />
+  <xs:complexType name="Url">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EvidenceBase">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Security.Util" name="m_url" nillable="true" type="q1:URLString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Url" nillable="true" type="tns:Url" />
+  <xs:complexType name="EvidenceBase">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EvidenceBase" nillable="true" type="tns:EvidenceBase" />
+</xs:schema>

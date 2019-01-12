@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0ed9645f-1255-4e63-9fb6-26e12c9fe227" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50817/AdvertisingService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AdvertisingService.disco" MetadataType="Disco" ID="533c9a8a-21e6-4da5-aa64-faf75f0f7ce1" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?disco" />
+    <MetadataFile FileName="AdvertisingService.wsdl" MetadataType="Wsdl" ID="063909f6-da1f-427f-a863-a4c58f808839" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?wsdl" />
+    <MetadataFile FileName="AdvertisingService.xsd" MetadataType="Schema" ID="6fe4dcf1-a433-4eaa-b41a-96987ac2f2b4" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AdvertisingService1.xsd" MetadataType="Schema" ID="f1251011-24a0-474e-8586-ec4a7189e2ee" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdvertisingService2.xsd" MetadataType="Schema" ID="1e54524e-e6ac-4f70-b606-a50cc39ce19a" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdvertisingService3.xsd" MetadataType="Schema" ID="fa6ba2d6-7e80-4c98-a438-861c06202daf" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AdvertisingService4.xsd" MetadataType="Schema" ID="e801b713-8d01-4ae8-815e-59ba14a7d4eb" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AdvertisingService5.xsd" MetadataType="Schema" ID="c2d0e96f-86e6-40dc-88af-a9ae861fdc5d" SourceId="1" SourceUrl="http://localhost:50817/AdvertisingService.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

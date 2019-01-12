@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{909F31DA-858C-45F5-B23D-0C914B28D904}</ProjectGuid>
+    <ProjectGuid>{63B8AE37-2BD5-46BA-AF9A-124E23E61F04}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -61,16 +61,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service\MarketingService.svc" />
+    <Content Include="AdvertisingService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Marketing.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\IMarketingService.cs" />
-    <Compile Include="Service\MarketingService.svc.cs">
-      <DependentUpon>MarketingService.svc</DependentUpon>
+    <Compile Include="AdvertisingService.svc.cs">
+      <DependentUpon>AdvertisingService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Converter\AdvertisingConverter.cs" />
+    <Compile Include="IAdvertisingService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -82,6 +82,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElLib.Common\ElLib.Common.csproj">
+      <Project>{9AD0EECA-A7B8-4E0D-8C54-6D77684EED13}</Project>
+      <Name>ElLib.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -96,7 +102,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50817</DevelopmentServerPort>
+          <DevelopmentServerPort>58249</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:50817/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

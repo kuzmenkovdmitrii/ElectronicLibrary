@@ -149,7 +149,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="WCF\ClientConfig.xml" />
     <Content Include="Web.config" />
     <None Include="Properties\DataSources\ElLib.Common.Entities.WCF.Advertising.datasource" />
     <None Include="Web.Debug.config">
