@@ -1,6 +1,4 @@
-﻿using System.Web;
-
-namespace ElLib.BLL.Services.Interfaces
+﻿namespace ElLib.BLL.Services.Interfaces
 {
     public interface IUploadService
     {

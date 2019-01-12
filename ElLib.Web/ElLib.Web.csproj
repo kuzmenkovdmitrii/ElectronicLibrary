@@ -224,6 +224,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdvertisingController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\BookCategoryController.cs" />
@@ -316,6 +317,7 @@
     <Content Include="Views\Auth\EditPassword.cshtml" />
     <Content Include="Views\Auth\EditUserName.cshtml" />
     <Content Include="Views\Auth\EditEmail.cshtml" />
+    <Content Include="Views\Advertising\Advertising.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -325,6 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElLib.BLL\ElLib.BLL.csproj">

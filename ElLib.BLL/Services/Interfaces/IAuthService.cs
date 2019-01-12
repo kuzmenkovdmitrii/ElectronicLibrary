@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using ElLib.BLL.Infrastructure;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 
 namespace ElLib.BLL.Services.Interfaces
 {

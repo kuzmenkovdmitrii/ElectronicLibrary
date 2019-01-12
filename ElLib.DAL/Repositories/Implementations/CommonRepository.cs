@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -23,8 +22,8 @@ namespace ElLib.DAL.Repositories.Implementations
         public CommonRepository(IProcedureExecuter executer)
         {
             Executer = executer;
-            Executer.ConnectionString = ConfigurationSettings.AppSettings["ConnectionString"];
-        }
+            Executer.ConnectionString = ConfigurationManager.ConnectionStrings["ElLibDB"].ConnectionString;
+    }
 
         public virtual IEnumerable<T> GetAll()
         {
@@ -34,7 +33,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public virtual T GetById(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             string storedProcedure = "usp_Select" + EntityName + "ById";
 
@@ -67,7 +66,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public virtual void Delete(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             string storedProcedure = "usp_Delete" + EntityName;
 

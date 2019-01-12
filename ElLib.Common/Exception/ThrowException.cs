@@ -11,5 +11,18 @@ namespace ElLib.Common.Exception
                 throw new ArgumentNullException();
             }
         }
+
+        public static void CheckId(int? id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (id <= 0)
+            {
+                throw new System.ArgumentException("Argument is negative or 0");
+            }
+        }
     }
 }

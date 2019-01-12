@@ -1,7 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Parameters.Interface;
@@ -12,8 +12,8 @@ namespace ElLib.DAL.Repositories.Implementations
     class LanguageRepository : CommonRepository<Language>, ILanguageRepository
     {
         public LanguageRepository(
-            IProcedureExecuter executer, 
-            IParameters<Language> parameters, 
+            IProcedureExecuter executer,
+            IParameters<Language> parameters,
             IConverter<Language> converter)
             : base(executer)
         {

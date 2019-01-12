@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -22,7 +22,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public Role GetById(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             return roleRepository.GetById(id);
         }

@@ -1,4 +1,4 @@
-﻿using ElLib.Common.Entity;
+﻿using ElLib.Common.Entities;
 
 namespace ElLib.DAL.Repositories.Interfaces
 {

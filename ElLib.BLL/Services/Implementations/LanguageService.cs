@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -23,7 +22,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public Language GetById(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             return languageRepository.GetById(id);
         }
@@ -48,7 +47,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public OperationDetails Delete(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             languageRepository.Delete(id);
 
@@ -57,6 +56,8 @@ namespace ElLib.BLL.Services.Implementations
 
         public bool CheckName(string name)
         {
+            ThrowException.CheckNull(name);
+
             Language language = languageRepository.GetByName(name);
 
             return language == null;

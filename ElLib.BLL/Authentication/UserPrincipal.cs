@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 
 namespace ElLib.BLL.Authentication
 {

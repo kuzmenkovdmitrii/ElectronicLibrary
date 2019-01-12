@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.DAL.Parameters.Interface;
 
 namespace ElLib.DAL.Parameters.Implementations

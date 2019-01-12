@@ -5,7 +5,7 @@ using System.Web.Routing;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using ElLib.BLL.Authentication;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Web.DependencyResolution;
 using log4net;
 using StructureMap;

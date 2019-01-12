@@ -3,8 +3,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
-using ElLib.Common.Mapper;
+using ElLib.Common.Entities;
 using ElLib.Web.Models;
 
 namespace ElLib.Web.Controllers

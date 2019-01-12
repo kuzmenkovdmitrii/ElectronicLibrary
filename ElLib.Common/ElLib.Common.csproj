@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,20 +46,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converter\IConverter.cs" />
-    <Compile Include="Entity\Address.cs" />
-    <Compile Include="Entity\Author.cs" />
-    <Compile Include="Entity\Book.cs" />
-    <Compile Include="Entity\BookCategory.cs" />
-    <Compile Include="Entity\Language.cs" />
-    <Compile Include="Entity\Publishing.cs" />
-    <Compile Include="Entity\Role.cs" />
-    <Compile Include="Entity\User.cs" />
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Author.cs" />
+    <Compile Include="Entities\Book.cs" />
+    <Compile Include="Entities\BookCategory.cs" />
+    <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\Publishing.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\WCF\Advertising.cs" />
     <Compile Include="Exception\ThrowException.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="ProcedureExecuter\IProcedureExecuter.cs" />
     <Compile Include="ProcedureExecuter\ProcedureExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WCF\IAdvertisingService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logger\logger.config">

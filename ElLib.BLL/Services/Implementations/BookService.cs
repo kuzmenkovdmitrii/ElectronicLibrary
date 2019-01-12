@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -44,7 +44,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public Book GetById(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             Book book = bookRepository.GetById(id);
             book.Publishings = publishingRepository.GetByBookId(id).ToList();
@@ -76,7 +76,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public OperationDetails Delete(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             bookRepository.Delete(id);
 
@@ -85,6 +85,8 @@ namespace ElLib.BLL.Services.Implementations
 
         public IEnumerable<Book> Search(string query)
         {
+            ThrowException.CheckNull(query);
+
             IEnumerable<Book> books = bookRepository.GetByQuery(query);
 
             foreach (var book in books)

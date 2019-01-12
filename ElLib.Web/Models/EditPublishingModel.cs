@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 
 namespace ElLib.Web.Models
 {

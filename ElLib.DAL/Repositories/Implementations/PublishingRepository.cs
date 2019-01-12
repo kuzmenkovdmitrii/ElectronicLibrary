@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using ElLib.Common.Converter;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Parameters.Interface;
@@ -27,7 +27,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
         public IEnumerable<Publishing> GetByBookId(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             string storedProcedure = "usp_Select" + TableName + "ByBookId";
 

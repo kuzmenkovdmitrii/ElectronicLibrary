@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 
 namespace ElLib.BLL.Services.Interfaces
 {

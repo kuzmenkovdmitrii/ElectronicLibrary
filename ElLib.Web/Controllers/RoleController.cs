@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 
 namespace ElLib.Web.Controllers
 {

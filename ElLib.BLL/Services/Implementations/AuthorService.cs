@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -24,7 +23,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public Author GetById(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             return authorRepository.GetById(id);
         }
@@ -49,7 +48,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public OperationDetails Delete(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             authorRepository.Delete(id);
 
@@ -58,6 +57,8 @@ namespace ElLib.BLL.Services.Implementations
 
         public IEnumerable<Author> Search(string query)
         {
+            ThrowException.CheckNull(query);
+
             return authorRepository.GetByQuery(query);
         }
     }

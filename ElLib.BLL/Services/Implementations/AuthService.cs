@@ -7,7 +7,8 @@ using System.Web.Script.Serialization;
 using System.Web.Security;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
+using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
 namespace ElLib.BLL.Services.Implementations
@@ -109,6 +110,9 @@ namespace ElLib.BLL.Services.Implementations
 
         private bool CheckPassword(User user, string password)
         {
+            ThrowException.CheckNull(user);
+            ThrowException.CheckNull(password);
+
             if (userRepository.GetPassword(user.Id) != password)
             {
                 return false;

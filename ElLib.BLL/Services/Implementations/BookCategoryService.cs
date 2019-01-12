@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
 
@@ -24,7 +24,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public BookCategory GetById(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             return bookCategoryRepository.GetById(id);
         }
@@ -47,7 +47,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public OperationDetails Delete(int? id)
         {
-            ThrowException.CheckNull(id);
+            ThrowException.CheckId(id);
 
             bookCategoryRepository.Delete(id);
             return new OperationDetails(true, "Категория книги успешно удалена");
@@ -55,11 +55,15 @@ namespace ElLib.BLL.Services.Implementations
 
         public IEnumerable<BookCategory> Search(string query)
         {
+            ThrowException.CheckNull(query);
+
             return bookCategoryRepository.GetByQuery(query);
         }
 
         public bool CheckName(string name)
         {
+            ThrowException.CheckNull(name);
+
             BookCategory category = bookCategoryRepository.GetByName(name);
 
             return category == null;

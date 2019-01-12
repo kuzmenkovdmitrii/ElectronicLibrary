@@ -1,5 +1,5 @@
 ﻿using ElLib.Common.Converter;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.DAL.Converters.Implementations;
 using ElLib.DAL.Parameters.Implementations;

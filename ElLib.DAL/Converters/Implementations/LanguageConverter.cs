@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 using ElLib.Common.Converter;
-using ElLib.Common.Entity;
+using ElLib.Common.Entities;
 
 namespace ElLib.DAL.Converters.Implementations
 {
