@@ -29,12 +29,12 @@ namespace ElLib.Web.Controllers
 
         public ActionResult Login()
         {
-            return PartialView();
+            return View();
         }
 
         public ActionResult Registration()
         {
-            return PartialView();
+            return View();
         }
 
         [Authorize]
@@ -61,7 +61,7 @@ namespace ElLib.Web.Controllers
                 ModelState.AddModelError(result.Property, result.Message);
             }
 
-            return PartialView();
+            return View();
         }
 
         [HttpPost]
@@ -80,7 +80,7 @@ namespace ElLib.Web.Controllers
                 ModelState.AddModelError(result.Property, result.Message);
             }
 
-            return PartialView();
+            return View();
         }
 
         [Authorize]

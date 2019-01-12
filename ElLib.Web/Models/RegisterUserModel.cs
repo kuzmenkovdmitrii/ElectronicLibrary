@@ -8,7 +8,7 @@ namespace ElLib.Web.Models
         [Display(Name = "Логин")]
         [Required(ErrorMessage = "Поле логин не может быть пустым")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Не верная длина")]
-        [Remote("CheckUserName", "Auth", ErrorMessage = "Пользователь с таким названием уже существует")]
+        [Remote("CheckUserName", "Auth", ErrorMessage = "Пользователь с таким логином уже существует")]
         public string UserName { get; set; }
 
         [Display(Name = "Пароль")]

@@ -9,6 +9,7 @@
         public OperationDetails(bool successed)
         {
             Successed = successed;
+            Property = "";
         }
 
         public OperationDetails(bool successed, string message)

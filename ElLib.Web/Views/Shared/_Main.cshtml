@@ -36,24 +36,6 @@
     <script src="~/Scripts/select2.js"></script>
 </head>
 <body>
-    <script>
-        function loginClick() {
-            var url = $('#modalLoginForm').data('url');
-
-            $.get(url, function (data) {
-                $('#loginContainer').html(data);
-                $('#modalLoginForm').modal('show');
-            });
-        };
-
-        function registrationClick() {
-            var url = $('#modalRegistrationForm').data('url');
-            $.get(url, function (data) {
-                $('#registrationContainer').html(data);
-                $('#modalRegistrationForm').modal('show');
-            });
-        };
-    </script>
     <nav class="mb-1 navbar navbar-expand-sm navbar-dark info-color">
 
         <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true" data-url="@Url.Action("Login","Auth")">
@@ -77,7 +59,7 @@
             <div class="collapse navbar-collapse" id="hiddenNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="@Url.Action("All","Book")">Книги</a>
                     </li>
                     @*<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -130,8 +112,8 @@
                             }
                             else
                             {
-                                <a class="dropdown-item" onclick="loginClick();">Вход</a>
-                                <a class="dropdown-item" onclick="registrationClick();">Регистрация</a>
+                                <a class="dropdown-item" href="@Url.Action("Login","Auth")">Вход</a>
+                                <a class="dropdown-item" href="@Url.Action("Registration","Auth")">Регистрация</a>
                             }
                         </div>
                     </li>
@@ -139,11 +121,6 @@
             </div>
         </div>
     </nav>
-
-    <div id="loginModal"></div>
-    <div id="registrationModal"></div>
-
-    
     <div>
         @RenderBody()
     </div>

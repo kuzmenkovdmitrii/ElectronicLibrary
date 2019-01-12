@@ -26,16 +26,14 @@ namespace ElLib.BLL.Services.Implementations
 
         public async Task<OperationDetails> Register(User user, string password)
         {
-            List<User> users = userRepository.GetAll().ToList();
-
-            if (users.FirstOrDefault(x => x.UserName == user.UserName) != null)
+            if (userRepository.GetByUserName(user.UserName) != null)
             {
-                return new OperationDetails(false, "Пользователь с таким логином уже существует");
+                return new OperationDetails(false, "Пользователь с таким логином уже существует", "UserName");
             }
 
-            if (users.FirstOrDefault(x => x.Email == user.Email) != null)
+            if (userRepository.GetByUserName(user.Email) != null)
             {
-                return new OperationDetails(false, "Пользователь с таким Email уже существует");
+                return new OperationDetails(false, "Пользователь с таким Email уже существует", "Email");
             }
 
             userRepository.Create(user, password);
@@ -51,31 +49,31 @@ namespace ElLib.BLL.Services.Implementations
 
             roleRepository.AddRoleToUser(createdUser, defaultRole);
 
-            return new OperationDetails(true, "Пользователь успешно зарегистрирован");
+            return new OperationDetails(true);
         }
 
         public async Task<OperationDetails> Authenticate(string login, string password)
         {
             if (string.IsNullOrEmpty(login))
             {
-                return new OperationDetails(false, "Логин не может быть пустым");
+                return new OperationDetails(false, "Логин не может быть пустым", "UserName");
             }
 
             if (string.IsNullOrEmpty(password))
             {
-                return new OperationDetails(false, "Пароль не может быть пустым");
+                return new OperationDetails(false, "Пароль не может быть пустым", "Password");
             }
 
             User user = userRepository.GetByUserName(login);
 
             if (user == null)
             {
-                return new OperationDetails(false, "Пользователь с таким логином не найден");
+                return new OperationDetails(false, "Пользователь с таким логином не найден", "UserName");
             }
 
             if (!CheckPassword(user, password))
             {
-                return new OperationDetails(false, "Неверный пароль");
+                return new OperationDetails(false, "Неверный пароль", "Password");
             }
 
             user.Roles = roleRepository.GetByUserId(user.Id).ToList();
@@ -98,7 +96,7 @@ namespace ElLib.BLL.Services.Implementations
 
             HttpContext.Current.Response.Cookies.Add(cookie);
 
-            return new OperationDetails(true, "Пользователь успешно авторизирован");
+            return new OperationDetails(true);
         }
 
         public async Task<OperationDetails> Logout()
@@ -106,6 +104,11 @@ namespace ElLib.BLL.Services.Implementations
             FormsAuthentication.SignOut();
 
             return new OperationDetails(true, "Пользователь успешно вышел");
+        }
+
+        private void CreateCookie()
+        {
+
         }
 
         private bool CheckPassword(User user, string password)
