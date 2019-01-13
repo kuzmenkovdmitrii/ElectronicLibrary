@@ -10,6 +10,7 @@ using ElLib.Common.Entities.WCF;
 using ElLib.Common.Exception;
 using ElLib.Common.ProcedureExecuter;
 using ElLib.WCF.Converter;
+using ElLib.WCF.DAL;
 
 namespace ElLib.WCF
 {
@@ -17,21 +18,18 @@ namespace ElLib.WCF
     // NOTE: In order to launch WCF Test Client for testing this service, please select AdvertisingService.svc or AdvertisingService.svc.cs at the Solution Explorer and start debugging.
     public class AdvertisingService : IAdvertisingService
     {
-        private string connectionStrings = ConfigurationManager.ConnectionStrings["ElLibWCFDB"].ConnectionString;
+        private readonly IAdvertisingRepository repository;
 
-        public IEnumerable<Advertising> GetRandomByCount(int? count = 6)
+        public AdvertisingService()
+        {
+            this.repository = new AdvertisingRepository();
+        }
+
+        public IEnumerable<Advertising> GetRandomByCount(int count)
         {
             ThrowException.CheckNull(count);
 
-            ProcedureExecuter executer = new ProcedureExecuter();
-
-            executer.ConnectionString = connectionStrings;
-
-            string storedProcedure = "usp_SelectRandomAdvertisingByCount";
-
-            executer.Parameters.Add(new SqlParameter("@Count", count));
-
-            return executer.Execute(storedProcedure, new AdvertisingConverter());
+            return repository.GetRandomByCount(count);
         }
     }
 }

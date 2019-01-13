@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using ElLib.BLL.Services.Implementations;
 using ElLib.Common.Entities.WCF;
 
-namespace ElLib.BLL.Services.Interfaces
+namespace ElLib.WCF.DAL
 {
-    public interface IAdvertisingService
+    public interface IAdvertisingRepository
     {
         IEnumerable<Advertising> GetRandomByCount(int count);
     }

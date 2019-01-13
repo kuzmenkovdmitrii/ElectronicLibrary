@@ -291,10 +291,10 @@ namespace ElLib.BLL.AdvSevice {
     public interface IAdvertisingService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdvertisingService/GetRandomByCount", ReplyAction="http://tempuri.org/IAdvertisingService/GetRandomByCountResponse")]
-        ElLib.Common.Entities.WCF.Advertising[] GetRandomByCount(System.Nullable<int> count);
+        ElLib.Common.Entities.WCF.Advertising[] GetRandomByCount(int count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdvertisingService/GetRandomByCount", ReplyAction="http://tempuri.org/IAdvertisingService/GetRandomByCountResponse")]
-        System.Threading.Tasks.Task<ElLib.Common.Entities.WCF.Advertising[]> GetRandomByCountAsync(System.Nullable<int> count);
+        System.Threading.Tasks.Task<ElLib.Common.Entities.WCF.Advertising[]> GetRandomByCountAsync(int count);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -324,11 +324,11 @@ namespace ElLib.BLL.AdvSevice {
                 base(binding, remoteAddress) {
         }
         
-        public ElLib.Common.Entities.WCF.Advertising[] GetRandomByCount(System.Nullable<int> count) {
+        public ElLib.Common.Entities.WCF.Advertising[] GetRandomByCount(int count) {
             return base.Channel.GetRandomByCount(count);
         }
         
-        public System.Threading.Tasks.Task<ElLib.Common.Entities.WCF.Advertising[]> GetRandomByCountAsync(System.Nullable<int> count) {
+        public System.Threading.Tasks.Task<ElLib.Common.Entities.WCF.Advertising[]> GetRandomByCountAsync(int count) {
             return base.Channel.GetRandomByCountAsync(count);
         }
     }

@@ -12,7 +12,7 @@ namespace ElLib.WCF.Converter
             return new Advertising()
             {
                 Id = (int)reader["Id"],
-                Title = (string)reader["Name"],
+                Title = (string)reader["Title"],
                 Url = new Url((string)reader["Url"]),
                 Picture = new Url((string)reader["Picture"])
             };

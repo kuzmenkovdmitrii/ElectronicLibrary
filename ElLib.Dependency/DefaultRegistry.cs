@@ -1,6 +1,7 @@
 ﻿using ElLib.BLL.Dependency;
 using ElLib.Common.Dependency;
 using ElLib.DAL.Dependency;
+using ElLib.WCF.Dependency;
 using StructureMap;
 
 namespace ElLib.Dependency
@@ -11,6 +12,7 @@ namespace ElLib.Dependency
         {
             Scan(scan =>
             {
+                scan.AssemblyContainingType<WCFRegistry>();
                 scan.AssemblyContainingType<DALRegistry>();
                 scan.AssemblyContainingType<BLLRegistry>();
                 scan.AssemblyContainingType<CommonRegistry>();

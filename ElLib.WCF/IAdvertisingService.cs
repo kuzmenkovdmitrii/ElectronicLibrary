@@ -9,6 +9,6 @@ namespace ElLib.WCF
     public interface IAdvertisingService
     {
         [OperationContract]
-        IEnumerable<Advertising> GetRandomByCount(int? count = 6);
+        IEnumerable<Advertising> GetRandomByCount(int count);
     }
 }

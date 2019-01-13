@@ -1,29 +1,24 @@
 ﻿using System;
 using System.ServiceModel;
-using ElLib.BLL.Services.Implementations;
-using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.AdvSevice;
 
-namespace ElLib.WCF
+namespace ElLib.BLL.WCF
 {
     public static class InitializeChannel
     {
-        //public static IAdvertisingService1 CreateChannel()
-        //{
-        //    Uri address = new Uri("http://localhost:50817/");
+        public static IAdvertisingService CreateChannel()
+        {
+            Uri address = new Uri("http://localhost:50817/AdvertisingService.svc");
 
-        //    BasicHttpBinding binding = new BasicHttpBinding();
+            BasicHttpBinding binding = new BasicHttpBinding();
 
-        //    EndpointAddress endpoint = new EndpointAddress(address);
+            EndpointAddress endpoint = new EndpointAddress(address);
 
-        //    ChannelFactory<IAdvertisingService1> factory = new ChannelFactory<IAdvertisingService1>(binding, endpoint);
+            ChannelFactory<IAdvertisingService> factory = new ChannelFactory<IAdvertisingService>(binding, endpoint);
 
-        //    IAdvertisingService1 channel = factory.CreateChannel();
+            IAdvertisingService channel = factory.CreateChannel();
 
-        //    //object cannel = OperationContext.Current.GetCallbackChannel<>();
-
-        //    //BLL.Services.Interfaces.IAdvertisingService channel = OperationContext.Current.GetCallbackChannel<BLL.Services.Interfaces.IAdvertisingService>();
-
-        //    return channel;
-        //}
+            return channel;
+        }
     }
 }

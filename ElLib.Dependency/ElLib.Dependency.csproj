@@ -63,6 +63,10 @@
       <Project>{b229dea8-e6fb-407b-af2f-919ae16b72f9}</Project>
       <Name>ElLib.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ElLib.WCF\ElLib.WCF.csproj">
+      <Project>{63b8ae37-2bd5-46ba-af9a-124e23e61f04}</Project>
+      <Name>ElLib.WCF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -72,11 +72,15 @@
       <DependentUpon>AdvertisingService.svc</DependentUpon>
     </Compile>
     <Compile Include="Converter\AdvertisingConverter.cs" />
+    <Compile Include="DAL\AdvertisingRepository.cs" />
+    <Compile Include="DAL\IAdvertisingRepository.cs" />
+    <Compile Include="Dependency\WCFRegistry.cs" />
     <Compile Include="IAdvertisingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
