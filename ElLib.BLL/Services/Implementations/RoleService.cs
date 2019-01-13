@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
@@ -35,16 +35,37 @@ namespace ElLib.BLL.Services.Implementations
             ThrowException.CheckNull(user);
             ThrowException.CheckNull(role);
 
+            if (!CheckRole(user, role.Name))
+            {
+                return new OperationDetails(false, "У пользователя уже есть эта роль");
+            }
+
             try
             {
+                if (role.Name == "Admin" && CheckRole(user, "Editor"))
+                {
+                    Role editorRole = roleRepository.GetByName("Editor");
+                    roleRepository.AddRoleToUser(user, editorRole);
+                }
+
                 roleRepository.AddRoleToUser(user, role);
             }
             catch (SqlException)
             {
-                return new OperationDetails(true, "Не удалось добавить роль пользователю");
+                return new OperationDetails(false, "Не удалось добавить роль пользователю");
             }
 
             return new OperationDetails(true);
+        }
+
+        private bool CheckRole(User user, string role)
+        {
+            if (roleRepository.GetByUserId(user.Id).FirstOrDefault(x => x.Name == role) != null)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

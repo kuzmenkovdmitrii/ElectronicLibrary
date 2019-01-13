@@ -54,7 +54,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 publishingRepository.Update(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(true, "Произошла ошибка при обновлении издательства");
             }

@@ -29,10 +29,12 @@ namespace ElLib.Web.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("User", "Необходимо выбрать пользователя");
+                return View();
             }
-            if (user == null)
+            if (role == null)
             {
-                ModelState.AddModelError("Role", "Необходимо выбрать пользователя");
+                ModelState.AddModelError("Role", "Необходимо выбрать роль");
+                return View();
             }
 
             User foundUser = userService.GetById(user);

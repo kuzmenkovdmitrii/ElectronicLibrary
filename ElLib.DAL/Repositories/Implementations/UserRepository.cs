@@ -25,6 +25,17 @@ namespace ElLib.DAL.Repositories.Implementations
             Converter = converter;
         }
 
+        public IEnumerable<User> GetByRoleId(int? id)
+        {
+            ThrowException.CheckId(id);
+
+            string storedProcedure = "usp_Select" + TableName + "ByRoleId";
+
+            Executer.Parameters.Add(new SqlParameter("@Name", id));
+
+            return Executer.Execute(storedProcedure, Converter);
+        }
+
         public void UpdatePassword(User user, string password)
         {
             ThrowException.CheckNull(user);

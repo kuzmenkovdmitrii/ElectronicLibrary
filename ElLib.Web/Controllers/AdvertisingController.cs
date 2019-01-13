@@ -16,6 +16,7 @@ namespace ElLib.Web.Controllers
             this.advertisingService = advertisingService;
         }
 
+        []
         public ActionResult Advertising()
         {
             return PartialView(advertisingService.GetRandomByCount(6));

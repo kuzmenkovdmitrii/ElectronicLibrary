@@ -341,6 +341,7 @@
     <Content Include="Views\Error\NotAuthorizedError.cshtml" />
     <Content Include="Views\Error\NotFoundError.cshtml" />
     <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\User\AllUsersByRoleIdForSelect.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

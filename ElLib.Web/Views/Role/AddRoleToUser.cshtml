@@ -4,7 +4,6 @@
 }
 
 <script>
-
     $(document).ready(function () {
         $("#role").select2();
         $("#user").select2();
@@ -26,14 +25,17 @@
                                 <option selected disabled>Пользователи</option>
                                 @Html.Action("AllUsersForSelect", "User")
                             </select>
+                            @Html.ValidationMessage("User")
                         </div>
                         <div class="md-form">
                             <select class="browser-default js-example-basic form-control" id="role" name="role" style="width: 100%">
                                 <option selected disabled>Роли</option>
                                 @Html.Action("AllRolesForSelect", "Role")
                             </select>
+                            @Html.ValidationMessage("Role")
                         </div>
-                        <div class="justify-content-md-center">
+                        @Html.ValidationSummary(true)
+                        <div class="justify-content-center">
                             <input type="submit" class="btn btn-outline-info btn-rounded" value="Добавить" />
                         </div>
                     }

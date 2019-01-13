@@ -13,7 +13,7 @@ namespace ElLib.Web.Models
 
         [Display(Name = "Описание")]
         [Required(ErrorMessage = "Поле описание не может быть пустым")]
-        [StringLength(150, MinimumLength = 15, ErrorMessage = "Не верная длина описания")]
+        [StringLength(300, MinimumLength = 10, ErrorMessage = "Не верная длина описания")]
         public string Description { get; set; }
     }
 }

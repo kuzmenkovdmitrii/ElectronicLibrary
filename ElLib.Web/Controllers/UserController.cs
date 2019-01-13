@@ -38,5 +38,10 @@ namespace ElLib.Web.Controllers
         {
             return PartialView(userService.GetAll());
         }
+
+        public ActionResult AllUsersByRoleIdForSelect(int? id)
+        {
+            return PartialView(userService.GetByRoleId(id));
+        }
     }
 }

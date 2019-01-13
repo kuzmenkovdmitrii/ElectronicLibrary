@@ -106,9 +106,13 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoriesByQueryStoredPr
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoryByIdStoredProcedure.sql
 
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoryByNameStoredProcedure.sql
+
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBooksByQueryStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectLanguageByIdStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectLanguageByNameStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPasswordByUserIdStoredProcedure.sql
 
@@ -117,6 +121,8 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingByIdStoredProcedure
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingsByBookIdStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingsByQueryStoredProcedure.sql
+
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingByNameStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectRoleByIdStoredProcedure.sql
 
@@ -132,17 +138,8 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUsersByQueryStoredProcedure.s
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUsersByRoleIdStoredProcedure.sql
 
-
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectLanguageByNameStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectPublishingByNameStoredProcedure.sql
-
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUserByUserNameStoredProcedure.sql
-
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectUserByEmailStoredProcedure.sql
 
-sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/SelectBookCategoryByNameStoredProcedure.sql
 
 
 
@@ -158,7 +155,10 @@ sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateLanguageStoredProcedure.sql
 
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdatePublishingStoredProcedure.sql
 
+sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateUserPasswordStoredProcedure.sql
+
 sqlcmd -S.\SQLEXPRESS -E -i %StoredProcedure/UpdateUserStoredProcedure.sql
+
 
 
 sqlcmd -S.\SQLEXPRESS -E -i %InitializeScript.sql

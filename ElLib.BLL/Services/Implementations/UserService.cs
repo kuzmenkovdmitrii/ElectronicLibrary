@@ -26,6 +26,11 @@ namespace ElLib.BLL.Services.Implementations
             return userRepository.GetAll();
         }
 
+        public IEnumerable<User> GetByRoleId(int? id)
+        {
+            return userRepository.GetByRoleId(id);
+        }
+
         public User GetById(int? id)
         {
             ThrowException.CheckId(id);
