@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
@@ -60,27 +61,48 @@ namespace ElLib.BLL.Services.Implementations
 
             item.PublishingDate = DateTime.Now;
 
-            bookRepository.Create(item);
+            try
+            {
+                bookRepository.Create(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при создании книги");
+            }
 
-            return new OperationDetails(true, "Книга успешно создана");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Update(Book item)
         {
             ThrowException.CheckNull(item);
 
-            bookRepository.Update(item);
+            try
+            {
+                bookRepository.Update(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при обновлении книги");
+            }
 
-            return new OperationDetails(true, "Книга успешно обновлена");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Delete(int? id)
         {
             ThrowException.CheckId(id);
 
-            bookRepository.Delete(id);
+            try
+            {
+                bookRepository.Delete(id);
+            }
+            catch (SqlException)
+            {
+                return new OperationDetails(true, "Произошла ошибка при удалении книги");
+            }
 
-            return new OperationDetails(true, "Книга успешно удалена");
+            return new OperationDetails(true);
         }
 
         public IEnumerable<Book> Search(string query)

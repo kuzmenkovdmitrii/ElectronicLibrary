@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
@@ -33,24 +34,48 @@ namespace ElLib.BLL.Services.Implementations
         {
             ThrowException.CheckNull(item);
 
-            bookCategoryRepository.Create(item);
-            return new OperationDetails(true, "Категория книги успешно создана");
+            try
+            {
+                bookCategoryRepository.Create(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при содании жанра");
+            }
+
+            return new OperationDetails(true);
         }
 
         public OperationDetails Update(BookCategory item)
         {
             ThrowException.CheckNull(item);
 
-            bookCategoryRepository.Update(item);
-            return new OperationDetails(true, "Категория книги успешно обновлена");
+            try
+            {
+                bookCategoryRepository.Update(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при обновлении жанра");
+            }
+
+            return new OperationDetails(true);
         }
 
         public OperationDetails Delete(int? id)
         {
             ThrowException.CheckId(id);
 
-            bookCategoryRepository.Delete(id);
-            return new OperationDetails(true, "Категория книги успешно удалена");
+            try
+            {
+                bookCategoryRepository.Delete(id);
+            }
+            catch (SqlException)
+            {
+                return new OperationDetails(false, "Не удалось удалить жанр, так как есть книги связанные с жанорм");
+            }
+
+            return new OperationDetails(true);
         }
 
         public IEnumerable<BookCategory> Search(string query)

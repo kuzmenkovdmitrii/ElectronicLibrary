@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -78,6 +77,20 @@ namespace ElLib.BLL.Services.Implementations
 
             user.Roles = roleRepository.GetByUserId(user.Id).ToList();
 
+            CreateCookie(user);
+
+            return new OperationDetails(true);
+        }
+
+        public async Task<OperationDetails> Logout()
+        {
+            FormsAuthentication.SignOut();
+
+            return new OperationDetails(true, "Пользователь успешно вышел");
+        }
+
+        private void CreateCookie(User user)
+        {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
             string userData = serializer.Serialize(user);
@@ -95,20 +108,11 @@ namespace ElLib.BLL.Services.Implementations
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
 
             HttpContext.Current.Response.Cookies.Add(cookie);
-
-            return new OperationDetails(true);
         }
 
-        public async Task<OperationDetails> Logout()
+        private void UpdateCookie(User user)
         {
-            FormsAuthentication.SignOut();
-
-            return new OperationDetails(true, "Пользователь успешно вышел");
-        }
-
-        private void CreateCookie()
-        {
-
+            //TODO
         }
 
         private bool CheckPassword(User user, string password)

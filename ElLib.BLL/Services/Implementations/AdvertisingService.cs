@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.ServiceModel;
-using System.ServiceModel.Configuration;
-using System.ServiceModel.Description;
+﻿using System.Collections.Generic;
 using ElLib.BLL.AdvSevice;
 using ElLib.BLL.WCF;
 using ElLib.Common.Entities.WCF;

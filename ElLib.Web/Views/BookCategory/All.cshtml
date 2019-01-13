@@ -37,7 +37,7 @@
                     </div>
                     <table class="table table-hover">
                         <tbody id="results">
-                        @Html.Action("Search","BookCategory")
+                            @Html.Action("Search", "BookCategory")
                         </tbody>
                     </table>
                 </div>
@@ -45,3 +45,8 @@
         </div>
     </div>
 </div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    @Html.Action("ValidationError", "Error", new { errors = ViewData.ModelState.Values.FirstOrDefault(x => x.Errors.Count > 0).Errors })
+}

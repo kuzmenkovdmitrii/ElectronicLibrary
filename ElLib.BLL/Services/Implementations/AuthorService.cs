@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
@@ -32,27 +34,48 @@ namespace ElLib.BLL.Services.Implementations
         {
             ThrowException.CheckNull(item);
 
-            authorRepository.Create(item);
+            try
+            {
+                authorRepository.Create(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при создании автора");
+            }
 
-            return new OperationDetails(true, "Автор успешно создан");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Update(Author item)
         {
             ThrowException.CheckNull(item);
 
-            authorRepository.Update(item);
+            try
+            {
+                authorRepository.Update(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при обновлении автора");
+            }
 
-            return new OperationDetails(true, "Автор успешно обновлён");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Delete(int? id)
         {
             ThrowException.CheckId(id);
 
-            authorRepository.Delete(id);
+            try
+            {
+                authorRepository.Delete(id);
+            }
+            catch (SqlException)
+            {
+                return new OperationDetails(false, "Не удалось удалить автора, так как есть книги связанные с автором");
+            }
 
-            return new OperationDetails(true, "Автор успешно удалён");
+            return new OperationDetails(true);
         }
 
         public IEnumerable<Author> Search(string query)

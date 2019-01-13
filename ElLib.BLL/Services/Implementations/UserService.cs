@@ -34,15 +34,6 @@ namespace ElLib.BLL.Services.Implementations
             return user;
         }
 
-        public OperationDetails Create(User item)
-        {
-            ThrowException.CheckNull(item);
-
-            userRepository.Create(item);
-
-            return new OperationDetails(true);
-        }
-
         public OperationDetails Update(User item)
         {
             ThrowException.CheckNull(item);

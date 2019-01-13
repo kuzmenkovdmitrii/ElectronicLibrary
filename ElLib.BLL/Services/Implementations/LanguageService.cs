@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
@@ -31,27 +33,48 @@ namespace ElLib.BLL.Services.Implementations
         {
             ThrowException.CheckNull(item);
 
-            languageRepository.Create(item);
+            try
+            {
+                languageRepository.Create(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при создании языка");
+            }
 
-            return new OperationDetails(true, "Язык успешно создан");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Update(Language item)
         {
             ThrowException.CheckNull(item);
 
-            languageRepository.Update(item);
+            try
+            {
+                languageRepository.Update(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при обновлении языка");
+            }
 
-            return new OperationDetails(true, "Язык успешно обновлён");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Delete(int? id)
         {
             ThrowException.CheckId(id);
 
-            languageRepository.Delete(id);
+            try
+            {
+                languageRepository.Delete(id);
+            }
+            catch (SqlException)
+            {
+                return new OperationDetails(false, "Не удалось удалить язык, так как есть книги связанные с языком");
+            }
 
-            return new OperationDetails(true, "Язык успешно удалён");
+            return new OperationDetails(true);
         }
 
         public bool CheckName(string name)

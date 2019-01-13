@@ -231,6 +231,7 @@
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\BookCategoryController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\PublishingController.cs" />
@@ -320,6 +321,7 @@
     <Content Include="Views\Auth\EditUserName.cshtml" />
     <Content Include="Views\Auth\EditEmail.cshtml" />
     <Content Include="Views\Advertising\Advertising.cshtml" />
+    <Content Include="Views\Error\ValidationError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

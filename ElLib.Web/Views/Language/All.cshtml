@@ -15,20 +15,20 @@
                 <div class="card-body">
                     <table class="table table-hover">
                         <tbody id="results">
-                        @foreach (var language in Model)
-                        {
-                            <tr class="changes">
-                                <td style="width: 70%;">
-                                    @language.Name
-                                </td>
-                                <td class="td-pad" style="width: 50px">
-                                    <a class="btn-floating btn-sm primary-color" href="@Url.Action("Edit", "Language", new {id = language.Id})"><i class="fa fa-edit"></i></a>
-                                </td>
-                                <td class="td-pad" style="width: 50px">
-                                    <a class="btn-floating btn-sm danger-color" href="@Url.Action("Delete", "Language", new {id = language.Id})"><i class="fa fa-close"></i></a>
-                                </td>
-                            </tr>
-                        }
+                            @foreach (var language in Model)
+                            {
+                                <tr class="changes">
+                                    <td style="width: 70%;">
+                                        @language.Name
+                                    </td>
+                                    <td class="td-pad" style="width: 50px">
+                                        <a class="btn-floating btn-sm primary-color" href="@Url.Action("Edit", "Language", new {id = language.Id})"><i class="fa fa-edit"></i></a>
+                                    </td>
+                                    <td class="td-pad" style="width: 50px">
+                                        <a class="btn-floating btn-sm danger-color" href="@Url.Action("Delete", "Language", new {id = language.Id})"><i class="fa fa-close"></i></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -39,3 +39,8 @@
         </div>
     </div>
 </div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    @Html.Action("ValidationError", "Error", new { errors = ViewData.ModelState.Values.FirstOrDefault(x => x.Errors.Count > 0).Errors })
+}

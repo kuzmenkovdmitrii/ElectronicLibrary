@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
@@ -33,27 +34,48 @@ namespace ElLib.BLL.Services.Implementations
         {
             ThrowException.CheckNull(item);
 
-            publishingRepository.Create(item);
+            try
+            {
+                publishingRepository.Create(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при создании издательства");
+            }
 
-            return new OperationDetails(true, "Издательство успешно создано");
+            return new OperationDetails(true);
         }
 
         public OperationDetails Update(Publishing item)
         {
             ThrowException.CheckNull(item);
 
-            publishingRepository.Update(item);
-
-            return new OperationDetails(true, "Издательство успешно обновлено");
+            try
+            {
+                publishingRepository.Update(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Произошла ошибка при обновлении издательства");
+            }
+            
+            return new OperationDetails(true);
         }
 
         public OperationDetails Delete(int? id)
         {
             ThrowException.CheckId(id);
 
-            publishingRepository.Delete(id);
+            try
+            {
+                publishingRepository.Delete(id);
+            }
+            catch (SqlException)
+            {
+                return new OperationDetails(false, "Не удалось удалить издательство, так как есть книги связанные с издательством");
+            }
 
-            return new OperationDetails(true, "Издательство успешно удалено");
+            return new OperationDetails(true);
         }
 
         public IEnumerable<Publishing> Search(string query)
