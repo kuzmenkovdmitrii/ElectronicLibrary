@@ -4,6 +4,7 @@ using System.Security.Policy;
 using System.Web.Mvc;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
+using ElLib.Common.Exception;
 using ElLib.Web.Models;
 
 namespace ElLib.Web.Controllers
@@ -126,6 +127,20 @@ namespace ElLib.Web.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            var result = bookService.Delete(id);
+
+            if (result.Successed)
+            {
+                return RedirectToAction("All");
+            }
+
+            ModelState.AddModelError(result.Property, result.Message);
+
+            return View("Info");
         }
 
         [Authorize(Roles = "Admin, Editor")]

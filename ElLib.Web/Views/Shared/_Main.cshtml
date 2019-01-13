@@ -1,4 +1,5 @@
-﻿@using ElLib.BLL.Authentication
+﻿@using System.Web.Optimization
+@using ElLib.BLL.Authentication
 
 @{
     Layout = null;
@@ -17,23 +18,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="~/Content/Application.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/mdb.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/Scripts/popper.js"></script>
-    <script src="~/Scripts/bootstrap.bundle.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/mdb.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
-    <link href="~/Content/css/select2.css" rel="stylesheet" />
-    <script src="~/Scripts/select2.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/content/site")
+    @Styles.Render("~/content/bootstrap")
+    @Styles.Render("~/content/mdbootstrap")
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="mb-1 navbar navbar-expand-sm navbar-dark info-color">
@@ -49,9 +40,6 @@
         </div>
 
         <div class="container-fluid">
-            @*<div class="float-left">
-                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
-                </div>*@
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">Главная</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hiddenNav" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,28 +49,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("All","Book")">Книги</a>
                     </li>
-                    @*<li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("All","BookCategory")">Категории</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("All","Author")">Авторы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("All","Publishing")">Издательства</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto nav-flex-icons">
-                    @*<li class="nav-item">
-                            <a class="nav-link">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                        </li>*@
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle" id="navbarDropdownAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -99,11 +76,10 @@
                                 <a class="dropdown-item" href="@Url.Action("Profile", "Auth")">Профиль</a>
 
                                 if (user.IsInRole("Admin"))
-                                 {
-                                     <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель администратора</a>
-                                 }
-
-                                if (user.IsInRole("Editor"))
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель администратора</a>
+                                }
+                                else if (user.IsInRole("Editor"))
                                 {
                                     <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель редактора</a>
                                 }
@@ -124,12 +100,17 @@
     <div>
         @RenderBody()
     </div>
-
     @*<footer class="page-footer font-small info-color footer fixed-bottom">
-        <div class="footer-copyright text-center py-3 info-color">
-            © 2018 Copyright:
-            <a href="#"> ElectronicLibrary.ru</a>
-        </div>
-    </footer>*@
+            <div class="footer-copyright text-center py-3 info-color">
+                © 2018 Copyright:
+                <a href="#"> ElectronicLibrary.ru</a>
+            </div>
+        </footer>*@
+
+@Scripts.Render("~/bundles/popper")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/mdbootstrap")
+<script src="~/Scripts/select2.min.js"></script>
+
 </body>
 </html>

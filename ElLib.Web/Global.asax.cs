@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using ElLib.BLL.Authentication;
-using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
 using ElLib.Common.Logger;
+using ElLib.Web.App_Start;
 using ElLib.Web.DependencyResolution;
-using log4net;
 using StructureMap;
 
 namespace ElLib.Web
@@ -18,6 +18,7 @@ namespace ElLib.Web
     {
         protected void Application_Start()
         {
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

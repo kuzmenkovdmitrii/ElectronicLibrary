@@ -75,9 +75,16 @@ namespace ElLib.Web.Controllers
         [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
-            languageService.Delete(id);
+            var result = languageService.Delete(id);
 
-            return RedirectToAction("All");
+            if (result.Successed)
+            {
+                return RedirectToAction("All");
+            }
+
+            ModelState.AddModelError(result.Property, result.Message);
+
+            return View("All", languageService.GetAll());
         }
 
         public ActionResult AllLanguagesForSelect()

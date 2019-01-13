@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
@@ -27,12 +30,21 @@ namespace ElLib.BLL.Services.Implementations
             return roleRepository.GetById(id);
         }
 
-        public void AddRoleToUser(User user, Role role)
+        public OperationDetails AddRoleToUser(User user, Role role)
         {
             ThrowException.CheckNull(user);
             ThrowException.CheckNull(role);
 
-            roleRepository.AddRoleToUser(user,role);
+            try
+            {
+                roleRepository.AddRoleToUser(user, role);
+            }
+            catch (SqlException)
+            {
+                return new OperationDetails(true, "Не удалось добавить роль пользователю");
+            }
+
+            return new OperationDetails(true);
         }
     }
 }

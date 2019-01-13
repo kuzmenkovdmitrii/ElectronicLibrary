@@ -82,9 +82,16 @@ namespace ElLib.Web.Controllers
         [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
-            publishingService.Delete(id);
+            var result = publishingService.Delete(id);
 
-            return RedirectToAction("All");
+            if (result.Successed)
+            {
+                return RedirectToAction("All");
+            }
+
+            ModelState.AddModelError(result.Property, result.Message);
+
+            return View("All");
         }
 
         public ActionResult AllPublishingsForSelect()

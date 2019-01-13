@@ -69,7 +69,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 languageRepository.Delete(id);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 return new OperationDetails(false, "Не удалось удалить язык, так как есть книги связанные с языком");
             }

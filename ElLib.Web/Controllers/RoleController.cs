@@ -26,18 +26,28 @@ namespace ElLib.Web.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AddRoleToUser(int? user, int? role)
         {
+            if (user == null)
+            {
+                ModelState.AddModelError("User", "Необходимо выбрать пользователя");
+            }
+            if (user == null)
+            {
+                ModelState.AddModelError("Role", "Необходимо выбрать пользователя");
+            }
+
             User foundUser = userService.GetById(user);
             Role foundRole = roleService.GetById(role);
 
-            roleService.AddRoleToUser(foundUser, foundRole);
-            //TODO
-            //if (result.Successed)
-            //{
-            //    return RedirectToAction("All");
-            //}
+            var result = roleService.AddRoleToUser(foundUser, foundRole);
 
-            //ModelState.AddModelError(result.Property, result.Message);
-            return null;
+            if (result.Successed)
+            {
+                return View();
+            }
+
+            ModelState.AddModelError(result.Property, result.Message);
+
+            return View();
         }
 
         public ActionResult AllRolesForSelect()

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ElLib.BLL.Infrastructure;
 using ElLib.Common.Entities;
 
 namespace ElLib.BLL.Services.Interfaces
@@ -7,6 +8,6 @@ namespace ElLib.BLL.Services.Interfaces
     {
         IEnumerable<Role> GetAll();
         Role GetById(int? id);
-        void AddRoleToUser(User user, Role role);
+        OperationDetails AddRoleToUser(User user, Role role);
     }
 }

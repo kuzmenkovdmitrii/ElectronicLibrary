@@ -85,7 +85,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
-        //[Authorize(Roles = "Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
             var result = authorService.Delete(id);

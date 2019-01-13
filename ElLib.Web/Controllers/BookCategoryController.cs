@@ -82,8 +82,16 @@ namespace ElLib.Web.Controllers
         [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int? id)
         {
-            bookCategoryService.Delete(id);
-            return RedirectToAction("All");
+            var result = bookCategoryService.Delete(id);
+
+            if (result.Successed)
+            {
+                return RedirectToAction("All");
+            }
+
+            ModelState.AddModelError(result.Property, result.Message);
+
+            return View("All");
         }
 
         public ActionResult AllCategoriesForSelect()

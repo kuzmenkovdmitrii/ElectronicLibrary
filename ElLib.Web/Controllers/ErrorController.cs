@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace ElLib.Web.Controllers
@@ -18,6 +15,21 @@ namespace ElLib.Web.Controllers
             }
 
             return PartialView(messages);
+        }
+
+        public ActionResult NotAuthorizedError()
+        {
+            return View();
+        }
+
+        public ActionResult NotFoundError()
+        {
+            return View();
+        }
+
+        public ActionResult ServerError()
+        {
+            return View();
         }
     }
 }

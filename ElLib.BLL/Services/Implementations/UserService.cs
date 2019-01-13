@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
@@ -38,7 +40,14 @@ namespace ElLib.BLL.Services.Implementations
         {
             ThrowException.CheckNull(item);
 
-            userRepository.Update(item);
+            try
+            {
+                userRepository.Update(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Не удалось обновить информацию пользователя");
+            }
 
             return new OperationDetails(true);
         }
@@ -54,16 +63,14 @@ namespace ElLib.BLL.Services.Implementations
                 return new OperationDetails(false, "Пароли не совпадают", "OldPassword");
             }
 
-            userRepository.UpdatePassword(user, newPassword);
-
-            return new OperationDetails(true);
-        }
-
-        public OperationDetails Delete(int? id)
-        {
-            ThrowException.CheckId(id);
-
-            userRepository.Delete(id);
+            try
+            {
+                userRepository.UpdatePassword(user, newPassword);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(true, "Не удалось обновить пароль пользователя");
+            }
 
             return new OperationDetails(true);
         }

@@ -9,11 +9,13 @@
     <div class="row justify-content-md-center">
         <div class="col-lg-5">
             <div class="card">
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
                 {
                     <h5 class="card-header info-color white-text text-center py-3">
                         <strong>Подробная информация</strong>
-                        <a class="btn-floating blue darken-3 float-right" style="height: 30px; width: 30px; margin: 0" href="@Url.Action("Edit","Publishing", new {id = @Model.Id})"><i class="fas fa-star"></i></a>
+                        <a class="btn-floating blue darken-3 float-right" style="height: 30px; width: 30px; margin: 0" href="@Url.Action("Edit", "Publishing", new {id = @Model.Id})">
+                            <i class="fas fa-pencil-alt" style="font-size: 1rem; line-height: 0px"></i>
+                        </a>
                     </h5>
                 }
                 else
@@ -25,32 +27,32 @@
                 <div class="card-body">
                     <table class="table">
                         <tbody>
-                            <tr>
-                                <th scope="row" class="text-black-50">Название</th>
-                                <td>@Model.Name</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-black-50">Страна</th>
-                                <td>@Model.Address.Country</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-black-50">Город</th>
-                                <td>@Model.Address.City</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-black-50">Улица</th>
-                                <td>@Model.Address.Street</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-black-50">Дом</th>
-                                <td>@Model.Address.Home</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-black-50">Книги</th>
-                                <td>
-                                    <a type="button" href="@Url.Action("All","Book")" onclick="@ViewBag.Publishing = @Model.Id" class="btn text-white info-color btn-sm btn-rounded">Все книги издательства</a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Название</th>
+                            <td>@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Страна</th>
+                            <td>@Model.Address.Country</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Город</th>
+                            <td>@Model.Address.City</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Улица</th>
+                            <td>@Model.Address.Street</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Дом</th>
+                            <td>@Model.Address.Home</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-black-50">Книги</th>
+                            <td>
+                                <a type="button" href="@Url.Action("All","Book")" onclick="@ViewBag.Publishing = @Model.Id" class="btn text-white info-color btn-sm btn-rounded">Все книги издательства</a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
