@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ElLib.Common.Entities.User>
+
+@foreach (var user in Model)
+{
+    <option value="@user.Id">@user.UserName</option>
+}

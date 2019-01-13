@@ -1,0 +1,119 @@
+2019-01-13 02:42:39,200 ERROR [Error] - Сервер не смог обработать запрос в связи с внутренней ошибкой.  Для получения дополнительных сведений об ошибке либо включите IncludeExceptionDetailInFaults (с помощью атрибута ServiceBehaviorAttribute или через поведение < serviceDebug >) на сервере для того чтобы выслать информацию об исключении назад клиенту, или включить трассировку согласно инструкции Microsoft .NET Framework SDK и проверить записи журнала трассировки клиента.
+2019-01-13 02:45:29,683 ERROR [Error] - Сервер не смог обработать запрос в связи с внутренней ошибкой.  Для получения дополнительных сведений об ошибке либо включите IncludeExceptionDetailInFaults (с помощью атрибута ServiceBehaviorAttribute или через поведение < serviceDebug >) на сервере для того чтобы выслать информацию об исключении назад клиенту, или включить трассировку согласно инструкции Microsoft .NET Framework SDK и проверить записи журнала трассировки клиента.
+2019-01-13 02:46:37,991 ERROR [Error] - Name
+2019-01-13 02:49:49,658 ERROR [Error] - Name
+2019-01-13 13:27:32,424 ERROR [Error] - Указанная схема URI "file" недопустима. Ожидалась "http".
+Имя параметра: via
+2019-01-13 13:36:18,369 ERROR [Error] - An error occurred when trying to create a controller of type 'ElLib.Web.Controllers.AdvertisingController'. Make sure that the controller has a parameterless public constructor.
+2019-01-13 13:38:16,257 ERROR [Error] - An error occurred when trying to create a controller of type 'ElLib.Web.Controllers.AdvertisingController'. Make sure that the controller has a parameterless public constructor.
+2019-01-13 13:41:22,734 ERROR [Error] - An error occurred when trying to create a controller of type 'ElLib.Web.Controllers.AdvertisingController'. Make sure that the controller has a parameterless public constructor.
+2019-01-13 13:49:36,465 ERROR [Error] - An error occurred when trying to create a controller of type 'ElLib.Web.Controllers.AdvertisingController'. Make sure that the controller has a parameterless public constructor.
+2019-01-13 13:53:28,727 ERROR [Error] - Это производство помещает сообщения в буфер, поэтому размер сообщений должен быть целым числом.
+Имя параметра: bindingElement.MaxReceivedMessageSize
+2019-01-13 13:54:19,854 ERROR [Error] - Name
+2019-01-13 14:24:29,440 ERROR [Error] - Не удается активировать запрошенную службу "http://localhost:50817/AdvertisingService.svc". Дополнительные сведения см. в журналах диагностического отслеживания сервера.
+2019-01-13 14:25:43,381 ERROR [Error] - Не удается активировать запрошенную службу "http://localhost:50817/AdvertisingService.svc". Дополнительные сведения см. в журналах диагностического отслеживания сервера.
+2019-01-13 14:26:40,388 ERROR [Error] - Не удается активировать запрошенную службу "http://localhost:50817/AdvertisingService.svc". Дополнительные сведения см. в журналах диагностического отслеживания сервера.
+2019-01-13 14:29:11,688 ERROR [Error] - Не удается активировать запрошенную службу "http://localhost:50817/AdvertisingService.svc". Дополнительные сведения см. в журналах диагностического отслеживания сервера.
+2019-01-13 14:34:32,768 ERROR [Error] - Не удается активировать запрошенную службу "http://localhost:50817/AdvertisingService.svc". Дополнительные сведения см. в журналах диагностического отслеживания сервера.
+2019-01-13 14:46:04,066 ERROR [Error] - The foreach block is missing a closing "}" character.  Make sure you have a matching "}" character for all the "{" characters within this block, and that none of the "}" characters are being interpreted as markup.
+
+2019-01-13 15:52:41,499 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 16:00:23,599 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 16:01:15,883 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 16:02:18,950 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 16:03:36,896 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 16:50:27,048 ERROR [Error] - A public action method 'ValidationError' was not found on controller 'ElLib.Web.Controllers.AuthorController'.
+2019-01-13 16:51:10,863 ERROR [Error] - A public action method 'ValidationError' was not found on controller 'ElLib.Web.Controllers.AuthorController'.
+2019-01-13 17:16:09,456 ERROR [Error] - The view 'Delete' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Author/Delete.aspx
+~/Views/Author/Delete.ascx
+~/Views/Shared/Delete.aspx
+~/Views/Shared/Delete.ascx
+~/Views/Author/Delete.cshtml
+~/Views/Author/Delete.vbhtml
+~/Views/Shared/Delete.cshtml
+~/Views/Shared/Delete.vbhtml
+2019-01-13 18:21:21,335 ERROR [Error] - The controller for path '/fsafafas' was not found or does not implement IController.
+2019-01-13 18:21:56,404 ERROR [Error] - The controller for path '/fsapokfaspokfoaps' was not found or does not implement IController.
+2019-01-13 18:21:56,426 ERROR [Error] - A public action method 'Exception.cshtml' was not found on controller 'ElLib.Web.Controllers.ErrorController'.
+2019-01-13 18:22:03,926 ERROR [Error] - A public action method 'Exception.cshtml' was not found on controller 'ElLib.Web.Controllers.ErrorController'.
+2019-01-13 18:22:03,941 ERROR [Error] - A public action method 'Exception.cshtml' was not found on controller 'ElLib.Web.Controllers.ErrorController'.
+2019-01-13 18:22:22,119 ERROR [Error] - The controller for path '/fsafasfas' was not found or does not implement IController.
+2019-01-13 18:22:46,872 ERROR [Error] - The controller for path '/jfsaifjasijfoiasjsfioa' was not found or does not implement IController.
+2019-01-13 18:23:57,329 ERROR [Error] - The controller for path '/fksafkaspofa' was not found or does not implement IController.
+2019-01-13 18:24:11,433 ERROR [Error] - The controller for path '/pkfopsakfpoaskopfakspo' was not found or does not implement IController.
+2019-01-13 19:16:03,557 ERROR [Error] - The controller for path '/m;k,;k,l;,' was not found or does not implement IController.
+2019-01-13 19:16:03,609 ERROR [Error] - A public action method 'ServerError' was not found on controller 'ElLib.Web.Controllers.ErrorController'.
+2019-01-13 19:16:08,707 ERROR [Error] - The controller for path '/jpmkokop' was not found or does not implement IController.
+2019-01-13 19:16:08,715 ERROR [Error] - A public action method 'ServerError' was not found on controller 'ElLib.Web.Controllers.ErrorController'.
+2019-01-13 19:16:20,117 ERROR [Error] - The controller for path '/kgpoakopgas' was not found or does not implement IController.
+2019-01-13 19:21:54,933 ERROR [Error] - The controller for path '/fafasfasfas' was not found or does not implement IController.
+2019-01-13 19:32:30,497 ERROR [Error] - The controller for path '/jflksajfklas' was not found or does not implement IController.
+2019-01-13 19:32:46,322 ERROR [Error] - The controller for path '/kfpaskfoaskfopaskf' was not found or does not implement IController.
+2019-01-13 19:33:03,375 ERROR [Error] - The controller for path '/f[sak[flasp[fla' was not found or does not implement IController.
+2019-01-13 19:33:06,441 ERROR [Error] - The controller for path '/fasfasf' was not found or does not implement IController.
+2019-01-13 19:33:46,733 ERROR [Error] - The controller for path '/kflsajfkasjfk' was not found or does not implement IController.
+2019-01-13 19:34:03,701 ERROR [Error] - The controller for path '/fnsaknfskaj' was not found or does not implement IController.
+2019-01-13 19:36:04,132 ERROR [Error] - The controller for path '/fsafasfas' was not found or does not implement IController.
+2019-01-13 19:36:32,706 ERROR [Error] - The controller for path '/dsadasdasd' was not found or does not implement IController.
+2019-01-13 19:36:35,906 ERROR [Error] - The controller for path '/dsadasdasdsaxsasad' was not found or does not implement IController.
+2019-01-13 19:36:55,031 ERROR [Error] - The controller for path '/fpsakfpasfp' was not found or does not implement IController.
+2019-01-13 19:38:20,568 ERROR [Error] - The controller for path '/kpfosakofas' was not found or does not implement IController.
+2019-01-13 19:38:36,246 ERROR [Error] - The controller for path '/jfsjaoisfa' was not found or does not implement IController.
+2019-01-13 19:41:40,677 ERROR [Error] - The controller for path '/fsafasfas' was not found or does not implement IController.
+2019-01-13 19:41:56,604 ERROR [Error] - The controller for path '/dasfasfsa' was not found or does not implement IController.
+2019-01-13 19:42:12,816 ERROR [Error] - The controller for path '/fsafasfas' was not found or does not implement IController.
+2019-01-13 19:52:40,706 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:52:58,959 ERROR [Error] - A public action method 'GetByAuthorId' was not found on controller 'ElLib.Web.Controllers.BookController'.
+2019-01-13 19:54:01,169 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:54:05,791 ERROR [Error] - A public action method 'GetByAuthorId' was not found on controller 'ElLib.Web.Controllers.BookController'.
+2019-01-13 19:55:09,680 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:55:13,130 ERROR [Error] - A public action method 'GetByAuthorId' was not found on controller 'ElLib.Web.Controllers.BookController'.
+2019-01-13 19:56:07,822 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:56:12,049 ERROR [Error] - A public action method 'GetByAuthorId' was not found on controller 'ElLib.Web.Controllers.BookController'.
+2019-01-13 19:56:28,762 ERROR [Error] - The controller for path '/fsafas' was not found or does not implement IController.
+2019-01-13 19:56:53,576 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:56:57,191 ERROR [Error] - A public action method 'GetByAuthorId' was not found on controller 'ElLib.Web.Controllers.BookController'.
+2019-01-13 19:56:58,851 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:57:20,261 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:57:26,133 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:57:28,775 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 19:57:33,377 ERROR [Error] - A public action method 'GetByAuthorId' was not found on controller 'ElLib.Web.Controllers.BookController'.
+2019-01-13 20:01:42,429 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:02:10,706 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:04:57,322 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:06:03,050 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:06:23,888 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:07:18,192 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:07:57,780 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:08:04,465 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:10:25,978 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:10:36,141 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:11:06,001 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:11:22,918 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:11:35,744 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:11:42,768 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:11:57,728 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:18:04,510 ERROR [Error] - Значение не может быть неопределенным.
+2019-01-13 20:37:06,104 ERROR [Error] - A public action method 'Al' was not found on controller 'ElLib.Web.Controllers.AuthorController'.
+2019-01-13 21:00:31,311 ERROR [Error] - Ссылка на объект не указывает на экземпляр объекта.
+2019-01-13 21:03:14,211 ERROR [Error] - Ссылка на объект не указывает на экземпляр объекта.
+2019-01-13 21:07:38,384 ERROR [Error] - Ссылка на объект не указывает на экземпляр объекта.
+2019-01-13 21:11:22,161 ERROR [Error] - Ссылка на объект не указывает на экземпляр объекта.
+2019-01-13 21:13:02,464 ERROR [Error] - Ссылка на объект не указывает на экземпляр объекта.
+2019-01-13 21:14:57,412 ERROR [Error] - Ссылка на объект не указывает на экземпляр объекта.
+2019-01-13 22:00:08,141 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:00:12,610 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:00:37,594 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:00:52,219 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:01:04,769 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:01:21,645 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:02:51,262 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:02:56,771 ERROR [Error] - The controller for path '/content/bootmdbootstrapstrap' was not found or does not implement IController.
+2019-01-13 22:09:03,761 ERROR [Error] - The URL 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' is not valid. Only application relative URLs (~/url) are allowed.
+Имя параметра: virtualPath
+2019-01-13 22:26:08,383 ERROR [Error] - Ошибка выполнения дочернего запроса для дескриптора 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'.
+2019-01-13 22:26:08,383 ERROR [Error] - Ошибка выполнения дочернего запроса для дескриптора 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'.
+2019-01-13 23:49:36,271 ERROR [Error] - Cannot open database "ElLibDataBase" requested by the login. The login failed.
+Login failed for user 'ZENBOOK\kYzPC'.

@@ -1,0 +1,18 @@
+﻿.field-validation-error {
+    font-size: 0.85rem;
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.validation-summary-errors {
+    font-size: 0.85rem;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}body {
+}

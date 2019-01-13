@@ -1,0 +1,11 @@
+2019-01-12 23:14:40,471 INFO  ElLibLogger [Error] - Значение не может быть неопределенным.
+Имя параметра: key
+2019-01-12 23:14:40,486 ERROR ElLibLogger [Error] - Значение не может быть неопределенным.
+Имя параметра: key
+2019-01-12 23:16:13,033 INFO  ElLibLogger [Error] - Значение не может быть неопределенным.
+Имя параметра: key
+2019-01-12 23:16:13,046 ERROR ElLibLogger [Error] - Значение не может быть неопределенным.
+Имя параметра: key
+2019-01-12 23:18:33,920 ERROR [Error] - Значение не может быть неопределенным.
+Имя параметра: key
+2019-01-12 23:58:35,665 ERROR [Error] - A public action method 'GetByAuthorId' was not found on controller 'ElLib.Web.Controllers.BookController'.
