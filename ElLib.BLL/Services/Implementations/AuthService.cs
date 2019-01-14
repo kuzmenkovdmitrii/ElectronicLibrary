@@ -23,7 +23,7 @@ namespace ElLib.BLL.Services.Implementations
             this.roleRepository = roleRepository;
         }
 
-        public async Task<OperationDetails> Register(User user, string password)
+        public OperationDetails Register(User user, string password)
         {
             if (userRepository.GetByUserName(user.UserName) != null)
             {
@@ -51,7 +51,7 @@ namespace ElLib.BLL.Services.Implementations
             return new OperationDetails(true);
         }
 
-        public async Task<OperationDetails> Authenticate(string login, string password)
+        public OperationDetails Authenticate(string login, string password)
         {
             if (string.IsNullOrEmpty(login))
             {
@@ -82,7 +82,7 @@ namespace ElLib.BLL.Services.Implementations
             return new OperationDetails(true);
         }
 
-        public async Task<OperationDetails> Logout()
+        public OperationDetails Logout()
         {
             FormsAuthentication.SignOut();
 

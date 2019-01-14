@@ -8,18 +8,18 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class AdvertisingService : Interfaces.IAdvertisingService
     {
-        private IAdvertisingService channel;
+        private readonly AdvertisingServiceClient client;
 
         public AdvertisingService()
         {
-            channel = InitializeChannel.CreateChannel();
+            client = new AdvertisingServiceClient();
         }
 
         public IEnumerable<Advertising> GetRandomByCount(int count)
         {
             ThrowException.CheckNull(count);
 
-            return channel.GetRandomByCount(count);
+            return client.GetRandomByCount(count);
         }
     }
 }

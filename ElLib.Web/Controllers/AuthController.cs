@@ -45,13 +45,13 @@ namespace ElLib.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Registration(RegisterUserModel model)
+        public ActionResult Registration(RegisterUserModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = Mapper.Map<RegisterUserModel, User>(model);
 
-                var result = await authService.Register(user, model.Password);
+                var result = authService.Register(user, model.Password);
 
                 if (result.Successed)
                 {
@@ -66,11 +66,11 @@ namespace ElLib.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginUserModel model)
+        public ActionResult Login(LoginUserModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await authService.Authenticate(model.UserName, model.Password);
+                var result = authService.Authenticate(model.UserName, model.Password);
 
                 if (result.Successed)
                 {
@@ -84,9 +84,9 @@ namespace ElLib.Web.Controllers
         }
 
         [Authorize]
-        public async Task<ActionResult> Logout()
+        public ActionResult Logout()
         {
-            await authService.Logout();
+            authService.Logout();
 
             return RedirectToAction("Index", "Home");
         }
