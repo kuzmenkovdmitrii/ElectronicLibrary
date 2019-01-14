@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
@@ -11,7 +11,7 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class AuthorService : IAuthorService
     {
-        readonly IAuthorRepository authorRepository;
+        private readonly IAuthorRepository authorRepository;
 
         public AuthorService(IAuthorRepository authorRepository)
         {
@@ -38,7 +38,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 authorRepository.Create(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при создании автора");
             }
@@ -70,7 +70,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 authorRepository.Delete(id);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 return new OperationDetails(false, "Не удалось удалить автора, так как есть книги связанные с автором");
             }

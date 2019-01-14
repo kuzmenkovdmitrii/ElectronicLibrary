@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
@@ -11,7 +11,7 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class RoleService : IRoleService
     {
-        readonly IRoleRepository roleRepository;
+        private readonly IRoleRepository roleRepository;
 
         public RoleService(IRoleRepository roleRepository)
         {
@@ -50,7 +50,7 @@ namespace ElLib.BLL.Services.Implementations
 
                 roleRepository.AddRoleToUser(user, role);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 return new OperationDetails(false, "Не удалось добавить роль пользователю");
             }

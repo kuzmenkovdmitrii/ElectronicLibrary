@@ -1,4 +1,4 @@
-﻿using ElLib.BLL.Infrastructure;
+﻿using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 
 namespace ElLib.BLL.Services.Interfaces

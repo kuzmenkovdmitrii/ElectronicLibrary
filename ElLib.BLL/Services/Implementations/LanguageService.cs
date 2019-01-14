@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
@@ -11,7 +11,8 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class LanguageService : ILanguageService
     {
-        readonly ILanguageRepository languageRepository;
+        private readonly ILanguageRepository languageRepository;
+
         public LanguageService(ILanguageRepository languageRepository)
         {
             this.languageRepository = languageRepository;
@@ -37,7 +38,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 languageRepository.Create(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при создании языка");
             }
@@ -53,7 +54,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 languageRepository.Update(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при обновлении языка");
             }
@@ -83,7 +84,12 @@ namespace ElLib.BLL.Services.Implementations
 
             Language language = languageRepository.GetByName(name);
 
-            return language == null;
+            if (language == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

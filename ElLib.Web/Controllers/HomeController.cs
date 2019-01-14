@@ -8,20 +8,5 @@ namespace ElLib.Web.Controllers
         {
             return View();
         }
-
-        public ActionResult Registration()
-        {
-            return RedirectToAction("Registration", "Auth");
-        }
-
-        public ActionResult Login()
-        {
-            return RedirectToAction("Login", "Auth");
-        }
-
-        public ActionResult AdminPage()
-        {
-            return RedirectToAction("Index", "Admin");
-        }
     }
 }

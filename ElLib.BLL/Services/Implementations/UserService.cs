@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Linq;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
@@ -12,8 +9,8 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class UserService : IUserService
     {
-        readonly IUserRepository userRepository;
-        readonly IRoleRepository roleRepository;
+        private readonly IUserRepository userRepository;
+        private readonly IRoleRepository roleRepository;
 
         public UserService(IUserRepository userRepository, IRoleRepository roleRepository)
         {

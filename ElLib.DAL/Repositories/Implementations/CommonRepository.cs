@@ -23,12 +23,12 @@ namespace ElLib.DAL.Repositories.Implementations
         {
             Executer = executer;
             Executer.ConnectionString = ConfigurationManager.ConnectionStrings["ElLibDB"].ConnectionString;
-    }
+        }
 
         public virtual IEnumerable<T> GetAll()
         {
             string storedProcedure = "usp_SelectAll" + TableName;
-            return Executer.Execute(storedProcedure,Converter);
+            return Executer.Execute(storedProcedure, Converter);
         }
 
         public virtual T GetById(int? id)
@@ -39,7 +39,7 @@ namespace ElLib.DAL.Repositories.Implementations
 
             Executer.Parameters.Add(new SqlParameter("@Id", id));
 
-            return Executer.Execute(storedProcedure,Converter).FirstOrDefault();
+            return Executer.Execute(storedProcedure, Converter).FirstOrDefault();
         }
 
         public virtual void Create(T item)

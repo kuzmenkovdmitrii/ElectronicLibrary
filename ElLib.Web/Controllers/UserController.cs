@@ -5,25 +5,26 @@ namespace ElLib.Web.Controllers
 {
     public class UserController : Controller
     {
-        readonly IUserService userService;
+        private readonly IUserService userService;
 
         public UserController(IUserService userService)
         {
             this.userService = userService;
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult All()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Info(int? id)
         {
             return View(userService.GetById(id));
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Search(string query)
         {
             if (query == null)
@@ -34,11 +35,13 @@ namespace ElLib.Web.Controllers
             return PartialView(userService.Search(query));
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AllUsersForSelect()
         {
             return PartialView(userService.GetAll());
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AllUsersByRoleIdForSelect(int? id)
         {
             return PartialView(userService.GetByRoleId(id));

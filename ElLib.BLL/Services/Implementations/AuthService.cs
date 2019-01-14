@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Security;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
@@ -14,8 +13,8 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class AuthService : IAuthService
     {
-        readonly IUserRepository userRepository;
-        readonly IRoleRepository roleRepository;
+        private readonly IUserRepository userRepository;
+        private readonly IRoleRepository roleRepository;
 
         public AuthService(IUserRepository userRepository, IRoleRepository roleRepository)
         {
@@ -136,7 +135,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 userRepository.Update(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Не удалось обновить информацию пользователя");
             }
@@ -159,7 +158,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 userRepository.UpdatePassword(user, newPassword);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Не удалось обновить пароль пользователя");
             }

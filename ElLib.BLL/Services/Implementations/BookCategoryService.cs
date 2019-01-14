@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
@@ -11,7 +11,7 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class BookCategoryService : IBookCategoryService
     {
-        readonly IBookCategoryRepository bookCategoryRepository;
+        private readonly IBookCategoryRepository bookCategoryRepository;
 
         public BookCategoryService(IBookCategoryRepository bookCategoryRepository)
         {
@@ -38,7 +38,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 bookCategoryRepository.Create(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при содании жанра");
             }
@@ -54,7 +54,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 bookCategoryRepository.Update(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при обновлении жанра");
             }
@@ -70,7 +70,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 bookCategoryRepository.Delete(id);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 return new OperationDetails(false, "Не удалось удалить жанр, так как есть книги связанные с жанорм");
             }
@@ -91,7 +91,12 @@ namespace ElLib.BLL.Services.Implementations
 
             BookCategory category = bookCategoryRepository.GetByName(name);
 
-            return category == null;
+            if (category == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

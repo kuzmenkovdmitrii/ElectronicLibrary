@@ -10,8 +10,8 @@ namespace ElLib.Web.Controllers
 {
     public class AuthController : Controller
     {
-        readonly IAuthService authService;
-        readonly IUserService userService;
+        private readonly IAuthService authService;
+        private readonly IUserService userService;
 
         private UserPrincipal CurrentUser
         {

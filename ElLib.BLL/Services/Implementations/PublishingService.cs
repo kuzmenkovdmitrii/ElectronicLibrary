@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
@@ -11,7 +11,7 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class PublishingService : IPublishingService
     {
-        IPublishingRepository publishingRepository;
+        private readonly IPublishingRepository publishingRepository;
 
         public PublishingService(IPublishingRepository publishingRepository)
         {
@@ -38,7 +38,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 publishingRepository.Create(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при создании издательства");
             }
@@ -70,7 +70,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 publishingRepository.Delete(id);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 return new OperationDetails(false, "Не удалось удалить издательство, так как есть книги связанные с издательством");
             }
@@ -91,7 +91,12 @@ namespace ElLib.BLL.Services.Implementations
 
             Publishing publishing = publishingRepository.GetByName(name);
 
-            return publishing == null;
+            if (publishing == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

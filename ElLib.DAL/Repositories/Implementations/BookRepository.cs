@@ -28,15 +28,6 @@ namespace ElLib.DAL.Repositories.Implementations
             Converter = converter;
         }
 
-        public override Book GetById(int? id)
-        {
-            ThrowException.CheckId(id);
-
-            Book book = base.GetById(id);
-
-            return book;
-        }
-
         public override void Create(Book item)
         {
             ThrowException.CheckNull(item);

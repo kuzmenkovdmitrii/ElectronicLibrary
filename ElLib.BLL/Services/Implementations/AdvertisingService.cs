@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ElLib.BLL.AdvSevice;
-using ElLib.BLL.WCF;
 using ElLib.Common.Entities.WCF;
 using ElLib.Common.Exception;
 

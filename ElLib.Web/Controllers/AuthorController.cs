@@ -9,7 +9,7 @@ namespace ElLib.Web.Controllers
 {
     public class AuthorController : Controller
     {
-        IAuthorService authorService;
+        private readonly IAuthorService authorService;
 
         public AuthorController(IAuthorService authorService)
         {

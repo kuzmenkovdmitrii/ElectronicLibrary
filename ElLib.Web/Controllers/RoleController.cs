@@ -7,8 +7,8 @@ namespace ElLib.Web.Controllers
 {
     public class RoleController : Controller
     {
-        readonly IRoleService roleService;
-        readonly IUserService userService;
+        private readonly IRoleService roleService;
+        private readonly IUserService userService;
 
         public RoleController(IRoleService roleService, IUserService userService)
         {
@@ -52,6 +52,7 @@ namespace ElLib.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AllRolesForSelect()
         {
             return PartialView(roleService.GetAll().Where(x => x.Name != "User"));

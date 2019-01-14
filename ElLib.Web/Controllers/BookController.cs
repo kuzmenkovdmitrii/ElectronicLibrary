@@ -18,12 +18,12 @@ namespace ElLib.Web.Controllers
 {
     public class BookController : Controller
     {
-        readonly IBookService bookService;
-        readonly ILanguageService languageService;
-        readonly IPublishingService publishingService;
-        readonly IAuthorService authorService;
-        readonly IBookCategoryService bookCategoryService;
-        readonly IUploadService uploadService;
+        private readonly IBookService bookService;
+        private readonly ILanguageService languageService;
+        private readonly IPublishingService publishingService;
+        private readonly IAuthorService authorService;
+        private readonly IBookCategoryService bookCategoryService;
+        private readonly IUploadService uploadService;
 
         public BookController(
             IBookService bookService,
@@ -153,19 +153,12 @@ namespace ElLib.Web.Controllers
         [HttpPost]
         public string UploadPicture(string path)
         {
-            //HttpPostedFileBase picture = null;
-            //byte[] infoInBytes = new byte[picture.ContentLength];
-            //picture.InputStream.Read(infoInBytes, 0, picture.ContentLength);
-
             return uploadService.UploadPicture(path);
         }
 
         [HttpPost]
         public string UploadDocument(string path)
         {
-            //HttpPostedFileBase picture = null;
-            //byte[] infoInBytes = new byte[picture.ContentLength];
-            //picture.InputStream.Read(infoInBytes, 0, picture.ContentLength);
             return uploadService.UploadDocument(path);
         }
 

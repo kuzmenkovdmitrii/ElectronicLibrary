@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using ElLib.Common.Converter;
 
 namespace ElLib.Common.ProcedureExecuter
@@ -18,8 +17,6 @@ namespace ElLib.Common.ProcedureExecuter
 
         public void ExecuteVoid(string storedProcedure)
         {
-
-
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))

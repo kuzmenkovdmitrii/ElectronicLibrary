@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using ElLib.BLL.Infrastructure;
 using ElLib.BLL.Services.Interfaces;
+using ElLib.BLL.ValidationInfo;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.DAL.Repositories.Interfaces;
@@ -12,10 +12,10 @@ namespace ElLib.BLL.Services.Implementations
 {
     public class BookService : IBookService
     {
-        readonly IBookRepository bookRepository;
-        readonly IBookCategoryRepository bookCategoryRepository;
-        readonly IAuthorRepository authorRepository;
-        readonly IPublishingRepository publishingRepository;
+        private readonly IBookRepository bookRepository;
+        private readonly IBookCategoryRepository bookCategoryRepository;
+        private readonly IAuthorRepository authorRepository;
+        private readonly IPublishingRepository publishingRepository;
 
         public BookService(
             IBookRepository bookRepository,
@@ -65,7 +65,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 bookRepository.Create(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при создании книги");
             }
@@ -81,7 +81,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 bookRepository.Update(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return new OperationDetails(false, "Произошла ошибка при обновлении книги");
             }
@@ -97,7 +97,7 @@ namespace ElLib.BLL.Services.Implementations
             {
                 bookRepository.Delete(id);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
                 return new OperationDetails(false, "Произошла ошибка при удалении книги");
             }

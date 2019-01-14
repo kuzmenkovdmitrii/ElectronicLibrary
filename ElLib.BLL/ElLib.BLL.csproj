@@ -60,7 +60,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Dependency\BLLRegistry.cs" />
-    <Compile Include="Infrastructure\OperationDetails.cs" />
+    <Compile Include="ValidationInfo\OperationDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Implementations\AuthorService.cs" />
     <Compile Include="Services\Implementations\AuthService.cs" />
@@ -83,7 +83,6 @@
     <Compile Include="Services\Implementations\PublishingService.cs" />
     <Compile Include="Services\Interfaces\IUploadService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
-    <Compile Include="WCF\InitializeChannel.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

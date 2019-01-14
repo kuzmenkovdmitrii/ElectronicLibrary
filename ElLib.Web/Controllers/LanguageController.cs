@@ -8,7 +8,7 @@ namespace ElLib.Web.Controllers
 {
     public class LanguageController : Controller
     {
-        readonly ILanguageService languageService;
+        private readonly ILanguageService languageService;
 
         public LanguageController(ILanguageService languageService)
         {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ElLib.BLL.Infrastructure;
+using ElLib.BLL.ValidationInfo;
 
 namespace ElLib.BLL.Services.Interfaces
 {

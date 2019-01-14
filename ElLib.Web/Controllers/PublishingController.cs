@@ -8,7 +8,7 @@ namespace ElLib.Web.Controllers
 {
     public class PublishingController : Controller
     {
-        IPublishingService publishingService;
+        private readonly IPublishingService publishingService;
 
         public PublishingController(IPublishingService publishingService)
         {

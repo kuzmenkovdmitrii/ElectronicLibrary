@@ -8,7 +8,7 @@ namespace ElLib.Web.Controllers
 {
     public class BookCategoryController : Controller
     {
-        readonly IBookCategoryService bookCategoryService;
+        private readonly IBookCategoryService bookCategoryService;
 
         public BookCategoryController(IBookCategoryService bookCategoryService)
         {
