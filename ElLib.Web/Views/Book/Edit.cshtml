@@ -40,26 +40,55 @@
         $("#Language").val(changedLanguage).trigger("change");
     });
 
-    function changeDoc(file) {
-        var filename = getFileName(file);
-        $('#docLabel').val(filename);
+    $(document).ready(function() {
+        $('#pictureInput').on('change',
+            function() {
+                var filename = getFileName(this);
+                $('#pictureLabel').val(filename);
 
-        $.ajax({
-            url: '@Url.Action("UploadDocument", "Book")',
-            data: 'path=' + file.value,
-            type: 'post',
-            beforeSend: function () {
-                $('#docLoader').addClass('active');
-            },
-            success: function (result) {
-                $('#File').attr('value', result);
-                $('#docLoader').removeClass('active');
-            },
-            fail: function () {
-                alert("error");
-            }
+                $.ajax({
+                    url: '@Url.Action("UploadPicture", "Book")',
+                    data: 'path=' + this.value,
+                    type: 'post',
+                    beforeSend: function() {
+                        $('#pictureLoader').addClass('active');
+                        console.log('load');
+                    },
+                    success: function(result) {
+                        console.log('succ');
+                        $('#pictureImg').attr('src', result);
+                        $('#Picture').attr('value', result);
+                        $('#pictureLoader').removeClass('active');
+                    },
+                    fail: function() {
+                        alert("error");
+                    }
+                });
+            });
+    });
+
+    $(document).ready(function() {
+        $('#fileInput').on('change', function(file) {
+            var filename = getFileName(file);
+            $('#fileLabel').val(filename);
+
+            $.ajax({
+                url: '@Url.Action("UploadDocument", "Book")',
+                data: 'path=' + this.value,
+                type: 'post',
+                beforeSend: function() {
+                    $('#docLoader').addClass('active');
+                },
+                success: function(result) {
+                    $('#File').attr('value', result);
+                    $('#docLoader').removeClass('active');
+                },
+                fail: function() {
+                    alert("error");
+                }
+            });
         });
-    };
+    });
 
 </script>
 
@@ -92,7 +121,7 @@
                                     <div class="file-field">
                                         <div class="btn info-color btn-sm" style="width: 100%">
                                             <span>Выберите новую обложку</span>
-                                            <input type="file" onchange="changePicture(this)">
+                                            <input type="file" id="pictureInput">
                                         </div>
                                         <div class="float-right preloader-wrapper small float-left" id="pictureLoader">
                                             <div class="spinner-layer spinner-blue-only">
@@ -157,7 +186,7 @@
                                     <div class="file-field">
                                         <a class="btn-floating btn-md info-color lighten-1 mt-0 float-left">
                                             <i class="far fa-file-alt"></i>
-                                            <input type="file" onchange="changeDoc(this)">
+                                            <input type="file" id="fileInput">
                                         </a>
                                         <div class="float-right preloader-wrapper small float-left" id="docLoader">
                                             <div class="spinner-layer spinner-blue-only">

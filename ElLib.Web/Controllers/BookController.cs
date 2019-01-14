@@ -51,14 +51,14 @@ namespace ElLib.Web.Controllers
             return View(bookService.GetById(id));
         }
 
-        //[Authorize(Roles = "Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Create(CreateBookModel model)
         {
             if (ModelState.IsValid)
