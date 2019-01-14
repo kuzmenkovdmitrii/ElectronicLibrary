@@ -15,9 +15,9 @@ namespace ElLib.BLL.Dependency
             For<IBookService>().Use<BookService>();
             For<ILanguageService>().Use<LanguageService>();
             For<IPublishingService>().Use<PublishingService>();
-            For<IUploadService>().Use<UploadService>();
             For<IUserService>().Use<UserService>();
             For<IRoleService>().Use<RoleService>();
+            For<IUploadService>().Use<UploadService>();
         }
     }
 }

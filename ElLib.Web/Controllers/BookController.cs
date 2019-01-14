@@ -1,11 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Security.Policy;
+using System.Text;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
 using ElLib.Common.Exception;
 using ElLib.Web.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ElLib.Web.Controllers
 {
@@ -44,14 +51,14 @@ namespace ElLib.Web.Controllers
             return View(bookService.GetById(id));
         }
 
-        [Authorize(Roles = "Admin, Editor")]
+        //[Authorize(Roles = "Admin, Editor")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin, Editor")]
+        //[Authorize(Roles = "Admin, Editor")]
         public ActionResult Create(CreateBookModel model)
         {
             if (ModelState.IsValid)
@@ -143,16 +150,17 @@ namespace ElLib.Web.Controllers
             return View("Info");
         }
 
-        [Authorize(Roles = "Admin, Editor")]
+        [HttpPost]
         public string UploadPicture(string path)
         {
             //HttpPostedFileBase picture = null;
             //byte[] infoInBytes = new byte[picture.ContentLength];
             //picture.InputStream.Read(infoInBytes, 0, picture.ContentLength);
+
             return uploadService.UploadPicture(path);
         }
 
-        [Authorize(Roles = "Admin, Editor")]
+        [HttpPost]
         public string UploadDocument(string path)
         {
             //HttpPostedFileBase picture = null;

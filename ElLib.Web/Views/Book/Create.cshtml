@@ -1,4 +1,5 @@
-﻿@model ElLib.Web.Models.CreateBookModel
+﻿@using Microsoft.Ajax.Utilities
+@model ElLib.Web.Models.CreateBookModel
 
 @{
     ViewBag.Title = "Создать книгу";
@@ -6,11 +7,9 @@
 }
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $(".js-example-basic-multiple").select2();
-    });
 
-    $(document).ready(function () {
         $("#Categories").select2({
             placeholder: 'Жанры'
         });
@@ -33,49 +32,55 @@
         return filename;
     }
 
-    function changePicture(file) {
-        var filename = getFileName(file);
-        $('#pictureLabel').val(filename);
+    $(document).ready(function() {
+        $('#pictureInput').on('change',
+            function() {
+                var filename = getFileName(this);
+                $('#pictureLabel').val(filename);
 
-        $.ajax({
-            url: '@Url.Action("UploadPicture", "Book")',
-            data: 'path=' + file.value,
-            type: 'post',
-            beforeSend: function () {
-                $('#pictureLoader').addClass('active');
-            },
-            success: function (result) {
-                $('#pictureImg').attr('src', result);
-                $('#Picture').attr('value', result);
-                $('#pictureLoader').removeClass('active');
-            },
-            fail: function () {
-                alert("error");
-            }
-        });
-    };
+                $.ajax({
+                    url: '@Url.Action("UploadPicture", "Book")',
+                    data: 'path=' + this.value,
+                    type: 'post',
+                    beforeSend: function() {
+                        $('#pictureLoader').addClass('active');
+                        console.log('load');
+                    },
+                    success: function(result) {
+                        console.log('succ');
+                        $('#pictureImg').attr('src', result);
+                        $('#Picture').attr('value', result);
+                        $('#pictureLoader').removeClass('active');
+                    },
+                    fail: function() {
+                        alert("error");
+                    }
+                });
+            });
+    });
 
-    function changeDoc(file) {
-        var filename = getFileName(file);
-        $('#docLabel').val(filename);
+    $(document).ready(function() {
+        $('#fileInput').on('change', function(file) {
+                var filename = getFileName(file);
+                $('#fileLabel').val(filename);
 
-        $.ajax({
-            url: '@Url.Action("UploadDocument", "Book")',
-            data: 'path=' + file.value,
-            type: 'post',
-            beforeSend: function () {
-                $('#docLoader').addClass('active');
-            },
-            success: function (result) {
-                $('#File').attr('value', result);
-                $('#docLoader').removeClass('active');
-            },
-            fail: function () {
-                alert("error");
-            }
-        });
-    };
-
+                $.ajax({
+                    url: '@Url.Action("UploadDocument", "Book")',
+                    data: 'path=' + this.value,
+                    type: 'post',
+                    beforeSend: function() {
+                        $('#docLoader').addClass('active');
+                    },
+                    success: function(result) {
+                        $('#File').attr('value', result);
+                        $('#docLoader').removeClass('active');
+                    },
+                    fail: function() {
+                        alert("error");
+                    }
+                });
+            });
+    });
 </script>
 
 <div class="container">
@@ -92,14 +97,14 @@
                             <div class="col-md-5">
                                 <div class="md-form mt-1" style="width: 100%">
                                     <img src="https://pp.userapi.com/c847122/v847122515/167f5e/hyllwQKEV4g.jpg" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%" />
-                                    @Html.HiddenFor(x=>x.Picture)
+                                    @Html.HiddenFor(x => x.Picture)
                                 </div>
 
                                 <div class="md-form" style="width: 100%">
                                     <div class="file-field">
                                         <div class="btn info-color btn-sm" style="width: 100%">
                                             <span>Выберите обложку</span>
-                                            <input type="file" onchange="changePicture(this)">
+                                            <input type="file" id="pictureInput">
                                         </div>
                                         <div class="float-right preloader-wrapper small float-left" id="pictureLoader">
                                             <div class="spinner-layer spinner-blue-only">
@@ -164,7 +169,7 @@
                                     <div class="file-field">
                                         <a class="btn-floating btn-md info-color lighten-1 mt-0 float-left">
                                             <i class="far fa-file-alt"></i>
-                                            <input type="file" onchange="changeDoc(this)">
+                                            <input type="file" id="fileInput">
                                         </a>
                                         <div class="float-right preloader-wrapper small float-left" id="docLoader">
                                             <div class="spinner-layer spinner-blue-only">
@@ -180,7 +185,7 @@
                                             </div>
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate disabled" id="docLabel" type="text" placeholder="Выберите файл книги">
+                                            <input class="file-path validate disabled" id="fileLabel" type="text" placeholder="Выберите файл книги">
                                         </div>
                                     </div>
                                     @Html.HiddenFor(x => x.File)

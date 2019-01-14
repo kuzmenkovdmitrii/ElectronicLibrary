@@ -27,7 +27,7 @@ namespace ElLib.Web.Models
         public int[] Publishings { get; set; }
 
         [Display(Name = "Документ")]
-        [Required(ErrorMessage = "Поле документа не может быть пустым")]
+        [Required(ErrorMessage = "Без документа невозможно создать книгу")]
         public string File { get; set; }
 
         [Display(Name = "Обложка")]
