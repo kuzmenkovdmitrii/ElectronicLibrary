@@ -21,7 +21,7 @@ namespace ElLib.Common.Exception
 
             if (id <= 0)
             {
-                throw new System.ArgumentException("Argument is negative or 0");
+                throw new ArgumentException("Argument is negative or 0");
             }
         }
     }

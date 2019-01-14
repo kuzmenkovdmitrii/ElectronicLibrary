@@ -3,10 +3,10 @@ GO
 
 CREATE PROC usp_UpdateAuthor 
 	@Id int, 
-	@Name nvarchar(25), 
-	@LastName nvarchar(25), 
-	@MiddleName nvarchar(25), 
-	@Email nvarchar(50)
+	@Name nvarchar(50),
+	@LastName nvarchar(50),
+	@MiddleName nvarchar(50),
+	@Email nvarchar(50) = NULL
 AS
 	UPDATE Authors
 		SET 

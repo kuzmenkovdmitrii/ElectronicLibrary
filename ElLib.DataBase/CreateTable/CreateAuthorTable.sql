@@ -7,8 +7,8 @@ GO
 
 CREATE TABLE Authors(
 	Id int PRIMARY KEY IDENTITY,
-	[Name] nvarchar(25) NOT NULL,
-	LastName nvarchar(25) NOT NULL,
-	MiddleName nvarchar(25) NOT NULL,
+	[Name] nvarchar(50) NOT NULL,
+	LastName nvarchar(50) NOT NULL,
+	MiddleName nvarchar(50) NOT NULL,
 	Email nvarchar(50) NULL,
 );

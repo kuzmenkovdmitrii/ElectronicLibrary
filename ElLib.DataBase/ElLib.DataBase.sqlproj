@@ -128,7 +128,6 @@
     <None Include="StoredProcedure\SelectUserByEmailStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectPublishingByNameStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectLanguageByNameStoredProcedure.sql" />
-    <None Include="StoredProcedure\SeleteBookCategoryByNameStoredProcedure.sql" />
     <None Include="StoredProcedure\SelectBookCategoryByNameStoredProcedure.sql" />
     <None Include="StoredProcedure\UpdateUserPasswordStoredProcedure.sql" />
   </ItemGroup>

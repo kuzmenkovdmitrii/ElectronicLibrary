@@ -18,19 +18,25 @@ namespace ElLib.Common.ProcedureExecuter
 
         public void ExecuteVoid(string storedProcedure)
         {
+
+
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddRange(Parameters.ToArray());
+                    foreach (var parameter in Parameters)
+                    {
+                        cmd.Parameters.AddWithValue(parameter.ParameterName, parameter.SqlValue);
+                    }
 
                     connection.Open();
+
                     try
                     {
                         cmd.ExecuteNonQuery();
-                    }
+                    }   
                     finally
                     {
                         cmd.Parameters.Clear();
@@ -41,7 +47,7 @@ namespace ElLib.Common.ProcedureExecuter
         }
 
         public IEnumerable<T> Execute<T>(string storedProcedure, IConverter<T> converter)
-            where T: class
+            where T : class
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -51,11 +57,14 @@ namespace ElLib.Common.ProcedureExecuter
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddRange(Parameters.ToArray());
+                    foreach (var parameter in Parameters)
+                    {
+                        cmd.Parameters.AddWithValue(parameter.ParameterName, parameter.SqlValue);
+                    }
 
                     try
                     {
-                        //cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
 
                         ICollection<T> list = new List<T>();
 

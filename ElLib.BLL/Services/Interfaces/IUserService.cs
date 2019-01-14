@@ -9,8 +9,6 @@ namespace ElLib.BLL.Services.Interfaces
         IEnumerable<User> GetAll();
         IEnumerable<User> GetByRoleId(int? id);
         User GetById(int? id);
-        OperationDetails Update(User item);
-        OperationDetails UpdatePassword(User user, string oldPassword, string newPassword);
 
         IEnumerable<User> Search(string query);
         bool CheckUserName(string username);

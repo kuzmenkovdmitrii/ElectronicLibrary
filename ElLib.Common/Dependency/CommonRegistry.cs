@@ -9,7 +9,7 @@ namespace ElLib.Common.Dependency
         public CommonRegistry()
         {
             For<ILogger>().Singleton().Use<Logger.Logger>();
-            For<IProcedureExecuter>().Singleton().Use<ProcedureExecuter.ProcedureExecuter>();
+            For<IProcedureExecuter>().Use<ProcedureExecuter.ProcedureExecuter>();
         }
     }
 }

@@ -118,7 +118,7 @@ namespace ElLib.Web.Controllers
 
                 user.UserName = model.UserName;
 
-                var result = userService.Update(user);
+                var result = authService.Update(user);
 
                 if (result.Successed)
                 {
@@ -158,7 +158,7 @@ namespace ElLib.Web.Controllers
 
                 user.Email = model.Email;
 
-                var result = userService.Update(user);
+                var result = authService.Update(user);
 
                 if (result.Successed)
                 {
@@ -185,7 +185,7 @@ namespace ElLib.Web.Controllers
             {
                 User user = userService.GetById(CurrentUser.Id);
 
-                var result = userService.UpdatePassword(user, model.OldPassword, model.NewPassword);
+                var result = authService.UpdatePassword(user, model.OldPassword, model.NewPassword);
 
                 if (result.Successed)
                 {
