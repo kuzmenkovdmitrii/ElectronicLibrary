@@ -15,17 +15,17 @@ namespace ElLib.BLL.Services.Implementations
 
         public string UploadPicture(string path)
         {
-            var client = new WebClient();
+            WebClient client = new WebClient();
 
-            var urlForServer = "https://api.vk.com/method/photos.getWallUploadServer?access_token=" + token + "&v=5.52";
-            var reqForServer = client.DownloadString(urlForServer);
-            var jsonForServer = JsonConvert.DeserializeObject(reqForServer) as JObject;
+            string urlForServer = "https://api.vk.com/method/photos.getWallUploadServer?access_token=" + token + "&v=5.52";
+            string reqForServer = client.DownloadString(urlForServer);
+            JObject jsonForServer = JsonConvert.DeserializeObject(reqForServer) as JObject;
 
-            var urlUploadServer = jsonForServer["response"]["upload_url"].ToString();
-            var reqUploadServer = Encoding.UTF8.GetString(client.UploadFile(urlUploadServer, "POST", path));
-            var jsonUploadServer = JsonConvert.DeserializeObject(reqUploadServer) as JObject;
+            string urlUploadServer = jsonForServer["response"]["upload_url"].ToString();
+            string reqUploadServer = Encoding.UTF8.GetString(client.UploadFile(urlUploadServer, "POST", path));
+            JObject jsonUploadServer = JsonConvert.DeserializeObject(reqUploadServer) as JObject;
 
-            var urlSavePhoto = "https://api.vk.com/method/photos.saveWallPhoto?access_token=" + token
+            string urlSavePhoto = "https://api.vk.com/method/photos.saveWallPhoto?access_token=" + token
                                                                                               + "&server=" +
                                                                                               jsonUploadServer["server"]
                                                                                               + "&photo=" +
@@ -33,27 +33,27 @@ namespace ElLib.BLL.Services.Implementations
                                                                                               + "&hash=" +
                                                                                               jsonUploadServer["hash"]
                                                                                               + "&v=5.52";
-            var reqSavePhoto = client.DownloadString(urlSavePhoto);
-            var jsonSavePhoto = JsonConvert.DeserializeObject(reqSavePhoto) as JObject;
+            string reqSavePhoto = client.DownloadString(urlSavePhoto);
+            JObject jsonSavePhoto = JsonConvert.DeserializeObject(reqSavePhoto) as JObject;
 
-            var pictureUrl = jsonSavePhoto["response"][0]["photo_807"].ToString();
+            string pictureUrl = jsonSavePhoto["response"][0]["photo_807"].ToString();
 
             return pictureUrl;
         }
 
         public string UploadDocument(string path)
         {
-            var client = new WebClient();
+            WebClient client = new WebClient();
 
-            var urlForServer = "https://api.vk.com/method/docs.getWallUploadServer?access_token=" + token + "&v=5.52";
-            var reqForServer = client.DownloadString(urlForServer);
-            var jsonForServer = JsonConvert.DeserializeObject(reqForServer) as JObject;
+            string urlForServer = "https://api.vk.com/method/docs.getWallUploadServer?access_token=" + token + "&v=5.52";
+            string reqForServer = client.DownloadString(urlForServer);
+            JObject jsonForServer = JsonConvert.DeserializeObject(reqForServer) as JObject;
 
-            var urlUploadServer = jsonForServer["response"]["upload_url"].ToString();
-            var reqUploadServer = Encoding.UTF8.GetString(client.UploadFile(urlUploadServer, "POST", path));
-            var jsonUploadServer = JsonConvert.DeserializeObject(reqUploadServer) as JObject;
+            string urlUploadServer = jsonForServer["response"]["upload_url"].ToString();
+            string reqUploadServer = Encoding.UTF8.GetString(client.UploadFile(urlUploadServer, "POST", path));
+            JObject jsonUploadServer = JsonConvert.DeserializeObject(reqUploadServer) as JObject;
 
-            var urlSaveDoc = "https://api.vk.com/method/docs.save?access_token=" + token
+            string urlSaveDoc = "https://api.vk.com/method/docs.save?access_token=" + token
                                                                                  + "&server=" +
                                                                                  jsonUploadServer["server"]
                                                                                  + "&file=" +
@@ -61,10 +61,10 @@ namespace ElLib.BLL.Services.Implementations
                                                                                  + "&hash=" +
                                                                                  jsonUploadServer["hash"]
                                                                                  + "&v=5.52";
-            var reqSaveDoc = client.DownloadString(urlSaveDoc);
-            var jsonSaveDoc = JsonConvert.DeserializeObject(reqSaveDoc) as JObject;
+            string reqSaveDoc = client.DownloadString(urlSaveDoc);
+            JObject jsonSaveDoc = JsonConvert.DeserializeObject(reqSaveDoc) as JObject;
 
-            var docUrl = jsonSaveDoc["response"][0]["url"].ToString();
+            string docUrl = jsonSaveDoc["response"][0]["url"].ToString();
 
             return docUrl;
         }

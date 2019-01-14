@@ -41,45 +41,6 @@ namespace ElLib.BLL.Services.Implementations
             return user;
         }
 
-        public OperationDetails Update(User item)
-        {
-            ThrowException.CheckNull(item);
-
-            try
-            {
-                userRepository.Update(item);
-            }
-            catch (Exception)
-            {
-                return new OperationDetails(true, "Не удалось обновить информацию пользователя");
-            }
-
-            return new OperationDetails(true);
-        }
-
-        public OperationDetails UpdatePassword(User user, string oldPassword, string newPassword)
-        {
-            ThrowException.CheckNull(user);
-            ThrowException.CheckNull(oldPassword);
-            ThrowException.CheckNull(newPassword);
-
-            if (oldPassword != userRepository.GetPassword(user.Id))
-            {
-                return new OperationDetails(false, "Пароли не совпадают", "OldPassword");
-            }
-
-            try
-            {
-                userRepository.UpdatePassword(user, newPassword);
-            }
-            catch (Exception)
-            {
-                return new OperationDetails(true, "Не удалось обновить пароль пользователя");
-            }
-
-            return new OperationDetails(true);
-        }
-
         public IEnumerable<User> Search(string query)
         {
             ThrowException.CheckNull(query);

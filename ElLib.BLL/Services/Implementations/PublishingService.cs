@@ -40,7 +40,7 @@ namespace ElLib.BLL.Services.Implementations
             }
             catch (Exception)
             {
-                return new OperationDetails(true, "Произошла ошибка при создании издательства");
+                return new OperationDetails(false, "Произошла ошибка при создании издательства");
             }
 
             return new OperationDetails(true);
@@ -56,7 +56,7 @@ namespace ElLib.BLL.Services.Implementations
             }
             catch (Exception e)
             {
-                return new OperationDetails(true, "Произошла ошибка при обновлении издательства");
+                return new OperationDetails(false, "Произошла ошибка при обновлении издательства");
             }
             
             return new OperationDetails(true);

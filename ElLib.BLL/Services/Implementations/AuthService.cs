@@ -86,7 +86,7 @@ namespace ElLib.BLL.Services.Implementations
         {
             FormsAuthentication.SignOut();
 
-            return new OperationDetails(true, "Пользователь успешно вышел");
+            return new OperationDetails(true);
         }
 
         private void CreateCookie(User user)
@@ -126,6 +126,45 @@ namespace ElLib.BLL.Services.Implementations
             }
 
             return true;
+        }
+
+        public OperationDetails Update(User item)
+        {
+            ThrowException.CheckNull(item);
+
+            try
+            {
+                userRepository.Update(item);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(false, "Не удалось обновить информацию пользователя");
+            }
+
+            return new OperationDetails(true);
+        }
+
+        public OperationDetails UpdatePassword(User user, string oldPassword, string newPassword)
+        {
+            ThrowException.CheckNull(user);
+            ThrowException.CheckNull(oldPassword);
+            ThrowException.CheckNull(newPassword);
+
+            if (oldPassword != userRepository.GetPassword(user.Id))
+            {
+                return new OperationDetails(false, "Пароли не совпадают", "OldPassword");
+            }
+
+            try
+            {
+                userRepository.UpdatePassword(user, newPassword);
+            }
+            catch (Exception)
+            {
+                return new OperationDetails(false, "Не удалось обновить пароль пользователя");
+            }
+
+            return new OperationDetails(true);
         }
     }
 }

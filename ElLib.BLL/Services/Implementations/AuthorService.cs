@@ -40,7 +40,7 @@ namespace ElLib.BLL.Services.Implementations
             }
             catch (Exception)
             {
-                return new OperationDetails(true, "Произошла ошибка при создании автора");
+                return new OperationDetails(false, "Произошла ошибка при создании автора");
             }
 
             return new OperationDetails(true);
@@ -54,9 +54,9 @@ namespace ElLib.BLL.Services.Implementations
             {
                 authorRepository.Update(item);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return new OperationDetails(true, "Произошла ошибка при обновлении автора");
+                return new OperationDetails(false, "Произошла ошибка при обновлении автора");
             }
 
             return new OperationDetails(true);

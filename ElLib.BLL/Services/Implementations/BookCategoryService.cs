@@ -40,7 +40,7 @@ namespace ElLib.BLL.Services.Implementations
             }
             catch (Exception)
             {
-                return new OperationDetails(true, "Произошла ошибка при содании жанра");
+                return new OperationDetails(false, "Произошла ошибка при содании жанра");
             }
 
             return new OperationDetails(true);
@@ -56,7 +56,7 @@ namespace ElLib.BLL.Services.Implementations
             }
             catch (Exception)
             {
-                return new OperationDetails(true, "Произошла ошибка при обновлении жанра");
+                return new OperationDetails(false, "Произошла ошибка при обновлении жанра");
             }
 
             return new OperationDetails(true);

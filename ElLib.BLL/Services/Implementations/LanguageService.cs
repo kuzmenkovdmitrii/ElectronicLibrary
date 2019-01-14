@@ -39,7 +39,7 @@ namespace ElLib.BLL.Services.Implementations
             }
             catch (Exception)
             {
-                return new OperationDetails(true, "Произошла ошибка при создании языка");
+                return new OperationDetails(false, "Произошла ошибка при создании языка");
             }
 
             return new OperationDetails(true);
@@ -55,7 +55,7 @@ namespace ElLib.BLL.Services.Implementations
             }
             catch (Exception)
             {
-                return new OperationDetails(true, "Произошла ошибка при обновлении языка");
+                return new OperationDetails(false, "Произошла ошибка при обновлении языка");
             }
 
             return new OperationDetails(true);
