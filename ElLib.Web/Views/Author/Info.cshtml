@@ -46,7 +46,11 @@
                         <tr>
                             <th scope="row" class="text-black-50">Книги</th>
                             <td>
-                                <a type="button" href="@Url.Action("GetByAuthorId","Book")" class="btn text-white info-color btn-sm btn-rounded">Все книги автора</a>
+                                @using (Html.BeginForm("All", "Book"))
+                                {
+                                    <input type="hidden" value="@Model.Id" name="Authors" />
+                                    <input type="submit" class="btn text-white info-color btn-sm btn-rounded" value="Все книги автора" />
+                                }
                             </td>
                         </tr>
                         </tbody>

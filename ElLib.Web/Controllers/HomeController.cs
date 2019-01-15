@@ -6,7 +6,7 @@ namespace ElLib.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("All", "Book");
         }
     }
 }

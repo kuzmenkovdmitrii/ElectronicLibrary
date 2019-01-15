@@ -50,7 +50,11 @@
                         <tr>
                             <th scope="row" class="text-black-50">Книги</th>
                             <td>
-                                <a type="button" href="@Url.Action("All","Book")" onclick="@ViewBag.Publishing = @Model.Id" class="btn text-white info-color btn-sm btn-rounded">Все книги издательства</a>
+                                @using (Html.BeginForm("All", "Book"))
+                                {
+                                    <input type="hidden" value="@Model.Id" name="Publishings" />
+                                    <input type="submit" class="btn text-white info-color btn-sm btn-rounded" value="Все книги издательства" />
+                                }
                             </td>
                         </tr>
                         </tbody>

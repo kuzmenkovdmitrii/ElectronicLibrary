@@ -41,9 +41,9 @@ namespace ElLib.Web.Controllers
             this.uploadService = uploadService;
         }
 
-        public ActionResult All()
+        public ActionResult All(SearchBooksParametersModel model)
         {
-            return View();
+            return View(model);
         }
 
         public ActionResult Info(int? id)

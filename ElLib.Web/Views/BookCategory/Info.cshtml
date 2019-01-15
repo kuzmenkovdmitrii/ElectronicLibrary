@@ -1,9 +1,18 @@
-﻿@model ElLib.Common.Entities.BookCategory
+﻿@using ElLib.Web.Models
+@model ElLib.Common.Entities.BookCategory
 
 @{
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Main.cshtml";
 }
+
+<script>
+    function getModel() {
+        return {
+            Categories: @Model.Id
+        };
+    }
+</script>
 
 <div class="container">
     <div class="row justify-content-md-center">
@@ -38,7 +47,11 @@
                         <tr>
                             <th scope="row" class="text-black-50">Книги</th>
                             <td>
-                                <a type="button" href="@Url.Action("GetByBookCategoryId","Book")" class="btn text-white info-color btn-sm btn-rounded">Все книги данной категории</a>
+                                @using (Html.BeginForm("All", "Book"))
+                                {
+                                    <input type="hidden" value="@Model.Id" name="BookCategory"/>
+                                    <input type="submit" class="btn text-white info-color btn-sm btn-rounded" value="Все книги издательства"/>
+                                }
                             </td>
                         </tr>
                         </tbody>

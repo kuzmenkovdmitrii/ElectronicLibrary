@@ -1,4 +1,4 @@
-﻿@model ElLib.Common.Entities.Book
+﻿@model ElLib.Web.Models.SearchBooksParametersModel
 
 @{
     ViewBag.Title = "Все книги";
@@ -7,6 +7,7 @@
 
 <script>
     $(document).ready(function () {
+        setModel();
         $("#Categories").select2({
             placeholder: 'Жанры'
         });
@@ -19,6 +20,7 @@
         $("#Publishings").select2({
             placeholder: 'Издательства'
         });
+
     });
 
     $(document).ready(function () {
@@ -32,6 +34,20 @@
             searchAjax(model);
         });
     });
+
+    function setModel() {
+        var changedAuthors = @Html.Raw(Json.Encode(Model.Authors));
+        $("#Authors").val(changedAuthors).trigger("change");
+
+        var changedPublishings = @Html.Raw(Json.Encode(Model.Publishings));
+        $("#Publishings").val(changedPublishings).trigger("change");
+
+        var changedCategories = @Html.Raw(Json.Encode(Model.Categories));
+        $("#Categories").val(changedCategories).trigger("change");
+
+        var changedLanguage = @Html.Raw(Json.Encode(Model.Languages));
+        $("#Language").val(changedLanguage).trigger("change");
+    }
 
     function getModel() {
         return {
@@ -100,6 +116,19 @@
                         </select>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card" style="width: 800px; height: 100%; margin-top: 15px;">
+            <h5 class="card-header text-center py-1">
+                <strong>Реклама</strong>
+            </h5>
+            <div class="card-body">
+                @Html.Action("Advertising", "Advertising")
             </div>
         </div>
     </div>
