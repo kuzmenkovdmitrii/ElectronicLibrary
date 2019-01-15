@@ -7,7 +7,7 @@
             @user.UserName (@user.Email)
         </td>
         <td class="td-pad" style="width: 50px">
-            <a class="btn-floating btn-sm info-color float-right" href="@Url.Action("Info", "User", new {id = user.Id})"><i class="fa fa fa-info"></i></a>
+            <a class="btn-floating btn-sm info-color float-right" title="Подробнее" href="@Url.Action("Info", "User", new {id = user.Id})"><i class="fa fa fa-info"></i></a>
         </td>
     </tr>
 }

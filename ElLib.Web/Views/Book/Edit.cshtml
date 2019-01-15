@@ -97,7 +97,7 @@
         <div class="col-md-7">
             <div class="card">
                 <h5 class="card-header info-color white-text text-center py-3">
-                    <strong>Создать книгу</strong>
+                    <strong>Редактировать книгу</strong>
                 </h5>
                 <div class="card-body">
                     @using (Html.BeginForm("Edit", "Book"))
@@ -211,7 +211,7 @@
                             </div>
                         </div>
                         @Html.ValidationSummary(true)
-                        <div class="justify-content-md-center">
+                        <div class="justify-content-md-center float-right">
                             <input type="submit" class="btn btn-outline-info btn-rounded" value="Сохранить" />
                         </div>
                     }

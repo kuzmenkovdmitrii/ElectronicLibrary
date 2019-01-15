@@ -11,9 +11,12 @@
             <div class="card">
                 @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
                 {
-                    <h5 class="card-header info-color white-text text-center py-3">
+                    <h5 class="card-header info-color py-3 white-text text-center">
                         <strong>Подробная информация</strong>
-                        <a class="btn-floating blue darken-3 float-right" style="height: 30px; width: 30px; margin: 0" href="@Url.Action("Book", "Author", new {id = @Model.Id})">
+                        <a class="btn-floating danger-color darken-3 float-right" title="Удалить" style="height: 30px; width: 30px; margin: 0px 0px 0px 5px" href="@Url.Action("Delete", "Book", new {id = @Model.Id})">
+                            <i class="fa fa-close" style="font-size: 1rem; line-height: 0px"></i>
+                        </a>
+                        <a class="btn-floating blue darken-3 float-right" title="Редактировать" style="height: 30px; width: 30px; margin: 0px 5px 0px 5px;" href="@Url.Action("Edit", "Book", new {id = @Model.Id})">
                             <i class="fas fa-pencil-alt" style="font-size: 1rem; line-height: 0px"></i>
                         </a>
                     </h5>

@@ -23,24 +23,24 @@ ADD CONSTRAINT FK_Publishing_Addresse FOREIGN KEY(AddressId)
 
 ALTER TABLE BookAndAuthor
 ADD CONSTRAINT FK_Book_AuthorId FOREIGN KEY(BookId)
-        REFERENCES Books(Id),
+        REFERENCES Books(Id) ON DELETE CASCADE,
 	CONSTRAINT FK_Author_BookId FOREIGN KEY(AuthorId)
 		REFERENCES Authors(Id);
 
 ALTER TABLE BookAndBookCategory
 ADD CONSTRAINT FK_Book_BookCategoryId FOREIGN KEY(BookId)
-        REFERENCES Books(Id),
+        REFERENCES Books(Id) ON DELETE CASCADE,
 	CONSTRAINT FK_BookCategory_BookId FOREIGN KEY(BookCategoryId)
 		REFERENCES BookCategories(Id);
 
 ALTER TABLE BookAndPublishing
 ADD CONSTRAINT FK_Book_PublishingId FOREIGN KEY(BookId)
-        REFERENCES Books(Id),
+        REFERENCES Books(Id) ON DELETE CASCADE,
 	CONSTRAINT FK_Publishing_BookId FOREIGN KEY(PublishingId)
 		REFERENCES Publishings(Id);
 
 ALTER TABLE UserAndRole
 ADD CONSTRAINT FK_User_RoleId FOREIGN KEY(UserId)
-        REFERENCES Users(Id),
+        REFERENCES Users(Id) ON DELETE CASCADE,
 	CONSTRAINT FK_Role_UserId FOREIGN KEY(RoleId)
 		REFERENCES Roles(Id);
