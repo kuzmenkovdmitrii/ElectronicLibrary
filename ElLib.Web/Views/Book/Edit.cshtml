@@ -68,26 +68,29 @@
     });
 
     $(document).ready(function() {
-        $('#fileInput').on('change', function(file) {
-            var filename = getFileName(file);
-            $('#fileLabel').val(filename);
+        $('#fileInput').on('change',
+            function() {
+                var filename = getFileName(this);
+                $('#fileLabel').val(filename);
 
-            $.ajax({
-                url: '@Url.Action("UploadDocument", "Book")',
-                data: 'path=' + this.value,
-                type: 'post',
-                beforeSend: function() {
-                    $('#docLoader').addClass('active');
-                },
-                success: function(result) {
-                    $('#File').attr('value', result);
-                    $('#docLoader').removeClass('active');
-                },
-                fail: function() {
-                    alert("error");
-                }
+                $.ajax({
+                    url: '@Url.Action("UploadDocument", "Book")',
+                    data: 'path=' + this.value,
+                    type: 'post',
+                    beforeSend: function() {
+                        $('#docLoader').addClass('active');
+                        console.log('load');
+                    },
+                    success: function(result) {
+                        console.log('succ');
+                        $('#File').attr('value', result);
+                        $('#docLoader').removeClass('active');
+                    },
+                    fail: function() {
+                        alert("error");
+                    }
+                });
             });
-        });
     });
 
 </script>
