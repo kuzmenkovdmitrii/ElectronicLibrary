@@ -109,9 +109,14 @@ namespace ElLib.BLL.Services.Implementations
             HttpContext.Current.Response.Cookies.Add(cookie);
         }
 
-        private void UpdateCookie(User user)
+        private void DeleteCookie()
         {
-            //TODO
+            var cookieName = FormsAuthentication.FormsCookieName;
+
+            if (cookieName != null)
+            {
+                HttpContext.Current.Response.Cookies.Remove(cookieName);
+            }
         }
 
         private bool CheckPassword(User user, string password)
@@ -134,6 +139,9 @@ namespace ElLib.BLL.Services.Implementations
             try
             {
                 userRepository.Update(item);
+
+                DeleteCookie();
+                CreateCookie(item);
             }
             catch (Exception e)
             {
