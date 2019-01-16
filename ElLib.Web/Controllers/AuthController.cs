@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ElLib.BLL.Authentication;
 using ElLib.BLL.Services.Interfaces;
 using ElLib.Common.Entities;
@@ -55,7 +54,15 @@ namespace ElLib.Web.Controllers
 
                 if (result.Successed)
                 {
-                    return View("Login");
+                    LoginUserModel loginModel = new LoginUserModel()
+                    {
+                        UserName = model.UserName,
+                        Password = model.Password
+                    };
+
+                    Login(loginModel);
+
+                    return RedirectToAction("Index", "Home");
                 }
 
                 ModelState.AddModelError(result.Property, result.Message);

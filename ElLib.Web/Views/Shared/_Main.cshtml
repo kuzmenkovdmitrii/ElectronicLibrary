@@ -82,11 +82,11 @@
 
                                 if (user.IsInRole("Admin"))
                                 {
-                                    <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель администратора</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Admin")">Панель администратора</a>
                                 }
                                 else if (user.IsInRole("Editor"))
                                 {
-                                    <a class="dropdown-item" href="@Url.Action("AdminPage", "Home")">Панель редактора</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Admin")">Панель редактора</a>
                                 }
 
                                 <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">Выход</a>

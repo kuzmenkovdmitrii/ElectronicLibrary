@@ -2,8 +2,8 @@
 GO
 
 CREATE PROC usp_AddPublishingToBook
-	@PublishingId int,
-	@BookId int
+	@BookId int,
+	@PublishingId int
 AS
 	INSERT BookAndPublishing VALUES
-	(@PublishingId, @BookId)
+	(@BookId, @PublishingId)

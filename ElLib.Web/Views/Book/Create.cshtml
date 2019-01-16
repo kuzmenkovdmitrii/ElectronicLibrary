@@ -59,9 +59,11 @@
             });
     });
 
+
     $(document).ready(function() {
-        $('#fileInput').on('change', function(file) {
-                var filename = getFileName(file);
+        $('#fileInput').on('change',
+            function() {
+                var filename = getFileName(this);
                 $('#fileLabel').val(filename);
 
                 $.ajax({
@@ -70,8 +72,10 @@
                     type: 'post',
                     beforeSend: function() {
                         $('#docLoader').addClass('active');
+                        console.log('load');
                     },
                     success: function(result) {
+                        console.log('succ');
                         $('#File').attr('value', result);
                         $('#docLoader').removeClass('active');
                     },

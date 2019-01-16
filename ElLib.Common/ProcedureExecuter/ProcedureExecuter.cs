@@ -61,8 +61,6 @@ namespace ElLib.Common.ProcedureExecuter
 
                     try
                     {
-                        cmd.ExecuteNonQuery();
-
                         ICollection<T> list = new List<T>();
 
                         SqlDataReader reader = cmd.ExecuteReader();

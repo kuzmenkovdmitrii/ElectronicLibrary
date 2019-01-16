@@ -151,7 +151,7 @@ namespace ElLib.BLL.Services.Implementations
 
             if (oldPassword != userRepository.GetPassword(user.Id))
             {
-                return new OperationDetails(false, "Пароли не совпадают", "OldPassword");
+                return new OperationDetails(false, "Неверный пароль", "OldPassword");
             }
 
             try

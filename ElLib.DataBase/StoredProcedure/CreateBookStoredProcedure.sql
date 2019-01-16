@@ -45,7 +45,3 @@ AS
 		ON f.Id = FileId
 
 	WHERE b.Id = IDENT_CURRENT('Books')
-
-	
-
-	
