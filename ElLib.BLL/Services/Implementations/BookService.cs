@@ -31,7 +31,7 @@ namespace ElLib.BLL.Services.Implementations
 
         public IEnumerable<Book> GetAll()
         {
-            IEnumerable<Book> books = bookRepository.GetAll();
+            var books = bookRepository.GetAll();
 
             foreach (var book in books)
             {
@@ -47,7 +47,7 @@ namespace ElLib.BLL.Services.Implementations
         {
             ThrowException.CheckId(id);
 
-            Book book = bookRepository.GetById(id);
+            var book = bookRepository.GetById(id);
             book.Publishings = publishingRepository.GetByBookId(id).ToList();
             book.Authors = authorRepository.GetByBookId(id).ToList();
             book.Categories = bookCategoryRepository.GetByBookId(id).ToList();
@@ -109,7 +109,7 @@ namespace ElLib.BLL.Services.Implementations
         {
             ThrowException.CheckNull(query);
 
-            IEnumerable<Book> books = bookRepository.GetByQuery(query);
+            var books = bookRepository.GetByQuery(query);
 
             foreach (var book in books)
             {

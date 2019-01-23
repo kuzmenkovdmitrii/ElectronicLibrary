@@ -89,6 +89,23 @@
                     <a class="dropdown-item" href="@Url.Action("Create", "Language")">Создать язык</a>
                 </div>
             </div>
+            
+            <div>
+                <button class="btn btn-white btn-md btn-block text-info" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="row">
+                        <div class="col-10">
+                            Жанры
+                        </div>
+                        <div class="col-2">
+                            <i class="fa fa-language" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("All", "BookCategory")">Все жанры</a>
+                    <a class="dropdown-item" href="@Url.Action("Create", "BookCategory")">Создать жанр</a>
+                </div>
+            </div>
 
             <div>
                 <button class="btn btn-white btn-md btn-block text-info" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

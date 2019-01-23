@@ -28,10 +28,10 @@ namespace ElLib.Common.ProcedureExecuter
                         cmd.Parameters.AddWithValue(parameter.ParameterName, parameter.SqlValue);
                     }
 
-                    connection.Open();
-
                     try
                     {
+                        connection.Open();
+
                         cmd.ExecuteNonQuery();
                     }   
                     finally
@@ -50,8 +50,6 @@ namespace ElLib.Common.ProcedureExecuter
             {
                 using (SqlCommand cmd = new SqlCommand(storedProcedure, connection))
                 {
-                    connection.Open();
-
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     foreach (var parameter in Parameters)
@@ -62,6 +60,8 @@ namespace ElLib.Common.ProcedureExecuter
                     try
                     {
                         ICollection<T> list = new List<T>();
+
+                        connection.Open();
 
                         SqlDataReader reader = cmd.ExecuteReader();
 

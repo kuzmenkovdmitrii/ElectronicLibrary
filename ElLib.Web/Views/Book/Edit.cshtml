@@ -40,6 +40,16 @@
         $("#Language").val(changedLanguage).trigger("change");
     });
 
+    function getFileName(file) {
+        var fullPath = file.value;
+        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+        var filename = fullPath.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+        return filename;
+    }
+
     $(document).ready(function() {
         $('#pictureInput').on('change',
             function() {
@@ -92,7 +102,6 @@
                 });
             });
     });
-
 </script>
 
 <div class="container">
@@ -117,7 +126,7 @@
                                         <img src="@Model.Picture" id="pictureImg" alt="thumbnail" class="img-thumbnail" style="width: 100%" />
 
                                     }
-                                    @Html.HiddenFor(x=>x.Picture)
+                                    @Html.HiddenFor(x => x.Picture)
                                 </div>
 
                                 <div class="md-form" style="width: 100%">
@@ -155,7 +164,7 @@
                                     @Html.ValidationMessageFor(x => x.Name)
                                 </div>
 
-                                <div class="md-form authors">
+                                <div class="md-form">
                                     <select class="browser-default js-example-basic-multiple form-control" style="width: 100%" multiple="multiple" id="Authors" name="Authors">
                                         @Html.Action("AllAuthorsForSelect", "Author")
                                     </select>
@@ -205,7 +214,7 @@
                                             </div>
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate disabled" id="docLabel" type="text" placeholder="Выберите новый файл книги">
+                                            <input class="file-path validate disabled" id="fileLabel" type="text" placeholder="Выберите новый файл книги">
                                         </div>
                                     </div>
                                     @Html.HiddenFor(x => x.File)

@@ -45,17 +45,14 @@
         </div>
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Главная</a>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Книги</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hiddenNav" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="hiddenNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("All","Book")">Книги</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("All","BookCategory")">Категории</a>
+                        <a class="nav-link" href="@Url.Action("All","BookCategory")">Жанры</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("All","Author")">Авторы</a>

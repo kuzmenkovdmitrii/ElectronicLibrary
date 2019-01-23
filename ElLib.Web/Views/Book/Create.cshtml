@@ -44,10 +44,8 @@
                     type: 'post',
                     beforeSend: function() {
                         $('#pictureLoader').addClass('active');
-                        console.log('load');
                     },
                     success: function(result) {
-                        console.log('succ');
                         $('#pictureImg').attr('src', result);
                         $('#Picture').attr('value', result);
                         $('#pictureLoader').removeClass('active');
@@ -72,10 +70,8 @@
                     type: 'post',
                     beforeSend: function() {
                         $('#docLoader').addClass('active');
-                        console.log('load');
                     },
                     success: function(result) {
-                        console.log('succ');
                         $('#File').attr('value', result);
                         $('#docLoader').removeClass('active');
                     },

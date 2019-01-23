@@ -23,9 +23,9 @@ AS
 		WHERE Id = @FileId
 
 	DECLARE @PictureId int
-	SET @FileId = (SELECT PictureId FROM Books WHERE Id = @Id)
+	SET @PictureId = (SELECT PictureId FROM Books WHERE Id = @Id)
 
 	UPDATE Pictures
 		SET
 		Link = @Picture
-	WHERE Id = @PictureId
+		WHERE Id = @PictureId
